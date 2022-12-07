@@ -7,7 +7,7 @@ body{
     /* padding: 40px; */
 }
 .login-page{
-    background-color: aqua;
+    background-color: #D9D9D9;
     height: 100vh;
 }
 .container{
@@ -44,16 +44,20 @@ body{
     padding-left: 14px;
     border-radius: 30px;
     border: none;
-    background-color: antiquewhite;
+    background-color: #D9D9D9;
 }
 .sign-in-btn{
     text-align: center;
     margin-top: 30px;
 }
 .login-form-content button{
-    padding: 8px;
+    padding: 10px;
     border-radius: 30px;
     width: 20%;
+    background-color: #28B498;
+    border: none;
+    color: white;
+    font-weight: bold;
 }
 .left-line{
     float: left;
@@ -66,7 +70,7 @@ body{
     padding-right: 3%;
 }
 .right-navigation{
-    background-color: red;
+    background-color: #28B498;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -75,9 +79,11 @@ body{
 .right-navigation .right-navigation-header h1{
     margin-top: 1%;
     text-align: center;
+    color: white;
 }
 .right-navigation .content{
     text-align: center;
+    color: white;
 }
 ::-webkit-input-placeholder{
     color: black;
