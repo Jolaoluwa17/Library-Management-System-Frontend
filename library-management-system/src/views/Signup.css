@@ -1,0 +1,123 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    padding: 0;
+    margin: 0;
+    /* padding: 40px; */
+}
+.signup-page{
+    background-color: #D9D9D9;
+    height: 100vh;
+}
+.signup-container{
+    min-height: calc(120vh - 10vh * 2);
+    display: grid;
+    grid-template-columns: 60% 40%;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 4%;
+}
+.signup-left-navigation{
+    display: flex;
+    flex-direction: column;
+    justify-content: content;
+    /* padding-left: 150px; */
+    background-color: white;
+    border-radius: 30px 0px 0px 30px;
+}
+.signup-left-navigation .signup-header{
+    margin-top: 2%;
+    margin-left: 6%;
+}
+.signup-header p{
+    color: grey;
+    margin-bottom: -10px !important;
+}
+.link{
+    text-decoration: none;
+    color: #28B498;
+}
+
+.signup-form-content .signup-form-item{
+    margin-left: 5%;
+    margin-top: 30px;
+}
+.signup-form-content .signup-form-item input{
+    width: 60%;
+    padding: 12px;
+    padding-left: 14px;
+    border-radius: 30px;
+    border: none;
+    background-color: #D9D9D9;
+}
+.signup-form-checkbox{
+    margin-left: 6%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.signup-btn{
+    margin-top: 10px;
+    margin-left: 6%;
+}
+.signup-btn button{
+    padding: 10px;
+    border-radius: 30px;
+    width: 30%;
+    background-color: #28B498;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+.signup-right-navigation{
+    background-image: url("/public/images/picture.png");
+    background-size: cover;
+    /* background-image: url("/images/picture.png"); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0px 30px 30px 0px;
+}
+::-webkit-input-placeholder{
+    color: grey;
+    font-weight: bold;
+}
+:-moz-placeholder{
+    color: grey;
+    font-weight: bold;
+}
+:-ms-input-placeholder{
+    color: grey;
+    font-weight: bold;
+}
+@media (max-width: 768px){
+    body{
+        padding: 0;
+    }
+    .signup-container{
+        grid-template-columns: auto;
+    }
+    .signup-left-navigation{
+        border-radius: 30px;
+    }
+    .signup-right-navigation{
+        display: none;
+    }
+    .signup-left-navigation .signup-header{
+        /* text-align: center; */
+        margin-left: 10%;
+    }
+    .signup-form-content .signup-form-item{
+        /* text-align: center; */
+        margin-left: 10%;
+    }
+    .signup-form-checkbox{
+        margin-left: 10%;
+    }
+    .signup-btn{
+        margin-left: 10%;
+    }
+}
+@media (max-width: 425px){
+    
+}

@@ -36,10 +36,10 @@ body{
 }
 .login-form-content .form-item{
     text-align: center;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 .login-form-content .form-item input{
-    width: 50%;
+    width: 60%;
     padding: 12px;
     padding-left: 14px;
     border-radius: 30px;
@@ -53,11 +53,12 @@ body{
 .login-form-content button{
     padding: 10px;
     border-radius: 30px;
-    width: 20%;
+    width: 30%;
     background-color: #28B498;
     border: none;
     color: white;
     font-weight: bold;
+    font-size: 15px;
 }
 .left-line{
     float: left;
@@ -70,7 +71,8 @@ body{
     padding-right: 3%;
 }
 .right-navigation{
-    background-color: #28B498;
+    /* background-color: #28B498; */
+    background-image: url("/public/images/rm422-047.jpg");
     display: flex;
     flex-direction: column;
     justify-content: center;
