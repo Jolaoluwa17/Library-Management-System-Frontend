@@ -1,0 +1,72 @@
+/* .dashboard{
+    background-color: #ebebeb;
+} */
+.dashboard{
+    margin-left: 4%;
+    margin-top: 1%;
+}
+.dashboard-header h5{
+    font-weight: normal;
+    margin-top: 1%;
+}
+.dashboard-cards{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2%;
+}
+.total-card{
+    height: 150px;
+    width: 300px;
+    /* background-color: #f5f6fa; */
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    padding: 1%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.total-card1{
+    height: 150px;
+    width: 300px;
+    /* background-color: #f5f6fa; */
+    background-color: white;
+    margin-left: 2%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    padding: 1%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.card-content{
+    text-align: right;
+    margin-left: 20%;
+    margin-top: 12%;
+}
+.card-content1{
+    text-align: right;
+    margin-left: 35%;
+    margin-top: 12%;
+}
+.card-content2{
+    text-align: right;
+    margin-left: 30%;
+    margin-top: 12%;
+}
+.card-icon{
+    font-size: 100px;
+    /* color: black; */
+}
+.card-number{
+    font-size: 35px;
+    font-weight: 500;
+}
+.card-text{
+    font-size: 15px;
+    color: grey;
+}
+.list-components{
+    margin-top: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

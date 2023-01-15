@@ -11,12 +11,13 @@ body{
     height: 100vh;
 }
 .signup-container{
-    min-height: calc(120vh - 10vh * 2);
+    min-height: calc(100vh - 5px * 2);
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 50% 30%;
     border-radius: 10px;
     overflow: hidden;
     padding: 4%;
+    justify-content: center;
 }
 .signup-left-navigation{
     display: flex;
@@ -50,6 +51,32 @@ body{
     border-radius: 30px;
     border: none;
     background-color: #D9D9D9;
+    outline: none;
+}
+.signup-form-content .user-option{
+    margin-left: 6%;
+    margin-top: 25px;
+}
+.signup-form-content .user-option .user-select{
+    height: 30px;
+    border: none;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: #D9D9D9;
+    border-radius: 8px;
+    padding: 6px;
+    margin-top: 0.5%;
+    min-width: 200px;
+    outline: none;
+}
+.signup-form-content .user-option .user-select:hover{
+    border-color: #28B498;
+    border-width: 2px;
+}
+.user-option label{
+    font-weight: 700;
+    /* color: grey; */
+    margin-left: 1%; 
 }
 .signup-form-checkbox{
     margin-left: 6%;

@@ -1,0 +1,65 @@
+.table-container {
+  /* background-color: #f5f6fa; */
+  background-color: white;
+}
+tbody .MuiTableCell-root {
+  background-color: white;
+}
+/* tr{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+} */
+.cont {
+  padding: 10px;
+  /* background-color: #f5f6fa; */
+  background-color: white;
+  width: 49.1%;
+  margin-top: 0.5%;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.members-icon {
+  font-size: 20px;
+  margin-right: 2%;
+}
+.new-members-name-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.new-members-name-card h3 {
+  font-size: 14px;
+  font-weight: 100;
+}
+.new-members-name-card .books-icon{
+    font-size: 20px;
+    margin-right: 3%;
+    /* color: #4e8bfe; */
+}
+.view-icon{
+    font-size: 20px;
+    /* color: #28B498; */
+}
+.list-all{
+    width: 243.5%;
+    display: flex;
+    justify-content: right;
+}
+.list-all-books{
+    width: 335.5%;
+    display: flex;
+    justify-content: right;
+}
+.list-all-btn{
+    padding: 6px;
+    background-color: #28B498;
+    border: none;
+    margin-top: 2%;
+    color: white;
+    border-radius: 5px;
+    padding-left: 14px;
+    padding-right: 14px;
+    justify-items: left;
+}
+.table-container-title{
+    font-weight: 500;
+}

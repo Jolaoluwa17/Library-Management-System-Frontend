@@ -1,35 +1,36 @@
 import './Login.css'
 import React from 'react'
+import { useState } from 'react'
+import NonStudentLogin from '../components/NonStudentLogin'
+import StudentLogin from '../components/StudentLogin'
 
 export const Login = () => {
+  const [active1, setActive1] = useState("StudentLogin");
+  const [active2, setActive2] = useState();
   return (
     <div className='login-page'>
     <div className="Login">
       <div className="container">
         <div className="left-navigation">
-          <div className="login-header">
-            <h1>SIGN IN</h1>
-            <div className="left-line">
-          <hr />
-        </div>
-        <div className="right-line">
-          <hr />
-        </div>
-            <p>Log into existing account</p>
+          <div className="login-option">
+          <div className="user-login" onClick={() => setActive1("StudentLogin")}>
+            <h4>Students</h4>
           </div>
-          <form action="#" className='login-form'>
-            <div className="login-form-content">
-              <div className="form-item">
-                <input type="text" id='email' placeholder='Email' />
-              </div>
-              <div className="form-item">
-                <input type="password" id='password' placeholder='Password' />
-              </div>
-              <div className='sign-in-btn'>
-              <button>Sign in</button>
-              </div>
-            </div>
-          </form>
+          <div className="admin-login" onClick={() => setActive1("NonStudentLogin")}>
+            <h4>Non-students</h4>
+          </div>
+          </div>
+          <div className="user-login-form1">
+          {active1 === "StudentLogin" && (
+            <StudentLogin
+              active1={active1}
+              setActive1={setActive1}
+              active2={active2}
+              setActive2={setActive2}
+            />
+          )}
+          {active1 === "NonStudentLogin" && <NonStudentLogin />}
+        </div>
         </div>
         <div className="right-navigation">
           <div className='right-navigation-header'>

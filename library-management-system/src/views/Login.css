@@ -13,11 +13,11 @@ body{
 .container{
     min-height: calc(100vh - 5px * 2);
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 50% 30%;
     border-radius: 10px;
     overflow: hidden;
     padding: 4%;
-    /* padding-top: 3%; */
+    justify-content: center;
 }
 .left-navigation{
     display: flex;
@@ -31,6 +31,9 @@ body{
     margin-top: 12%;
     text-align: center;
 }
+.login-header h1{
+    margin-bottom: 4%;
+}
 .login-header p{
     color: grey;
 }
@@ -39,12 +42,19 @@ body{
     margin-top: 40px;
 }
 .login-form-content .form-item input{
-    width: 60%;
+    width: 50%;
     padding: 12px;
     padding-left: 14px;
     border-radius: 30px;
     border: none;
     background-color: #D9D9D9;
+}
+.signup_link{
+    padding-left: 20%;
+    margin-top: 2%;
+}
+.signup_link_text{
+    margin-left: 1%;
 }
 .sign-in-btn{
     text-align: center;
@@ -62,13 +72,15 @@ body{
 }
 .left-line{
     float: left;
-    width: 36%;
+    width: 33%;
     padding-left: 3%;
+    margin-top: 1.5%;
 }
 .right-line{
     float: right; 
-    width: 36%;
+    width: 33%;
     padding-right: 3%;
+    margin-top: 1.5%;
 }
 .right-navigation{
     /* background-color: #28B498; */
@@ -98,6 +110,28 @@ body{
 :-ms-input-placeholder{
     color: black;
     font-weight: bold;
+}
+.left-navigation .user-login h4{
+    float: left;
+    margin-left: 8%;
+    color: grey;
+}
+.left-navigation .user-login h4:hover{
+    color: #28B498;
+    cursor: pointer;
+}
+.left-navigation .admin-login h4{
+    float: right;
+    margin-right: 8%;
+    color: grey;
+    /* margin-top: -30px; */
+}
+.left-navigation .admin-login h4:hover{
+    color: #28B498;
+    cursor: pointer;
+}
+.login-option{
+    margin-top: 5%;
 }
 @media (max-width: 1350px){
 
