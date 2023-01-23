@@ -1,0 +1,56 @@
+.BodySectionThree {
+  width: 100%;
+  height: 700px;
+  padding: 20px;
+}
+.bodySectionThree-Container-header {
+  text-align: center;
+}
+.bodySectionThree-Container-header h1 {
+  margin-bottom: 14px;
+}
+.bodySectionThree-Container-header .body-sectionthree-text {
+  margin-bottom: 14px;
+}
+.bodySectionThree-Container-header .body-book hr {
+  width: 8%;
+  height: 1px;
+  align-self: center;
+  margin: 5px;
+  background-color: black;
+}
+.bodySectionThree-nav-bar {
+  text-align: center;
+}
+.bodySectionThree-nav-bar ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  justify-content: space-around;
+  margin-top: 3%;
+  background-color: white;
+}
+.bodySectionThree-nav-bar ul li {
+  padding: 10px;
+  width: 20%;
+  border-right-color: white;
+  border-right-style: solid;
+  border-left-color: white;
+  border-left-style: solid;
+  background-color: #d9d9d9;
+  border-radius: 5px;
+}
+.bodySectionThree-nav-bar ul li:hover {
+  background-color: #28b498;
+  color: white;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.bodySectionThree-nav-content {
+  width: 100%;
+  height: 400px;
+  background-color: #d9d9d9;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  border-radius: 5px;
+}

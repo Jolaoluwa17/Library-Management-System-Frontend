@@ -1,0 +1,50 @@
+.header-container {
+  width: 95%;
+  height: 80px;
+}
+.babcock-img {
+  padding-top: 1%;
+  padding-left: 3%;
+}
+.header-line{
+    margin-top: 0.5%;
+    width: 100%;
+    margin-left: 2.5%;
+}
+.nav-bar{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    text-align: center;
+    justify-content: space-between;
+}
+.nav-content ul{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    list-style: none;
+    width: 500px;
+    justify-content: space-between;
+}
+.nav-content ul li{
+    text-decoration: none;
+    margin-left: 2%;
+    margin-top: 10%;
+}
+.nav-content ul li:hover{
+  color: #28B498;
+  cursor: pointer;
+}
+.login-btn-container{
+  margin-top: 2.5%;
+}
+.login-btn-container button{
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: none;
+  background-color: #28B498;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+}

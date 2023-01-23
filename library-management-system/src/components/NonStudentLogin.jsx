@@ -33,6 +33,12 @@ const NonStudentLogin = () => {
              Create an account
           </Link>
         </p>
+        <p className="signup_link">
+          Do not Remember password?
+          <Link to="/PasswordRecovery" style={{ color: "#28B498" }} className ="signup_link_text">
+             Reset Password
+          </Link>
+        </p>
             </div>
           </form>
         </div>

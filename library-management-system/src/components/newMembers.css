@@ -59,6 +59,7 @@ tbody .MuiTableCell-root {
     padding-left: 14px;
     padding-right: 14px;
     justify-items: left;
+    cursor: pointer;
 }
 .table-container-title{
     font-weight: 500;

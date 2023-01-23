@@ -1,0 +1,31 @@
+.BodySectionOne{
+    height: 500px;
+    /* background-color: #D9D9D9; */
+}
+.BodySectionOne-container{
+    /* margin-top: 2%; */
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2%;
+}
+.BodySectionOne-img img{
+    width: 600px;
+    height: 400px;
+    margin-top: 3%;
+}
+.BodySectionOne-text{
+    margin-left: 5%;
+}
+.BodySectionOne-text h2{
+    font-size: 50px;
+    font-weight: 400;
+}
+.BodySectionOne-text h1{
+    font-size: 70px;
+}
+.BodySectionOne-text p{
+    margin-top: 3%;
+    font-size: 20px;
+}

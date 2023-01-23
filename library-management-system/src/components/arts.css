@@ -1,0 +1,21 @@
+.arts-book{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.arts-book-o{
+    margin-top: 2%;
+    text-align: center;
+}
+.arts-book-o .arts-book-book{
+    width: 200px;
+    height: 300px;
+    /* border: black solid; */
+}
+.arts-book-o .arts-book-title{
+    margin-top: 2%;
+}
+.arts-book-book img{
+    width: 200px;
+    height: 300px;
+}
