@@ -72,16 +72,6 @@
       width: 370px;
       height: 230px;
     }
-    /* .BodySectionOne-text h2{
-        display: none;
-        visibility: hidden;
-    }
-    .BodySectionOne-text p{
-        display: none;
-    } */
-    /* .BodySectionOne-img{
-        display: none;
-    } */
 }
 @media (max-width: 376px){
   .BodySectionOne-img img{
