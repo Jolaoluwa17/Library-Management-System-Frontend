@@ -2,7 +2,7 @@ import React from 'react'
 import '../views/Login.css'
 import { Link } from 'react-router-dom'
 
-const Adminlogin = () => {
+const Studentlogin = () => {
   return (
     <div>
         <div className="admin-login-form">
@@ -46,4 +46,4 @@ const Adminlogin = () => {
   )
 }
 
-export default Adminlogin;
+export default Studentlogin;

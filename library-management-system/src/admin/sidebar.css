@@ -6,6 +6,7 @@
   border-width: 1.5px;
   height: 100vh;
   width: 201px;
+  position: fixed;
 }
 .logo {
   display: flex;
@@ -19,6 +20,12 @@
   height: 50;
   width: 55;
   margin-right: 17px;
+}
+.user-logoImg img{
+  height: 50;
+  width: 70;
+  margin-right: 17px;
+  margin-left: -20px;
 }
 .logoText h3 {
   font-size: 20px;
@@ -59,6 +66,11 @@
 .settingButton {
   align-self: center;
   margin-top: 180px;
+}
+/* For User Settings */
+.user-settingButton{
+  align-self: center;
+  margin-top: 240px;
 }
 .icon {
   font-size: 24px;

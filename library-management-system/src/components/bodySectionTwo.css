@@ -68,3 +68,32 @@
     margin-left: 46%;
     margin-top: 2%;
 }
+
+/*Responsive*/
+
+@media (max-width: 426px){
+    .BodySectionTwo-container-header h1{
+        font-size: 20px;
+    }
+    .BodySectionTwo-container-header p{
+        font-size: 16px;
+    }
+    .ebooks .ebooks-icon{
+        font-size: 40px;
+    }
+    .ebooks h3{
+        font-size: 12px;
+    }
+    .ebooks-text{
+        font-size: 9px;
+    }
+    .BodySectionTwo{
+        height: 400px;
+    }
+}
+
+@media (max-width: 376px){
+    .BodySectionTwo{
+        height: 350px;
+    }
+}

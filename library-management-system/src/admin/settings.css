@@ -1,7 +1,12 @@
 .settings{
-    margin-left: 4%;
+    margin-left: 18%;
     margin-top: 1%;
     width: 100%;
+}
+.user-settings{
+    margin-left: 18%;
+    margin-top: 1%;
+    width: 80%;
 }
 .settings-header h5{
     font-weight: normal;

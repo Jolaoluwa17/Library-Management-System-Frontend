@@ -1,61 +1,52 @@
 import React from 'react'
-import { ImBooks } from "react-icons/im";
-import { MdAdd } from "react-icons/md";
-import { GiBookCover } from "react-icons/gi";
-import { IoMdContact } from "react-icons/io";
-import { AiOutlineSetting } from "react-icons/ai"
-import { HiOutlineLogout } from "react-icons/hi"
+import { IoCardSharp } from "react-icons/io5";
+import { AiOutlineSetting, AiOutlineHistory } from "react-icons/ai"
+import { HiOutlineLogout } from "react-icons/hi";
+import { FaShoppingCart } from "react-icons/fa"
 import { NavLink } from "react-router-dom";
-import { MdSpaceDashboard } from "react-icons/md";
-import "./sidebar.css";
+import { HiLibrary } from "react-icons/hi";
 
-export const Sidebar = () => {
+export const UserSidebar = () => {
     return (
         <div className="sidebar">
             <div className="logo">
-                <div className="logoImg">
+                <div className="user-logoImg">
                     <img src="https://res.cloudinary.com/manlikeemma/image/upload/v1669629509/BUCODEL/Babcock_Logo_c46jjo.jpg" alt="Babcock Logo" />
                 </div>
                 <div className="logoText">
-                    <h3>ADMIN</h3>
-                    <h5>Panel</h5>
+                    <h3>Welcome</h3>
+                    <h5>Back</h5>
                 </div>
             </div>
             <div className="sidebarButton" id='sidebarButton'>
                 <div className="classroomButton">
-                    <NavLink to="/dashboard">
+                    <NavLink to="/Library">
                         <button className='sidebar-button'>
-                            <MdSpaceDashboard className='icon' />
-                            Dashboard
-                        </button>
-                    </NavLink>
-                    <NavLink to="/totalbooks">
-                        <button className='sidebar-button'>
-                            <ImBooks className='icon' />
-                            Total Books
-                        </button>
-                    </NavLink>
-                    <NavLink to="/addBook">
-                        <button className='sidebar-button'>
-                            <MdAdd className='icon' />
-                            Add Books
-                        </button>
-                    </NavLink>
-                    <NavLink to="/issuebook">
-                        <button className='sidebar-button'>
-                            <GiBookCover className='icon' />
-                            Issue Books
+                            <HiLibrary className='icon' />
+                            Library
                         </button>
                     </NavLink>
                     <NavLink to="/">
                         <button className='sidebar-button'>
-                            <IoMdContact className='icon' />
-                            Members
+                            <AiOutlineHistory className='icon' />
+                            Transactions
+                        </button>
+                    </NavLink>
+                    <NavLink to="/">
+                        <button className='sidebar-button'>
+                            <IoCardSharp className='icon' />
+                            Library Card
+                        </button>
+                    </NavLink>
+                    <NavLink to="/">
+                        <button className='sidebar-button'>
+                            <FaShoppingCart className='icon' />
+                            Cart
                         </button>
                     </NavLink>
                 </div>
-                <div className="settingButton">
-                    <NavLink to="/settings">
+                <div className="user-settingButton">
+                    <NavLink to="/userSettings">
                         <button className='sidebar-button'>
                             <AiOutlineSetting className='icon' />
                             Settings
@@ -76,4 +67,4 @@ export const Sidebar = () => {
     )
 }
 
-export default Sidebar;
+export default UserSidebar;

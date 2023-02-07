@@ -1,13 +1,12 @@
-import React from "react";
-import "./settings.css";
+import React from 'react'
 import { BiSave } from "react-icons/bi"
 
-export const Settings = () => {
+export const UserSettings = () => {
   return (
-    <div className="settings">
-      <div className="settings-header">
+    <div className="user-settings">
+        <div className="settings-header">
         <h2>Welcome to Control Panel</h2>
-        <h5>Admin/Control Panel</h5>
+        <h5>User/Control Panel</h5>
       </div>
       <div className="settings-content">
         <div className="profile-picture-container">
@@ -109,6 +108,7 @@ export const Settings = () => {
           </div>
         </div>
       </div>
+
     </div>
-  );
-};
+  )
+}

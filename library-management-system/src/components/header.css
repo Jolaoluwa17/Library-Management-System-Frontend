@@ -48,3 +48,88 @@
   border-radius: 5px;
   font-size: 15px;
 }
+.burger-icon{
+  display: none;
+}
+.mobile-login-button{
+  display: none;
+}
+.close-icon{
+  display: none;
+}
+
+
+
+/*Responsiveness*/
+
+@media (max-width: 768px){
+  /* .header-container{
+    width: 100%;
+  } */
+  .nav-content ul{
+    width: 400px;
+  }
+  .login-btn-container{
+    margin-top: 3.5%;
+  }
+  .login-btn-container button{
+    font-size: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 426px){
+  .nav-content{
+    display: none;
+  }
+  .nav-content-mobile ul{
+    /* display: none; */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #28B498;
+    position: absolute;
+    padding: 10px;
+    list-style: none;
+  }
+  .nav-content-mobile ul li{
+    margin-top: 5%;
+  }
+  .babcock-img{
+    display: block;
+  }
+  .babcock-img1{
+    display: none;
+  }
+  .burger-icon{
+    display: block;
+    padding-top: 35px;
+    font-size: 20px;
+  }
+  .nav-content-mobile .close-icon{
+    position: absolute;
+    /* top: -29px;
+    left: 190px; */
+    top: 3px;
+    left: 390px;
+    font-size: 25px;
+    color: white;
+    display: block;
+    /* width: 20px; */
+  }
+  .login-btn-container{
+    display: none;
+  }
+  .nav-content-mobile .mobile-login-button{
+    display: block;
+    
+  }
+  .nav-content-mobile .mobile-login-button button{
+    border: none;
+    background-color: #28B498;
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+}

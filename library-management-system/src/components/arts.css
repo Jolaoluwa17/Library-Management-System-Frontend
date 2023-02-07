@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 .arts-book-o{
     margin-top: 2%;
@@ -18,4 +19,34 @@
 .arts-book-book img{
     width: 200px;
     height: 300px;
+}
+.arts-book-book img:hover{
+    margin-top: -5%;
+    transition: all 0.5s ease;
+}
+
+/*Responsive*/
+
+@media (max-width: 768px) {
+  .arts-book-book img{
+    width: 140px;
+    height: 220px;
+  }
+  .arts-book-o .arts-book-book{
+    width: 140px;
+    height: 220px;
+  }
+  .arts-book-book img:hover{
+    margin-top: 0%;
+  }
+}
+@media (max-width: 426px){
+  .arts-book-book img{
+    width: 120px;
+    height: 190px;
+  }
+  .arts-book-o .arts-book-book{
+    width: 140px;
+    height: 190px;
+  }
 }

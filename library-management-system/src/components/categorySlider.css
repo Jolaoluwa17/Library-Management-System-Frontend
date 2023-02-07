@@ -1,0 +1,13 @@
+.center_desc-holder {
+  text-align: center;
+}
+.center_desc-holder .photo_size {
+  width: 240px;
+  height: 355px;
+  text-align: center;
+}
+.center_desc-holder img{
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}

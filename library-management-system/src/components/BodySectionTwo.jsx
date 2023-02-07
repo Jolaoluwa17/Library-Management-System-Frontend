@@ -35,7 +35,7 @@ export const BodySectionTwo = () => {
               <br />
               great libraries build communities <br />
               <div className="read-more-text">
-                <Link style={{ color: "#28B498" }}>Read More</Link>
+                <Link to="/" style={{ color: "#28B498" }}>Read More</Link>
                 <hr />
               </div>
             </div>
@@ -51,7 +51,7 @@ export const BodySectionTwo = () => {
               <br />
               great libraries build communities <br />
               <div className="read-more-text">
-                <Link style={{ color: "#28B498" }}>Read More</Link>
+                <Link to="/" style={{ color: "#28B498" }}>Read More</Link>
                 <hr />
               </div>
             </div>
@@ -67,7 +67,7 @@ export const BodySectionTwo = () => {
               <br />
               great libraries build communities <br />
               <div className="read-more-text">
-                <Link style={{ color: "#28B498" }}>Read More</Link>
+                <Link to="/" style={{ color: "#28B498" }}>Read More</Link>
                 <hr />
               </div>
             </div>
@@ -84,7 +84,7 @@ export const BodySectionTwo = () => {
                 <br />
                 great libraries build communities <br />
                 <div className="read-more-text">
-                <Link style={{ color: "#28B498" }}>Read More</Link>
+                <Link to="/" style={{ color: "#28B498" }}>Read More</Link>
                 <hr />
               </div>
               </div>

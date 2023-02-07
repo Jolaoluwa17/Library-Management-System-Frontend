@@ -1,31 +1,101 @@
-.BodySectionOne{
-    height: 500px;
-    /* background-color: #D9D9D9; */
+.BodySectionOne {
+  height: 500px;
+  /* background-color: #D9D9D9; */
 }
-.BodySectionOne-container{
-    /* margin-top: 2%; */
-    margin-left: 5%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 2%;
+.BodySectionOne-container {
+  /* margin-top: 2%; */
+  margin-left: 5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2%;
 }
-.BodySectionOne-img img{
-    width: 600px;
-    height: 400px;
-    margin-top: 3%;
+.BodySectionOne-img img {
+  width: 600px;
+  height: 400px;
+  margin-top: 3%;
 }
-.BodySectionOne-text{
-    margin-left: 5%;
+.BodySectionOne-text {
+  margin-left: 5%;
 }
-.BodySectionOne-text h2{
+.BodySectionOne-text h2 {
+  font-size: 50px;
+  font-weight: 400;
+}
+.BodySectionOne-text h1 {
+  font-size: 70px;
+}
+.BodySectionOne-text p {
+  margin-top: 3%;
+  font-size: 20px;
+}
+
+/*Responsiveness*/
+@media (max-width: 1024px) {
+  .BodySectionOne-text h1 {
     font-size: 50px;
-    font-weight: 400;
+  }
+  .BodySectionOne-text h2 {
+    font-size: 30px;
+  }
 }
-.BodySectionOne-text h1{
-    font-size: 70px;
-}
-.BodySectionOne-text p{
+@media (max-width: 768px) {
+  .BodySectionOne-img img {
+    width: 400px;
+    height: 250px;
     margin-top: 3%;
-    font-size: 20px;
+  }
+  .BodySectionOne-text{
+    margin-left: 3%;
+  }
+  .BodySectionOne-text h1 {
+    font-size: 45px;
+  }
+  .BodySectionOne-text h2 {
+    font-size: 25px;
+  }
+  .BodySectionOne-text p{
+    font-size: 18px;
+  }
+  .BodySectionOne{
+    height: 400px;
+  }
+}
+@media (max-width: 426px){
+    .BodySectionOne-text {
+        display: none;
+    }
+    .BodySectionOne{
+        height: 300px;
+    }
+    /* .BodySectionOne-text h2{
+        display: none;
+        visibility: hidden;
+    }
+    .BodySectionOne-text p{
+        display: none;
+    } */
+    /* .BodySectionOne-img{
+        display: none;
+    } */
+}
+@media (max-width: 376px){
+  .BodySectionOne-img img{
+    width: 350px;
+    height: 200px;
+    margin-top: 3%;
+  }
+  .BodySectionOne{
+    height: 230px;
+  }
+}
+
+@media (max-width: 320px){
+  .BodySectionOne-img img{
+    width: 300px;
+    height: 150px;
+  }
+  .BodySectionOne{
+    height: 180px;
+  }
 }

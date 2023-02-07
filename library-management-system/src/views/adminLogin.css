@@ -1,0 +1,28 @@
+.admin-login1{
+    height: 100vh;
+}
+.admin-container{
+    text-align: center;
+}
+.admin-login-header{
+    padding-top: 200px;
+}
+.login-content .form-content input{
+    margin-bottom: 2%;
+    width: 400px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #d5d5d5;
+    font-size: medium;
+}
+.admin-sign-in-btn button{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28b498;
+    color: white;
+    font-size: medium;
+    padding-left: 14px;
+    padding-right: 14px;
+}

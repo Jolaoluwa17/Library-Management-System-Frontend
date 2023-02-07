@@ -49,8 +49,36 @@
 .bodySectionThree-nav-content {
   width: 100%;
   height: 400px;
-  background-color: #d9d9d9;
+  /* background-color: #d9d9d9; */
   margin-top: 3%;
   margin-bottom: 3%;
   border-radius: 5px;
+}
+
+/*Responsive*/
+
+@media (max-width: 768px) {
+  .bodySectionThree-nav-bar ul li {
+    padding: 10px;
+    width: 25%;
+    font-size: 14px;
+  }
+  .BodySectionThree{
+    height: 500px;
+  }
+}
+@media (max-width: 426px){
+  .BodySectionThree{
+    height: 700px;
+  }
+  .bodySectionThree-Container-header h1{
+    font-size: 20px;
+  }
+  .bodySectionThree-Container-header p{
+    font-size: 16px;
+  }
+  .bodySectionThree-nav-bar ul li{
+    width: 25%;
+    font-size: 12px;
+  }
 }

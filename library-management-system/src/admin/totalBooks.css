@@ -1,0 +1,90 @@
+.TotalBooks {
+  margin-left: 18%;
+  margin-top: 2%;
+}
+.totalBooks-header h5 {
+  font-weight: normal;
+  margin-top: 3%;
+}
+.totalBooks-header {
+  display: flex;
+  flex-direction: row;
+  width: 1200px;
+}
+.search-bar {
+  background-color: #d5d5d5;
+  height: 40px;
+  display: flex;
+  margin-left: 28%;
+  border-radius: 20px;
+  margin-top: 1%;
+}
+
+.search-bar input {
+  height: 40px;
+  background-color: #d5d5d5;
+  border: none;
+  width: 400px;
+  border-radius: 20px;
+  outline: none;
+  padding-left: 14px;
+}
+
+.search-btn {
+  margin-top: 10px;
+  margin-right: 10px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+.total-books-content {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: safe;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.total-books-content .book-cover {
+  width: 300px;
+  height: 350px;
+  margin-bottom: 1%;
+}
+.book-cover .book  img {
+  width: 200px;
+  height: 300px;
+}
+.book-cover .book:hover img{
+  margin-top: -5px;
+  transition: all 0.4s ease;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  transition: all 0.5s ease-in-out;
+}
+.book-cover .book-title {
+  margin-left: 20%;
+}
+.book-cover .book span{
+  position: relative;
+  top: -165px;
+  left: 52px;
+  display: none;
+  
+}
+.book-cover .book {
+  width: 200px;
+  height: 300px;
+}
+.book-cover .book:hover span{
+  display: block;
+  margin-top: -5px;
+  transition: all 0.4s ease;
+}
+.book span button{
+  padding: 10px;
+  border: none;
+  background-color: #28b498;
+  color: white;
+  cursor: pointer;
+}
+

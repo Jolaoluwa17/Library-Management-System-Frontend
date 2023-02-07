@@ -1,0 +1,55 @@
+.issue-book {
+  margin-left: 18%;
+  margin-top: 2%;
+  height: 120vh;
+}
+.issue-book-header h5{
+    font-weight: normal;
+    margin-top: 1%;
+}
+.issue-book-content{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2%;
+    width: 100%;
+}
+.issue-book-content .issue-book-info{
+    width: 800px;
+}
+.issue-book-content .issue-book-info .form-item{
+    margin-bottom: 3%;
+    width: 300px;
+}
+.issue-book-info .issue-book-title{
+    margin-bottom: 2%;
+}
+.qr-pic-container .scan-btn{
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 9%;
+    width: 300px;
+}
+.scan-btn button{
+    padding: 10px;
+    border: none;
+    margin-top: 25px;
+    background-color: #28b498;
+    color: white;
+    border-radius: 5px;
+}
+.scan-btn button:hover{
+    background-color: black;
+}
+.issue-book button{
+    padding: 10px;
+    border: none;
+    background-color: #28b498;
+    color: white;
+    border-radius: 5px;
+    /* padding-left: 15px;
+    padding-right: 15px; */
+}
+.phone-number{
+    display: flex;
+    width: 350px;
+}
