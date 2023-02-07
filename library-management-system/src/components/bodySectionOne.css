@@ -68,6 +68,10 @@
     .BodySectionOne{
         height: 300px;
     }
+    .BodySectionOne-img img{
+      width: 370px;
+      height: 230px;
+    }
     /* .BodySectionOne-text h2{
         display: none;
         visibility: hidden;
