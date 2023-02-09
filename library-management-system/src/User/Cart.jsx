@@ -6,6 +6,7 @@ import CategorySidebar from "../components/CategorySidebar";
 import { MdOutlineCancel } from "react-icons/md";
 // import { FaShoppingCart } from "react-icons/fa"
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./cart.css";
 
 export const Cart = () => {
@@ -66,7 +67,7 @@ export const Cart = () => {
             <h5>Browse our category and find the best books for you</h5>
         </div>
         <div className="library-btn">
-            <button>GO TO LIBRARY</button>
+           <Link to="/Library"> <button>GO TO LIBRARY</button></Link>
         </div>
       </div>
     </div>
