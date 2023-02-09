@@ -15,6 +15,7 @@ import { Library } from "./User/Library";
 import { UserSettings } from "./User/UserSettings";
 import BrowseLibrary from "./User/BrowseLibrary";
 import { UserViewDetails } from "./User/UserViewDetails";
+import { Cart } from "./User/Cart";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/userSettings" element={<UserSettings/>} />
           <Route path="/browselibrary" element={<BrowseLibrary/>} />
           <Route path="/userViewDetails" element={<UserViewDetails/>} />
+          <Route path="/cart" element={<Cart/>} />
           </Route>
         </Routes>
       </BrowserRouter>

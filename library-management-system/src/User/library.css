@@ -11,7 +11,7 @@
     display: flex;
 }
 .library-search-bar{
-    margin-left: 15%;
+    margin-left: 10%;
     display: flex;
     height: 40px;
     margin-top: 1%;
@@ -67,7 +67,29 @@
     display: flex;
     flex-direction: row;
 }
-.library-content-sidebar .first-section-library{
+.category-side-bar{
+    display: none;
+}
+.category-side-bar1{
+    display: block;
+}
+.linecancel-icon{
+    display: none;
+}
+.linecancel-icon1 {
+    display: block;
+}
+.hamburger-icon{
+    display: block;
+}
+.hamburger-icon1{
+    display: none;
+}
+.category-sidebar .first-section-library{
+    background-color: #28b498;
+    position: absolute;
+    left: 74%;
+    top: 12%;
     /* background-color: #d5d5d5; */
     display: flex;
     flex-direction: column;
@@ -80,7 +102,7 @@
     display: flex;
 }
 .sidebar-content:hover{
-    color: #28b498;
+    color: white;
 }
 .sidebar-content .sidebar-content-icon{
     margin-right: 4%;
@@ -90,7 +112,7 @@
 }
 .book-slider{
     border-radius: 10px;
-    margin-left: 2%;
+    /* margin-left: 2%; */
     height: 400px;
     width: 600px !important;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -98,28 +120,23 @@
 }
 .ads{
     display: flex;
-    flex-direction: column;
-    margin-left: 2%;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* margin-left: 2%; */
+    /* background-color: red; */
+    width: 40%;
+    padding-left: 20px;
 }
 .ads .first-part{
+    margin-bottom: 12.5%;
     font-size: 14px;
     padding: 10px;
-    padding-top: 10%;
+    /* padding-top: 10%; */
     text-align: left;
     width: 200px;
-    height: 180px;
+    height: 170px;
     border-radius: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
-.ads .second-part{
-    font-size: 14px;
-    padding: 10px;
-    padding-top: 7%;
-    text-align: left;
-    width: 200px;
-    height: 180px;
-    border-radius: 10px;
-    margin-top: 20%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 .top-picks{

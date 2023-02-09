@@ -18,6 +18,10 @@
     text-align: center;
     justify-content: space-between;
 }
+.nav-content ul li button{
+  border: none;
+  background-color: white;
+}
 .nav-content ul{
     display: flex;
     flex-direction: row;
@@ -31,7 +35,7 @@
     margin-left: 2%;
     margin-top: 10%;
 }
-.nav-content ul li:hover{
+.nav-content ul li button:hover{
   color: #28B498;
   cursor: pointer;
 }
@@ -83,6 +87,11 @@
   .nav-content{
     display: none;
   }
+  .nav-content-mobile ul li button{
+    border: none;
+  background-color:#28B498;
+  color: white;
+  }
   .nav-content-mobile ul{
     /* display: none; */
     display: flex;
@@ -111,8 +120,8 @@
     position: absolute;
     /* top: -29px;
     left: 190px; */
-    top: 3px;
-    left: 390px;
+    top: 3%;
+    left: 92%;
     font-size: 25px;
     color: white;
     display: block;
@@ -128,8 +137,9 @@
   .nav-content-mobile .mobile-login-button button{
     border: none;
     background-color: #28B498;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: normal;
+    color: white;
   }
 
 }

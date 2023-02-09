@@ -1,13 +1,7 @@
 import React from 'react'
 import "./library.css";
 // import { IoSearch } from "react-icons/io5";
-import {  BiBrain, BiChurch } from "react-icons/bi";
-import { GrCloudSoftware } from "react-icons/gr";
-import { GiMaterialsScience, GiPaintBucket, GiBookmark } from "react-icons/gi";
-import { MdHistoryEdu, MdComputer } from "react-icons/md";
-import { TbLanguage } from "react-icons/tb";
 import Autoplay from "../components/ImageSlider";
-import { BsCloudDownload } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
 export const LibraryContent1 = () => {
@@ -15,7 +9,7 @@ export const LibraryContent1 = () => {
     <div className="library-content-1">
         <div className="library-content">
         <div className="library-content-sidebar">
-          <div className="first-section-library">
+          {/* <div className="first-section-library">
             <div className="sidebar-content">
               <div className="sidebar-content-icon">
                 <MdComputer />
@@ -76,7 +70,7 @@ export const LibraryContent1 = () => {
               </div>
               History & Geography
             </div>
-          </div>
+          </div> */}
           <div className="book-slider">
             <Autoplay />
           </div>
@@ -88,12 +82,25 @@ export const LibraryContent1 = () => {
                 Waldo Emerson
               </b>
             </div>
-            <div className="second-part">
+            <div className="first-part">
               <b>
-                "Keep away from people who try to belittle your ambitions. Small
-                people always do that, but the really great make you feel that
-                you, too, can become great."
-                <br />~ Mark Twain
+                "To be yourself in a world that is constantly trying to make you
+                something else is the greatest accomplishment." <br />~ Ralph
+                Waldo Emerson
+              </b>
+            </div>
+            <div className="first-part">
+              <b>
+                "To be yourself in a world that is constantly trying to make you
+                something else is the greatest accomplishment." <br />~ Ralph
+                Waldo Emerson
+              </b>
+            </div>
+            <div className="first-part">
+              <b>
+                "To be yourself in a world that is constantly trying to make you
+                something else is the greatest accomplishment." <br />~ Ralph
+                Waldo Emerson
               </b>
             </div>
           </div>

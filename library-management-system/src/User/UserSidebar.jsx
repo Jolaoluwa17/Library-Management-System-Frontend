@@ -38,7 +38,7 @@ export const UserSidebar = () => {
                             Library Card
                         </button>
                     </NavLink>
-                    <NavLink to="/">
+                    <NavLink to="/cart">
                         <button className='sidebar-button'>
                             <FaShoppingCart className='icon' />
                             Cart
