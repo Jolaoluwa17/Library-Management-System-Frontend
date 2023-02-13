@@ -21,7 +21,7 @@
   width: 55;
   margin-right: 17px;
 }
-.user-logoImg img{
+.user-logoImg img {
   height: 50;
   width: 70;
   margin-right: 17px;
@@ -57,6 +57,7 @@
   font-size: 17px;
   color: rgb(0, 0, 0, 0.5);
   border: none;
+  display: flex;
 }
 .sidebar-button:hover {
   color: #28b498;
@@ -68,24 +69,77 @@
   margin-top: 180px;
 }
 /* For User Settings */
-.user-settingButton{
+.user-settingButton {
   align-self: center;
-  margin-top: 240px;
+  margin-top: 200px;
 }
 .icon {
   font-size: 24px;
   margin-left: 16px;
   margin-right: 16px;
 }
-.active .icon{
-    /* background-color: rgba(10, 54, 151, 0.04) !important; */
-    color: #28b498;
+.active .icon {
+  /* background-color: rgba(10, 54, 151, 0.04) !important; */
+  color: #28b498;
 }
 .logoutButton {
   border-radius: 6px;
   background-color: white;
   font-size: 13px;
 }
-.active .sidebar-button{
+.active .sidebar-button {
   color: #28b498;
+}
+
+@media (max-width: 426px) {
+  .sidebar {
+    display: none;
+  }
+  .mobile-sidebar {
+    display: flex;
+    flex-direction: column;
+    border-right-style: solid;
+    border-right-color: #ebebeb;
+    border-width: 1.5px;
+    height: 100vh;
+    position: fixed;
+    z-index: 999;
+    background-color: white;
+    transition: all 0.4s ease-in-out;
+  }
+  .logoText h3{
+    font-size: 20px;
+  }
+  .logoText h5{
+    font-size: 14px;
+  }
+  .library-text{
+    font-size: 17px;
+  }
+  .icon{
+    font-size: 17px;
+  }
+  .sidebar-button{
+    font-size: 17px;
+  }
+  .sidebarButton{
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 376px) {
+  .user-settingButton{
+    margin-top: 250px;
+  }
+  .mobile-sidebar{
+    height: 110vh;
+  }
+}
+@media (max-width: 320px){
+  .mobile-sidebar{
+    height: 130vh;
+  }
+  .user-settingButton{
+    margin-top: 350px;
+  }
 }

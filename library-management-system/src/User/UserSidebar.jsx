@@ -26,7 +26,7 @@ export const UserSidebar = () => {
                             Library
                         </button>
                     </NavLink>
-                    <NavLink to="/">
+                    <NavLink to="/transactions">
                         <button className='sidebar-button'>
                             <AiOutlineHistory className='icon' />
                             Transactions

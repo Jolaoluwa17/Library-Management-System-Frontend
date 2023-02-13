@@ -3,8 +3,13 @@ import "./browseLibrary.css";
 import { IoSearch } from "react-icons/io5";
 import { BiHelpCircle } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
+import CategorySidebar from "../components/CategorySidebar";
+import { MdOutlineCancel } from "react-icons/md";
+import { useState } from "react";
 
 export const BrowseLibrary = () => {
+  const [isCategorySidebar, setIsCategorySidebar] = useState("false")
   return (
     <div className="browse-library">
       <div className="library-header">
@@ -26,6 +31,15 @@ export const BrowseLibrary = () => {
             <BiHelpCircle />
           </div>
           <h4>Help</h4>
+        </div>
+        <div className="help">
+          <div className="help-icon">
+            <GiHamburgerMenu onClick={() => setIsCategorySidebar(false)} className ={isCategorySidebar ? "hamburger-icon" : "hamburger-icon1"}/>
+            <MdOutlineCancel onClick={() => setIsCategorySidebar(true)} className ={isCategorySidebar ? "linecancel-icon" : "linecancel-icon1"}/>
+          </div>
+        </div>
+        <div className={isCategorySidebar ? "category-side-bar" : "category-side-bar1"}>
+          <CategorySidebar />
         </div>
       </div>
       <div className="browse-library-content">

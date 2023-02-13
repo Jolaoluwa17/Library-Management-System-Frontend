@@ -9,68 +9,6 @@ export const LibraryContent1 = () => {
     <div className="library-content-1">
         <div className="library-content">
         <div className="library-content-sidebar">
-          {/* <div className="first-section-library">
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <MdComputer />
-              </div>
-              Computer Science
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <BiBrain />
-              </div>
-              Philosophy & Psychology
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <BiChurch />
-              </div>
-              Religion
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <GrCloudSoftware />
-              </div>
-              Social Sciences
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <TbLanguage />
-              </div>
-              Language
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <GiMaterialsScience />
-              </div>
-              Science
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <BsCloudDownload />
-              </div>
-              Technology & Applied Science
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <GiPaintBucket />
-              </div>
-              Arts and Recreation
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <GiBookmark />
-              </div>
-              Literature
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <MdHistoryEdu />
-              </div>
-              History & Geography
-            </div>
-          </div> */}
           <div className="book-slider">
             <Autoplay />
           </div>
