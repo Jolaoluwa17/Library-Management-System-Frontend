@@ -13,6 +13,7 @@ export const MobileSidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   return (
+    // <div className="mobile-side-bar-overall-container" style={{ width: isOpen ? "300px" : "0%", height: isOpen ? "300px" : "0%", backgroundColor: "red" }}>
     <div className="mobile-sidebar" style={{ width: isOpen ? "200px" : "0px" }}>
       <div
         className="open-sidebar-icon"
@@ -119,6 +120,7 @@ export const MobileSidebar = () => {
         </div>
       </div>
     </div>
+    // </div>
   );
 };
 

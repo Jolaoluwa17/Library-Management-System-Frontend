@@ -326,11 +326,14 @@
     margin-left: 0;
     padding-top: 0;
   }
-  .mobile-sidebar-container {
+  /* .mobile-sidebar-container {
     position: fixed;
     z-index: 999;
     display: block;
     width: 200px;
+  } */
+  .mobile-sidebar-container{
+    display: block;
   }
   .library-header-title {
     margin-left: 10%;

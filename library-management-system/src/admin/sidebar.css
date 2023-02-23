@@ -92,6 +92,10 @@
 }
 
 @media (max-width: 426px) {
+  /* .mobile-side-bar-overall-container{
+    background-color: grey;
+    position: fixed;
+  } */
   .sidebar {
     display: none;
   }
@@ -106,6 +110,10 @@
     z-index: 999;
     background-color: white;
     transition: all 0.4s ease-in-out;
+    /* overflow: auto; */
+  }
+  .user-settingButton{
+    margin-top: 150px;
   }
   .logoText h3{
     font-size: 20px;

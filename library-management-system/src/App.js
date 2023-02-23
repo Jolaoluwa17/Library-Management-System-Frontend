@@ -17,7 +17,6 @@ import BrowseLibrary from "./User/BrowseLibrary";
 import { UserViewDetails } from "./User/UserViewDetails";
 import { Cart } from "./User/Cart";
 import { Transactions } from "./User/Transactions";
-
 function App() {
   return (
     <div className="App">
@@ -33,15 +32,15 @@ function App() {
             <Route path="/issuebook" element={<IssueBook />} />
           </Route>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/PasswordRecovery" element = {<PasswordRecovery/>} />
+          <Route path="/PasswordRecovery" element={<PasswordRecovery />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route element={<User />}>
-          <Route path="/Library" element={<Library />} />
-          <Route path="/userSettings" element={<UserSettings/>} />
-          <Route path="/browselibrary" element={<BrowseLibrary/>} />
-          <Route path="/userViewDetails" element={<UserViewDetails/>} />
-          <Route path="/cart" element={<Cart/>} />
-          <Route path="/transactions" element={<Transactions/>} />
+            <Route path="/Library" element={<Library />} />
+            <Route path="/userSettings" element={<UserSettings />} />
+            <Route path="/browselibrary" element={<BrowseLibrary />} />
+            <Route path="/userViewDetails" element={<UserViewDetails />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/transactions" element={<Transactions />} />
           </Route>
         </Routes>
       </BrowserRouter>
