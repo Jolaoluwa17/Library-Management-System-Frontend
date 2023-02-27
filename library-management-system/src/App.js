@@ -17,6 +17,9 @@ import BrowseLibrary from "./User/BrowseLibrary";
 import { UserViewDetails } from "./User/UserViewDetails";
 import { Cart } from "./User/Cart";
 import { Transactions } from "./User/Transactions";
+import { AdminTransactions } from "./admin/AdminTransactions";
+import { SeeDetails } from "./components/SeeDetails";
+import { LibraryCard } from "./User/LibraryCard";
 function App() {
   return (
     <div className="App">
@@ -30,6 +33,8 @@ function App() {
             <Route path="/totalbooks" element={<TotalBooks />} />
             <Route path="/addbook" element={<AddBook />} />
             <Route path="/issuebook" element={<IssueBook />} />
+            <Route path="/adminTransactions" element={<AdminTransactions/>} />
+            <Route path="/seeDetails" element={<SeeDetails/>} />
           </Route>
           <Route path="/" element={<LandingPage />} />
           <Route path="/PasswordRecovery" element={<PasswordRecovery />} />
@@ -41,6 +46,7 @@ function App() {
             <Route path="/userViewDetails" element={<UserViewDetails />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/transactions" element={<Transactions />} />
+            <Route path="/libraryCard" element={<LibraryCard />} />
           </Route>
         </Routes>
       </BrowserRouter>

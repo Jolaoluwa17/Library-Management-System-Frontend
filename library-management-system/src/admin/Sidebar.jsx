@@ -7,6 +7,7 @@ import { AiOutlineSetting } from "react-icons/ai"
 import { HiOutlineLogout } from "react-icons/hi"
 import { NavLink } from "react-router-dom";
 import { MdSpaceDashboard } from "react-icons/md";
+import { AiOutlineHistory } from "react-icons/ai"
 import "./sidebar.css";
 
 export const Sidebar = () => {
@@ -47,10 +48,10 @@ export const Sidebar = () => {
                             Issue Books
                         </button>
                     </NavLink>
-                    <NavLink to="/">
+                    <NavLink to="/adminTransactions">
                         <button className='sidebar-button'>
-                            <IoMdContact className='icon' />
-                            Members
+                            <AiOutlineHistory className='icon' />
+                            Transactions
                         </button>
                     </NavLink>
                 </div>

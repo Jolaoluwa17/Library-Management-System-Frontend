@@ -1,6 +1,7 @@
 .library {
   margin-left: 18%;
   padding-top: 2%;
+  overflow-y: hidden;
 }
 .library-header h5 {
   font-weight: normal;

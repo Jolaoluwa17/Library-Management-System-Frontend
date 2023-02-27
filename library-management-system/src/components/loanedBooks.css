@@ -1,0 +1,54 @@
+.loaned-books-container{
+    overflow-x: hidden;
+    /* overflow-y: hidden; */
+    width: 1070px;
+    height: 530px;
+}
+.loaned-books-content{
+    margin-top: 2%;
+    width: 100%;
+    height: 200px;
+    /* background-color: red; */
+    border-color: #efefef;
+    border-width: 2px;
+    border-radius: 5px;
+    border-style:solid;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.loaned-details-container{
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    height: 100px;
+    /* background-color: green; */
+    justify-content: space-between;
+}
+.loaned-books-image-conatiner{
+    width: 175px;
+    height: 175px;
+    /* background-color: red; */
+    border-radius: 50%;
+}
+.loaned-books-image-conatiner img{
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    object-fit:cover;
+}
+.loaned-books-details{
+    padding-top: 20px;
+}
+.see-details-btn{
+    font-size: 15px;
+    color: #28b498;
+    font-weight: 500;
+}
+.loanee-status{
+    color: #ffbd2e;
+}
+.returned-status{
+    color: #27c93f;
+}

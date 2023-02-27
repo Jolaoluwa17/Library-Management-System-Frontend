@@ -1,5 +1,8 @@
 .user-settings{
     height: 1100px;
+    margin-left: 18%;
+    padding-top: 10px;
+    width: 80%;
 }
 .user-settings-header h4{
     margin-top: 2%;

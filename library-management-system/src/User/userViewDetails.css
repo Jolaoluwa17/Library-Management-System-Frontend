@@ -34,6 +34,9 @@
 .book-details .author {
   margin-top: 2%;
 }
+.book-details{
+  font-size: 14px
+}
 .book-details .book-amount {
   margin-bottom: 2%;
 }

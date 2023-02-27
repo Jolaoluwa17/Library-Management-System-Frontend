@@ -1,7 +1,7 @@
 .issue-book {
   margin-left: 18%;
   margin-top: 2%;
-  height: 120vh;
+  height: 110vh;
 }
 .issue-book-header h5{
     font-weight: normal;
@@ -14,7 +14,7 @@
     width: 100%;
 }
 .issue-book-content .issue-book-info{
-    width: 800px;
+    width: 900px;
 }
 .issue-book-content .issue-book-info .form-item{
     margin-bottom: 3%;
@@ -46,10 +46,26 @@
     background-color: #28b498;
     color: white;
     border-radius: 5px;
-    /* padding-left: 15px;
-    padding-right: 15px; */
 }
 .phone-number{
     display: flex;
     width: 350px;
+}
+.services {
+    display: flex;
+    justify-content: space-between;
+    width: 380px;
+}
+.first-division .book-add-btn{
+    margin-top: 3%;
+}
+.book-remove-btn{
+    padding: 8px !important;
+    margin-top: 10%;
+}
+.first-division input{
+    margin-top: 2%;
+}
+.form-item input{
+    margin-top: 2%;
 }

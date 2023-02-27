@@ -106,11 +106,11 @@ export const AddBook = () => {
                 style={{
                   width: "750px",
                   height: "150px",
-                  fontSize: "16px",
+                  fontSize: "14px",
                   padding: "10px",
-                  border: "none",
-                  borderRadius: "10px",
-                  backgroundColor: "#D9D9D9",
+                  borderWidth: "thin",
+                  borderRadius: "5px",
+                  // borderColor: "#eeeeee",
                 }}
               />
             </div>

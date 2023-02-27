@@ -32,7 +32,7 @@ export const UserSidebar = () => {
                             Transactions
                         </button>
                     </NavLink>
-                    <NavLink to="/">
+                    <NavLink to="/libraryCard">
                         <button className='sidebar-button'>
                             <IoCardSharp className='icon' />
                             Library Card

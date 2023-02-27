@@ -1,9 +1,19 @@
 import React from "react";
 import "./issueBook.css";
-
+import { useState } from "react";
 
 export const IssueBook = () => {
-  
+  const [serviceList, setServiceList] = useState([{ service: "" }]);
+
+  const handleServiceRemove = (index) => {
+    const list = [...serviceList];
+    list.splice(index, 1);
+    setServiceList(list);
+  };
+
+  const handleServiceAdd = () => {
+    setServiceList([...serviceList, { service: "" }]);
+  };
 
   return (
     <div className="issue-book">
@@ -21,58 +31,43 @@ export const IssueBook = () => {
             <form action="#">
               <div className="form">
                 <div className="form-item">
-                  <label htmlFor="uniqueId" className="label-width">
-                    Unique Id
-                  </label>
-                  <br />
-                  <input type="text" id="uniqueId" placeholder="11011" />
-                </div>
-                <div className="form-item">
-                  <label htmlFor="bookName" className="label-width">
-                    Book Title
-                  </label>
-                  <br />
-                  <input
-                    type="text"
-                    id="bookName"
-                    placeholder="The Great Gatsby"
-                  />
-                </div>
-                <div className="form-item">
-                  <label htmlFor="authorName" className="label-width">
-                    Author's Name
-                  </label>
-                  <br />
-                  <input
-                    type="text"
-                    id="authorName"
-                    placeholder="F. Scott Fitzgerald"
-                  />
-                </div>
-                <div className="form-item">
-                  <label htmlFor="year" className="label-width">
-                    Year of Publication
-                  </label>
-                  <br />
-                  <input type="text" id="year" placeholder="1925" />
-                </div>
-                <div className="form-item">
-                  <label htmlFor="category" className="label-width">
-                    Category
-                  </label>
-                  <br />
-                  <input type="text" id="category" placeholder="Tragedy" />
-                </div>
-                <div className="form-item">
-                  <label htmlFor="publisher" className="label-width">
-                    Publisher
-                  </label>
-                  <br />
-                  <input
-                    type="text"
-                    id="publisher"
-                    placeholder="Charles Scribner's Sons"
-                  />
+                  <div className="form-field">
+                    <label htmlFor="service">Name of Book(s)</label>
+                    {serviceList.map((singleService, index) => (
+                      <div key={index} className="services">
+                        <div className="first-division">
+                          <input
+                            name="service"
+                            type="text"
+                            id="service"
+                            required
+                          />
+                          {serviceList.length - 1 === index &&
+                            serviceList.length < 5 && (
+                              <button
+                                type="button"
+                                onClick={handleServiceAdd}
+                                className="book-add-btn"
+                              >
+                                <span>Add New Book</span>
+                              </button>
+                            )}
+                        </div>
+
+                        <div className="second-division">
+                          {serviceList.length !== 1 && (
+                            <button
+                              type="button"
+                              onClick={() => handleServiceRemove(index)}
+                              className="book-remove-btn"
+                            >
+                              <span>Remove</span>
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 <div className="form-item">
                   <label htmlFor="issue-date" className="label-width">
@@ -129,13 +124,13 @@ export const IssueBook = () => {
                       type="text"
                       placeholder="+234"
                       disabled
-                      style={{ width: "55px", marginRight: "2%" }}
+                      style={{ width: "50px", marginRight: "2%" }}
                     />
                     <input
                       type="text"
                       id="phone-no"
                       placeholder="8155668282"
-                      style={{ width: "400px" }}
+                      style={{ width: "245px" }}
                     />
                   </div>
                 </div>
@@ -157,7 +152,7 @@ export const IssueBook = () => {
         <div className="qr-pic-container">
           <div className="qr-pic"></div>
           <div className="scan-btn">
-          <button>Scan QR Code</button>
+            <button>Scan QR Code</button>
           </div>
         </div>
       </div>

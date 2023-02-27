@@ -1,0 +1,31 @@
+.admin-transactions{
+    margin-left: 18%;
+    margin-top: 2%;
+}
+.admin-transaction-header h5{
+    font-weight: normal;
+    margin-top: 1%;
+}
+.admin-transaction-content{
+    margin-top: 2%;
+    padding: 15px;
+    width: 1100px;
+    height: 600px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.transaction-btn-container{
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    justify-content: space-between;
+    padding: 10px;
+    padding-left: 0px;
+}
+.transaction-btn{
+    cursor: pointer;
+}
+.transaction-btn:hover{
+    color: #28b498;
+}

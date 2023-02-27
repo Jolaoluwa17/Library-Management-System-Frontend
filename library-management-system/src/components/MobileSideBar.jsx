@@ -14,10 +14,10 @@ export const MobileSidebar = () => {
   const toggle = () => setIsOpen(!isOpen);
   return (
     // <div className="mobile-side-bar-overall-container" style={{ width: isOpen ? "300px" : "0%", height: isOpen ? "300px" : "0%", backgroundColor: "red" }}>
-    <div className="mobile-sidebar" style={{ width: isOpen ? "200px" : "0px" }}>
+    <div className="mobile-sidebar" style={{ width: isOpen ? "300px" : "0px" }}>
       <div
         className="open-sidebar-icon"
-        style={{ marginLeft: isOpen ? "170px" : "15px", marginTop: "10px" }}
+        style={{ marginLeft: isOpen ? "270px" : "15px", marginTop: "10px" }}
       >
         <GiHamburgerMenu onClick={toggle} />
       </div>

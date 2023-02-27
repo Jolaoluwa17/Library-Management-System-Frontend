@@ -37,6 +37,9 @@ export const UserViewDetails = () => {
               <div className="book-amount">
                 <h4>Quantity</h4>15
               </div>
+              <div className="book-amount">
+                <h4>Status</h4>On-shelf
+              </div>
               <button>
                 <span>
                   <FaCartPlus />

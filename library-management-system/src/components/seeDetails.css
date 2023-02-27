@@ -1,0 +1,106 @@
+.see-details{
+    margin-left: 18%;
+    margin-top: 2%;
+}
+.see-details-header h5{
+    font-weight: normal;
+    margin-top: 1%;
+}
+.see-details-container{
+    margin-top: 2%;
+    padding: 15px;
+    width: 1000px;
+    height: 500px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.details-panel-header{
+    display: flex;
+    flex-direction: row;
+    width: 150px;
+    justify-content: space-between;
+}
+.previous-btn{
+    font-size: 20px;
+    cursor: pointer;
+}
+.loanee-pic{
+    width: 250px;
+    height: 350px;
+}
+.loanee-pic img{
+    width: 250px;
+    height: 350px;
+}
+.details-panel-content{
+    display: flex;
+    flex-direction: row;
+    width: 900px;
+    justify-content: space-between;
+    margin-top: 3%;
+    /* background-color: red;
+    flex-wrap: wrap; */
+    /* background-color: green; */
+}
+.details-text{
+    display: flex;
+    flex-direction: row;
+    width: 600px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.details-panel-info{
+    font-size: 16px;
+    width: 300px;
+}
+.loanee-per{
+    margin-bottom: 3%;
+}
+.details-book-info{
+    font-size: 16px;
+    width: 300px;
+}
+.details-librarian-info{
+    font-size: 16px;
+    width: 300px;
+}
+.details-personal-info-header{
+    margin-bottom: 5%;
+    font-size: 21px;
+}
+.librarian-info-header{
+    margin-bottom: 5%;
+    font-size: 21px;
+}
+.details-book-info-header{
+    font-size: 21px;
+    margin-bottom: 5%;
+}
+.list-of-books{
+    margin-left: 20px;
+}
+.details-returned-btn{
+    margin-top: 11%;
+    float: right;
+    /* margin-left: 78%; */
+}
+.details-returned-btn button{
+    padding: 10px;
+    background-color: #28b498;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+}
+.per-book-status{
+    color: #ffbd2e;
+}
+.loanee-det{
+    margin-bottom: 3%;
+}
+.librarian-det{
+    margin-bottom: 3%;
+}

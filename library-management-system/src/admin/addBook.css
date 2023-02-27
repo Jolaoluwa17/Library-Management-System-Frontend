@@ -71,3 +71,18 @@
     /* padding-left: 15px;
     padding-right: 15px; */
 }
+.form-item input{
+    width: 300px;
+    padding: 9px;
+    border-radius: 5px;
+    font-size: 12px;
+    /* border-color: #eeeeee; */
+    border-width: thin;
+}
+.form{
+    display: flex;
+    flex-direction: row;
+    width: 750px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
