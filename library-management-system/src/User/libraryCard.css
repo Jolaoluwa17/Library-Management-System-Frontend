@@ -10,8 +10,12 @@
 .change-view {
   display: flex;
   flex-direction: row;
-  width: 300px;
+  width: 400px;
   justify-content: space-between;
+  font-size: 16px;
+}
+.toggle-btn{
+  display: flex;
   font-size: 16px;
 }
 .single-view:hover {
@@ -169,6 +173,8 @@
     rgba(40, 180, 152, 1) 100%
   );
 }
+
+
 .virtual-card-front2:hover {
   margin-top: -3%;
   transition: all 0.5s ease-in-out;
@@ -195,12 +201,63 @@
   padding-top: 5%;
 }
 
-/* first-color */
 
-/* background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(40, 180, 152, 1) 40%,
-    rgba(85, 107, 174, 1) 100%
-  ); */
+  /* .virtual-card-front3:hover{
+    animation: changebg 10s linear infinite;
+  }
+  @keyframes changebg {
+    0% {
+      background: rgb(29, 127, 108);
+      background: linear-gradient(
+        90deg,
+        rgba(29, 127, 108, 1) 0%,
+        rgba(40, 180, 152, 1) 40%,
+        rgba(40, 180, 152, 1) 100%
+      );
+    }
+    20%{
+      background: rgb(2, 0, 36);
+      background: linear-gradient(
+        90deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(40, 180, 152, 1) 40%,
+        rgba(85, 107, 174, 1) 100%
+      );
+    }
+    40%{
+      background: rgb(29, 127, 108);
+      background: linear-gradient(
+        90deg,
+        rgba(29, 127, 108, 1) 0%,
+        rgba(40, 180, 152, 1) 40%,
+        rgba(40, 180, 152, 1) 100%
+      );
+    }
+    60%{
+      background: rgb(2, 0, 36);
+      background: linear-gradient(
+        90deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(40, 180, 152, 1) 40%,
+        rgba(85, 107, 174, 1) 100%
+      );
+    }
+    80%{
+      background: rgb(29, 127, 108);
+      background: linear-gradient(
+        90deg,
+        rgba(29, 127, 108, 1) 0%,
+        rgba(40, 180, 152, 1) 40%,
+        rgba(40, 180, 152, 1) 100%
+      );
+    }
+    100%{
+      background: rgb(2, 0, 36);
+      background: linear-gradient(
+        90deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(40, 180, 152, 1) 40%,
+        rgba(85, 107, 174, 1) 100%
+      );
+    }
+  } */

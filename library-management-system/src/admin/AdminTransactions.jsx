@@ -3,9 +3,11 @@ import "./adminTransactions.css";
 import { useState } from "react";
 import LoanedBooks from "../components/LoanedBooks";
 import ReturnedBooks from "../components/ReturnedBooks";
+import AppliedBooks from "../components/AppliedBooks";
+import DeclinedBooks from "../components/DeclinedBooks";
 
 export const AdminTransactions = () => {
-  const [book1, setBook1] = useState("loaned-books");
+  const [book1, setBook1] = useState("applied-books");
   const [book2, setBook2] = useState();
   return (
     <div className="admin-transactions">
@@ -17,9 +19,21 @@ export const AdminTransactions = () => {
         <div className="transaction-btn-container">
           <div
             className="transaction-btn"
+            onClick={() => setBook1("applied-books")}
+          >
+            Applied Books
+          </div>
+          <div
+            className="transaction-btn"
             onClick={() => setBook1("loaned-books")}
           >
             Loaned books
+          </div>
+          <div
+            className="transaction-btn"
+            onClick={() => setBook1("Declined-books")}
+          >
+            Declined books
           </div>
           <div
             className="transaction-btn"
@@ -29,17 +43,19 @@ export const AdminTransactions = () => {
           </div>
         </div>
         <div className="line-across">
-            <hr />
+          <hr />
         </div>
         <div className="table-content">
-          {book1 === "loaned-books" && (
-            <LoanedBooks
+          {book1 === "applied-books" && (
+            <AppliedBooks
               book1={book1}
               setBook1={setBook1}
               book2={book2}
-              setActive2={setBook2}
+              setBook2={setBook2}
             />
           )}
+          {book1 === "loaned-books" && <LoanedBooks />}
+          {book1 === "Declined-books" && <DeclinedBooks />}
           {book1 === "returned-books" && <ReturnedBooks />}
         </div>
       </div>

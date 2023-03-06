@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react'
 import "./loanedBooks.css";
 import { Link } from "react-router-dom";
 
-export const ReturnedBooks = () => {
+export const UserTransactionLoanedBooks = () => {
   return (
     <div className="loaned-books-container">
       <div className="loaned-books-content">
         <div className="loaned-details-container">
           <div className="loaned-books-image-conatiner">
             <img
-              src="https://res.cloudinary.com/dneawlwcp/image/upload/v1677403393/Final%20Year%20Project%20Pictures/jurica-koletic-7YVZYZeITc8-unsplash_bdas9a.jpg"
-              alt=""
+              src="https://res.cloudinary.com/dneawlwcp/image/upload/v1677403380/Final%20Year%20Project%20Pictures/joseph-gonzalez-iFgRcqHznqg-unsplash_bafg0u.jpg"
+              alt="profile"
             />
           </div>
           <div className="loaned-books-details">
@@ -23,8 +23,8 @@ export const ReturnedBooks = () => {
             <div className="loanee-amountof-books">
               <b>Qty: </b>5
             </div>
-            <div className="returned-status">
-              <b>Status: </b>Returned
+            <div className="loanee-status">
+              <b>Status: </b>Loaned
             </div>
             <div className="loaned-date">
               {" "}
@@ -36,14 +36,14 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-       <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+        <div className="see-details-btn"><Link to="/userSeeLoanedBooksDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
           <div className="loaned-books-image-conatiner">
           <img
-              src="https://res.cloudinary.com/dneawlwcp/image/upload/v1677403393/Final%20Year%20Project%20Pictures/jurica-koletic-7YVZYZeITc8-unsplash_bdas9a.jpg"
-              alt=""
+              src="https://res.cloudinary.com/dneawlwcp/image/upload/v1677403380/Final%20Year%20Project%20Pictures/joseph-gonzalez-iFgRcqHznqg-unsplash_bafg0u.jpg"
+              alt="profile"
             />
           </div>
           <div className="loaned-books-details">
@@ -56,8 +56,8 @@ export const ReturnedBooks = () => {
             <div className="loanee-amountof-books">
               <b>Qty: </b>5
             </div>
-            <div className="returned-status">
-              <b>Status: </b>Returned
+            <div className="loanee-status">
+              <b>Status: </b>Loaned
             </div>
             <div className="loaned-date">
               {" "}
@@ -69,14 +69,14 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-        <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+        <div className="see-details-btn"><Link to="/seeLoanedBooksDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
           <div className="loaned-books-image-conatiner">
           <img
-              src="https://res.cloudinary.com/dneawlwcp/image/upload/v1677403393/Final%20Year%20Project%20Pictures/jurica-koletic-7YVZYZeITc8-unsplash_bdas9a.jpg"
-              alt=""
+              src="https://res.cloudinary.com/dneawlwcp/image/upload/v1677403380/Final%20Year%20Project%20Pictures/joseph-gonzalez-iFgRcqHznqg-unsplash_bafg0u.jpg"
+              alt="profile"
             />
           </div>
           <div className="loaned-books-details">
@@ -89,8 +89,8 @@ export const ReturnedBooks = () => {
             <div className="loanee-amountof-books">
               <b>Qty: </b>5
             </div>
-            <div className="returned-status">
-              <b>Status: </b>Returned
+            <div className="loanee-status">
+              <b>Status: </b>Loaned
             </div>
             <div className="loaned-date">
               {" "}
@@ -102,14 +102,14 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-        <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+        <div className="see-details-btn"><Link to="/userSeeLoanedBooksDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
           <div className="loaned-books-image-conatiner">
           <img
-              src="https://res.cloudinary.com/dneawlwcp/image/upload/v1677403393/Final%20Year%20Project%20Pictures/jurica-koletic-7YVZYZeITc8-unsplash_bdas9a.jpg"
-              alt=""
+              src="https://res.cloudinary.com/dneawlwcp/image/upload/v1677403380/Final%20Year%20Project%20Pictures/joseph-gonzalez-iFgRcqHznqg-unsplash_bafg0u.jpg"
+              alt="profile"
             />
           </div>
           <div className="loaned-books-details">
@@ -122,8 +122,8 @@ export const ReturnedBooks = () => {
             <div className="loanee-amountof-books">
               <b>Qty: </b>5
             </div>
-            <div className="returned-status">
-              <b>Status: </b>Returned
+            <div className="loanee-status">
+              <b>Status: </b> Loaned
             </div>
             <div className="loaned-date">
               {" "}
@@ -135,14 +135,14 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-        <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+        <div className="see-details-btn"><Link to="/userSeeLoanedBooksDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
           <div className="loaned-books-image-conatiner">
           <img
-              src="https://res.cloudinary.com/dneawlwcp/image/upload/v1677403393/Final%20Year%20Project%20Pictures/jurica-koletic-7YVZYZeITc8-unsplash_bdas9a.jpg"
-              alt=""
+              src="https://res.cloudinary.com/dneawlwcp/image/upload/v1677403380/Final%20Year%20Project%20Pictures/joseph-gonzalez-iFgRcqHznqg-unsplash_bafg0u.jpg"
+              alt="profile"
             />
           </div>
           <div className="loaned-books-details">
@@ -155,8 +155,8 @@ export const ReturnedBooks = () => {
             <div className="loanee-amountof-books">
               <b>Qty: </b>5
             </div>
-            <div className="returned-status">
-              <b>Status: </b>Returned
+            <div className="loanee-status">
+              <b>Status: </b>Loaned
             </div>
             <div className="loaned-date">
               {" "}
@@ -168,9 +168,9 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-        <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+        <div className="see-details-btn"><Link to="/userSeeLoanedBooksDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
       </div>
     </div>
-  );
-};
-export default ReturnedBooks;
+  )
+}
+export default UserTransactionLoanedBooks;

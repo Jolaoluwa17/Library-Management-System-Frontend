@@ -47,7 +47,7 @@ export const Dashboard = () => {
             <FaUsers />
           </div>
           <div className="card-content">
-            <div className="card-text">Total Library Members</div>
+            <div className="card-text">No of Pending Request</div>
             <div className="card-number">5</div>
           </div>
         </div>

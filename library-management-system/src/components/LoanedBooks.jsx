@@ -36,7 +36,7 @@ export const LoanedBooks = () => {
             </div>
           </div>
         </div>
-        <div className="see-details-btn"><Link to="/seeDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
+        <div className="see-details-btn"><Link to="/seeLoanedBooksDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
@@ -69,7 +69,7 @@ export const LoanedBooks = () => {
             </div>
           </div>
         </div>
-        <div className="see-details-btn"><Link to="/seeDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
+        <div className="see-details-btn"><Link to="/seeLoanedBooksDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
@@ -102,7 +102,7 @@ export const LoanedBooks = () => {
             </div>
           </div>
         </div>
-        <div className="see-details-btn"><Link to="/seeDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
+        <div className="see-details-btn"><Link to="/seeLoanedBooksDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
@@ -135,7 +135,7 @@ export const LoanedBooks = () => {
             </div>
           </div>
         </div>
-        <div className="see-details-btn"><Link to="/seeDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
+        <div className="see-details-btn"><Link to="/seeLoanedBooksDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
@@ -168,7 +168,7 @@ export const LoanedBooks = () => {
             </div>
           </div>
         </div>
-        <div className="see-details-btn"><Link to="/seeDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
+        <div className="see-details-btn"><Link to="/seeLoanedBooksDetails" style={{ color: "#28B498" }}>SEE DETAILS</Link></div>
       </div>
     </div>
   );

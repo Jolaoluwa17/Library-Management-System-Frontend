@@ -51,6 +51,7 @@
   color: white;
   border-radius: 5px;
   font-size: 15px;
+  cursor: pointer;
 }
 .burger-icon{
   display: none;
@@ -61,6 +62,7 @@
 .close-icon{
   display: none;
 }
+
 
 
 

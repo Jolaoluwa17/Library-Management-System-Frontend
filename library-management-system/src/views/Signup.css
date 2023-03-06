@@ -96,6 +96,7 @@ body {
   border: none;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 .signup-right-navigation {
   background-image: url("/public/images/picture.png");

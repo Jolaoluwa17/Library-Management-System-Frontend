@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 import "./loanedBooks.css";
 import { Link } from "react-router-dom";
 
-export const ReturnedBooks = () => {
+export const UserTransactionReturnedBooks = () => {
   return (
     <div className="loaned-books-container">
       <div className="loaned-books-content">
@@ -36,7 +36,7 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-       <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+       <Link to="/userSeeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
@@ -69,7 +69,7 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-        <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+        <Link to="/userSeeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
@@ -102,7 +102,7 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-        <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+        <Link to="/userSeeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
@@ -135,7 +135,7 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-        <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+        <Link to="/userSeeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
@@ -168,9 +168,9 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-        <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+        <Link to="/userSeeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
       </div>
     </div>
-  );
-};
-export default ReturnedBooks;
+  )
+}
+export default UserTransactionReturnedBooks;

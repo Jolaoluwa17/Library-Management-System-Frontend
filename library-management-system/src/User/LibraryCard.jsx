@@ -1,10 +1,16 @@
 import React from "react";
 import "./libraryCard.css";
-import { BsViewList, BsViewStacked } from "react-icons/bs";
+import {
+  BsViewList,
+  BsViewStacked,
+  // BsToggleOff,
+  // BsToggleOn,
+} from "react-icons/bs";
 import { useState } from "react";
 
 export const LibraryCard = () => {
   const [isSingle, setIsSingle] = useState("false");
+  // const [isColorSwitch, setIsColorSwitch] = useState("false");
   return (
     <div className="library-card-container">
       <div className="library-card-header">
@@ -19,6 +25,14 @@ export const LibraryCard = () => {
             {" "}
             <BsViewStacked /> Double view{" "}
           </div>
+          {/* <div className="toggle-btn">
+            <div className="toggle-off" onClick={() => setIsColorSwitch(true)}>
+              <BsToggleOff /> Color switch off
+            </div>
+            <div className="toggle-on" onClick={() => setIsColorSwitch(false)}>
+              <BsToggleOn /> Color switch on
+            </div>
+          </div> */}
         </div>
       </div>
       <div className="library-card">
@@ -97,9 +111,9 @@ export const LibraryCard = () => {
                     </ul>
                     <div className="card-policy">
                       The card holder accepts and agrees to follow all policies
-                      and procedures of the laz otti memorial library. 
+                      and procedures of the laz otti memorial library.
                       <div className="library-address-card">
-                      121103, Ilishan-Remo Ogun State, Babcock University
+                        121103, Ilishan-Remo Ogun State, Babcock University
                       </div>
                     </div>
                   </div>

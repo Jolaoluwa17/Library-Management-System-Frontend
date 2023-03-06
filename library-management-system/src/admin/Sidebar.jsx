@@ -1,7 +1,6 @@
 import React from 'react'
 import { ImBooks } from "react-icons/im";
 import { MdAdd } from "react-icons/md";
-import { GiBookCover } from "react-icons/gi";
 import { IoMdContact } from "react-icons/io";
 import { AiOutlineSetting } from "react-icons/ai"
 import { HiOutlineLogout } from "react-icons/hi"
@@ -42,10 +41,10 @@ export const Sidebar = () => {
                             Add Books
                         </button>
                     </NavLink>
-                    <NavLink to="/issuebook">
+                    <NavLink to="/members">
                         <button className='sidebar-button'>
-                            <GiBookCover className='icon' />
-                            Issue Books
+                            <IoMdContact className='icon' />
+                            Members
                         </button>
                     </NavLink>
                     <NavLink to="/adminTransactions">

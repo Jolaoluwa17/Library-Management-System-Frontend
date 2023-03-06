@@ -46,7 +46,7 @@
     color: #28b498;
     font-weight: 500;
 }
-.loanee-status{
+.loanee-status, .applied-status{
     color: #ffbd2e;
 }
 .returned-status{

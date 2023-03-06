@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
+import { Link } from 'react-router-dom';
 import "./loanedBooks.css";
-import { Link } from "react-router-dom";
 
-export const ReturnedBooks = () => {
+export const AppliedBooks = () => {
   return (
     <div className="loaned-books-container">
       <div className="loaned-books-content">
@@ -23,8 +23,8 @@ export const ReturnedBooks = () => {
             <div className="loanee-amountof-books">
               <b>Qty: </b>5
             </div>
-            <div className="returned-status">
-              <b>Status: </b>Returned
+            <div className="applied-status">
+              <b>Status: </b>Applied
             </div>
             <div className="loaned-date">
               {" "}
@@ -36,7 +36,7 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-       <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+        <Link to="/seeAppliedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
@@ -56,8 +56,8 @@ export const ReturnedBooks = () => {
             <div className="loanee-amountof-books">
               <b>Qty: </b>5
             </div>
-            <div className="returned-status">
-              <b>Status: </b>Returned
+            <div className="applied-status">
+              <b>Status: </b>Applied
             </div>
             <div className="loaned-date">
               {" "}
@@ -69,7 +69,7 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-        <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+        <Link to="/seeAppliedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
@@ -89,8 +89,8 @@ export const ReturnedBooks = () => {
             <div className="loanee-amountof-books">
               <b>Qty: </b>5
             </div>
-            <div className="returned-status">
-              <b>Status: </b>Returned
+            <div className="applied-status">
+              <b>Status: </b>Applied
             </div>
             <div className="loaned-date">
               {" "}
@@ -102,7 +102,7 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-        <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+        <Link to="/seeAppliedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
@@ -122,8 +122,8 @@ export const ReturnedBooks = () => {
             <div className="loanee-amountof-books">
               <b>Qty: </b>5
             </div>
-            <div className="returned-status">
-              <b>Status: </b>Returned
+            <div className="applied-status">
+              <b>Status: </b>Applied
             </div>
             <div className="loaned-date">
               {" "}
@@ -135,7 +135,7 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-        <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+        <Link to="/seeAppliedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
       </div>
       <div className="loaned-books-content">
         <div className="loaned-details-container">
@@ -155,8 +155,8 @@ export const ReturnedBooks = () => {
             <div className="loanee-amountof-books">
               <b>Qty: </b>5
             </div>
-            <div className="returned-status">
-              <b>Status: </b>Returned
+            <div className="applied-status">
+              <b>Status: </b>Applied
             </div>
             <div className="loaned-date">
               {" "}
@@ -168,9 +168,9 @@ export const ReturnedBooks = () => {
             </div>
           </div>
         </div>
-        <Link to="/seeReturnedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
+        <Link to="/seeAppliedBooksDetails"><div className="see-details-btn">SEE DETAILS</div></Link>
       </div>
     </div>
-  );
-};
-export default ReturnedBooks;
+  )
+}
+export default AppliedBooks;

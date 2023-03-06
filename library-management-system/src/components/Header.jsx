@@ -50,7 +50,9 @@ export const Header = () => {
           </ul>
         </div>
         <div className="login-btn-container">
+        <Link to="/login">
           <button>Login</button>
+          </Link>
         </div>
         <div className="burger-icon" onClick={() => setIsMobile(false)}>
           <GiHamburgerMenu />
