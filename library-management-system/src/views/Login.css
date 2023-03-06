@@ -59,7 +59,7 @@ body {
   border-radius: 30px;
   font-size: 22px;
   width: 45px;
-  margin-top: 1%;
+  /* margin-top: 1%; */
   padding-top: 6px;
 }
 .signup_link {
@@ -125,20 +125,25 @@ body {
   color: black;
   font-weight: bold;
 }
-.left-navigation .user-login h4 {
+.left-navigation .user-login .student-btn1 {
   float: left;
   margin-left: 8%;
   color: grey;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px;
 }
 .left-navigation .user-login h4:hover {
   color: #28b498;
   cursor: pointer;
 }
-.left-navigation .admin-login h4 {
+.left-navigation .admin-login .non-student-btn1 {
   float: right;
   margin-right: 8%;
   color: grey;
-  /* margin-top: -30px; */
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px;
 }
 .left-navigation .admin-login h4:hover {
   color: #28b498;
@@ -146,6 +151,30 @@ body {
 }
 .login-option {
   margin-top: 5%;
+}
+
+/*Test*/
+.user-login .student-btn{
+  font-size: 16px;
+  font-weight: bold;
+  float: left;
+  margin-left: 8%;
+  color: black;
+  border-bottom-color: #28b498;
+  border-bottom-width: 2px;
+  border-bottom-style:solid;
+  padding: 5px;
+}
+.admin-login .non-student-btn{
+  font-size: 16px;
+  font-weight: bold;
+  float: right;
+  margin-right: 8%;
+  color: black;
+  border-bottom-color: #28b498;
+  border-bottom-width: 2px;
+  border-bottom-style:solid;
+  padding: 5px;
 }
 
 @media (max-width: 1024px) {

@@ -14,10 +14,11 @@ export const Login = () => {
         <div className="left-navigation">
           <div className="login-option">
           <div className="user-login" onClick={() => setActive1("StudentLogin")}>
-            <h4>Students</h4>
+            <span className={active1 === "StudentLogin" ? "student-btn" : "student-btn1"}>Students</span>
+  
           </div>
           <div className="admin-login" onClick={() => setActive1("NonStudentLogin")}>
-            <h4>Non-students</h4>
+            <span className={active1 === "NonStudentLogin" ? "non-student-btn" : "non-student-btn1"}>Non-students</span>
           </div>
           </div>
           <div className="user-login-form1">
