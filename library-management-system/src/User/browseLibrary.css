@@ -1,9 +1,12 @@
 .browse-library {
   margin-left: 18%;
-  padding-top: 2%;
+  /* padding-top: 2%; */
+}
+.category-sidebar-result{
+  margin-left: 18%;
 }
 .browse-library-content {
-  margin-top: 3%;
+  padding-top: 8%;
   width: 90%;
   height: 400px;
   display: flex;
@@ -49,3 +52,4 @@
     border-radius: 2px;
     cursor: pointer;
 }
+

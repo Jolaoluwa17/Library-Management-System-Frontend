@@ -1,31 +1,51 @@
-.admin-transactions{
-    margin-left: 18%;
-    margin-top: 2%;
+.admin-transactions {
+  margin-left: 18%;
+  margin-top: 2%;
 }
-.admin-transaction-header h5{
-    font-weight: normal;
-    margin-top: 1%;
+.admin-transaction-header h5 {
+  font-weight: normal;
+  margin-top: 1%;
 }
-.admin-transaction-content{
-    margin-top: 2%;
-    padding: 15px;
-    width: 1100px;
-    height: 600px;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+.admin-transaction-content {
+  margin-top: 2%;
+  padding: 15px;
+  width: 1100px;
+  height: 600px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
-.transaction-btn-container{
-    display: flex;
-    flex-direction: row;
-    width: 600px;
-    justify-content: space-between;
-    padding: 10px;
-    padding-left: 0px;
+.transaction-btn-container {
+  display: flex;
+  flex-direction: row;
+  width: 600px;
+  justify-content: space-between;
+  padding: 10px;
+  padding-left: 0px;
 }
-.transaction-btn{
-    cursor: pointer;
+
+.applied-books-btn,
+.loaned-books-btn,
+.Declined-books-btn,
+.returned-books-btn {
+  color: black;
+  border-bottom-color: #28b498;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  padding: 5px;
 }
-.transaction-btn:hover{
-    color: #28b498;
+.applied-books-btn1,
+.loaned-books-btn1,
+.Declined-books-btn1,
+.returned-books-btn1 {
+  color: grey;
+  padding: 5px;
+  cursor: pointer;
+}
+.applied-books-btn1:hover,
+.loaned-books-btn1:hover,
+.Declined-books-btn1:hover,
+.returned-books-btn1:hover {
+  color: #28b498;
 }

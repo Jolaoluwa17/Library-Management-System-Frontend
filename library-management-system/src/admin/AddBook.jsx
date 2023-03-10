@@ -8,15 +8,12 @@ export const AddBook = () => {
   const [qr, setQr] = useState("");
 
   const GenerateQRCode = () => {
-    QRCode.toDataURL(
-      url,
-      (err, url) => {
-        if (err) return console.error(err);
+    QRCode.toDataURL(url, (err, url) => {
+      if (err) return console.error(err);
 
-        console.log(url);
-        setQr(url);
-      }
-    );
+      console.log(url);
+      setQr(url);
+    });
   };
 
   return (
@@ -80,7 +77,25 @@ export const AddBook = () => {
                   Category
                 </label>
                 <br />
-                <input type="text" id="category" placeholder="Tragedy" />
+                <select
+                  name="category-select"
+                  id="category-select"
+                  className="category-select"
+                >
+                  <option value="selectuser">
+                    --Select a category--
+                  </option>
+                  <option value="computer">Computer Science</option>
+                  <option value="philosophy">Philosophy & Psychology</option>
+                  <option value="religion">Religion</option>
+                  <option value="social">Social Sciences</option>
+                  <option value="language">Language</option>
+                  <option value="science">Science</option>
+                  <option value="technology">Technology & Applied Science</option>
+                  <option value="arts">Arts and Recreation</option>
+                  <option value="literature">Literature</option>
+                  <option value="history">History & Geography</option>
+                </select>
               </div>
               <div className="form-item">
                 <label htmlFor="publisher" className="label-width">
@@ -118,9 +133,9 @@ export const AddBook = () => {
         </div>
         <div className="qr-pic-container">
           <div className="qr-pic">
-          {qr && (
+            {qr && (
               <>
-                <img src={qr} alt=""/>
+                <img src={qr} alt="" />
                 <a href={qr} download="qrcode.png">
                   Download
                 </a>
@@ -129,7 +144,6 @@ export const AddBook = () => {
           </div>
           <div className="generate-btn">
             <button onClick={GenerateQRCode}>Generate QR Code</button>
-           
           </div>
         </div>
       </div>

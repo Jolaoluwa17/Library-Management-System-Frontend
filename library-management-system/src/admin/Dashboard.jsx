@@ -2,21 +2,22 @@ import React from "react";
 import "./dashboard.css";
 import { ImBooks } from "react-icons/im";
 import { IoMdContact } from "react-icons/io";
-import { GiBookmarklet } from "react-icons/gi"
-import { FaUsers } from "react-icons/fa"
-import NewMembers from "../components/NewMembers"
-import NewBooks from "../components/NewBooks"
+import { GiBookmarklet } from "react-icons/gi";
+import { FaUsers } from "react-icons/fa";
+import NewMembers from "../components/NewMembers";
+import NewBooks from "../components/NewBooks";
 
-export const Dashboard = () => {
+export const Dashboard = ({ admin }) => {
+  console.log(admin);
   return (
     <div className="dashboard">
       <div className="dashboard-header">
         <h2>Welcome to Dashboard</h2>
-        <h5>Admin/Dashboard</h5>
+        <h5>{`${admin.admin.username}/Dashboard`}</h5>
       </div>
       <div className="dashboard-cards">
         <div className="total-card">
-          <div className="card-icon" style={{color: "#ffbf05"}}>
+          <div className="card-icon" style={{ color: "#ffbf05" }}>
             <IoMdContact />
           </div>
           <div className="card-content">
@@ -25,7 +26,7 @@ export const Dashboard = () => {
           </div>
         </div>
         <div className="total-card1">
-          <div className="card-icon" style={{color: "#fe5461"}}>
+          <div className="card-icon" style={{ color: "#fe5461" }}>
             <ImBooks />
           </div>
           <div className="card-content1">
@@ -34,7 +35,7 @@ export const Dashboard = () => {
           </div>
         </div>
         <div className="total-card1">
-          <div className="card-icon" style={{color: "#33d565"}}>
+          <div className="card-icon" style={{ color: "#33d565" }}>
             <GiBookmarklet />
           </div>
           <div className="card-content2">
@@ -43,7 +44,7 @@ export const Dashboard = () => {
           </div>
         </div>
         <div className="total-card1">
-          <div className="card-icon" style={{color: "#4e8bfe"}}>
+          <div className="card-icon" style={{ color: "#4e8bfe" }}>
             <FaUsers />
           </div>
           <div className="card-content">
@@ -57,7 +58,7 @@ export const Dashboard = () => {
           <NewMembers />
           <NewBooks />
         </div>
-        </div>
       </div>
+    </div>
   );
 };

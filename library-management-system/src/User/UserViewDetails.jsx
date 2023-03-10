@@ -5,6 +5,14 @@ import { Link } from "react-router-dom";
 import CategorySlider from "../components/CategorySlider";
 
 export const UserViewDetails = () => {
+  const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const AU = urlParams.get('authour')
+    const CA = urlParams.get('category')
+    const ST = urlParams.get('status')
+    const QT = urlParams.get('quantity')
+
+    
   return (
     <div className="user-view-details">
       <div className="user-view-first-section">
@@ -21,10 +29,10 @@ export const UserViewDetails = () => {
                 <h2>The Great Gatsby</h2>
               </div>
               <div className="author">
-                <h4>Author</h4> F. Scott Fitzgerald
+                <h4>Author</h4> {AU}
               </div>
               <div className="category">
-                <h4>Category</h4> Tragedy
+                <h4>Category</h4> {CA}
               </div>
               <div className="description">
                 <h4>Description</h4> The Great Gatsby is a 1925 novel by
@@ -35,12 +43,12 @@ export const UserViewDetails = () => {
                 his former lover, Daisy Buchanan
               </div>
               <div className="book-amount">
-                <h4>Quantity</h4>15
+                <h4>Quantity</h4>{QT}
               </div>
               <div className="book-amount">
-                <h4>Status</h4>On-shelf
+                <h4>Status</h4>{ST}
               </div>
-              <button>
+              <button >
                 <span>
                   <FaCartPlus />
                 </span>

@@ -79,6 +79,14 @@
     /* border-color: #eeeeee; */
     border-width: thin;
 }
+.form-item select {
+    width: 300px;
+    padding: 9px;
+    border-radius: 5px;
+    font-size: 12px;
+    /* border-color: #eeeeee; */
+    border-width: thin;
+}
 .form{
     display: flex;
     flex-direction: row;

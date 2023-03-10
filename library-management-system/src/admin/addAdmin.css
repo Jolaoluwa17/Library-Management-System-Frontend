@@ -1,0 +1,27 @@
+.add-admin{
+    margin-left: 18%;
+    margin-top: 2%;
+}
+.add-admin-header h5{
+    font-weight: normal;
+    margin-top: 1%;
+}
+.add-admin-content{
+    margin-top: 4%;
+}
+.add-admin-content .admin-info-title{
+    margin-bottom: 2%;
+}
+.add-admin-content .form .form-item{
+    margin-bottom: 4%;
+}
+.admin-submit-btn{
+    float: right;
+}
+.admin-submit-btn button{
+    padding: 10px;
+    border: none;
+    background-color: #28b498;
+    color: white;
+    border-radius: 5px;
+}

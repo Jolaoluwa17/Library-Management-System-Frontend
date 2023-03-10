@@ -18,25 +18,25 @@ export const AdminTransactions = () => {
       <div className="admin-transaction-content">
         <div className="transaction-btn-container">
           <div
-            className="transaction-btn"
+            className={book1 === "applied-books" ? "applied-books-btn" : "applied-books-btn1"}
             onClick={() => setBook1("applied-books")}
           >
             Applied Books
           </div>
           <div
-            className="transaction-btn"
+            className={book1 === "loaned-books" ? "loaned-books-btn" : "loaned-books-btn1"}
             onClick={() => setBook1("loaned-books")}
           >
             Loaned books
           </div>
           <div
-            className="transaction-btn"
+            className={book1 === "Declined-books" ? "Declined-books-btn" : "Declined-books-btn1"}
             onClick={() => setBook1("Declined-books")}
           >
             Declined books
           </div>
           <div
-            className="transaction-btn"
+            className={book1 === "returned-books" ? "returned-books-btn" : "returned-books-btn1"}
             onClick={() => setBook1("returned-books")}
           >
             Returned Books

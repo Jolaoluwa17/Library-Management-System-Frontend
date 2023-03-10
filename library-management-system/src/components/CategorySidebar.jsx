@@ -5,18 +5,21 @@ import { GiMaterialsScience, GiPaintBucket, GiBookmark } from "react-icons/gi";
 import { MdHistoryEdu, MdComputer } from "react-icons/md";
 import { TbLanguage } from "react-icons/tb";
 import { BsCloudDownload } from "react-icons/bs";
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import "../User/library.css"
 
 export const CategorySidebar = () => {
   return (
     <div className="category-sidebar">
         <div className="first-section-library">
+          <Link to="/categorySidebarResult" style={{ color: "black" }}>
             <div className="sidebar-content">
               <div className="sidebar-content-icon">
                 <MdComputer />
               </div>
               Computer Science
             </div>
+            </Link>
             <div className="sidebar-content">
               <div className="sidebar-content-icon">
                 <BiBrain />

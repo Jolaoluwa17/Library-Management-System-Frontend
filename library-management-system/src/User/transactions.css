@@ -1,18 +1,42 @@
-.transactions{
-    margin-left: 18%;
-    padding-top: 2%;
+.transactions {
+  margin-left: 18%;
+  padding-top: 2%;
 }
-.transactions-header h5{
-    font-weight: normal;
-    margin-top: 0.5%;
+.transactions-header h5 {
+  font-weight: normal;
+  margin-top: 0.5%;
 }
-.transaction-content{
-    margin-top: 2%;
-    padding: 15px;
-    width: 1100px;
-    height: 600px;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-
+.transaction-content {
+  margin-top: 2%;
+  padding: 15px;
+  width: 1100px;
+  height: 600px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.user-applied-books-btn,
+.user-loaned-books-btn,
+.user-declined-books-btn,
+.user-returned-books-btn {
+  color: black;
+  border-bottom-color: #28b498;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  padding: 5px;
+}
+.user-applied-books-btn1,
+.user-loaned-books-btn1,
+.user-declined-books-btn1,
+.user-returned-books-btn1 {
+  color: grey;
+  padding: 5px;
+  cursor: pointer;
+}
+.user-applied-books-btn1:hover,
+.user-loaned-books-btn1:hover,
+.user-declined-books-btn1:hover,
+.user-returned-books-btn1:hover {
+  color: #28b498;
 }

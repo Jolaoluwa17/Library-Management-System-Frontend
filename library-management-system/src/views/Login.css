@@ -133,7 +133,7 @@ body {
   font-weight: bold;
   padding: 5px;
 }
-.left-navigation .user-login h4:hover {
+.left-navigation .user-login span:hover {
   color: #28b498;
   cursor: pointer;
 }
@@ -145,7 +145,7 @@ body {
   font-weight: bold;
   padding: 5px;
 }
-.left-navigation .admin-login h4:hover {
+.left-navigation .admin-login span:hover {
   color: #28b498;
   cursor: pointer;
 }

@@ -12,6 +12,7 @@ import TableRow from "@mui/material/TableRow";
 import { Link } from "react-router-dom";
 
 export const NewMembers = () => {
+
   return (
     <div className="cont">
       <div className="table-container">

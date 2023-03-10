@@ -7,9 +7,13 @@ import { HiOutlineLogout } from "react-icons/hi"
 import { NavLink } from "react-router-dom";
 import { MdSpaceDashboard } from "react-icons/md";
 import { AiOutlineHistory } from "react-icons/ai"
+import { RiAdminFill } from "react-icons/ri"
 import "./sidebar.css";
+import LogOutModal from './modal/LogOutModal';
 
 export const Sidebar = () => {
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
     return (
         <div className="sidebar">
             <div className="logo">
@@ -41,6 +45,12 @@ export const Sidebar = () => {
                             Add Books
                         </button>
                     </NavLink>
+                    <NavLink to="/addAdmin">
+                        <button className='sidebar-button'>
+                            <RiAdminFill className='icon' />
+                            Add Admin
+                        </button>
+                    </NavLink>
                     <NavLink to="/members">
                         <button className='sidebar-button'>
                             <IoMdContact className='icon' />
@@ -63,14 +73,14 @@ export const Sidebar = () => {
                     </NavLink>
                 </div>
                 <div className="logOutButton">
-                    <button className='sidebar-button'>
+                    <button className='sidebar-button'onClick={handleOpen}>
                         <HiOutlineLogout className='icon' />
                         Log Out
                     </button>
 
                 </div>
             </div>
-            {/* <LogOutModal open={open} setOpen={setOpen}/> */}
+           <LogOutModal open={open} setOpen={setOpen}/>
 
         </div>
     )

@@ -2,6 +2,43 @@ import React from "react";
 import "./issueBook.css";
 import { useState } from "react";
 
+// import { studentContext, nonStudentContext } from '../components/Context/Context';
+// import { useContext } from 'react';
+// import axios from "axios";
+// import { useEffect } from "react";
+// import config from "../config";
+// import { Link } from "react-router-dom";
+
+
+//   const [pendingData, setPendingData] = useState([]);
+  // const [filteredData, setFilteredData] = useState([]);
+  // const [wordEntered, setWordEntered] = useState("");
+  
+  // useEffect(() => {
+  //   const fetchPendingData = async () => {
+  //     const res = await axios.get(`${config.baseURL}/users`);
+  //     setPendingData(res.data);
+  //   };
+  //   fetchPendingData();
+  // }, []);
+
+  // const handleFilter = (event) => {
+  //   const searchWord = event.target.value;
+  //   setWordEntered(searchWord);
+  //   const newFilter = pendingData.filter((value) => {
+  //     return value.name.toLowerCase().includes(searchWord.toLowerCase());
+  //   });
+
+  //   if (searchWord === "") {
+  //     setFilteredData([]);
+  //   } else {
+  //     setFilteredData(newFilter);
+  //   }
+  // };
+
+  // const { studentuser } = useContext(studentContext);
+  // const {nonStudentuser} = useContext(nonStudentContext);
+
 export const IssueBook = () => {
   const [serviceList, setServiceList] = useState([{ service: "" }]);
 

@@ -27,42 +27,222 @@ import { UserSeeLoanedBooksDetails } from "./components/UserSeeLoanedBooksDetail
 import { UserSeeReturnedBooksDetails } from "./components/UserSeeReturnedBooksDetails";
 import { UserSeeDeclinedBooksDetails } from "./components/UserSeeDeclinedBooksDetails";
 import { Members } from "./admin/Members";
+import { AddAdmin } from "./admin/AddAdmin";
+import { CategorySidebarResult } from "./components/CategorySidebarResult";
+import {
+  AdminContextProvider,
+  NonStudentContextProvider,
+  StudentContextProvider,
+} from "./components/Context/Context";
+import { useContext } from "react";
+import {
+  studentContext,
+  nonStudentContext,
+  adminContext,
+} from "./components/Context/Context";
+import { useState, useEffect } from "react";
+import axios from "axios";
 function App() {
+  const { student } = useContext(studentContext);
+  const { nonStudent } = useContext(nonStudentContext);
+  const { admin } = useContext(adminContext);
+
+  //for add to cart function
+  const [pendingData, setPendingData] = useState([]);
+
+  useEffect(() => {
+    const fetchPendingData = async () => {
+      const res = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+      setPendingData(res.data);
+    };
+    fetchPendingData();
+  }, []);
+
+  const { products } = pendingData;
+  // console.log(products)
+  const [cartItems, setCartItems] = useState([]);
+
+  const onAdd = (product) => {
+    const exist = cartItems.find((x) => x.id === product.id);
+    if (exist) {
+      setCartItems(
+        cartItems.map((x) =>
+          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { ...product, qty: 1 }]);
+    }
+  };
+  const onRemove = (product) => {
+    const exist = cartItems.find((x) => x.id === product.id);
+    if (exist.qty === 1) {
+      setCartItems(cartItems.filter((x) => x.id !== product.id));
+    } else {
+      setCartItems(
+        cartItems.map((x) =>
+          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
+        )
+      );
+    }
+  };
+  // end
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/PasswordRecovery" element={<PasswordRecovery />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
-          <Route element={<Admin />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/totalbooks" element={<TotalBooks />} />
-            <Route path="/addbook" element={<AddBook />} />
-            <Route path="/adminTransactions" element={<AdminTransactions/>} />
-            <Route path="/seeLoanedBooksDetails" element={<SeeLoanedBooksDetails />} />
-            <Route path="/seeAppliedBooksDetails" element={<SeeAppliedBooksDetails />} />
-            <Route path="/seeReturnedBooksDetails" element={<SeeReturnedBooksDetails />} />
-            <Route path="/seeDeclinedBooksDetails" element={<SeeDeclinedBooksDetails />} />
-            <Route path="/members" element={<Members />} />
-          </Route>
-          <Route element={<User />}>
-            <Route path="/Library" element={<Library />} />
-            <Route path="/userSettings" element={<UserSettings />} />
-            <Route path="/browselibrary" element={<BrowseLibrary />} />
-            <Route path="/userViewDetails" element={<UserViewDetails />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/transactions" element={<Transactions />} />
-            <Route path="/libraryCard" element={<LibraryCard />} />
-            <Route path="/userSeeLoanedBooksDetails" element={<UserSeeLoanedBooksDetails />} />
-            <Route path="/userSeeAppliedBooksDetails" element={<UserSeeAppliedBooksDetails />} />
-            <Route path="/userSeeReturnedBooksDetails" element={<UserSeeReturnedBooksDetails />} />
-            <Route path="/userSeeDeclinedBooksDetails" element={<UserSeeDeclinedBooksDetails />} />
-          </Route>
-        </Routes>
+        <AdminContextProvider>
+          <Routes>
+            <Route path="/admin-login" element={<AdminLogin />} />
+            <Route element={admin ? <Admin admin={admin} /> : <AdminLogin />}>
+              <Route path="/dashboard" element={<Dashboard admin={admin} />} />
+              <Route path="/settings" element={<Settings admin={admin} />} />
+              <Route
+                path="/totalbooks"
+                element={<TotalBooks admin={admin} />}
+              />
+              <Route path="/addbook" element={<AddBook admin={admin} />} />
+              <Route path="/addAdmin" element={<AddAdmin admin={admin} />} />
+              <Route
+                path="/adminTransactions"
+                element={<AdminTransactions admin={admin} />}
+              />
+              <Route
+                path="/seeLoanedBooksDetails"
+                element={<SeeLoanedBooksDetails admin={admin} />}
+              />
+              <Route
+                path="/seeAppliedBooksDetails"
+                element={<SeeAppliedBooksDetails admin={admin} />}
+              />
+              <Route
+                path="/seeReturnedBooksDetails"
+                element={<SeeReturnedBooksDetails admin={admin} />}
+              />
+              <Route
+                path="/seeDeclinedBooksDetails"
+                element={<SeeDeclinedBooksDetails admin={admin} />}
+              />
+              <Route path="/members" element={<Members admin={admin} />} />
+            </Route>
+          </Routes>
+        </AdminContextProvider>
+        <StudentContextProvider>
+          <NonStudentContextProvider>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/PasswordRecovery" element={<PasswordRecovery />} />
+              <Route
+                element={
+                  nonStudent || student ? (
+                    <User student={student} nonStudent={nonStudent} />
+                  ) : (
+                    <Login />
+                  )
+                }
+              >
+                <Route
+                  path="/Library"
+                  element={
+                    <Library student={student} nonStudent={nonStudent} />
+                  }
+                />
+                <Route
+                  path="/userSettings"
+                  element={
+                    <UserSettings student={student} nonStudent={nonStudent} />
+                  }
+                />
+                <Route
+                  path="/browselibrary"
+                  element={
+                    <BrowseLibrary student={student} nonStudent={nonStudent} />
+                  }
+                />
+                <Route
+                  path="/userViewDetails"
+                  element={
+                    <UserViewDetails
+                      student={student}
+                      nonStudent={nonStudent}
+                      products={products}
+                      onAdd={onAdd}
+                    />
+                  }
+                />
+                <Route
+                  path="/cart"
+                  element={
+                    <Cart
+                      student={student}
+                      nonStudent={nonStudent}
+                      onAdd={onAdd}
+                      onRemove={onRemove}
+                    />
+                  }
+                />
+                <Route
+                  path="/transactions"
+                  element={
+                    <Transactions student={student} nonStudent={nonStudent} />
+                  }
+                />
+                <Route
+                  path="/libraryCard"
+                  element={
+                    <LibraryCard student={student} nonStudent={nonStudent} />
+                  }
+                />
+                <Route
+                  path="/userSeeLoanedBooksDetails"
+                  element={
+                    <UserSeeLoanedBooksDetails
+                      student={student}
+                      nonStudent={nonStudent}
+                    />
+                  }
+                />
+                <Route
+                  path="/userSeeAppliedBooksDetails"
+                  element={
+                    <UserSeeAppliedBooksDetails
+                      student={student}
+                      nonStudent={nonStudent}
+                    />
+                  }
+                />
+                <Route
+                  path="/userSeeReturnedBooksDetails"
+                  element={
+                    <UserSeeReturnedBooksDetails
+                      student={student}
+                      nonStudent={nonStudent}
+                    />
+                  }
+                />
+                <Route
+                  path="/userSeeDeclinedBooksDetails"
+                  element={
+                    <UserSeeDeclinedBooksDetails
+                      student={student}
+                      nonStudent={nonStudent}
+                    />
+                  }
+                />
+                <Route
+                  path="/categorySidebarResult"
+                  element={
+                    <CategorySidebarResult
+                      student={student}
+                      nonStudent={nonStudent}
+                    />
+                  }
+                />
+              </Route>
+            </Routes>
+          </NonStudentContextProvider>
+        </StudentContextProvider>
       </BrowserRouter>
     </div>
   );
