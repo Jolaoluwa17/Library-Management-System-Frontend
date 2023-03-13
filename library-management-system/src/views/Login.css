@@ -62,6 +62,18 @@ body {
   /* margin-top: 1%; */
   padding-top: 6px;
 }
+.login-show-password-btn{
+  border-radius: 30px;
+  font-size: 20px;
+  width: 45px;
+  margin-right: 2%;
+  padding-top: 9px;
+  left: 47%;
+}
+.login-form-content .form-item i{
+  position: absolute;
+}
+
 .signup_link {
   padding-left: 25%;
   margin-top: 2%;

@@ -7,6 +7,8 @@ import { useContext, useRef } from "react";
 import { nonStudentContext } from "../components/Context/Context";
 import axios from "axios";
 import config from "../config";
+import { useState } from "react";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 const NonStudentLogin = () => {
   const userRef = useRef();
@@ -26,6 +28,21 @@ const NonStudentLogin = () => {
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
     }
+  };
+
+  // To view password
+  const [passwordType, setPasswordType] = useState("password");
+  const [passwordInput, setPasswordInput] = useState("");
+  const handlePasswordChange = (evnt) => {
+    setPasswordInput(evnt.target.value);
+  };
+
+  const togglePassword = () => {
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
   };
 
   return (
@@ -59,12 +76,22 @@ const NonStudentLogin = () => {
                 <HiOutlineLockClosed />
               </i>
               <input
-                type="password"
+                type={passwordType}
                 id="password"
                 placeholder="Password"
                 ref={passwordRef}
+                onChange={handlePasswordChange}
+                value={passwordInput}
               />
+              <i onClick={togglePassword} className="login-show-password-btn">
+                {passwordType === "text" ? (
+                  <AiOutlineEyeInvisible />
+                ) : (
+                  <AiOutlineEye />
+                )}
+              </i>
             </div>
+
             <div className="sign-in-btn">
               <button type="submit" disabled={isFetching}>
                 Sign in
@@ -88,6 +115,14 @@ const NonStudentLogin = () => {
                 className="signup_link_text"
               >
                 Reset Password
+              </Link>{" "}
+              or
+              <Link
+                to="/"
+                style={{ color: "#28B498" }}
+                className="signup_link_text"
+              >
+                Go Home
               </Link>
             </p>
           </div>

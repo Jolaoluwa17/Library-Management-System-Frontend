@@ -1,0 +1,38 @@
+.members-view-details {
+  margin-left: 18%;
+  padding-top: 2%;
+}
+.members-view-details .members-details-header {
+  font-weight: normal;
+  margin-top: 1%;
+}
+.members-view-container {
+  margin-top: 2%;
+  padding: 15px;
+  width: 1000px;
+  height: 500px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.members-view-header{
+    display: flex;
+    flex-direction: row;
+    width: 150px;
+    justify-content: space-between;
+}
+.personal-information-header{
+    margin-top: 3%;
+}
+.members-panel-content{
+    margin-top: 1%;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.members-item{
+    width: 310px;
+    margin-bottom: 1%;
+}

@@ -1,8 +1,89 @@
 import React from "react";
-// import { BiSave } from "react-icons/bi";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "./userSettings.css";
+import config from "../config";
+import { MdReportGmailerrorred } from "react-icons/md";
 
-export const UserSettings = () => {
+export const UserSettings = ({ user }) => {
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [userData, setUserData] = useState({
+    _id: "",
+    username: "",
+    email: "",
+    userType: "",
+    matricNo: "",
+    address: "",
+    dateOfBirth: "",
+    sex: "",
+  });
+
+  useEffect(() => {
+    const getUserDetails = async () => {
+      const res = await axios.get(`${config.baseURL}/user/${user._id}`);
+      setUserData(res.data);
+    };
+    getUserDetails();
+  }, [user._id]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUserData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleUpdate = (event) => {
+    event.preventDefault();
+    //update user data in API using axios.put
+    axios
+      .put(`${config.baseURL}/user/${user._id}`, userData)
+      .then((res) => {
+        console.log(res.data);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const [error, setError] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(false);
+    if (newPassword !== confirmNewPassword) {
+      setError("Passwords do not match. Please Try Again");
+      console.log(error);
+    } else {
+      try {
+        const res = await axios.post(`${config.baseURL}/user/change-password`, {
+          id: user._id,
+          oldPassword,
+          newPassword,
+        });
+        res.data && window.location.reload();
+      } catch (err) {
+        setError(err);
+        console.log(err, error);
+      }
+    }
+  };
+
+  setTimeout(function () {
+    setError(false);
+  }, 3000);
+
+  const [completeRegistration, setCompleteRegistration] = useState("");
+
+  useEffect(() => {
+    userData.address === "" ||
+    userData.dateOfBirth === "" ||
+    userData.sex === ""
+      ? setCompleteRegistration(true)
+      : setCompleteRegistration(false);
+  }, []);
+
+  
+
   return (
     <div className="user-settings">
       <div className="user-settings-header">
@@ -11,82 +92,120 @@ export const UserSettings = () => {
         <p>
           This information will be accessed by the admin so please be notified.
         </p>
-      </div>
-      <div className="user-settings-content">
-        <form action="#">
-          <div className="name">
-            <div className="user-form-item">
-              <label htmlFor="firstName">First Name</label>
-              <input type="text" id="firstName" />
+        {completeRegistration && (
+          <div className="error-message">
+            <div className="error-notification">
+              <MdReportGmailerrorred style={{ color: "red" }} />
             </div>
-            <div className="user-form-item">
-              <label htmlFor="lastName"> Last Name</label>
-              <input type="text" id="lastName" />
-            </div>
-            <div className="user-form-item">
-              <label htmlFor="userName">Username</label>
-              <input type="text" id="userName" />
-            </div>
-          </div>
-          <div className="profile-picture">
-            <div className="user-form-item">
-              <label htmlFor="photo">Photo</label>
-              <div className="photo-content">
-                <div className="picture-display"></div>
-                <div className="change-btn">
-                  <button>Change</button>
-                </div>
-                <div className="remove-btn">
-                  <button>Remove</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="user-settings-line">
-            <hr />
-          </div>
-        </form>
-        <div className="user-personal-info">
-          <div className="user-personal-info-header">
-            <h4>Personal Information</h4>
-            <p>
-              This information can be accessed by the admin so please be
-              notified
+            <p style={{ color: "red" }}>
+              {" "}
+              Please complete your registration in other to use virtual library
+              card
             </p>
           </div>
-        </div>
-        <form action="#">
+        )}
+      </div>
+      <div className="user-settings-content">
+        <form>
           <div className="personal-information">
             <div className="user-form-item">
-              <label htmlFor="email">Email Address</label>
-              <input type="email" id="email" />
-            </div>
-            <div className="user-form-item">
-              <label htmlFor="phoneNo">Phone Number</label>
-              <div className="phone-number">
+              <label htmlFor="id">Id</label>
+              <div className="id">
                 <input
                   type="text"
-                  id="phoneNo"
-                  placeholder="+234"
-                  style={{ width: "65px", marginRight: "2%" }}
+                  id="id"
+                  name="id"
+                  value={userData._id}
                   disabled
                 />
-                <input type="text" id="phoneNo" />
               </div>
+            </div>
+            <div className="user-form-item">
+              <label htmlFor="phoneNo">Full Name</label>
+              <div className="fullname">
+                <input
+                  type="text"
+                  id="fullname"
+                  name="username"
+                  value={userData.username}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="user-form-item">
+              <label htmlFor="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={userData.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="user-form-item">
+              <label htmlFor="userType">User Type</label>
+              <input
+                type="text"
+                id="userType"
+                name="userType"
+                value={userData.userType}
+                disabled
+              />
+            </div>
+            <div className="user-form-item">
+              <label htmlFor="matricNo">Matric No</label>
+              <input
+                type="text"
+                id="matricNo"
+                name="matricNo"
+                value={userData.matricNo}
+                disabled
+              />
             </div>
             <div className="user-form-item">
               <label htmlFor="address">Address</label>
-              <input type="address" id="address" />
+              <input
+                type="text"
+                id="address"
+                name="address"
+                value={userData.address}
+                onChange={handleChange}
+              />
             </div>
             <div className="user-form-item">
-              <label htmlFor="state">State</label>
-              <input type="text" id="state" />
+              <label htmlFor="DOB">Date of Birth</label>
+              <input
+                type="date"
+                id="DOB"
+                name="DOB"
+                value={userData.dateOfBirth}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="user-form-item">
+              <label htmlFor="sex">Sex</label>
+              <select
+                name="sex"
+                id="sex"
+                value={userData.sex}
+                onChange={handleChange}
+              >
+                <option value="selectuser">
+                  --sex--
+                </option>
+                <option value="student">Male</option>
+                <option value="non-student">Female</option>
+              </select>
             </div>
           </div>
+          <button type="submit" onClick={handleUpdate} className="update-btn-user">
+            Update
+          </button>
           <div className="user-settings-line2">
             <hr />
           </div>
         </form>
+
         <div className="user-change-password">
           <div className="change-password-header">
             <h4>Change Password</h4>
@@ -95,31 +214,42 @@ export const UserSettings = () => {
               password
             </p>
           </div>
-          <form action="#">
+          <form>
             <div className="change-password">
               <div className="user-form-item">
                 <label htmlFor="previous-password">Previous Password</label>
-                <input type="text" id="previous-password" />
+                <input
+                  type="password"
+                  id="previous-password"
+                  onChange={(e) => setOldPassword(e.target.value)}
+                />
               </div>
               <div className="user-form-item">
                 <label htmlFor="new-password">New Password</label>
-                <input type="text" id="new-password" />
+                <input
+                  type="password"
+                  id="new-password"
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+              </div>
+              <div className="user-form-item">
+                <label htmlFor="confirm-new-password">
+                  Confirm New Password
+                </label>
+                <input
+                  type="password"
+                  id="confirm-new-password"
+                  onChange={(e) => setConfirmNewPassword(e.target.value)}
+                />
               </div>
             </div>
+            <div className="password-do-not-match" style={{ color: "red" }}>
+              {error}
+            </div>
+            <button onClick={handleSubmit}>Confirm Password</button>
           </form>
-          <div className="account-creation">
-            <p>This account was created on January 5th, 2017.</p>
-          </div>
           <div className="user-settings-line3">
             <hr />
-          </div>
-        </div>
-        <div className="end-btn">
-          <div className="user-settings-cancel-btn">
-            <button>Cancel</button>
-          </div>
-          <div className="user-settings-save-btn">
-            <button>Save</button>
           </div>
         </div>
       </div>

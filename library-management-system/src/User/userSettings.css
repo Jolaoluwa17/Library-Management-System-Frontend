@@ -35,47 +35,6 @@
     border-width: 1px;
     font-size: 17px;
 }
-.profile-picture{
-    margin-top: -9%;
-}
-.profile-picture .user-form-item label{
-    font-weight: 600;
-}
-.picture-display{
-    margin-top: 1%;
-    background-color: red;
-    width: 50px;
-    height: 50px;
-    border-radius: 24px;
-}
-.profile-picture .user-form-item .photo-content{
-    display: flex;
-    flex-direction: row;
-    width: 20%;
-    justify-content:space-between ;
-}
-.photo-content .change-btn{
-    padding-top: 15px;
-}
-.change-btn button{
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: #28b498;
-    color: white;
-}
-.photo-content .remove-btn{
-    padding-top: 20px;
-}
-.photo-content .remove-btn button{
-    border: none;
-    background-color: white;
-    font-size: 15px;
-}
-.remove-btn button:hover{
-    color: #28b498;
-    cursor: pointer;
-}
 .user-settings-line{
     margin-top: 2%;
     width: 95%;
@@ -87,13 +46,26 @@
     font-weight: 600;
     font-size: 18px;
 }
+.user-settings-content form button{
+    background-color: #28b498;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    margin-top: 2%;
+    cursor: pointer;
+    margin-top: 6%;
+}
+.update-btn-user{
+     margin-top: 15% !important; 
+}
 .personal-information{
     margin-top: 2%;
     display: flex;
     width: 70%;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: 10%;
+    /* margin-bottom: 10%; */
     height: 200px;
 }
 .personal-information .user-form-item{
@@ -101,19 +73,28 @@
     flex-direction: column;
     justify-content: space-around;
     height: 70px;
+    margin-bottom: 2%;
+}
+.error-notification{
+    font-size: 20px;
+    padding-top: 1px;
+}
+.error-message{
+    display: flex;
 }
 .personal-information .user-form-item label{
     font-weight: 600;
 }
-.personal-information .user-form-item input{
+.personal-information .user-form-item input, .personal-information .user-form-item select{
     width: 350px;
     padding: 9px;
     border-radius: 10px;
     border-width: 1px;
     font-size: 17px;
+    
 }
 .user-settings-line2{
-    margin-top: -10%;
+    margin-top: 2%;
     width: 95%;
 }
 .user-change-password{
@@ -129,7 +110,6 @@
     width: 70%;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: 10%;
     height: 200px;
 }
 .change-password .user-form-item{
@@ -137,6 +117,14 @@
     flex-direction: column;
     justify-content: space-around;
     height: 70px;
+}
+.user-change-password form button{
+    background-color: #28b498;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
 }
 .change-password .user-form-item label{
     font-weight: 600;
@@ -148,37 +136,18 @@
     border-width: 1px;
     font-size: 17px;
 }
-/* .user-change-password {
-    margin-top: -15%;
-} */
+.password-do-not-match{
+    margin-top: -2%;
+}
 .account-creation{
     margin-top: -18%;
     color: grey;
 }
 .user-settings-line3{
     width: 95%;
-    margin-top: 2%;
+    margin-top: 1%;
 }
-.end-btn{
-    margin-top: 3%;
-    display: flex;
-    justify-content: right;
-    width: 95%;
-}
-.end-btn button{
-    padding: 10px;
-    border: none;
-}
-.end-btn .user-settings-cancel-btn{
-    margin-right: 2%;
-}
-.end-btn .user-settings-cancel-btn button{
-    background-color: red;
-    color: white;
-    border-radius: 5px;
-}
-.end-btn .user-settings-save-btn button{
-    background-color: #28b498;
-    color: white;
-    border-radius: 5px;
+.change-password-success{
+    margin-top: -2%;
+    margin-bottom: 1%;
 }

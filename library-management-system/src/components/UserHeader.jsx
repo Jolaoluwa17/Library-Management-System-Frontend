@@ -12,13 +12,8 @@ import { useEffect } from "react";
 
 import "../User/library.css";
 
-export const UserHeader = ({ nonStudent, student }) => {
+export const UserHeader = ({ user }) => {
   const [isCategorySidebar, setIsCategorySidebar] = useState("false");
-  const studentUser = student;
-  const nonStudentUser = nonStudent;
-  const user = student ? studentUser : nonStudentUser;
-
-
   const [pendingData, setPendingData] = useState([]);
 
   useEffect(() => {
@@ -56,7 +51,7 @@ export const UserHeader = ({ nonStudent, student }) => {
         </div>
         <div className="library-header-title">
           <h2>Welcome to Babcock Library</h2>
-          <h5>{`${user.user.username} / Babcock Library`}</h5>
+          <h5>{`${user.username} / Babcock Library`}</h5>
         </div>
         <div className="library-search-bar">
           <div className="search-input-full">

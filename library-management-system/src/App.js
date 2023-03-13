@@ -28,6 +28,7 @@ import { UserSeeReturnedBooksDetails } from "./components/UserSeeReturnedBooksDe
 import { UserSeeDeclinedBooksDetails } from "./components/UserSeeDeclinedBooksDetails";
 import { Members } from "./admin/Members";
 import { AddAdmin } from "./admin/AddAdmin";
+import { MembersViewDetails } from "./admin/MembersViewDetails";
 import { CategorySidebarResult } from "./components/CategorySidebarResult";
 import {
   AdminContextProvider,
@@ -87,6 +88,8 @@ function App() {
     }
   };
   // end
+  const user = student ? student : nonStudent;
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -123,6 +126,10 @@ function App() {
                 element={<SeeDeclinedBooksDetails admin={admin} />}
               />
               <Route path="/members" element={<Members admin={admin} />} />
+              <Route
+                path="/membersViewDetails"
+                element={<MembersViewDetails admin={admin} />}
+              />
             </Route>
           </Routes>
         </AdminContextProvider>
@@ -135,37 +142,23 @@ function App() {
               <Route path="/PasswordRecovery" element={<PasswordRecovery />} />
               <Route
                 element={
-                  nonStudent || student ? (
-                    <User student={student} nonStudent={nonStudent} />
-                  ) : (
-                    <Login />
-                  )
+                  nonStudent || student ? <User user={user.user} /> : <Login />
                 }
               >
-                <Route
-                  path="/Library"
-                  element={
-                    <Library student={student} nonStudent={nonStudent} />
-                  }
-                />
+                <Route path="/Library" element={<Library user={user.user} />} />
                 <Route
                   path="/userSettings"
-                  element={
-                    <UserSettings student={student} nonStudent={nonStudent} />
-                  }
+                  element={<UserSettings user={user.user} />}
                 />
                 <Route
                   path="/browselibrary"
-                  element={
-                    <BrowseLibrary student={student} nonStudent={nonStudent} />
-                  }
+                  element={<BrowseLibrary user={user.user} />}
                 />
                 <Route
                   path="/userViewDetails"
                   element={
                     <UserViewDetails
-                      student={student}
-                      nonStudent={nonStudent}
+                      user={user.user}
                       products={products}
                       onAdd={onAdd}
                     />
@@ -174,70 +167,36 @@ function App() {
                 <Route
                   path="/cart"
                   element={
-                    <Cart
-                      student={student}
-                      nonStudent={nonStudent}
-                      onAdd={onAdd}
-                      onRemove={onRemove}
-                    />
+                    <Cart user={user.user} onAdd={onAdd} onRemove={onRemove} />
                   }
                 />
                 <Route
                   path="/transactions"
-                  element={
-                    <Transactions student={student} nonStudent={nonStudent} />
-                  }
+                  element={<Transactions user={user.user} />}
                 />
                 <Route
                   path="/libraryCard"
-                  element={
-                    <LibraryCard student={student} nonStudent={nonStudent} />
-                  }
+                  element={<LibraryCard user={user.user} />}
                 />
                 <Route
                   path="/userSeeLoanedBooksDetails"
-                  element={
-                    <UserSeeLoanedBooksDetails
-                      student={student}
-                      nonStudent={nonStudent}
-                    />
-                  }
+                  element={<UserSeeLoanedBooksDetails user={user.user} />}
                 />
                 <Route
                   path="/userSeeAppliedBooksDetails"
-                  element={
-                    <UserSeeAppliedBooksDetails
-                      student={student}
-                      nonStudent={nonStudent}
-                    />
-                  }
+                  element={<UserSeeAppliedBooksDetails user={user.user} />}
                 />
                 <Route
                   path="/userSeeReturnedBooksDetails"
-                  element={
-                    <UserSeeReturnedBooksDetails
-                      student={student}
-                      nonStudent={nonStudent}
-                    />
-                  }
+                  element={<UserSeeReturnedBooksDetails user={user.user} />}
                 />
                 <Route
                   path="/userSeeDeclinedBooksDetails"
-                  element={
-                    <UserSeeDeclinedBooksDetails
-                      student={student}
-                      nonStudent={nonStudent}
-                    />
-                  }
+                  element={<UserSeeDeclinedBooksDetails user={user.user} />}
                 />
                 <Route
                   path="/categorySidebarResult"
-                  element={
-                    <CategorySidebarResult
-                      student={student}
-                      nonStudent={nonStudent}
-                    />
-                  }
+                  element={<CategorySidebarResult user={user.user} />}
                 />
               </Route>
             </Routes>

@@ -6,17 +6,14 @@ import UserTransactionReturnedBooks from "../components/UserTransactionReturnedB
 import UserTransactionAppliedBooks from "../components/UserTransactionAppliedBooks";
 import UserTransactionDeclinedBooks from "../components/UserTransactionDeclinedBooks";
 
-export const Transactions = ({ nonStudent, student }) => {
+export const Transactions = ({ user }) => {
   const [userBook1, setUserBook1] = useState("user-applied-books");
   const [userBook2, setUserBook2] = useState();
-  const studentUser = student;
-  const nonStudentUser = nonStudent;
-  const user = student ? studentUser : nonStudentUser;
   return (
     <div className="transactions">
       <div className="transactions-header">
         <h2>Transactions</h2>
-        <h5>{`${user.user.username} / Previous Transactions`}</h5>
+        <h5>{`${user.username} / Previous Transactions`}</h5>
       </div>
       <div className="transaction-content">
         <div className="transaction-btn-container">

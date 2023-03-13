@@ -8,16 +8,13 @@ import {
 } from "react-icons/bs";
 import { useState } from "react";
 
-export const LibraryCard = ({ nonStudent, student }) => {
+export const LibraryCard = ({ user }) => {
   const [isSingle, setIsSingle] = useState("false");
-  const studentUser = student;
-  const nonStudentUser = nonStudent;
-  const user = student ? studentUser : nonStudentUser;
   return (
     <div className="library-card-container">
       <div className="library-card-header">
         <h2>Welcome to your Virtual Library Card</h2>
-        <h5>{`${user.user.username} / Virtual Library Card`}</h5>
+        <h5>{`${user.username} / Virtual Library Card`}</h5>
         <div className="change-view">
           <div className="single-view" onClick={() => setIsSingle(true)}>
             {" "}

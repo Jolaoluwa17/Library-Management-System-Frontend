@@ -1,20 +1,72 @@
 .admin-login1{
-    height: 100vh;
+    height: 100%;
+    background-color: #fcfbfd;
+    text-align: center;
+    width: 100%;
 }
 .admin-container{
     text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    width: 600px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
 }
+.admin-container p{
+    float: right;
+    margin-right: 17%;
+    margin-top: 5%;
+    color: grey;
+    font-size: 13px;
+}
+.admin-container p:hover{
+    color: #28b498;
+    cursor: pointer;
+}
+
 .admin-login-header{
-    padding-top: 200px;
+    padding-top: 90px;
+    margin-bottom: 8%;
 }
-.login-content .form-content input{
-    margin-bottom: 2%;
+.admin-login-header h5{
+    font-weight: normal;
+    margin-top: 2%;
+}
+.admin-form-item i{
+    position: absolute;
+  }
+.show-password-btn{
+    border-radius: 30px;
+  font-size: 20px;
+  width: 45px;
+  margin-right: 2%;
+  /* margin-top: 1%; */
+  padding-top: 9px;
+  left: 60%;
+}
+.form-content{
+    width: 100%;
+    text-align: center;
+}
+.login-content .form-content .admin-form-item input{
+    margin-bottom: 7%;
     width: 400px;
     padding: 12px;
     border: none;
     border-radius: 10px;
-    background-color: #d5d5d5;
+    background-color: #f7f5f7;
     font-size: medium;
+    outline-color: #28b498;
+}
+.login-content .form-content:focus{
+    background-color: white;
+}
+#email::placeholder{
+    color: #dad8dd;
+} 
+#password::placeholder{
+    color: #dad8dd;
 }
 .admin-sign-in-btn button{
     padding: 10px;
@@ -25,4 +77,7 @@
     font-size: medium;
     padding-left: 14px;
     padding-right: 14px;
+    width: 400px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    cursor: pointer;
 }

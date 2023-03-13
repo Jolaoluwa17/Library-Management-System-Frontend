@@ -8,7 +8,7 @@ import { useEffect } from "react";
 // import config from "../config";
 import UserHeader from "../components/UserHeader";
 
-export const BrowseLibrary = ({ nonStudent, student }) => {
+export const BrowseLibrary = ({ user }) => {
   const [pendingData, setPendingData] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export const BrowseLibrary = ({ nonStudent, student }) => {
   // const [search, setSearch] = useState("");
   return (
     <div className="browse-library">
-      <UserHeader  student={student} nonStudent={nonStudent}/>
+      <UserHeader  user={user}/>
       <div className="browse-library-content">
         {pendingData
           // .filter((item) => {

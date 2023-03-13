@@ -3,11 +3,11 @@ import "./cart.css";
 import UserHeader from "../components/UserHeader";
 import CartCard from "../components/CartCard";
 
-export const Cart = ({ nonStudent, student }) => {
+export const Cart = ({ user }) => {
   
   return (
     <div className="cart">
-      <UserHeader student={student} nonStudent={nonStudent}/>
+      <UserHeader user = {user} />
       <div className="cart-main-container">
       <div className="cart-content-container">
         <CartCard />
