@@ -4,6 +4,7 @@ import config from "../config";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { MdReportGmailerrorred } from "react-icons/md";
+import CategoryTableCard from "../components/CategoryTableCard";
 
 export const Settings = ({ admin }) => {
   const [oldPassword, setOldPassword] = useState("");
@@ -79,6 +80,31 @@ export const Settings = ({ admin }) => {
     adminData.sex === ""
       ? setCompleteRegistration(true)
       : setCompleteRegistration(false);
+  }, []);
+
+  const [name, setCategory] = useState("");
+
+  const handleSubmitCategory = async (e) => {
+    e.preventDefault();
+    setCategory(false);
+    try {
+      const res = await axios.post(`${config.baseURL}/category`, {
+        name,
+      });
+      res.data && window.location.reload();
+    } catch (err) {
+      setError(true);
+    }
+  };
+
+  const [categoryData, setCatetegoryData] = useState([]);
+
+  useEffect(() => {
+    const fetchCategoryData = async () => {
+      const res = await axios.get(`${config.baseURL}/category`);
+      setCatetegoryData(res.data);
+    };
+    fetchCategoryData();
   }, []);
 
   return (
@@ -220,6 +246,43 @@ export const Settings = ({ admin }) => {
           </form>
           <div className="user-settings-line3">
             <hr />
+          </div>
+        </div>
+        <div className="add-new-category">
+          <div className="add-new-category-header">
+            <h4>Add New Category</h4>
+            <p>Please input a new book category to be added</p>
+          </div>
+          <div className="add-new-category-content">
+            <form action="">
+              <div className="user-form-item">
+                <label htmlFor="category">New Category</label>
+                <input
+                  type="text"
+                  id="category"
+                  placeholder="Thriller"
+                  onChange={(e) => setCategory(e.target.value)}
+                />
+              </div>
+              <div className="submit-catgory">
+                <button onClick={handleSubmitCategory}>Add Category</button>
+              </div>
+            </form>
+
+            <div className="category-table">
+              <div className="table-title">Category Table</div>
+              <div className="category-table-one">
+              <div className="category-table-title">
+                  <div className="category-name-container">category name</div>
+                  {/* <div className="category-del-btn-container">status</div> */}
+                </div>
+                <div className="category-data">
+                  {categoryData.map((item) => (
+                    <CategoryTableCard key={item.id} item={item} />
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -9,7 +9,6 @@ import MobileSidebar from "../components/MobileSideBar";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
-
 import "../User/library.css";
 
 export const UserHeader = ({ user }) => {
@@ -73,7 +72,7 @@ export const UserHeader = ({ user }) => {
                 return (
                   <Link
                     style={{ color: "black" }}
-                    to={`/userViewDetails?authour=${value.name}&category=${value.username}&status=${value.email}&quantity=${value.company}`}
+                    to={`/test?name=${value.name}`}
                   >
                     <p>{value.name} </p>
                   </Link>

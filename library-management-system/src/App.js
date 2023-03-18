@@ -13,7 +13,6 @@ import { User } from "./User/User";
 import { Library } from "./User/Library";
 import { UserSettings } from "./User/UserSettings";
 import BrowseLibrary from "./User/BrowseLibrary";
-import { UserViewDetails } from "./User/UserViewDetails";
 import { Cart } from "./User/Cart";
 import { Transactions } from "./User/Transactions";
 import { AdminTransactions } from "./admin/AdminTransactions";
@@ -41,54 +40,30 @@ import {
   nonStudentContext,
   adminContext,
 } from "./components/Context/Context";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
+
+import { Test } from "./User/Test";
 function App() {
   const { student } = useContext(studentContext);
   const { nonStudent } = useContext(nonStudentContext);
   const { admin } = useContext(adminContext);
 
-  //for add to cart function
-  const [pendingData, setPendingData] = useState([]);
-
-  useEffect(() => {
-    const fetchPendingData = async () => {
-      const res = await axios.get(`https://jsonplaceholder.typicode.com/users`);
-      setPendingData(res.data);
-    };
-    fetchPendingData();
-  }, []);
-
-  const { products } = pendingData;
-  // console.log(products)
-  const [cartItems, setCartItems] = useState([]);
-
-  const onAdd = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
-    if (exist) {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
-        )
-      );
-    } else {
-      setCartItems([...cartItems, { ...product, qty: 1 }]);
-    }
-  };
-  const onRemove = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
-    if (exist.qty === 1) {
-      setCartItems(cartItems.filter((x) => x.id !== product.id));
-    } else {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
-        )
-      );
-    }
-  };
-  // end
   const user = student ? student : nonStudent;
+
+  //add to cart
+  const [cart, setCart] = useState([]);
+
+  const handleClickCart = (item) => {
+    if (cart.indexOf(item) !== -1) {
+      return;
+    } else {
+      if (cart.length > 4) {
+        setCart([].length());
+      } else {
+        setCart([...cart, item]);
+      }
+    }
+  };
 
   return (
     <div className="App">
@@ -152,22 +127,17 @@ function App() {
                 />
                 <Route
                   path="/browselibrary"
-                  element={<BrowseLibrary user={user.user} />}
-                />
-                <Route
-                  path="/userViewDetails"
                   element={
-                    <UserViewDetails
+                    <BrowseLibrary
                       user={user.user}
-                      products={products}
-                      onAdd={onAdd}
+                      handleClick={handleClickCart}
                     />
                   }
                 />
                 <Route
                   path="/cart"
                   element={
-                    <Cart user={user.user} onAdd={onAdd} onRemove={onRemove} />
+                    <Cart user={user.user} cart={cart} setCart={setCart} />
                   }
                 />
                 <Route
@@ -197,6 +167,12 @@ function App() {
                 <Route
                   path="/categorySidebarResult"
                   element={<CategorySidebarResult user={user.user} />}
+                />
+                <Route
+                  path="/test"
+                  element={
+                    <Test user={user.user} handleClick={handleClickCart} />
+                  }
                 />
               </Route>
             </Routes>

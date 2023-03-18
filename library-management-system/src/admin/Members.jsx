@@ -56,8 +56,7 @@ export const Members = () => {
           </span>
         </div>
         <div className="members-table-header">
-          <div className="members-id">id</div>
-          <div className="members-status">status</div>
+          
         </div>
         <div className="table-container">
           {pendingData

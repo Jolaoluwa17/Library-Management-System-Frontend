@@ -1,20 +1,19 @@
 import React from "react";
 import "./addBook.css";
-import QRCode from "qrcode";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import config from "../config";
 
 export const AddBook = () => {
-  const [url, setUrl] = useState("");
-  const [qr, setQr] = useState("");
+  const [categoryData, setCatetegoryData] = useState([]);
 
-  const GenerateQRCode = () => {
-    QRCode.toDataURL(url, (err, url) => {
-      if (err) return console.error(err);
-
-      console.log(url);
-      setQr(url);
-    });
-  };
+  useEffect(() => {
+    const fetchCategoryData = async () => {
+      const res = await axios.get(`${config.baseURL}/category`);
+      setCatetegoryData(res.data);
+    };
+    fetchCategoryData();
+  }, []);
 
   return (
     <div className="AddBook">
@@ -31,16 +30,13 @@ export const AddBook = () => {
           <form action="#">
             <div className="form">
               <div className="form-item">
-                <label htmlFor="uniqueId" className="label-width">
-                  Unique Id
+                <label htmlFor="bookImg" className="label-width">
+                  Book Image
                 </label>
                 <br />
                 <input
-                  type="text"
-                  id="uniqueId"
-                  placeholder="11011"
-                  value={url}
-                  onChange={(e) => setUrl(e.target.value)}
+                  type="file"
+                  id="bookImg"
                 />
               </div>
               <div className="form-item">
@@ -77,7 +73,7 @@ export const AddBook = () => {
                   Category
                 </label>
                 <br />
-                <select
+                {categoryData.map((item) => (<select
                   name="category-select"
                   id="category-select"
                   className="category-select"
@@ -85,17 +81,9 @@ export const AddBook = () => {
                   <option value="selectuser">
                     --Select a category--
                   </option>
-                  <option value="computer">Computer Science</option>
-                  <option value="philosophy">Philosophy & Psychology</option>
-                  <option value="religion">Religion</option>
-                  <option value="social">Social Sciences</option>
-                  <option value="language">Language</option>
-                  <option value="science">Science</option>
-                  <option value="technology">Technology & Applied Science</option>
-                  <option value="arts">Arts and Recreation</option>
-                  <option value="literature">Literature</option>
-                  <option value="history">History & Geography</option>
-                </select>
+                  <option value="computer">{item.name}</option>
+                  
+                </select>))}
               </div>
               <div className="form-item">
                 <label htmlFor="publisher" className="label-width">
@@ -130,21 +118,6 @@ export const AddBook = () => {
               />
             </div>
           </form>
-        </div>
-        <div className="qr-pic-container">
-          <div className="qr-pic">
-            {qr && (
-              <>
-                <img src={qr} alt="" />
-                <a href={qr} download="qrcode.png">
-                  Download
-                </a>
-              </>
-            )}
-          </div>
-          <div className="generate-btn">
-            <button onClick={GenerateQRCode}>Generate QR Code</button>
-          </div>
         </div>
       </div>
       <button>Submit</button>
