@@ -66,7 +66,6 @@ const NonStudentLogin = () => {
               </i>
               <input
                 type="email"
-                id="email"
                 placeholder="Email"
                 ref={userRef}
               />
@@ -77,7 +76,6 @@ const NonStudentLogin = () => {
               </i>
               <input
                 type={passwordType}
-                id="password"
                 placeholder="Password"
                 ref={passwordRef}
                 onChange={handlePasswordChange}

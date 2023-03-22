@@ -77,7 +77,6 @@ const Studentlogin = () => {
               </i>
               <input
                 type={passwordType}
-                id="password"
                 placeholder="Password"
                 ref={passwordRef}
                 onChange={handlePasswordChange}

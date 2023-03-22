@@ -20,7 +20,6 @@ export const UserSettings = ({ user }) => {
     sex: "",
   });
 
-  //profile picture
   const [profileError, setProfileError] = useState("");
   const [profilePic, setProfilePic] = useState(null);
 
@@ -46,26 +45,15 @@ export const UserSettings = ({ user }) => {
         formData,
         config
       );
-      res.data && window.location.reload();
+      setProfilePic(null)
+      alert("Profile pic uploaded successfully");
+      console.log(res);
+      window.location.reload();
     } catch (err) {
       setProfileError(true);
+      alert("Failed to upload Profile pic");
     }
   };
-  // const handleSubmitProfilePic = async (e) => {
-  //   e.preventDefault();
-  //   setProfileError(false);
-  //   try {
-  //     const res = await axios.post(
-  //       `${config.baseURL}/user/${user._id}/profilepic`,
-  //       {
-  //         profilePic,
-  //       }
-  //     );
-  //     res.data && window.location.reload();
-  //   } catch (profileError) {
-  //     setProfileError(true);
-  //   }
-  // };
 
   useEffect(() => {
     const getUserDetails = async () => {
@@ -123,8 +111,8 @@ export const UserSettings = ({ user }) => {
 
   useEffect(() => {
     userData.address === "" ||
-    userData.dateOfBirth === "" ||
-    userData.sex === ""
+      userData.dateOfBirth === "" ||
+      userData.sex === ""
       ? setCompleteRegistration(true)
       : setCompleteRegistration(false);
   }, []);
@@ -224,11 +212,10 @@ export const UserSettings = ({ user }) => {
               <input
                 type="date"
                 id="DOB"
-                name="DOB"
+                name="dob"
                 value={userData.dob}
                 onChange={handleChange}
               />
-              <p>her{userData.dob}</p>
             </div>
             <div className="user-form-item">
               <label htmlFor="sex">Sex</label>
@@ -238,14 +225,14 @@ export const UserSettings = ({ user }) => {
                 value={userData.sex}
                 onChange={handleChange}
               >
-                <option value="selectuser">--sex--</option>
-                <option value="student">Male</option>
-                <option value="non-student">Female</option>
+                <option value="selectuser">--Sex--</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
               </select>
             </div>
             <div className="user-form-item">
-              <label htmlFor="DOB">Profile Picture</label>
-              <input type="file" onChange={handleFileChange} />
+              <label>Profile Picture</label>
+              <input type="file" onChange={handleFileChange} accept=".jpg,.jpeg,.png,.gif" />
               <p>{profileError}</p>
             </div>
             <button onSubmit={handleSubmitProfilePic}>submit</button>

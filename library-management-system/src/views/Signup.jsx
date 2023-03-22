@@ -106,7 +106,6 @@ export const Signup = () => {
                 <div className="signup-form-item">
                   <input
                     type="email"
-                    id="email"
                     placeholder="Email"
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -114,7 +113,6 @@ export const Signup = () => {
                 <div className="signup-form-item">
                   <input
                     type="password"
-                    id="password"
                     placeholder="Password"
                     onChange={(e) => setPassword(e.target.value)}
                   />

@@ -48,7 +48,10 @@ function App() {
   const { nonStudent } = useContext(nonStudentContext);
   const { admin } = useContext(adminContext);
 
-  const user = student ? student : nonStudent;
+  let user = student ? student : nonStudent;
+  if (!user) {
+    user = "";
+  }
 
   //add to cart
   const [cart, setCart] = useState([]);
@@ -60,7 +63,7 @@ function App() {
     } else {
       if (cart.length > 2) {
         setCartFull(true);
-        setCart([].length());  //this shows an error. need to fix this.
+        setCart([].length()); //this shows an error. need to fix this.
       } else {
         setCart([...cart, item]);
       }
@@ -70,9 +73,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Routes></Routes>
         <AdminContextProvider>
           <Routes>
-            <Route path="/admin-login" element={<AdminLogin />} />
             <Route element={admin ? <Admin admin={admin} /> : <AdminLogin />}>
               <Route path="/dashboard" element={<Dashboard admin={admin} />} />
               <Route path="/settings" element={<Settings admin={admin} />} />
@@ -113,16 +116,13 @@ function App() {
         <StudentContextProvider>
           <NonStudentContextProvider>
             <Routes>
+              <Route path="/admin-login" element={<AdminLogin />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/" element={<LandingPage />} />
               <Route path="/PasswordRecovery" element={<PasswordRecovery />} />
-              <Route
-                element={
-                  nonStudent || student ? <User user={user.user} /> : <Login />
-                }
-              >
-                <Route path="/Library" element={<Library user={user.user} />} />
+              <Route element={nonStudent || student ? <User /> : <Login />}>
+                <Route path="/library" element={<Library user={user.user} />} />
                 <Route
                   path="/userSettings"
                   element={<UserSettings user={user.user} />}
@@ -133,8 +133,8 @@ function App() {
                     <BrowseLibrary
                       user={user.user}
                       handleClick={handleClickCart}
-                      cartFull = {cartFull}
-                      setCartFull = {setCartFull}
+                      cartFull={cartFull}
+                      setCartFull={setCartFull}
                     />
                   }
                 />
