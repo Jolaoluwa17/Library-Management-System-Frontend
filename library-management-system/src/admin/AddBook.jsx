@@ -15,6 +15,35 @@ export const AddBook = () => {
     fetchCategoryData();
   }, []);
 
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [year, setYear] = useState("");
+  const [category, setCategory] = useState("");
+  const [publisher, setPublisher] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [status, setStatus] = useState("");
+  const [error, setError] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.prevent.Default();
+    setError(false);
+    try {
+      const res = await axios.post(`${config.baseURL}/book`, {
+        title,
+        author,
+        year,
+        category,
+        publisher,
+        description,
+        status,
+      });
+      res.data && window.location.reload();
+    } catch (err) {
+      setError(true);
+    }
+  };
+
   return (
     <div className="AddBook">
       <div className="add-book-header">
@@ -27,17 +56,14 @@ export const AddBook = () => {
             <h2>Book Information</h2>
             <p>Please input the information of the specific book.</p>
           </div>
-          <form action="#">
+          <form action="#" onSubmit={handleSubmit}>
             <div className="form">
               <div className="form-item">
                 <label htmlFor="bookImg" className="label-width">
                   Book Image
                 </label>
                 <br />
-                <input
-                  type="file"
-                  id="bookImg"
-                />
+                <input type="file" id="bookImg" />
               </div>
               <div className="form-item">
                 <label htmlFor="bookName" className="label-width">
@@ -48,6 +74,7 @@ export const AddBook = () => {
                   type="text"
                   id="bookName"
                   placeholder="The Great Gatsby"
+                  onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
               <div className="form-item">
@@ -59,6 +86,7 @@ export const AddBook = () => {
                   type="text"
                   id="authorName"
                   placeholder="F. Scott Fitzgerald"
+                  onChange={(e) => setAuthor(e.target.value)}
                 />
               </div>
               <div className="form-item">
@@ -66,24 +94,29 @@ export const AddBook = () => {
                   Year of Publication
                 </label>
                 <br />
-                <input type="text" id="year" placeholder="1925" />
+                <input
+                  type="text"
+                  id="year"
+                  placeholder="1925"
+                  onChange={(e) => setYear(e.target.value)}
+                />
               </div>
               <div className="form-item">
                 <label htmlFor="category" className="label-width">
                   Category
                 </label>
                 <br />
-                {categoryData.map((item) => (<select
+                <select
                   name="category-select"
                   id="category-select"
                   className="category-select"
+                  onChange={(e) => setCategory(e.target.value)}
                 >
-                  <option value="selectuser">
-                    --Select a category--
-                  </option>
-                  <option value="computer">{item.name}</option>
-                  
-                </select>))}
+                  <option value="selectuser">--Select a category--</option>
+                  {categoryData.map((item) => (
+                    <option value={item.name}>{item.name}</option>
+                  ))}
+                </select>
               </div>
               <div className="form-item">
                 <label htmlFor="publisher" className="label-width">
@@ -94,6 +127,7 @@ export const AddBook = () => {
                   type="text"
                   id="publisher"
                   placeholder="Charles Scribner's Sons"
+                  onChange={(e) => setPublisher(e.target.value)}
                 />
               </div>
             </div>
@@ -115,6 +149,7 @@ export const AddBook = () => {
                   borderRadius: "5px",
                   // borderColor: "#eeeeee",
                 }}
+                onChange ={(e) => setDescription(e.target.value)}
               />
             </div>
           </form>

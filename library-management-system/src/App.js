@@ -52,13 +52,15 @@ function App() {
 
   //add to cart
   const [cart, setCart] = useState([]);
+  const [cartFull, setCartFull] = useState(false);
 
   const handleClickCart = (item) => {
     if (cart.indexOf(item) !== -1) {
       return;
     } else {
-      if (cart.length > 4) {
-        setCart([].length());
+      if (cart.length > 2) {
+        setCartFull(true);
+        setCart([].length());  //this shows an error. need to fix this.
       } else {
         setCart([...cart, item]);
       }
@@ -131,6 +133,8 @@ function App() {
                     <BrowseLibrary
                       user={user.user}
                       handleClick={handleClickCart}
+                      cartFull = {cartFull}
+                      setCartFull = {setCartFull}
                     />
                   }
                 />

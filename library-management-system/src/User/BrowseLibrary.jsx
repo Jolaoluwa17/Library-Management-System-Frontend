@@ -8,7 +8,7 @@ import { useEffect } from "react";
 // import config from "../config";
 import UserHeader from "../components/UserHeader";
 
-export const BrowseLibrary = ({ user, handleClick }) => {
+export const BrowseLibrary = ({ user, handleClick, cartFull, setCartFull }) => {
   const [pendingData, setPendingData] = useState([]);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export const BrowseLibrary = ({ user, handleClick }) => {
           //     : item.authour.toLowerCase().includes(search);
           // })
           .map((item) => (
-            <BookCard key={item.id} item={item} handleClick = {handleClick} />
+            <BookCard key={item.id} item={item} handleClick = {handleClick} cartFull = {cartFull} setCartFull={setCartFull} />
           ))}
       </div>
     </div>

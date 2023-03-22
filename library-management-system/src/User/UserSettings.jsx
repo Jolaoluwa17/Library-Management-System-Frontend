@@ -16,9 +16,56 @@ export const UserSettings = ({ user }) => {
     userType: "",
     matricNo: "",
     address: "",
-    dateOfBirth: "",
+    dob: "",
     sex: "",
   });
+
+  //profile picture
+  const [profileError, setProfileError] = useState("");
+  const [profilePic, setProfilePic] = useState(null);
+
+  const handleFileChange = (e) => {
+    setProfilePic(e.target.files[0]);
+  };
+
+  const handleSubmitProfilePic = async (e) => {
+    e.preventDefault();
+    setProfileError(false);
+    try {
+      const formData = new FormData();
+      formData.append("profilePic", profilePic);
+
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      };
+
+      const res = await axios.post(
+        `${config.baseURL}/user/${user._id}/profilepic`,
+        formData,
+        config
+      );
+      res.data && window.location.reload();
+    } catch (err) {
+      setProfileError(true);
+    }
+  };
+  // const handleSubmitProfilePic = async (e) => {
+  //   e.preventDefault();
+  //   setProfileError(false);
+  //   try {
+  //     const res = await axios.post(
+  //       `${config.baseURL}/user/${user._id}/profilepic`,
+  //       {
+  //         profilePic,
+  //       }
+  //     );
+  //     res.data && window.location.reload();
+  //   } catch (profileError) {
+  //     setProfileError(true);
+  //   }
+  // };
 
   useEffect(() => {
     const getUserDetails = async () => {
@@ -82,7 +129,7 @@ export const UserSettings = ({ user }) => {
       : setCompleteRegistration(false);
   }, []);
 
-  
+  console.log(userData.dob);
 
   return (
     <div className="user-settings">
@@ -178,9 +225,10 @@ export const UserSettings = ({ user }) => {
                 type="date"
                 id="DOB"
                 name="DOB"
-                value={userData.dateOfBirth}
+                value={userData.dob}
                 onChange={handleChange}
               />
+              <p>her{userData.dob}</p>
             </div>
             <div className="user-form-item">
               <label htmlFor="sex">Sex</label>
@@ -190,15 +238,23 @@ export const UserSettings = ({ user }) => {
                 value={userData.sex}
                 onChange={handleChange}
               >
-                <option value="selectuser">
-                  --sex--
-                </option>
+                <option value="selectuser">--sex--</option>
                 <option value="student">Male</option>
                 <option value="non-student">Female</option>
               </select>
             </div>
+            <div className="user-form-item">
+              <label htmlFor="DOB">Profile Picture</label>
+              <input type="file" onChange={handleFileChange} />
+              <p>{profileError}</p>
+            </div>
+            <button onSubmit={handleSubmitProfilePic}>submit</button>
           </div>
-          <button type="submit" onClick={handleUpdate} className="update-btn-user">
+          <button
+            type="submit"
+            onClick={handleUpdate}
+            className="update-btn-user"
+          >
             Update
           </button>
           <div className="user-settings-line2">
