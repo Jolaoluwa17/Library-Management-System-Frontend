@@ -76,6 +76,7 @@ function App() {
         <Routes></Routes>
         <AdminContextProvider>
           <Routes>
+            <Route path="/admin-login" element={<AdminLogin />} />
             <Route element={admin ? <Admin admin={admin} /> : <AdminLogin />}>
               <Route path="/dashboard" element={<Dashboard admin={admin} />} />
               <Route path="/settings" element={<Settings admin={admin} />} />
@@ -116,7 +117,6 @@ function App() {
         <StudentContextProvider>
           <NonStudentContextProvider>
             <Routes>
-              <Route path="/admin-login" element={<AdminLogin />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/" element={<LandingPage />} />

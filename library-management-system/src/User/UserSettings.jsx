@@ -27,8 +27,8 @@ export const UserSettings = ({ user }) => {
     setProfilePic(e.target.files[0]);
   };
 
-  const handleSubmitProfilePic = async (e) => {
-    e.preventDefault();
+  const handleSubmitProfilePic = async (evnt) => {
+    evnt.preventDefault();
     setProfileError(false);
     try {
       const formData = new FormData();
@@ -45,7 +45,7 @@ export const UserSettings = ({ user }) => {
         formData,
         config
       );
-      setProfilePic(null)
+      setProfilePic(null);
       alert("Profile pic uploaded successfully");
       console.log(res);
       window.location.reload();
@@ -67,7 +67,7 @@ export const UserSettings = ({ user }) => {
     const { name, value } = event.target;
     setUserData((prevData) => ({ ...prevData, [name]: value }));
   };
-
+console.log(user);
   const handleUpdate = (event) => {
     event.preventDefault();
     //update user data in API using axios.put
@@ -110,14 +110,15 @@ export const UserSettings = ({ user }) => {
   const [completeRegistration, setCompleteRegistration] = useState("");
 
   useEffect(() => {
-    userData.address === "" ||
-      userData.dateOfBirth === "" ||
-      userData.sex === ""
+    userData.address === null ||
+    userData.dob === null ||
+    userData.sex === null
       ? setCompleteRegistration(true)
       : setCompleteRegistration(false);
   }, []);
 
   console.log(userData.dob);
+  console.log(userData.sex);
 
   return (
     <div className="user-settings">
@@ -175,6 +176,7 @@ export const UserSettings = ({ user }) => {
                 name="email"
                 value={userData.email}
                 onChange={handleChange}
+                disabled
               />
             </div>
             <div className="user-form-item">
@@ -230,12 +232,6 @@ export const UserSettings = ({ user }) => {
                 <option value="female">Female</option>
               </select>
             </div>
-            <div className="user-form-item">
-              <label>Profile Picture</label>
-              <input type="file" onChange={handleFileChange} accept=".jpg,.jpeg,.png,.gif" />
-              <p>{profileError}</p>
-            </div>
-            <button onSubmit={handleSubmitProfilePic}>submit</button>
           </div>
           <button
             type="submit"
@@ -248,6 +244,28 @@ export const UserSettings = ({ user }) => {
             <hr />
           </div>
         </form>
+
+        <div className="upload-profile-pic">
+          <div className="upload-profile-picture-header">
+            <h4>Profile Picture</h4>
+            <p>Please add a profile picture for identification.</p>
+          </div>
+          <form action="">
+            <div className="user-form-item">
+              <label>Profile Picture</label>
+              <input
+                type="file"
+                onChange={handleFileChange}
+                accept=".jpg,.jpeg,.png,.gif"
+              />
+              <p>{profileError}</p>
+            </div>
+            <button onSubmit={handleSubmitProfilePic}>Add Profile Picture</button>
+          </form>
+          <div className="user-settings-line3">
+            <hr />
+          </div>
+        </div>
 
         <div className="user-change-password">
           <div className="change-password-header">

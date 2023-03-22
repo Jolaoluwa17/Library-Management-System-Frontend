@@ -10,6 +10,7 @@ import { useState } from "react";
 
 export const LibraryCard = ({ user }) => {
   const [isSingle, setIsSingle] = useState("false");
+  console.log(user);
   return (
     <div className="library-card-container">
       <div className="library-card-header">
@@ -64,20 +65,26 @@ export const LibraryCard = ({ user }) => {
                 </div>
                 <div className="card-holder-info">
                   <div className="card-holder card-holder-name">
-                    <b>Id: </b>#111011
+                    <b>Id: </b>{user._id}
                   </div>
                   <div className="card-holder library-id">
-                    <b>Name: </b>Olusanya Jolaoluwa Oluwapelumi
+                    <b>Name: </b>{user.username}
                   </div>
                   <div className="card-holder address-card-holder">
-                    <b>Address: </b>24 Lanre Awolokun Street Gbagada phase 2
+                    <b>Address: </b>{user.address}
                   </div>
                   <div className="card-holder dob-card-holder">
-                    <b>D.O.B: </b>17th July 2003
+                    <b>D.O.B: </b>{user.dob}
                   </div>
                   <div className="card-holder sex-card-holder">
-                    <b>Sex: </b>Male
+                    <b>Sex: </b>{user.sex}
                   </div>
+                  <div className="card-holder user-type-card-holder">
+                    <b>User Type: </b>{user.userType}
+                  </div>
+                  {user.userType === "student" ? <div className="card-holder user-type-card-holder">
+                    <b>Matric No: </b>{user.matricNo}
+                  </div>: <div></div>}
                 </div>
               </div>
             </div>

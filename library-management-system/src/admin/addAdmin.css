@@ -25,3 +25,6 @@
     color: white;
     border-radius: 5px;
 }
+.add-admin-content .form .form-item-hidden{
+    visibility: hidden;
+}

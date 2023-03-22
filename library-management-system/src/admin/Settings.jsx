@@ -16,7 +16,7 @@ export const Settings = ({ admin }) => {
     email: "",
     userType: "",
     address: "",
-    dateOfBirth: "",
+    dob: "",
     sex: "",
   });
   const admin1 = admin.admin;
@@ -163,6 +163,7 @@ export const Settings = ({ admin }) => {
                 name="email"
                 value={adminData.email}
                 onChange={handleChange}
+                disabled
               />
             </div>
             <div className="user-form-item">

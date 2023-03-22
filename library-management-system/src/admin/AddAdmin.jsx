@@ -9,8 +9,11 @@ export const AddAdmin = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
+  const [dob, setDob] = useState("");
+  const [sex, setSex] = useState("");
+  const [address, setAddress] = useState("");
   const [error, setError] = useState(false);
-  const [userType, setUser] = useState("");
+  const [userType] = useState("");
   const [confirm, setConfirm] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -21,8 +24,11 @@ export const AddAdmin = () => {
         username,
         email,
         password,
-        userType,
+        userType: "admin",
         phoneNo,
+        dob,
+        sex,
+        address,
       });
       res.data && setConfirm(true);
     } catch (err) {
@@ -34,6 +40,9 @@ export const AddAdmin = () => {
     setConfirm(false);
     setError(false);
   }, 3000);
+
+  console.log(dob);
+  console.log(userType);
 
   return (
     <div className="add-admin">
@@ -87,6 +96,36 @@ export const AddAdmin = () => {
               />
             </div>
             <div className="form-item">
+              <label htmlFor="">Date of Birth</label> <br />
+              <input
+                type="date"
+                id="dob"
+                onChange={(e) => setDob(e.target.value)}
+              />
+            </div>
+            <div className="form-item">
+              <label htmlFor="">Address</label> <br />
+              <input
+                type="text"
+                id="address"
+                onChange={(e) => setAddress(e.target.value)}
+              />
+            </div>
+            <div className="form-item">
+              <label htmlFor="">Sex</label> <br />
+              <select
+                name="sex"
+                id="sex"
+                className="sex"
+                onChange={(e) => setSex(e.target.value)}
+              >
+                <option>--Please confirm the admin sex--</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            {/* form is hidden */}
+            {/* <div className="form-item">
               <label htmlFor="">User Type</label> <br />
               <select
                 name="user-select"
@@ -94,10 +133,9 @@ export const AddAdmin = () => {
                 className="user-select"
                 onChange={(e) => setUser(e.target.value)}
               >
-                <option>--Please confirm the user--</option>
                 <option value="admin">Admin</option>
               </select>
-            </div>
+            </div> */}
           </div>
           <div className="admin-submit-btn">
             <button type="submit">Submit</button>
