@@ -52,7 +52,6 @@ export const Settings = ({ admin }) => {
     setError(false);
     if (newPassword !== confirmNewPassword) {
       setError("Passwords do not match. Please Try Again");
-      console.log(error);
     } else {
       try {
         const res = await axios.post(`${config.baseURL}/user/change-password`, {
@@ -63,7 +62,7 @@ export const Settings = ({ admin }) => {
         res.data && window.location.reload();
       } catch (err) {
         setError(err);
-        console.log(err, error);
+        console.log(err);
       }
     }
   };
@@ -76,8 +75,8 @@ export const Settings = ({ admin }) => {
 
   useEffect(() => {
     adminData.address === "" ||
-    adminData.dateOfBirth === "" ||
-    adminData.sex === ""
+      adminData.dateOfBirth === "" ||
+      adminData.sex === ""
       ? setCompleteRegistration(true)
       : setCompleteRegistration(false);
   }, []);
@@ -128,6 +127,7 @@ export const Settings = ({ admin }) => {
           </div>
         )}
       </div>
+
       <div className="user-settings-content">
         <form action="#">
           <div className="personal-information">
@@ -203,6 +203,7 @@ export const Settings = ({ admin }) => {
             <hr />
           </div>
         </form>
+        
         <div className="user-change-password">
           <div className="change-password-header">
             <h4>Change Password</h4>
@@ -273,7 +274,7 @@ export const Settings = ({ admin }) => {
             <div className="category-table">
               <div className="table-title">Category Table</div>
               <div className="category-table-one">
-              <div className="category-table-title">
+                <div className="category-table-title">
                   <div className="category-name-container">category name</div>
                   {/* <div className="category-del-btn-container">status</div> */}
                 </div>

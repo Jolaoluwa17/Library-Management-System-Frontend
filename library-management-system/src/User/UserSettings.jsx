@@ -20,38 +20,38 @@ export const UserSettings = ({ user }) => {
     sex: "",
   });
 
-  const [profileError, setProfileError] = useState("");
-  const [profilePic, setProfilePic] = useState(null);
+  const [file, setFile] = useState(null);
 
-  const handleFileChange = (e) => {
-    setProfilePic(e.target.files[0]);
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
   };
 
-  const handleSubmitProfilePic = async (evnt) => {
-    evnt.preventDefault();
-    setProfileError(false);
+  const handleRemoveFile = () => {
+    setFile(null);
+  };
+
+  const [error1, setError1] = useState(false)
+  const handleProfilePic = async (e) => {
+    e.preventDefault();
     try {
       const formData = new FormData();
-      formData.append("profilePic", profilePic);
-
-      const config = {
-        headers: {
-          "content-type": "multipart/form-data",
-        },
-      };
-
-      const res = await axios.post(
-        `${config.baseURL}/user/${user._id}/profilepic`,
+      formData.append("profilePic", file);
+      const response = await axios.post(
+        `${config.baseURL}/user/${user._id}/profilePic`,
         formData,
-        config
-      );
-      setProfilePic(null);
-      alert("Profile pic uploaded successfully");
-      console.log(res);
-      window.location.reload();
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      ); console.log(response);
+      alert("Profile Pic Update successfully");
+      setFile(null);
+      window.location.reload()
     } catch (err) {
-      setProfileError(true);
-      alert("Failed to upload Profile pic");
+      console.log(err);
+      alert("Failed to upload profile pic");
+      setError(err.response.data.message);
     }
   };
 
@@ -67,7 +67,7 @@ export const UserSettings = ({ user }) => {
     const { name, value } = event.target;
     setUserData((prevData) => ({ ...prevData, [name]: value }));
   };
-console.log(user);
+
   const handleUpdate = (event) => {
     event.preventDefault();
     //update user data in API using axios.put
@@ -111,14 +111,14 @@ console.log(user);
 
   useEffect(() => {
     userData.address === null ||
-    userData.dob === null ||
-    userData.sex === null
+      userData.dob === null ||
+      userData.sex === null
       ? setCompleteRegistration(true)
       : setCompleteRegistration(false);
   }, []);
 
-  console.log(userData.dob);
-  console.log(userData.sex);
+  // console.log(userData.dob);
+  // console.log(userData.sex);
 
   return (
     <div className="user-settings">
@@ -250,18 +250,20 @@ console.log(user);
             <h4>Profile Picture</h4>
             <p>Please add a profile picture for identification.</p>
           </div>
-          <form action="">
-            <div className="user-form-item">
-              <label>Profile Picture</label>
-              <input
-                type="file"
-                onChange={handleFileChange}
-                accept=".jpg,.jpeg,.png,.gif"
-              />
-              <p>{profileError}</p>
-            </div>
-            <button onSubmit={handleSubmitProfilePic}>Add Profile Picture</button>
-          </form>
+          {!file ?
+            <>
+              <form onSubmit={handleProfilePic}>
+                <input type="file" accept=".jpg,.jpeg,.png" onChange={handleFileChange}  />
+              </form>
+            </>
+            :
+            <>
+              <p>Selected file: {file.name}</p>
+              <button className="remove-file Create" onClick={handleRemoveFile}>Remove File</button>
+              {error1 && <p className="error">{error1}</p>}
+            </>
+          }
+          <button className="addFile" onClick={handleProfilePic}>Add Profile Pic</button>
           <div className="user-settings-line3">
             <hr />
           </div>

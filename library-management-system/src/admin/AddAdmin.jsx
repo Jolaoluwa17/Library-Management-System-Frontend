@@ -13,26 +13,31 @@ export const AddAdmin = () => {
   const [sex, setSex] = useState("");
   const [address, setAddress] = useState("");
   const [error, setError] = useState(false);
-  const [userType] = useState("");
   const [confirm, setConfirm] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(false);
     try {
-      const res = await axios.post(`${config.baseURL}/auth/register`, {
-        username,
-        email,
-        password,
-        userType: "admin",
-        phoneNo,
-        dob,
-        sex,
-        address,
-      });
-      res.data && setConfirm(true);
+      const response = await axios.post(
+        `${config.baseURL}/auth/register`,
+        {
+          userType: "admin",
+          address,
+          dob,
+          password,
+          email,
+          sex,
+          phoneNo,
+          username
+        }
+      );
+      alert("Admin created successfully");
+      window.location.reload()
+      console.log(response);
     } catch (err) {
-      setError(true);
+      console.log(err);
+      alert("Failed to add Admin");
+      setError(err.response.data.message);
     }
   };
 
@@ -40,9 +45,6 @@ export const AddAdmin = () => {
     setConfirm(false);
     setError(false);
   }, 3000);
-
-  console.log(dob);
-  console.log(userType);
 
   return (
     <div className="add-admin">
