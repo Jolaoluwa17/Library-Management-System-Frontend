@@ -7,10 +7,27 @@ import {
   // BsToggleOn,
 } from "react-icons/bs";
 import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import config from "../config";
 
 export const LibraryCard = ({ user }) => {
   const [isSingle, setIsSingle] = useState("false");
   console.log(user);
+  const [userData, setUserData] = useState({
+    profilePic: "",
+  });
+
+  useEffect(() => {
+    const getUserDetails = async () => {
+      const res = await axios.get(`${config.baseURL}/user/${user._id}`);
+      setUserData(res.data);
+    };
+    getUserDetails();
+  }, [user._id]);
+  console.log(userData);
+  const image = userData.profilePic.fileUrl;
+
   return (
     <div className="library-card-container">
       <div className="library-card-header">
@@ -59,32 +76,43 @@ export const LibraryCard = ({ user }) => {
               <div className="card-front-content">
                 <div className="card-holder-image">
                   <img
-                    src="https://res.cloudinary.com/dneawlwcp/image/upload/v1677403380/Final%20Year%20Project%20Pictures/joseph-gonzalez-iFgRcqHznqg-unsplash_bafg0u.jpg"
+                    src={image}
                     alt="profile"
                   />
                 </div>
                 <div className="card-holder-info">
                   <div className="card-holder card-holder-name">
-                    <b>Id: </b>{user._id}
+                    <b>Id: </b>
+                    {user._id}
                   </div>
                   <div className="card-holder library-id">
-                    <b>Name: </b>{user.username}
+                    <b>Name: </b>
+                    {user.username}
                   </div>
                   <div className="card-holder address-card-holder">
-                    <b>Address: </b>{user.address}
+                    <b>Address: </b>
+                    {user.address}
                   </div>
                   <div className="card-holder dob-card-holder">
-                    <b>D.O.B: </b>{user.dob}
+                    <b>D.O.B: </b>
+                    {user.dob}
                   </div>
                   <div className="card-holder sex-card-holder">
-                    <b>Sex: </b>{user.sex}
+                    <b>Sex: </b>
+                    {user.sex}
                   </div>
                   <div className="card-holder user-type-card-holder">
-                    <b>User Type: </b>{user.userType}
+                    <b>User Type: </b>
+                    {user.userType}
                   </div>
-                  {user.userType === "student" ? <div className="card-holder user-type-card-holder">
-                    <b>Matric No: </b>{user.matricNo}
-                  </div>: <div></div>}
+                  {user.userType === "student" ? (
+                    <div className="card-holder user-type-card-holder">
+                      <b>Matric No: </b>
+                      {user.matricNo}
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
                 </div>
               </div>
             </div>

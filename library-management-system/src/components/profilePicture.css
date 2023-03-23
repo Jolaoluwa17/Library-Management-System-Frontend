@@ -1,0 +1,12 @@
+.profile-picture-container{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: red solid 1px;
+    padding: 5px;
+}
+.profile-picture-container img{
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+}

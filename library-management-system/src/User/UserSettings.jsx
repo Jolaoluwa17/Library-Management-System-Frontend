@@ -4,6 +4,7 @@ import axios from "axios";
 import "./userSettings.css";
 import config from "../config";
 import { MdReportGmailerrorred } from "react-icons/md";
+import ProfilePicture from "../components/ProfilePicture";
 
 export const UserSettings = ({ user }) => {
   const [oldPassword, setOldPassword] = useState("");
@@ -255,6 +256,7 @@ export const UserSettings = ({ user }) => {
               <form onSubmit={handleProfilePic}>
                 <input type="file" accept=".jpg,.jpeg,.png" onChange={handleFileChange}  />
               </form>
+              <ProfilePicture  user={user}/>
             </>
             :
             <>

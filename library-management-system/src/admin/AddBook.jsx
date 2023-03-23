@@ -21,22 +21,31 @@ export const AddBook = () => {
   const [category, setCategory] = useState("");
   const [publisher, setPublisher] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
   const [status, setStatus] = useState("");
   const [error, setError] = useState(false);
 
+
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
+  };
   const handleSubmit = async (e) => {
     e.prevent.Default();
     setError(false);
     try {
-      const res = await axios.post(`${config.baseURL}/book`, {
+      const formData = new FormData();
+      formData.append("image", file);
+      const res = await axios.post(`${config.baseURL}/book`, formData, {
         title,
         author,
         year,
         category,
         publisher,
         description,
-        status,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
       res.data && window.location.reload();
     } catch (err) {
@@ -63,7 +72,7 @@ export const AddBook = () => {
                   Book Image
                 </label>
                 <br />
-                <input type="file" id="bookImg" />
+                <input type="file" accept=".jpg,.jpeg,.png" onChange={handleFileChange} />
               </div>
               <div className="form-item">
                 <label htmlFor="bookName" className="label-width">
@@ -74,7 +83,7 @@ export const AddBook = () => {
                   type="text"
                   id="bookName"
                   placeholder="The Great Gatsby"
-                  onChange={(e) => setTitle(e.target.value)}
+                  // onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
               <div className="form-item">
@@ -149,13 +158,14 @@ export const AddBook = () => {
                   borderRadius: "5px",
                   // borderColor: "#eeeeee",
                 }}
-                onChange ={(e) => setDescription(e.target.value)}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </div>
+            <button type="submit">Submit</button>
           </form>
         </div>
       </div>
-      <button>Submit</button>
+      
     </div>
   );
 };
