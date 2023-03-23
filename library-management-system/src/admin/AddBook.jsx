@@ -52,6 +52,7 @@ export const AddBook = () => {
       setError(true);
     }
   };
+  console.log(category)
 
   return (
     <div className="AddBook">
@@ -83,7 +84,7 @@ export const AddBook = () => {
                   type="text"
                   id="bookName"
                   placeholder="The Great Gatsby"
-                  // onChange={(e) => setTitle(e.target.value)}
+                  onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
               <div className="form-item">
@@ -123,7 +124,7 @@ export const AddBook = () => {
                 >
                   <option value="selectuser">--Select a category--</option>
                   {categoryData.map((item) => (
-                    <option value={item.name}>{item.name}</option>
+                    <option value={item._id}>{item.name}</option>
                   ))}
                 </select>
               </div>
