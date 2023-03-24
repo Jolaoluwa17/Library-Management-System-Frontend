@@ -23,26 +23,34 @@ export const AddBook = () => {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
   const [error, setError] = useState(false);
-
-
   const [file, setFile] = useState(null);
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
   };
+
+  const handleRemoveFile = () => {
+    setFile(null);
+  };
+
+  const handleButtonClick = () => {
+    document.querySelector('input[type="file"]').click();
+  };
   const handleSubmit = async (e) => {
-    e.prevent.Default();
+    e.preventDefault();
     setError(false);
     try {
       const formData = new FormData();
-      formData.append("image", file);
+      formData.append("title", title);
+      formData.append("author", author);
+      formData.append("year", year);
+      formData.append("category", category);
+      formData.append("publisher", publisher);
+      formData.append("description", description);
+      formData.append("status", status);
+      formData.append("bookPic", file);
       const res = await axios.post(`${config.baseURL}/book`, formData, {
-        title,
-        author,
-        year,
-        category,
-        publisher,
-        description,
+
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -52,7 +60,6 @@ export const AddBook = () => {
       setError(true);
     }
   };
-  console.log(category)
 
   return (
     <div className="AddBook">
@@ -66,14 +73,25 @@ export const AddBook = () => {
             <h2>Book Information</h2>
             <p>Please input the information of the specific book.</p>
           </div>
-          <form action="#" onSubmit={handleSubmit}>
+          <form >
             <div className="form">
               <div className="form-item">
                 <label htmlFor="bookImg" className="label-width">
                   Book Image
                 </label>
                 <br />
-                <input type="file" accept=".jpg,.jpeg,.png" onChange={handleFileChange} />
+                {!file ?
+                  <>
+                    <input type="file" accept=".jpg,.png,.jpeg" onChange={handleFileChange} style={{ display: 'none' }} />
+                    <button className="addFile" onClick={handleButtonClick}>+ Add File</button>
+                  </>
+                  :
+                  <>
+                    <p>Selected file: {file.name}</p>
+                    <button className="remove-file Create" onClick={handleRemoveFile}>Remove File</button>
+                    {error && <p className="error">{error}</p>}
+                  </>
+                }
               </div>
               <div className="form-item">
                 <label htmlFor="bookName" className="label-width">
@@ -124,7 +142,7 @@ export const AddBook = () => {
                 >
                   <option value="selectuser">--Select a category--</option>
                   {categoryData.map((item) => (
-                    <option value={item._id}>{item.name}</option>
+                    <option value={item._id} key={item._id}>{item.name}</option>
                   ))}
                 </select>
               </div>
@@ -162,11 +180,11 @@ export const AddBook = () => {
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
-            <button type="submit">Submit</button>
+            <button onClick={handleSubmit}>Submit</button>
           </form>
         </div>
       </div>
-      
+
     </div>
   );
 };
