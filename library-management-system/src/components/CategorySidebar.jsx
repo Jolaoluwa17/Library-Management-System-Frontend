@@ -1,81 +1,44 @@
-import React from 'react'
-import {  BiBrain, BiChurch } from "react-icons/bi";
+import React from "react";
+import { BiBrain, BiChurch } from "react-icons/bi";
 import { GrCloudSoftware } from "react-icons/gr";
 import { GiMaterialsScience, GiPaintBucket, GiBookmark } from "react-icons/gi";
 import { MdHistoryEdu, MdComputer } from "react-icons/md";
 import { TbLanguage } from "react-icons/tb";
 import { BsCloudDownload } from "react-icons/bs";
-import { Link } from 'react-router-dom';
-import "../User/library.css"
+import { Link } from "react-router-dom";
+import "../User/library.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import config from "../config";
 
 export const CategorySidebar = () => {
+  const [categoryData, setCatetegoryData] = useState([]);
+  useEffect(() => {
+    const fetchCategoryData = async () => {
+      const res = await axios.get(`${config.baseURL}/category`);
+      setCatetegoryData(res.data);
+    };
+    fetchCategoryData();
+  }, []);
+
+
   return (
     <div className="category-sidebar">
-        <div className="first-section-library">
-          <Link to="/categorySidebarResult" style={{ color: "black" }}>
+      <div className="first-section-library">
+        {categoryData.map((item) => (
+          <Link to={`/test?name=${item.name}`} style={{ color: "black" }}>
             <div className="sidebar-content">
               <div className="sidebar-content-icon">
                 <MdComputer />
               </div>
-              Computer Science
+              <p key={item._id} className="category-value">
+                {item.name}
+              </p>
             </div>
-            </Link>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <BiBrain />
-              </div>
-              Philosophy & Psychology
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <BiChurch />
-              </div>
-              Religion
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <GrCloudSoftware />
-              </div>
-              Social Sciences
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <TbLanguage />
-              </div>
-              Language
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <GiMaterialsScience />
-              </div>
-              Science
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <BsCloudDownload />
-              </div>
-              Technology & Applied Science
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <GiPaintBucket />
-              </div>
-              Arts and Recreation
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <GiBookmark />
-              </div>
-              Literature
-            </div>
-            <div className="sidebar-content">
-              <div className="sidebar-content-icon">
-                <MdHistoryEdu />
-              </div>
-              History & Geography
-            </div>
-          </div>
+          </Link>
+        ))}
+      </div>
     </div>
-  )
+  );
 };
 export default CategorySidebar;

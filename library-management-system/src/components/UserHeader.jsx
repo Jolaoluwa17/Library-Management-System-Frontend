@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 import "../User/library.css";
+import config from "../config";
 
 export const UserHeader = ({ user }) => {
   const [isCategorySidebar, setIsCategorySidebar] = useState("false");
@@ -17,7 +18,7 @@ export const UserHeader = ({ user }) => {
 
   useEffect(() => {
     const fetchPendingData = async () => {
-      const res = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+      const res = await axios.get(`${config.baseURL}/book`);
       setPendingData(res.data);
     };
     fetchPendingData();
@@ -30,7 +31,7 @@ export const UserHeader = ({ user }) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
     const newFilter = pendingData.filter((value) => {
-      return value.name.toLowerCase().includes(searchWord.toLowerCase());
+      return value.title.toLowerCase().includes(searchWord.toLowerCase());
     });
 
     if (searchWord === "") {
@@ -72,9 +73,9 @@ export const UserHeader = ({ user }) => {
                 return (
                   <Link
                     style={{ color: "black" }}
-                    to={`/test?name=${value.name}`}
+                    to={`/test?title=${value.title}`}
                   >
-                    <p>{value.name} </p>
+                    <p>{value.title} </p>
                   </Link>
                 );
               })}

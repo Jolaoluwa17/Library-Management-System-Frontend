@@ -34,8 +34,14 @@ export const AddBook = () => {
   };
 
   const handleButtonClick = () => {
-    document.querySelector('input[type="file"]').click();
+    // document.querySelector('input[type="file"]').click();
+    // Find the file input element on the page
+    const fileInput = document.querySelector('input[type="file"]');
+
+    // Simulate a click on the file input element to trigger the file selection dialog
+    fileInput.click();
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(false);
@@ -50,12 +56,11 @@ export const AddBook = () => {
       formData.append("status", status);
       formData.append("bookPic", file);
       const res = await axios.post(`${config.baseURL}/book`, formData, {
-
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-      res.data && window.location.reload();
+      res.data && alert("done")
     } catch (err) {
       setError(true);
     }
@@ -73,25 +78,37 @@ export const AddBook = () => {
             <h2>Book Information</h2>
             <p>Please input the information of the specific book.</p>
           </div>
-          <form >
+          <form>
             <div className="form">
               <div className="form-item">
                 <label htmlFor="bookImg" className="label-width">
                   Book Image
                 </label>
                 <br />
-                {!file ?
+                {!file ? (
                   <>
-                    <input type="file" accept=".jpg,.png,.jpeg" onChange={handleFileChange} style={{ display: 'none' }} />
-                    <button className="addFile" onClick={handleButtonClick}>+ Add File</button>
+                    <input
+                      type="file"
+                      accept=".jpg,.png,.jpeg"
+                      onChange={handleFileChange}
+                      style={{ display: "none" }}
+                    />
+                    <button className="addFile" >
+                      + Add File
+                    </button>
                   </>
-                  :
+                ) : (
                   <>
                     <p>Selected file: {file.name}</p>
-                    <button className="remove-file Create" onClick={handleRemoveFile}>Remove File</button>
+                    <button
+                      className="remove-file Create"
+                      onClick={handleRemoveFile}
+                    >
+                      Remove File
+                    </button>
                     {error && <p className="error">{error}</p>}
                   </>
-                }
+                )}
               </div>
               <div className="form-item">
                 <label htmlFor="bookName" className="label-width">
@@ -136,13 +153,14 @@ export const AddBook = () => {
                 <br />
                 <select
                   name="category-select"
-                  id="category-select"
                   className="category-select"
                   onChange={(e) => setCategory(e.target.value)}
                 >
-                  <option value="selectuser">--Select a category--</option>
+                  <option value="">--Select a category--</option>
                   {categoryData.map((item) => (
-                    <option value={item._id} key={item._id}>{item.name}</option>
+                    <option value={item._id} key={item._id}>
+                      {item.name}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -175,16 +193,14 @@ export const AddBook = () => {
                   padding: "10px",
                   borderWidth: "thin",
                   borderRadius: "5px",
-                  // borderColor: "#eeeeee",
                 }}
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
-            <button onClick={handleSubmit}>Submit</button>
+            <button>Submit</button>
           </form>
         </div>
       </div>
-
     </div>
   );
 };

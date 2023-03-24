@@ -5,11 +5,13 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { MdReportGmailerrorred } from "react-icons/md";
 import CategoryTableCard from "../components/CategoryTableCard";
+import AddCategoryPopup from "../components/AddCategoryPopup";
 
 export const Settings = ({ admin }) => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [addNew, setAddNew] = useState(false);
   const [adminData, setAdminData] = useState({
     _id: "",
     username: "",
@@ -75,8 +77,8 @@ export const Settings = ({ admin }) => {
 
   useEffect(() => {
     adminData.address === "" ||
-      adminData.dateOfBirth === "" ||
-      adminData.sex === ""
+    adminData.dateOfBirth === "" ||
+    adminData.sex === ""
       ? setCompleteRegistration(true)
       : setCompleteRegistration(false);
   }, []);
@@ -119,11 +121,7 @@ export const Settings = ({ admin }) => {
             <div className="error-notification">
               <MdReportGmailerrorred style={{ color: "red" }} />
             </div>
-            <p style={{ color: "red" }}>
-              {" "}
-              Please complete your registration in other to use virtual library
-              card
-            </p>
+            <p style={{ color: "red" }}> Please complete your registration.</p>
           </div>
         )}
       </div>
@@ -203,7 +201,7 @@ export const Settings = ({ admin }) => {
             <hr />
           </div>
         </form>
-        
+
         <div className="user-change-password">
           <div className="change-password-header">
             <h4>Change Password</h4>
@@ -256,27 +254,29 @@ export const Settings = ({ admin }) => {
             <p>Please input a new book category to be added</p>
           </div>
           <div className="add-new-category-content">
-            <form action="">
-              <div className="user-form-item">
-                <label htmlFor="category">New Category</label>
-                <input
-                  type="text"
-                  id="category"
-                  placeholder="Thriller"
-                  onChange={(e) => setCategory(e.target.value)}
-                />
-              </div>
-              <div className="submit-catgory">
-                <button onClick={handleSubmitCategory}>Add Category</button>
-              </div>
-            </form>
+            <AddCategoryPopup trigger={addNew} setTrigger={setAddNew}>
+              <form action="">
+                <div className="user-form-item">
+                  <label htmlFor="category">New Category</label>
+                  <input
+                    type="text"
+                    id="category"
+                    onChange={(e) => setCategory(e.target.value)}
+                  />
+                </div>
+                <div className="submit-catgory">
+                  <button onClick={handleSubmitCategory}>Add Category</button>
+                </div>
+              </form>
+            </AddCategoryPopup>
 
             <div className="category-table">
-              <div className="table-title">Category Table</div>
               <div className="category-table-one">
                 <div className="category-table-title">
                   <div className="category-name-container">category name</div>
-                  {/* <div className="category-del-btn-container">status</div> */}
+                  <div className="add-new-category-btn">
+                    <button onClick={() => setAddNew(true)}>Add</button>
+                  </div>
                 </div>
                 <div className="category-data">
                   {categoryData.map((item) => (

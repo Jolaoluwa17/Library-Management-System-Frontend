@@ -50,6 +50,19 @@
     background-color: white;
     border-radius: 10px;
   }
+  .add-category-popup{
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    border-radius: 5px;
+  }
+  .add-category-popup .close-btn{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
   
   .popup2-inner .close-btn {
     position: absolute;

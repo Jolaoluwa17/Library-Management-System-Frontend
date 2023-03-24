@@ -6,20 +6,23 @@ import axios from "axios";
 import { useEffect } from "react";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import config from "../config";
 
 export const Test = ({ user, handleClick }) => {
   const [pendingData, setPendingData] = useState([]);
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const AU = urlParams.get("name");
+  const AU = urlParams.get("title");
+  const AN = urlParams.get("name")
 
   useEffect(() => {
     const fetchPendingData = async () => {
-      const res = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+      const res = await axios.get(`${config.baseURL}/book`);
       setPendingData(res.data);
     };
     fetchPendingData();
   }, []);
+  console.log(pendingData);
 
   const navigate = useNavigate();
   return (
@@ -36,7 +39,7 @@ export const Test = ({ user, handleClick }) => {
       <div className="browse-library-content">
         {pendingData
           .filter((item) => {
-            return item.name.includes(AU);
+            return item.title.includes(AU) || item.category.name.includes(AN);
           })
           .map((item) => (
             <BookCard key={item.id} item={item} handleClick={handleClick} />

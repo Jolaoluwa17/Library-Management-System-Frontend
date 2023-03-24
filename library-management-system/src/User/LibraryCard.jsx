@@ -13,7 +13,6 @@ import config from "../config";
 
 export const LibraryCard = ({ user }) => {
   const [isSingle, setIsSingle] = useState("false");
-  console.log(user);
   const [userData, setUserData] = useState({
     profilePic: "",
   });
@@ -25,7 +24,6 @@ export const LibraryCard = ({ user }) => {
     };
     getUserDetails();
   }, [user._id]);
-  console.log(userData);
   const image = userData.profilePic.fileUrl;
 
   return (

@@ -9,6 +9,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { MdDelete } from "react-icons/md";
+import { BiEdit } from "react-icons/bi";
 
 export const CategoryTableCard = ({ item }) => {
   // const { id, name } = item;
@@ -29,23 +30,18 @@ export const CategoryTableCard = ({ item }) => {
         </div> */}
         <TableContainer>
           <Table aria-label="simple table">
-            <TableHead>
-              {/*  */}
-              {/* <TableRow>
-                <TableCell align="center" style={{ fontSize: "12px" }}>
-                  ID
-                </TableCell>
-                <TableCell align="center" style={{ fontSize: "12px" }}>
-                  Total Books Issued
-                </TableCell>
-              </TableRow> */}
-            </TableHead>
+            <TableHead></TableHead>
             <TableBody>
               <TableRow>
                 <TableCell align="center">{item.name}</TableCell>
                 <TableCell align="center">
+                  <div className="category-edit-btn">
+                    <BiEdit onClick={handleDelete} className="edit"/>
+                  </div>
+                </TableCell>
+                <TableCell align="center">
                   <div className="category-del-btn">
-                    <MdDelete onClick={handleDelete} />
+                    <MdDelete onClick={handleDelete} className="del"/>
                   </div>
                 </TableCell>
               </TableRow>

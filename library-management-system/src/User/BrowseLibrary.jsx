@@ -5,15 +5,15 @@ import { BookCard } from "./BookCard";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
-// import config from "../config";
 import UserHeader from "../components/UserHeader";
+import config from "../config";
 
 export const BrowseLibrary = ({ user, handleClick, cartFull, setCartFull }) => {
   const [pendingData, setPendingData] = useState([]);
 
   useEffect(() => {
     const fetchPendingData = async () => {
-      const res = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+      const res = await axios.get(`${config.baseURL}/book`);
       setPendingData(res.data);
     };
     fetchPendingData();
@@ -25,13 +25,8 @@ export const BrowseLibrary = ({ user, handleClick, cartFull, setCartFull }) => {
       <UserHeader  user={user}/>
       <div className="browse-library-content">
         {pendingData
-          // .filter((item) => {
-          //   return search.toLowerCase() === ""
-          //     ? item
-          //     : item.authour.toLowerCase().includes(search);
-          // })
           .map((item) => (
-            <BookCard key={item.id} item={item} handleClick = {handleClick} cartFull = {cartFull} setCartFull={setCartFull} />
+            <BookCard item={item} handleClick = {handleClick} cartFull = {cartFull} setCartFull={setCartFull} />
           ))}
       </div>
     </div>

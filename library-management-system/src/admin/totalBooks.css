@@ -50,11 +50,11 @@
   height: 350px;
   margin-bottom: 1%;
 }
-.book-cover .book  img {
+.book-cover .book img {
   width: 200px;
   height: 300px;
 }
-.book-cover .book:hover img{
+.book-cover .book:hover img {
   margin-top: -5px;
   transition: all 0.4s ease;
   filter: grayscale(100%);
@@ -63,28 +63,48 @@
 }
 .book-cover .book-title {
   margin-left: 20%;
+  display: flex;
+  width: 100px;
+  justify-content: space-between;
 }
-.book-cover .book span{
+.book-cover .book span {
   position: relative;
   top: -165px;
   left: 52px;
   display: none;
-  
 }
 .book-cover .book {
   width: 200px;
   height: 300px;
 }
-.book-cover .book:hover span{
+.book-cover .book:hover span {
   display: block;
   margin-top: -5px;
   transition: all 0.4s ease;
 }
-.book span button{
+.book span button {
   padding: 10px;
   border: none;
   background-color: #28b498;
   color: white;
   cursor: pointer;
 }
-
+.del-book-btn button {
+  padding: 10px;
+  border: none;
+  background-color: red !important;
+  color: white;
+  cursor: pointer;
+}
+.update-book-btn{
+  margin-top: 3%;
+}
+.edit {
+  display: block;
+}
+.edit2 {
+  display: none;
+}
+.book-title .edit {
+  font-size: 25px;
+}
