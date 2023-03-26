@@ -11,113 +11,22 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Link } from "react-router-dom";
 
-export const NewBooks = () => {
+export const NewBooks = ({ item }) => {
+  const { title, author, status } = item;
   return (
-    <div className="cont">
-      <div className="table-container">
-        <TableContainer>
-          <Table aria-label="simple table">
-            <TableHead>
-              <h3 className="table-container-title">New Books</h3>
-              <TableRow>
-                <TableCell></TableCell>
-                <TableCell align="center" style={{ fontSize: "12px" }}>
-                  ID
-                </TableCell>
-                <TableCell align="center" style={{ fontSize: "12px" }}>
-                  Issue Date
-                </TableCell>
-                <TableCell align="center" style={{ fontSize: "12px" }}>
-                  Expiry Date
-                </TableCell>
-                <TableCell align="center"></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                <TableCell>
-                  {" "}
-                  <div className="new-members-name-card">
-                    <FaBook className="books-icon" />
-                    <h3>Book Name 1</h3>
-                  </div>
-                </TableCell>
-                <TableCell align="center">#B12</TableCell>
-                <TableCell align="center">2023-07-10</TableCell>
-                <TableCell align="center">2023-07-10</TableCell>
-                <TableCell align="center">
-                  <BsThreeDots className="view-icon" />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  {" "}
-                  <div className="new-members-name-card">
-                    <FaBook className="books-icon" />
-                    <h3>Book Name 1</h3>
-                  </div>
-                </TableCell>
-                <TableCell align="center">#B12</TableCell>
-                <TableCell align="center">2023-07-10</TableCell>
-                <TableCell align="center">2023-07-10</TableCell>
-                <TableCell align="center">
-                  <BsThreeDots className="view-icon" />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  {" "}
-                  <div className="new-members-name-card">
-                    <FaBook className="books-icon" />
-                    <h3>Book Name 1</h3>
-                  </div>
-                </TableCell>
-                <TableCell align="center">#B12</TableCell>
-                <TableCell align="center">2023-07-10</TableCell>
-                <TableCell align="center">2023-07-10</TableCell>
-                <TableCell align="center">
-                  <BsThreeDots className="view-icon" />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  {" "}
-                  <div className="new-members-name-card">
-                    <FaBook className="books-icon" />
-                    <h3>Book Name 1</h3>
-                  </div>
-                </TableCell>
-                <TableCell align="center">#B12</TableCell>
-                <TableCell align="center">2023-07-10</TableCell>
-                <TableCell align="center">2023-07-10</TableCell>
-                <TableCell align="center">
-                  <BsThreeDots className="view-icon" />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  {" "}
-                  <div className="new-members-name-card">
-                    <FaBook className="books-icon" />
-                    <h3>Book Name 1</h3>
-                  </div>
-                </TableCell>
-                <TableCell align="center">#B12</TableCell>
-                <TableCell align="center">2023-07-10</TableCell>
-                <TableCell align="center">2023-07-10</TableCell>
-                <TableCell align="center">
-                  <BsThreeDots className="view-icon" />
-                </TableCell>
-              </TableRow>
-              <Link to="/totalbooks">
-                <div className="list-all-books">
-                  <button className="list-all-btn">List All</button>
-                </div>
-              </Link>
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
+    <div className="new-books">
+      <TableBody>
+        <TableRow>
+          <TableCell>
+            {" "}
+            <div className="new-members-name-card">
+              <FaBook className="books-icon" />
+              <h3>{title}</h3>
+            </div>
+          </TableCell>
+          <TableCell align="center">{author}</TableCell>
+        </TableRow>
+      </TableBody>
     </div>
   );
 };

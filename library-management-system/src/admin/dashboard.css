@@ -13,6 +13,7 @@
     display: flex;
     flex-direction: row;
     margin-top: 2%;
+    width: 95%;
 }
 .total-card{
     height: 150px;
@@ -69,4 +70,24 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 97%;
+}
+.cont-header-container{
+    margin-left: 3.5%;
+}
+.const-header-main{
+    display: flex;
+    width: 410px;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 4%;
+    margin-bottom: 2%;
+}
+.const-header-main-members{
+    display: flex;
+    width: 410px;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 4%;
+    margin-bottom: 2%;
 }

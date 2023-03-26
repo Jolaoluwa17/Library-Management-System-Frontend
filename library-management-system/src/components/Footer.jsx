@@ -7,9 +7,9 @@ import { GrFacebookOption } from "react-icons/gr";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { CgComedyCentral } from "react-icons/cg"
 
-export const Footer = () => {
+export const Footer = ({ contactRef }) => {
   return (
-    <div className="footer">
+    <div className="footer" ref={contactRef}>
       <div className="footer-header">
         <h2>Babcock Library</h2>
       </div>

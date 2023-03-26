@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdOutlineCancel } from "react-icons/md";
 
-export const Header = () => {
+export const Header = ({ scrollToSectionContact, scrollToSectionAbout }) => {
   const [isMobile, setIsMobile] = useState("false");
+
   return (
     <div className="header-container">
       <div className="nav-bar">
@@ -21,20 +22,13 @@ export const Header = () => {
               <div className="close-icon" onClick={() => setIsMobile(true)}>
                 <MdOutlineCancel />
               </div>
-              <Link to="" style={{ color: "rgb(0, 0, 0, 0.5)" }}>
-                <button>HOME</button>
-              </Link>
+              <button>HOME</button>
             </li>
             <li>
-              <Link to="" style={{ color: "rgb(0, 0, 0, 0.5)" }}>
-                <button>CONTACT US</button>
-              </Link>
+              <button onClick={scrollToSectionAbout}>ABOUT US</button>
             </li>
             <li>
-              <Link to="" style={{ color: "rgb(0, 0, 0, 0.5)" }}>
-                {" "}
-                <button>ABOUT US</button>
-              </Link>
+                <button onClick={scrollToSectionContact}>CONTACT US</button>
             </li>
             <li>
               <Link to="/admin-login" style={{ color: "rgb(0, 0, 0, 0.5)" }}>
@@ -50,8 +44,8 @@ export const Header = () => {
           </ul>
         </div>
         <div className="login-btn-container">
-        <Link to="/login">
-          <button>Login</button>
+          <Link to="/login">
+            <button>Login</button>
           </Link>
         </div>
         <div className="burger-icon" onClick={() => setIsMobile(false)}>

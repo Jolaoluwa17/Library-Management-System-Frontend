@@ -12,8 +12,6 @@ import { MdDelete } from "react-icons/md";
 import { BiEdit } from "react-icons/bi";
 
 export const CategoryTableCard = ({ item }) => {
-  // const { id, name } = item;
-  // console.log(item);
 
   const handleDelete = async () => {
     try {
@@ -24,10 +22,6 @@ export const CategoryTableCard = ({ item }) => {
   return (
     <div className="category-table-card">
       <div className="category-container">
-        {/* <div className="category-name">{item.name}</div>
-        <div className="category-del-btn">
-          <button onClick={handleDelete}>Delete</button>
-        </div> */}
         <TableContainer>
           <Table aria-label="simple table">
             <TableHead></TableHead>

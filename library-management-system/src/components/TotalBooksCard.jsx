@@ -4,8 +4,6 @@ import TotalBookDetailsPopup from "../components/TotalBookDetailsPopup";
 import "../admin/totalBooks.css";
 import axios from "axios";
 import config from "../config";
-import { TbEdit } from "react-icons/tb";
-import { FcCancel } from "react-icons/fc";
 
 export const TotalBooksCard = ({ item, bookData, setBookData }) => {
   const { author, bookPic, category, description, publisher, status, title } =
@@ -27,7 +25,7 @@ export const TotalBooksCard = ({ item, bookData, setBookData }) => {
       setBookData(
         bookData.map((book) => (book._id === item._id ? updatedData : book))
       );
-      setAddNew(false);  
+      setAddNew(false);
       window.location.reload();
     } catch (err) {
       console.log(err);
@@ -52,155 +50,153 @@ export const TotalBooksCard = ({ item, bookData, setBookData }) => {
             <button onClick={() => setAddNew(true)}>View Details</button>
           </span>
         </div>
-        <div className="book-title">{item.title}</div>
+        <div className="book-title-main">{item.title}</div>
         <TotalBookDetailsPopup trigger={addNew} setTrigger={setAddNew}>
           <div className="user-view-first-section">
             <div className="view-details-container">
               <div className="view-details-container1">
                 <div className="book-img-holder">
-                  <img src={item.bookPic.fileUrl} alt="" />
+                  <img src={item.bookPic.fileUrl} alt="book image" />
                 </div>
                 <div className="book-details">
                   <div className="book-title">
-                    <h2>{item.title}</h2>
-                    <div className={isVisible ? "edit2" : "edit"}>
-                      <TbEdit onClick={() => setIsVisible(true)} />
-                    </div>
-                    <div className={isVisible ? "edit" : "edit2"}>
-                      <FcCancel onClick={() => setIsVisible(false)} />
-                    </div>
+                    <h2 >
+                      {item.title}
+                    </h2>
                   </div>
-                  <div className={isVisible ? "edit" : "edit2"}>
-                    <h4>Title</h4>
-                    <div className={isVisible ? "edit" : "edit2"}>
-                      <input
-                        type="text"
-                        value={updatedData.title} // replace with the field value you want to update
-                        onChange={(e) => {
-                          const newValue = e.target.value;
-                          setUpdatedData((prevItem) => ({
-                            ...prevItem,
-                            title: newValue,
-                          }));
-                        }}
-                      />
+                  <div className="complete-details">
+                    <div className={isVisible ? "edit book-details-form" : "edit2 book-details-form"}>
+                      <h4>Title</h4>
+                      <div className={isVisible ? "edit" : "edit2"}>
+                        <input
+                          type="text"
+                          value={updatedData.title} // replace with the field value you want to update
+                          onChange={(e) => {
+                            const newValue = e.target.value;
+                            setUpdatedData((prevItem) => ({
+                              ...prevItem,
+                              title: newValue,
+                            }));
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="author">
-                    <h4>Author</h4>
-                    <div className={isVisible ? "edit2" : "edit"}>
-                      {item.author}
+                    <div className="author book-details-form">
+                      <h4>Author</h4>
+                      <div className={isVisible ? "edit2" : "edit"}>
+                        {item.author}
+                      </div>
+                      <div className={isVisible ? "edit" : "edit2"}>
+                        <input
+                          type="text"
+                          placeholder="Position Title"
+                          value={updatedData.author} // replace with the field value you want to update
+                          onChange={(e) => {
+                            const newValue = e.target.value;
+                            setUpdatedData((prevItem) => ({
+                              ...prevItem,
+                              author: newValue,
+                            }));
+                          }}
+                        />
+                      </div>
                     </div>
-                    <div className={isVisible ? "edit" : "edit2"}>
-                      <input
-                        type="text"
-                        placeholder="Position Title"
-                        value={updatedData.author} // replace with the field value you want to update
-                        onChange={(e) => {
-                          const newValue = e.target.value;
-                          setUpdatedData((prevItem) => ({
-                            ...prevItem,
-                            author: newValue,
-                          }));
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="category">
-                    <h4>Category</h4>
-                    <div className={isVisible ? "edit2" : "edit"}>
-                      {item.category.name}
-                    </div>
-                    <div className={isVisible ? "edit" : "edit2"}>
-                      <select
-                        name="user-select"
-                        id="user-select"
-                        className="user-select"
-                        value={updatedData.category}
-                        onChange={(e) => {
-                          const newValue = e.target.value;
-                          setUpdatedData((prevItem) => ({
-                            ...prevItem,
-                            category: newValue,
-                          }));
-                        }}
-                      >
-                        <option value="" style={{ color: "grey" }}>
-                          --select category--
-                        </option>
-                        {categoryData.map((item) => (
-                          <option value={item._id} key={item._id}>
-                            {item.name}
+                    <div className="category book-details-form">
+                      <h4>Category</h4>
+                      <div className={isVisible ? "edit2" : "edit"}>
+                        {item.category.name}
+                      </div>
+                      <div className={isVisible ? "edit" : "edit2"}>
+                        <select
+                          name="user-select"
+                          id="user-select"
+                          className="user-select"
+                          value={updatedData.category._id}
+                          onChange={(e) => {
+                            const newValue = e.target.value;
+                            setUpdatedData((prevItem) => ({
+                              ...prevItem,
+                              category: newValue,
+                            }));
+                          }}
+                        >
+                          <option value="" style={{ color: "grey" }}>
+                            --select category--
                           </option>
-                        ))}
-                      </select>
+                          {categoryData.map((item) => (
+                            <option value={item._id} key={item._id}>
+                              {item.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
-                  </div>
-                  <div className="description">
-                    <h4>Description</h4>
-                    <div className={isVisible ? "edit2" : "edit"}>
-                      {item.description}
+                    <div className="publisher book-details-form">
+                      <h4>Publisher</h4>
+                      <div className={isVisible ? "edit2" : "edit"}>
+                        {item.publisher}
+                      </div>
+                      <div className={isVisible ? "edit" : "edit2"}>
+                        <input
+                          type="text"
+                          placeholder="Position Title"
+                          value={updatedData.publisher} // replace with the field value you want to update
+                          onChange={(e) => {
+                            const newValue = e.target.value;
+                            setUpdatedData((prevItem) => ({
+                              ...prevItem,
+                              publisher: newValue,
+                            }));
+                          }}
+                        />
+                      </div>
                     </div>
-                    <div className={isVisible ? "edit" : "edit2"}>
-                      <input
-                        type="text"
-                        placeholder="Position Title"
-                        value={updatedData.description} // replace with the field value you want to update
-                        onChange={(e) => {
-                          const newValue = e.target.value;
-                          setUpdatedData((prevItem) => ({
-                            ...prevItem,
-                            description: newValue,
-                          }));
-                        }}
-                      />
+                    <div className="status book-details-form">
+                      <h4>Status</h4>
+                      <div className={isVisible ? "edit2" : "edit"}>
+                        {item.status}
+                      </div>
+                      <div className={isVisible ? "edit" : "edit2"}>
+                        <select
+                          name="user-select"
+                          id="user-select"
+                          className="user-select"
+                          value={updatedData.status}
+                          onChange={(e) => {
+                            const newValue = e.target.value;
+                            setUpdatedData((prevItem) => ({
+                              ...prevItem,
+                              status: newValue,
+                            }));
+                          }}
+                        >
+                          <option value="" style={{ color: "grey" }}>
+                            --select status--
+                          </option>
+                          <option value="on-shelf">On-shelf</option>
+                          <option value="off-shelf">Off-shelf</option>
+                        </select>
+                      </div>
                     </div>
-                  </div>
-                  <div className="book-amount">
-                    <h4>Publisher</h4>
-                    <div className={isVisible ? "edit2" : "edit"}>
-                      {item.publisher}
-                    </div>
-                    <div className={isVisible ? "edit" : "edit2"}>
-                      <input
-                        type="text"
-                        placeholder="Position Title"
-                        value={updatedData.publisher} // replace with the field value you want to update
-                        onChange={(e) => {
-                          const newValue = e.target.value;
-                          setUpdatedData((prevItem) => ({
-                            ...prevItem,
-                            publisher: newValue,
-                          }));
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="book-amount">
-                    <h4>Status</h4>
-                    <div className={isVisible ? "edit2" : "edit"}>
-                      {item.status}
-                    </div>
-                    <div className={isVisible ? "edit" : "edit2"}>
-                      <select
-                        name="user-select"
-                        id="user-select"
-                        className="user-select"
-                        value={updatedData.status}
-                        onChange={(e) => {
-                          const newValue = e.target.value;
-                          setUpdatedData((prevItem) => ({
-                            ...prevItem,
-                            status: newValue,
-                          }));
-                        }}
-                      >
-                        <option value="" style={{ color: "grey" }}>
-                          --select status--
-                        </option>
-                        <option value="on-shelf">On-shelf</option>
-                        <option value="off-shelf">Off-shelf</option>
-                      </select>
+                    <div className="description book-details-form">
+                      <h4>Description</h4>
+                      <div className={isVisible ? "edit2" : "edit"}>
+                        {item.description}
+                      </div>
+                      <div className={isVisible ? "edit" : "edit2"}>
+                        <textarea
+                          type="text"
+                          placeholder="Position Title"
+                          value={updatedData.description} // replace with the field value you want to update
+                          onChange={(e) => {
+                            const newValue = e.target.value;
+                            setUpdatedData((prevItem) => ({
+                              ...prevItem,
+                              description: newValue,
+                            }));
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
                   <div
@@ -208,7 +204,15 @@ export const TotalBooksCard = ({ item, bookData, setBookData }) => {
                       isVisible ? "edit2 del-book-btn" : "edit del-book-btn"
                     }
                   >
-                    <button onClick={handleDelete}>Delete</button>
+                    <button onClick={handleDelete} className="del-btn">
+                      Delete
+                    </button>
+                    <button
+                      className="edit-btn"
+                      onClick={() => setIsVisible(true)}
+                    >
+                      Edit
+                    </button>
                   </div>
                   <div
                     className={
@@ -223,6 +227,13 @@ export const TotalBooksCard = ({ item, bookData, setBookData }) => {
                       className="update-btn"
                     >
                       Update
+                    </button>
+                    <button
+                      type="submit"
+                      className="cancel-btn"
+                      onClick={() => setIsVisible(false)}
+                    >
+                      Cancel
                     </button>
                   </div>
                 </div>

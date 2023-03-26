@@ -57,17 +57,19 @@ function App() {
   const [cart, setCart] = useState([]);
   const [cartFull, setCartFull] = useState(false);
 
+  const MAX_ITEMS = 5; // Maximum number of items allowed in cart
+
   const handleClickCart = (item) => {
     if (cart.indexOf(item) !== -1) {
       return;
-    } else {
-      if (cart.length > 2) {
-        setCartFull(true);
-        setCart([].length()); //this shows an error. need to fix this.
-      } else {
-        setCart([...cart, item]);
-      }
     }
+
+    if (cart.length === MAX_ITEMS) {
+      setCartFull(true);
+      return;
+    }
+
+    setCart([...cart, item]);
   };
 
   return (

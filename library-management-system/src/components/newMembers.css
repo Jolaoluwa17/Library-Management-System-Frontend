@@ -1,18 +1,22 @@
 .table-container {
   /* background-color: #f5f6fa; */
   background-color: white;
+  width: 50%;
 }
 tbody .MuiTableCell-root {
   background-color: white;
 }
-/* tr{
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-} */
+td{
+  width: 340px;
+  text-align: center;
+  align-items: center;
+}
 .cont {
   padding: 10px;
   /* background-color: #f5f6fa; */
   background-color: white;
-  width: 49.1%;
+  width: 96%;
+  height: 400px;
   margin-top: 0.5%;
   border-radius: 5px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -45,7 +49,6 @@ tbody .MuiTableCell-root {
     justify-content: right;
 }
 .list-all-books{
-    width: 335.5%;
     display: flex;
     justify-content: right;
 }
@@ -63,4 +66,10 @@ tbody .MuiTableCell-root {
 }
 .table-container-title{
     font-weight: 500;
+}
+.table-container-main{
+  height: 265px;
+}
+.table-container-alpha{
+  width: 100%;
 }

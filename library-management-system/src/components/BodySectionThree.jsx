@@ -8,8 +8,8 @@ import Computer from "./Computer";
 import { useState } from "react";
 
 export const BodySectionThree = () => {
-    const [navBar1, setNavBar1] = useState("Arts");
-    const [navBar2, setNavBar2] = useState();
+  const [navBar1, setNavBar1] = useState("Arts");
+  const [navBar2, setNavBar2] = useState();
   return (
     <div className="BodySectionThree" id="ourbooks">
       <div className="bodySectionThree-container">
@@ -27,15 +27,15 @@ export const BodySectionThree = () => {
           </div>
         </div>
         <div className="bodySectionThree-nav-bar">
-            <ul>
-                <li onClick={() => setNavBar1("Arts")}>Arts and Photography</li>
-                <li onClick={() => setNavBar1("Biographies")}>Biographies</li>
-                <li onClick={() => setNavBar1("Business")}>Business</li>
-                <li onClick={() => setNavBar1("Computer")}>Computer & Internet</li>
-            </ul>
+          <ul>
+            <li onClick={() => setNavBar1("Arts")}>Arts and Photography</li>
+            <li onClick={() => setNavBar1("Biographies")}>Biographies</li>
+            <li onClick={() => setNavBar1("Business")}>Business</li>
+            <li onClick={() => setNavBar1("Computer")}>Computer & Internet</li>
+          </ul>
         </div>
         <div className="bodySectionThree-nav-content">
-        {navBar1 === "Arts" && (
+          {navBar1 === "Arts" && (
             <Arts
               active1={navBar1}
               setActive1={setNavBar1}

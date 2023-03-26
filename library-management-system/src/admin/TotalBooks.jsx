@@ -27,10 +27,11 @@ export const TotalBooks = () => {
           <h5>Admin/Book Library</h5>
         </div>
         <div className="search-bar">
-          <input type="search" onChange={(e) => setSearch(e.target.value)} />
-          <div>
+        <div className="search-btn-main">
             <IoSearch className="search-btn" />
           </div>
+          <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Search by name and category" />
+          
         </div>
       </div>
       <div className="total-books-content">
@@ -38,7 +39,7 @@ export const TotalBooks = () => {
           .filter((item) => {
             return search.toLowerCase() === ""
               ? item
-              : item.title.toLowerCase().includes(search);
+              : item.title.toLowerCase().includes(search) || item.category.name.toLowerCase().includes(search);
           })
           .map((item) => (
             <TotalBooksCard key={item._id} item={item} bookData={bookData} setBookData={setBookData} />

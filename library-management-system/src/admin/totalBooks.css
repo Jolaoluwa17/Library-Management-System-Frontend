@@ -12,30 +12,40 @@
   width: 1200px;
 }
 .search-bar {
-  background-color: #d5d5d5;
   height: 40px;
   display: flex;
   margin-left: 28%;
-  border-radius: 20px;
   margin-top: 1%;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .search-bar input {
-  height: 40px;
+  /* height: 40px;
   background-color: #d5d5d5;
   border: none;
   width: 400px;
   border-radius: 20px;
   outline: none;
-  padding-left: 14px;
+  padding-left: 14px; */
+  width: 370px;
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+.search-btn-main{
+  border-radius: 5px;
+  padding: 2px;
 }
 
 .search-btn {
-  margin-top: 10px;
-  margin-right: 10px;
-  color: white;
+  margin-top: 2px;
+  margin-right: 2px;
+  color: black;
   font-size: 20px;
-  cursor: pointer;
 }
 .total-books-content {
   margin-top: 2%;
@@ -62,10 +72,14 @@
   transition: all 0.5s ease-in-out;
 }
 .book-cover .book-title {
-  margin-left: 20%;
+  margin-left: 40%;
   display: flex;
   width: 100px;
   justify-content: space-between;
+  margin-bottom: 2%;
+}
+.book-cover .book-title-main{
+  margin-left: 30%;
 }
 .book-cover .book span {
   position: relative;
@@ -89,15 +103,50 @@
   color: white;
   cursor: pointer;
 }
-.del-book-btn button {
+.del-book-btn {
+  display: flex;
+  flex-direction: row;
+  margin-top: 3%;
+  width: 111%;
+}
+.update-book-btn {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: row;
+}
+.del-book-btn .del-btn {
   padding: 10px;
   border: none;
-  background-color: red !important;
+  background-color: red;
   color: white;
   cursor: pointer;
+  width: 45%;
+  float: left;
 }
-.update-book-btn{
+.del-book-btn .edit-btn {
+  width: 45%;
+  float: right;
+  cursor: pointer;
+  background-color: #ffbf05;
+}
+.update-book-btn {
   margin-top: 3%;
+  width: 111%;
+  display: flex;
+  flex-direction: row;
+}
+.update-book-btn .update-btn {
+  width: 45%;
+  float: left;
+  cursor: pointer;
+}
+.update-book-btn .cancel-btn {
+  width: 45%;
+  float: right;
+  cursor: pointer;
+}
+.update-book-btn .cancel-btn {
+  background-color: red;
 }
 .edit {
   display: block;
@@ -107,4 +156,30 @@
 }
 .book-title .edit {
   font-size: 25px;
+}
+.complete-details {
+  height: 220px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.book-details-form {
+  width: 150px;
+}
+.complete-details input,
+.complete-details select {
+  padding: 5px;
+  border-radius: 7px;
+  width: 190px;
+  border-width: 1px;
+}
+.complete-details textarea {
+  padding: 5px;
+  width: 190px;
+  height: 80px;
+  border-radius: 7px;
+  resize: none;
+}
+.complete-details .author {
+  margin: 0 !important;
 }

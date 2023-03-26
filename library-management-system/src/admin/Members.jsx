@@ -58,7 +58,7 @@ export const Members = () => {
         <div className="members-table-header">
           
         </div>
-        <div className="table-container">
+        <div className="table-container-alpha">
           {pendingData
             .filter((item) => {
               return search.toLowerCase() === ""

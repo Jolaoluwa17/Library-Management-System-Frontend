@@ -6,111 +6,26 @@ import { BsThreeDots } from "react-icons/bs";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
+
 import TableRow from "@mui/material/TableRow";
 import { Link } from "react-router-dom";
 
-export const NewMembers = () => {
-
+export const NewMembers = ({ item }) => {
+  const { email, username, userType } = item;
   return (
-    <div className="cont">
-      <div className="table-container">
-        <TableContainer>
-          <Table aria-label="simple table">
-            <TableHead>
-              <h3 className="table-container-title">New Members</h3>
-              <TableRow>
-                <TableCell></TableCell>
-                <TableCell align="center" style={{ fontSize: "12px" }}>
-                  ID
-                </TableCell>
-                <TableCell align="center" style={{ fontSize: "12px" }}>
-                  Total Books Issued
-                </TableCell>
-                <TableCell align="center"></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                <TableCell>
-                  {" "}
-                  <div className="new-members-name-card">
-                    <IoMdContact className="members-icon" />
-                    <h3>Olusanya Jolaoluwa</h3>
-                  </div>
-                </TableCell>
-                <TableCell align="center">#1234</TableCell>
-                <TableCell align="center">1</TableCell>
-                <TableCell align="center">
-                  <BsThreeDots className="view-icon" />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  {" "}
-                  <div className="new-members-name-card">
-                    <IoMdContact className="members-icon" />
-                    <h3>Olusanya Jolaoluwa</h3>
-                  </div>
-                </TableCell>
-                <TableCell align="center">#1234</TableCell>
-                <TableCell align="center">1</TableCell>
-                <TableCell align="center">
-                  <BsThreeDots className="view-icon" />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  {" "}
-                  <div className="new-members-name-card">
-                    <IoMdContact className="members-icon" />
-                    <h3>Olusanya Jolaoluwa</h3>
-                  </div>
-                </TableCell>
-                <TableCell align="center">#1234</TableCell>
-                <TableCell align="center">1</TableCell>
-                <TableCell align="center">
-                  <BsThreeDots className="view-icon" />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  {" "}
-                  <div className="new-members-name-card">
-                    <IoMdContact className="members-icon" />
-                    <h3>Olusanya Jolaoluwa</h3>
-                  </div>
-                </TableCell>
-                <TableCell align="center">#1234</TableCell>
-                <TableCell align="center">1</TableCell>
-                <TableCell align="center">
-                  <BsThreeDots className="view-icon" />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  {" "}
-                  <div className="new-members-name-card">
-                    <IoMdContact className="members-icon" />
-                    <h3>Olusanya Jolaoluwa</h3>
-                  </div>
-                </TableCell>
-                <TableCell align="center">#1234</TableCell>
-                <TableCell align="center">1</TableCell>
-                <TableCell align="center">
-                  <BsThreeDots className="view-icon" />
-                </TableCell>
-              </TableRow>
-              <Link to="/members">
-                <div className="list-all">
-                  <button className="list-all-btn">List All</button>
-                </div>
-              </Link>
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
+    <div>
+      <TableBody>
+        <TableRow>
+          <TableCell>
+            {" "}
+            <div className="new-members-name-card">
+              <IoMdContact className="members-icon" />
+              <h3>{username}</h3>
+            </div>
+          </TableCell>
+          <TableCell align="center">{email}</TableCell>
+        </TableRow>
+      </TableBody>
     </div>
   );
 };
