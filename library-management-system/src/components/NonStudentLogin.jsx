@@ -10,6 +10,7 @@ import config from "../config";
 import { useState } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { BiError } from "react-icons/bi";
+import { RotatingSquare } from "react-loader-spinner";
 
 const NonStudentLogin = () => {
   const userRef = useRef();
@@ -67,11 +68,7 @@ const NonStudentLogin = () => {
               <i className="login-user-icon">
                 <FaRegUserCircle />
               </i>
-              <input
-                type="email"
-                placeholder="Email"
-                ref={userRef}
-              />
+              <input type="email" placeholder="Email" ref={userRef} />
             </div>
             <div className="form-item">
               <i className="login-user-icon">
@@ -94,8 +91,8 @@ const NonStudentLogin = () => {
             </div>
 
             <div className="sign-in-btn">
-               {/* Conditionally render error message */}
-               {errorMessage && (
+              {/* Conditionally render error message */}
+              {errorMessage && (
                 <div
                   className="error-message"
                   style={{
@@ -105,12 +102,22 @@ const NonStudentLogin = () => {
                     marginBottom: "2%",
                   }}
                 >
-                  <BiError style={{paddingTop: "0.5%", fontSize: "20px"}} /> {errorMessage}
+                  <BiError style={{ paddingTop: "0.5%", fontSize: "20px" }} />{" "}
+                  {errorMessage}
                 </div>
               )}
-              <button type="submit" disabled={isFetching}>
-                Sign in
-              </button>
+              {isFetching ? (
+                <RotatingSquare
+                  type="TailSpin"
+                  color="#28b498"
+                  height={30}
+                  width={700}
+                />
+              ) : (
+                <button type="submit" disabled={isFetching}>
+                  Sign in
+                </button>
+              )}
             </div>
             <p className="signup_link">
               Not registered yet?

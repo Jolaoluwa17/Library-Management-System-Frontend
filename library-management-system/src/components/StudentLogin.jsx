@@ -10,6 +10,7 @@ import axios from "axios";
 import config from "../config";
 import { useState } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { RotatingSquare } from "react-loader-spinner";
 
 const Studentlogin = () => {
   const userRef = useRef();
@@ -105,12 +106,22 @@ const Studentlogin = () => {
                     marginBottom: "2%",
                   }}
                 >
-                  <BiError style={{paddingTop: "0.5%", fontSize: "20px"}} /> {errorMessage}
+                  <BiError style={{ paddingTop: "0.5%", fontSize: "20px" }} />{" "}
+                  {errorMessage}
                 </div>
               )}
-              <button type="submit" disabled={isFetching}>
-                Sign in
-              </button>
+              {isFetching ? (
+                <RotatingSquare
+                  type="TailSpin"
+                  color="#28b498"
+                  height={30}
+                  width={700}
+                />
+              ) : (
+                <button type="submit" disabled={isFetching}>
+                  Sign in
+                </button>
+              )}
             </div>
             <p className="signup_link">
               Not registered yet?

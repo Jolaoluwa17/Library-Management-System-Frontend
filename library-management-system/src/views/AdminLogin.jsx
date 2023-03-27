@@ -8,6 +8,7 @@ import config from "../config";
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { BiError } from "react-icons/bi";
+import { RotatingSquare } from "react-loader-spinner";
 
 export const AdminLogin = () => {
   const userRef = useRef();
@@ -30,7 +31,6 @@ export const AdminLogin = () => {
       setErrorMessage("Incorrect username or password");
     }
   };
-
 
   // To view password
   const [passwordType, setPasswordType] = useState("password");
@@ -88,20 +88,32 @@ export const AdminLogin = () => {
               </div>
               <div className="admin-sign-in-btn">
                 {/* Conditionally render error message */}
-               {errorMessage && (
-                <div
-                  className="error-message"
-                  style={{
-                    color: "red",
-                    marginLeft: "17%",
-                    marginTop: "-4%",
-                    marginBottom: "2%",
-                  }}
-                >
-                  <BiError style={{paddingTop: "0.5%", fontSize: "20px"}} /> {errorMessage}
-                </div>
-              )}
-                <button disabled={isFetching}>Sign in</button>
+                {errorMessage && (
+                  <div
+                    className="error-message"
+                    style={{
+                      color: "red",
+                      marginLeft: "17%",
+                      marginTop: "-4%",
+                      marginBottom: "2%",
+                    }}
+                  >
+                    <BiError style={{ paddingTop: "0.5%", fontSize: "20px" }} />{" "}
+                    {errorMessage}
+                  </div>
+                )}
+                {isFetching ? (
+                  <RotatingSquare
+                    type="TailSpin"
+                    color="#28b498"
+                    height={30}
+                    width={600}
+                  />
+                ) : (
+                  <button disabled={isFetching}>
+                    Sign in
+                  </button>
+                )}
               </div>
             </div>
           </form>
