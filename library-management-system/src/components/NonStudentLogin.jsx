@@ -9,11 +9,13 @@ import axios from "axios";
 import config from "../config";
 import { useState } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { BiError } from "react-icons/bi";
 
 const NonStudentLogin = () => {
   const userRef = useRef();
   const passwordRef = useRef();
   const { dispatch, isFetching } = useContext(nonStudentContext);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +29,7 @@ const NonStudentLogin = () => {
       res.data && window.location.replace("/library");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
+      setErrorMessage("Incorrect username or password");
     }
   };
 
@@ -91,6 +94,20 @@ const NonStudentLogin = () => {
             </div>
 
             <div className="sign-in-btn">
+               {/* Conditionally render error message */}
+               {errorMessage && (
+                <div
+                  className="error-message"
+                  style={{
+                    color: "red",
+                    marginLeft: "21%",
+                    marginTop: "-3%",
+                    marginBottom: "2%",
+                  }}
+                >
+                  <BiError style={{paddingTop: "0.5%", fontSize: "20px"}} /> {errorMessage}
+                </div>
+              )}
               <button type="submit" disabled={isFetching}>
                 Sign in
               </button>

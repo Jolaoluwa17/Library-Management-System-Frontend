@@ -7,11 +7,13 @@ import axios from "axios";
 import config from "../config";
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { BiError } from "react-icons/bi";
 
 export const AdminLogin = () => {
   const userRef = useRef();
   const passwordRef = useRef();
   const { dispatch, isFetching } = useContext(adminContext);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,6 +27,7 @@ export const AdminLogin = () => {
       res.data && window.location.replace("/dashboard");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
+      setErrorMessage("Incorrect username or password");
     }
   };
 
@@ -84,6 +87,20 @@ export const AdminLogin = () => {
                 </i>
               </div>
               <div className="admin-sign-in-btn">
+                {/* Conditionally render error message */}
+               {errorMessage && (
+                <div
+                  className="error-message"
+                  style={{
+                    color: "red",
+                    marginLeft: "17%",
+                    marginTop: "-4%",
+                    marginBottom: "2%",
+                  }}
+                >
+                  <BiError style={{paddingTop: "0.5%", fontSize: "20px"}} /> {errorMessage}
+                </div>
+              )}
                 <button disabled={isFetching}>Sign in</button>
               </div>
             </div>

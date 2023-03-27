@@ -3,6 +3,7 @@ import "../views/Login.css";
 import { Link } from "react-router-dom";
 import { FaRegUserCircle } from "react-icons/fa";
 import { HiOutlineLockClosed } from "react-icons/hi";
+import { BiError } from "react-icons/bi";
 import { useContext, useRef } from "react";
 import { studentContext } from "../components/Context/Context";
 import axios from "axios";
@@ -14,6 +15,7 @@ const Studentlogin = () => {
   const userRef = useRef();
   const passwordRef = useRef();
   const { dispatch, isFetching } = useContext(studentContext);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +29,7 @@ const Studentlogin = () => {
       res.data && window.location.replace("/library");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
+      setErrorMessage("Incorrect username or password");
     }
   };
 
@@ -91,6 +94,20 @@ const Studentlogin = () => {
               </i>
             </div>
             <div className="sign-in-btn">
+              {/* Conditionally render error message */}
+              {errorMessage && (
+                <div
+                  className="error-message"
+                  style={{
+                    color: "red",
+                    marginLeft: "21%",
+                    marginTop: "-3%",
+                    marginBottom: "2%",
+                  }}
+                >
+                  <BiError style={{paddingTop: "0.5%", fontSize: "20px"}} /> {errorMessage}
+                </div>
+              )}
               <button type="submit" disabled={isFetching}>
                 Sign in
               </button>
