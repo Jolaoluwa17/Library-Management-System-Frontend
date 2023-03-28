@@ -108,7 +108,7 @@ export const Dashboard = ({ admin }) => {
                   <Table aria-label="simple table">
                     <TableHead></TableHead>
                     {pendingData.map((item) => (
-                      <NewMembers key={item.id} item={item} />
+                      <NewMembers key={item._id} item={item} />
                     ))}
                   </Table>
                 </TableContainer>
@@ -135,7 +135,7 @@ export const Dashboard = ({ admin }) => {
                   <Table aria-label="simple table">
                     <TableHead></TableHead>
                     {bookData.map((item) => (
-                      <NewBooks key={item.id} item={item} />
+                      <NewBooks key={item._id} item={item} />
                     ))}
                   </Table>
                 </TableContainer>

@@ -4,15 +4,18 @@ import UserHeader from "../components/UserHeader";
 // import CartCard from "../components/CartCard";
 import { Link } from "react-router-dom";
 import RequestPopup from "../components/RequestPopup";
+import axios from "axios";
+import config from "../config";
 
 export const Cart = ({ user, cart, setCart }) => {
   const handleRemove = (id) => {
     const arr = cart.filter((item) => item.id !== id);
     setCart(arr);
   };
-  console.log(cart);
+  // console.log(cart);
   const [addNew, setAddNew] = useState(false);
 
+  //For the date picker
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
@@ -33,6 +36,27 @@ export const Cart = ({ user, cart, setCart }) => {
 
   const handleEndDateChange = (e) => {
     setEndDate(e.target.value);
+  };
+
+  const [error, setError] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${config.baseURL}/request`, {
+        user: user._id,
+        books: cart,
+        loanDate: startDate,
+        returnDate: endDate,
+      });
+      alert("Successfully submitted");
+      window.location.reload();
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+      alert("Failed to submit");
+      setError(err.response.data.message);
+    }
   };
 
   return (
@@ -62,7 +86,7 @@ export const Cart = ({ user, cart, setCart }) => {
           )}
           <article>
             {cart.map((item) => (
-              <div className="cart-card">
+              <div className="cart-card" key={item._id}>
                 <div className="cart-card-container">
                   <div className="cart-book-details-main">
                     <div className="cart-book-img">
@@ -70,11 +94,11 @@ export const Cart = ({ user, cart, setCart }) => {
                     </div>
                     <div className="cart-book-details">
                       <div className="cart-details-main1">
-                        <b>Name of Book: </b>
+                        <b>Title: </b>
                         {item.title}
                       </div>
                       <div className="cart-details-main1">
-                        <b>Name of Authour: </b>
+                        <b>Author: </b>
                         {item.author}
                       </div>
                       <div className="cart-details-main1">
@@ -126,7 +150,7 @@ export const Cart = ({ user, cart, setCart }) => {
               </label>
               <div className="cart-book-list">
                 {cart.map((item) => (
-                  <input type="text" value={item.title} disabled />
+                  <input type="text" value={item.name} key={item._id} disabled />
                 ))}
               </div>
             </div>
@@ -141,6 +165,7 @@ export const Cart = ({ user, cart, setCart }) => {
                 name="datepicker1"
                 onChange={handleStartDateChange}
                 min={currentDate}
+                // onChange = {(e) => setLoanDate(e.target.value)}
               />
             </div>
             <div className="form-item">
@@ -154,11 +179,12 @@ export const Cart = ({ user, cart, setCart }) => {
                 name="datepicker2"
                 onChange={handleEndDateChange}
                 value={endDate}
+                // onChange = {(e) => setReturnDate(e.target.value)}
               />
             </div>
           </div>
           <div className="cart-details-submit-btn">
-            <button>Confirm</button>
+            <button onClick={handleSubmit}>Confirm</button>
           </div>
         </div>
       </RequestPopup>

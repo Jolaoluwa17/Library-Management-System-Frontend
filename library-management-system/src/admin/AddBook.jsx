@@ -88,6 +88,7 @@ export const AddBook = ({ admin }) => {
                 <label htmlFor="bookImg" className="label-width">
                   Book Image
                 </label>
+                <br />
                 {!file ? (
                   <>
                     <input
@@ -96,8 +97,17 @@ export const AddBook = ({ admin }) => {
                       onChange={handleFileChange}
                       style={{ display: "none" }}
                     />
-                    <button className="addFile" onClick={handleButtonClick}>
-                      + Add File
+                    <button
+                      className="addFile"
+                      onClick={handleButtonClick}
+                      style={{
+                        padding: "7px",
+                        paddingLeft: "12px",
+                        paddingRight: "12px",
+                        marginTop: "1%",
+                      }}
+                    >
+                      Add Image
                     </button>
                   </>
                 ) : (
@@ -106,6 +116,13 @@ export const AddBook = ({ admin }) => {
                     <button
                       className="remove-file Create"
                       onClick={handleRemoveFile}
+                      style={{
+                        padding: "7px",
+                        paddingLeft: "12px",
+                        paddingRight: "12px",
+                        marginTop: "1%",
+                        backgroundColor: "red",
+                      }}
                     >
                       Remove File
                     </button>

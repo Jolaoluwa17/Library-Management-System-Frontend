@@ -26,7 +26,7 @@ export const BrowseLibrary = ({ user, handleClick, cartFull, setCartFull }) => {
       <div className="browse-library-content">
         {pendingData
           .map((item) => (
-            <BookCard item={item} handleClick = {handleClick} cartFull = {cartFull} setCartFull={setCartFull} />
+            <BookCard key={item._id} item={item} handleClick = {handleClick} cartFull = {cartFull} setCartFull={setCartFull} />
           ))}
       </div>
     </div>

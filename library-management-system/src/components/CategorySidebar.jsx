@@ -26,7 +26,7 @@ export const CategorySidebar = () => {
     <div className="category-sidebar">
       <div className="first-section-library">
         {categoryData.map((item) => (
-          <Link to={`/test?name=${item.name}`} style={{ color: "black" }}>
+          <Link to={`/test?name=${item.name}`} style={{ color: "black" }} key={item._id}>
             <div className="sidebar-content">
               <div className="sidebar-content-icon">
                 <MdComputer />
