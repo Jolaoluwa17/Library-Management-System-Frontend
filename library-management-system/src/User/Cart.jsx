@@ -1,8 +1,9 @@
-// import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./cart.css";
 import UserHeader from "../components/UserHeader";
 // import CartCard from "../components/CartCard";
 import { Link } from "react-router-dom";
+import RequestPopup from "../components/RequestPopup";
 
 export const Cart = ({ user, cart, setCart }) => {
   const handleRemove = (id) => {
@@ -10,73 +11,157 @@ export const Cart = ({ user, cart, setCart }) => {
     setCart(arr);
   };
   console.log(cart);
+  const [addNew, setAddNew] = useState(false);
+
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
+  const currentDate = new Date().toISOString().slice(0, 10);
+
+  const handleStartDateChange = (e) => {
+    setStartDate(e.target.value);
+    const maxDate = new Date(
+      new Date(e.target.value).getTime() + 14 * 24 * 60 * 60 * 1000
+    )
+      .toISOString()
+      .slice(0, 10);
+    setEndDate("");
+    document.getElementById("datepicker1").setAttribute("min", currentDate);
+    document.getElementById("datepicker2").setAttribute("min", e.target.value);
+    document.getElementById("datepicker2").setAttribute("max", maxDate);
+  };
+
+  const handleEndDateChange = (e) => {
+    setEndDate(e.target.value);
+  };
 
   return (
     <div className="cart">
       <UserHeader user={user} />
 
       <div className="cart-main-container">
-        <div className="cart-content-container"> 
-          {cart.length === 0 && <div className="cart-content-container1">
-            <div className="cart-img">
-              <img
-                src="https://res.cloudinary.com/dneawlwcp/image/upload/v1675916988/Final%20Year%20Project%20Pictures/icons8-shopping-cart-96_nuwk9v.png"
-                alt="cart_image"
-              />
+        <div className="cart-content-container">
+          {cart.length === 0 && (
+            <div className="cart-content-container1">
+              <div className="cart-img">
+                <img
+                  src="https://res.cloudinary.com/dneawlwcp/image/upload/v1675916988/Final%20Year%20Project%20Pictures/icons8-shopping-cart-96_nuwk9v.png"
+                  alt="cart_image"
+                />
+              </div>
+              <div className="cart-header">
+                <h4>Your cart is empty</h4>
+                <h5>Browse our category and find the best books for you</h5>
+              </div>
+              <div className="library-btn">
+                <Link to="/browseLibrary">
+                  <button>GO TO LIBRARY</button>
+                </Link>
+              </div>
             </div>
-            <div className="cart-header">
-              <h4>Your cart is empty</h4>
-              <h5>Browse our category and find the best books for you</h5>
-            </div>
-            <div className="library-btn">
-              <Link to="/browseLibrary">
-                <button>GO TO LIBRARY</button>
-              </Link>
-            </div>
-          </div>}
-            <article>
-              {cart.map((item) => (
-                <div className="cart-card">
-                  <div className="cart-card-container">
-                    <div className="cart-book-details-main">
-                      <div className="cart-book-img">
-                        <img
-                          src="https://res.cloudinary.com/dneawlwcp/image/upload/v1673983055/Final%20Year%20Project%20Pictures/_get_premium_download_high_resolution_imagedesigned_with_EDIT.org_3_ywju0f.jpg"
-                          alt=""
-                        />
-                      </div>
-                      <div className="cart-book-details">
-                        <div className="cart-details-main1">
-                          <b>Name of Book: </b>
-                          {item.name}
-                        </div>
-                        <div className="cart-details-main1">
-                          <b>Name of Authour: </b>Olusanya Jolaoluwa Oluwapelumi
-                        </div>
-                        <div className="cart-details-main1">
-                          <b>Status: </b>On-Shelf
-                        </div>
-                        <div className="cart-details-main1">
-                          <b>No. of Book: </b>5
-                        </div>
-                      </div>
+          )}
+          <article>
+            {cart.map((item) => (
+              <div className="cart-card">
+                <div className="cart-card-container">
+                  <div className="cart-book-details-main">
+                    <div className="cart-book-img">
+                      <img src={item.bookPic.fileUrl} alt="" />
                     </div>
-                    <div className="cart-remove-btn">
-                      <button onClick={() => handleRemove(item.id)}>
-                        Remove
-                      </button>
+                    <div className="cart-book-details">
+                      <div className="cart-details-main1">
+                        <b>Name of Book: </b>
+                        {item.title}
+                      </div>
+                      <div className="cart-details-main1">
+                        <b>Name of Authour: </b>
+                        {item.author}
+                      </div>
+                      <div className="cart-details-main1">
+                        <b>Category: </b>
+                        {item.category.name}
+                      </div>
+                      <div className="cart-details-main1">
+                        <b>Status: </b>
+                        {item.status}
+                      </div>
+                      <div className="cart-details-main1">
+                        <b>No. of Book: </b>
+                        {item.copies}
+                      </div>
                     </div>
                   </div>
+                  <div className="cart-remove-btn">
+                    <button onClick={() => handleRemove(item.id)}>
+                      Remove
+                    </button>
+                  </div>
                 </div>
-              ))}
-            </article>
+              </div>
+            ))}
+          </article>
         </div>
       </div>
       <div className="checkout-btn">
-        <button>Check Out</button>
+        <button onClick={() => setAddNew(true)}>Check Out</button>
       </div>
-      {/* {cart.map((item) => 
-      <div><input type="text" value={item.name} /></div>)} */}
+      <RequestPopup trigger={addNew} setTrigger={setAddNew}>
+        <div className="cart-form">
+          <div className="cart-form-header">
+            <h3>Submittion Form</h3>
+            <p>Please fill the form to submit request</p>
+          </div>
+          <div className="cart-form-details">
+            <div className="form-item">
+              <label htmlFor="">
+                <b>Id</b>
+              </label>
+              <br />
+              <input type="text" value={user._id} disabled />
+            </div>
+            <div className="form-item">
+              <label htmlFor="">
+                {" "}
+                <b> Book's Wanted</b>
+              </label>
+              <div className="cart-book-list">
+                {cart.map((item) => (
+                  <input type="text" value={item.title} disabled />
+                ))}
+              </div>
+            </div>
+            <div className="form-item">
+              <label htmlFor="">
+                <b>Loaned Date</b>
+              </label>
+              <br />
+              <input
+                type="date"
+                id="datepicker1"
+                name="datepicker1"
+                onChange={handleStartDateChange}
+                min={currentDate}
+              />
+            </div>
+            <div className="form-item">
+              <label htmlFor="">
+                <b>Return Date</b>
+              </label>
+              <br />
+              <input
+                type="date"
+                id="datepicker2"
+                name="datepicker2"
+                onChange={handleEndDateChange}
+                value={endDate}
+              />
+            </div>
+          </div>
+          <div className="cart-details-submit-btn">
+            <button>Confirm</button>
+          </div>
+        </div>
+      </RequestPopup>
     </div>
   );
 };

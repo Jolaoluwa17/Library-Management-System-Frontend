@@ -108,6 +108,9 @@
   cursor: pointer;
   margin-top: 4.5%;
 }
+.book-details button:disabled{
+  background-color: grey;
+}
 .book-details button span {
   margin-right: 10px;
   font-size: 18px;

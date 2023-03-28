@@ -96,4 +96,33 @@
 .cart-content-container{
   overflow-y: scroll;
 }
-
+.cart-form-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 3%;
+}
+.cart-form-details .form-item{
+  margin-bottom: 2%;
+}
+.cart-form-details .form-item .cart-book-list{
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.cart-form-details .form-item .cart-book-list input{
+  width: 140px;
+  margin-bottom: 1%;
+}
+.cart-details-submit-btn{
+  float: right;
+}
+.cart-details-submit-btn button{
+  padding: 8px;
+  background-color: #28b498;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
