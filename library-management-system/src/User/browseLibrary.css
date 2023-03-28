@@ -19,12 +19,12 @@
   text-align: center;
 }
 .browse-book-container .book-img {
-  width: 240px;
-  height: 350px;
+  width: 200px;
+  height: 300px;
 }
 .browse-book-container .book-img img {
-  width: 240px;
-  height: 350px;
+  width: 200px;
+  height: 300px;
 }
 .browse-book-container .book-img:hover img {
   margin-top: -5px;
@@ -106,6 +106,7 @@
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 4.5%;
 }
 .book-details button span {
   margin-right: 10px;

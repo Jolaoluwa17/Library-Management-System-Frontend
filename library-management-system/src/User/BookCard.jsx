@@ -5,13 +5,25 @@ import Popup1 from "../components/Popup1";
 import { FaCartPlus } from "react-icons/fa";
 
 export const BookCard = ({ item, handleClick, cartFull, setCartFull }) => {
-  const { author, bookPic, category, description, publisher, status, title } = item;
+  const {
+    author,
+    bookPic,
+    category,
+    description,
+    publisher,
+    status,
+    title,
+    copies,
+    inventoryCopies,
+  } = item;
   const [addNew, setAddNew] = useState(false);
-  console.log(item);
+  
 
   setTimeout(function () {
     setCartFull(false);
   }, 3000);
+
+  
 
   return (
     <div className="book-card">
@@ -32,10 +44,7 @@ export const BookCard = ({ item, handleClick, cartFull, setCartFull }) => {
             <div className="view-details-container">
               <div className="view-details-container1">
                 <div className="book-img-holder">
-                  <img
-                    src={item.bookPic.fileUrl}
-                    alt=""
-                  />
+                  <img src={item.bookPic.fileUrl} alt="" />
                 </div>
                 <div className="book-details">
                   <div className="book-title">
@@ -50,18 +59,26 @@ export const BookCard = ({ item, handleClick, cartFull, setCartFull }) => {
                     {item.category.name}
                   </div>
                   <div className="description">
-                    <h4>Description</h4> 
+                    <h4>Description</h4>
                     {item.description}
                   </div>
-                  <div className="book-amount">
+                  <div className="description">
                     <h4>Publisher</h4>
                     {item.publisher}
                   </div>
-                  <div className="book-amount">
+                  <div className="description">
                     <h4>Status</h4>
                     {item.status}
                   </div>
-                  <button onClick={() => handleClick(item)}>
+                  <div className="description">
+                    <h4>Original Copies</h4>
+                    {item.inventoryCopies}
+                  </div>
+                  <div className="description">
+                    <h4>Copies</h4>
+                    {item.copies}
+                  </div>
+                  <button onClick={() => handleClick(item)} disabled={item.status === "off-shelf"}>
                     <span>
                       <FaCartPlus />
                     </span>
@@ -69,7 +86,7 @@ export const BookCard = ({ item, handleClick, cartFull, setCartFull }) => {
                   </button>
                   {cartFull && (
                     <span style={{ color: "red", marginTop: "10px" }}>
-                     The cart is currently full, remove an item to add new book
+                      The cart is currently full, remove an item to add new book
                     </span>
                   )}
                 </div>

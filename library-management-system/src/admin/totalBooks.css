@@ -36,7 +36,7 @@
   border: none;
   outline: none;
 }
-.search-btn-main{
+.search-btn-main {
   border-radius: 5px;
   padding: 2px;
 }
@@ -72,14 +72,10 @@
   transition: all 0.5s ease-in-out;
 }
 .book-cover .book-title {
-  margin-left: 40%;
   display: flex;
-  width: 100px;
+  width: 350px;
   justify-content: space-between;
   margin-bottom: 2%;
-}
-.book-cover .book-title-main{
-  margin-left: 30%;
 }
 .book-cover .book span {
   position: relative;
@@ -158,7 +154,7 @@
   font-size: 25px;
 }
 .complete-details {
-  height: 220px;
+  height: 240px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -182,4 +178,8 @@
 }
 .complete-details .author {
   margin: 0 !important;
+}
+.book-title-main {
+  text-align: center;
+  width: 200px;
 }

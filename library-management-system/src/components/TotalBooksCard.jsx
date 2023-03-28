@@ -6,8 +6,17 @@ import axios from "axios";
 import config from "../config";
 
 export const TotalBooksCard = ({ item, bookData, setBookData }) => {
-  const { author, bookPic, category, description, publisher, status, title } =
-    item;
+  const {
+    author,
+    bookPic,
+    category,
+    description,
+    publisher,
+    status,
+    title,
+    copies,
+    inventoryCopies,
+  } = item;
   const [addNew, setAddNew] = useState(false);
   const [updatedData, setUpdatedData] = useState(item);
   const [isVisible, setIsVisible] = useState(false);
@@ -60,12 +69,16 @@ export const TotalBooksCard = ({ item, bookData, setBookData }) => {
                 </div>
                 <div className="book-details">
                   <div className="book-title">
-                    <h2 >
-                      {item.title}
-                    </h2>
+                    <h2>{item.title}</h2>
                   </div>
                   <div className="complete-details">
-                    <div className={isVisible ? "edit book-details-form" : "edit2 book-details-form"}>
+                    <div
+                      className={
+                        isVisible
+                          ? "edit book-details-form"
+                          : "edit2 book-details-form"
+                      }
+                    >
                       <h4>Title</h4>
                       <div className={isVisible ? "edit" : "edit2"}>
                         <input
@@ -146,6 +159,46 @@ export const TotalBooksCard = ({ item, bookData, setBookData }) => {
                             setUpdatedData((prevItem) => ({
                               ...prevItem,
                               publisher: newValue,
+                            }));
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className="copies book-details-form">
+                      <h4>Copies</h4>
+                      <div className={isVisible ? "edit2" : "edit"}>
+                        {item.copies}
+                      </div>
+                      <div className={isVisible ? "edit" : "edit2"}>
+                        <input
+                          type="text"
+                          placeholder="Position Title"
+                          value={updatedData.copies} // replace with the field value you want to update
+                          onChange={(e) => {
+                            const newValue = e.target.value;
+                            setUpdatedData((prevItem) => ({
+                              ...prevItem,
+                              copies: newValue,
+                            }));
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className="inventory-copies book-details-form">
+                      <h4>Inventory Copies</h4>
+                      <div className={isVisible ? "edit2" : "edit"}>
+                        {item.inventoryCopies}
+                      </div>
+                      <div className={isVisible ? "edit" : "edit2"}>
+                        <input
+                          type="text"
+                          placeholder="Position Title"
+                          value={updatedData.inventoryCopies} // replace with the field value you want to update
+                          onChange={(e) => {
+                            const newValue = e.target.value;
+                            setUpdatedData((prevItem) => ({
+                              ...prevItem,
+                              inventoryCopies: newValue,
                             }));
                           }}
                         />

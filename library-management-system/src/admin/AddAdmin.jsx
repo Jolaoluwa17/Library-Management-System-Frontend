@@ -13,8 +13,6 @@ export const AddAdmin = () => {
   const [sex, setSex] = useState("");
   const [address, setAddress] = useState("");
   const [error, setError] = useState(false);
-  const [confirm, setConfirm] = useState(false);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -41,10 +39,6 @@ export const AddAdmin = () => {
     }
   };
 
-  setTimeout(function () {
-    setConfirm(false);
-    setError(false);
-  }, 3000);
 
   return (
     <div className="add-admin">
@@ -126,18 +120,6 @@ export const AddAdmin = () => {
                 <option value="female">Female</option>
               </select>
             </div>
-            {/* form is hidden */}
-            {/* <div className="form-item">
-              <label htmlFor="">User Type</label> <br />
-              <select
-                name="user-select"
-                id="user-select"
-                className="user-select"
-                onChange={(e) => setUser(e.target.value)}
-              >
-                <option value="admin">Admin</option>
-              </select>
-            </div> */}
           </div>
           <div className="admin-submit-btn">
             <button type="submit">Submit</button>
@@ -148,11 +130,6 @@ export const AddAdmin = () => {
             <span style={{ color: "red", marginTop: "10px" }}>
               SOMETHING WENT WRONG !!! <br />
               This may be due to not filling all avaliable fields
-            </span>
-          )}
-          {confirm && (
-            <span style={{ color: "green", marginTop: "10px" }}>
-              ADMIN CREATED SUCCESSFULLY.....
             </span>
           )}
         </div>
