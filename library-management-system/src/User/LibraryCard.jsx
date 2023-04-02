@@ -33,21 +33,11 @@ export const LibraryCard = ({ user }) => {
         <h5>{`${user.username} / Virtual Library Card`}</h5>
         <div className="change-view">
           <div className="single-view" onClick={() => setIsSingle(true)}>
-            {" "}
             <BsViewList /> Single View
           </div>
           <div className="double-view" onClick={() => setIsSingle(false)}>
-            {" "}
-            <BsViewStacked /> Double view{" "}
+            <BsViewStacked /> Double view
           </div>
-          {/* <div className="toggle-btn">
-            <div className="toggle-off" onClick={() => setIsColorSwitch(true)}>
-              <BsToggleOff /> Color switch off
-            </div>
-            <div className="toggle-on" onClick={() => setIsColorSwitch(false)}>
-              <BsToggleOn /> Color switch on
-            </div>
-          </div> */}
         </div>
       </div>
       <div className="library-card">
@@ -73,10 +63,7 @@ export const LibraryCard = ({ user }) => {
               </div>
               <div className="card-front-content">
                 <div className="card-holder-image">
-                  <img
-                    src={image}
-                    alt="profile"
-                  />
+                  <img src={image} alt="profile" />
                 </div>
                 <div className="card-holder-info">
                   <div className="card-holder card-holder-name">
@@ -86,10 +73,6 @@ export const LibraryCard = ({ user }) => {
                   <div className="card-holder library-id">
                     <b>Name: </b>
                     {user.username}
-                  </div>
-                  <div className="card-holder address-card-holder">
-                    <b>Address: </b>
-                    {user.address}
                   </div>
                   <div className="card-holder dob-card-holder">
                     <b>D.O.B: </b>

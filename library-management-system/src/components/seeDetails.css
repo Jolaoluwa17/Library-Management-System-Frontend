@@ -1,143 +1,148 @@
-.see-details{
-    margin-left: 18%;
-    padding-top: 2%;
+.see-details {
+  margin-left: 18%;
+  padding-top: 2%;
 }
-.see-details-header h5{
-    font-weight: normal;
-    margin-top: 1%;
+.see-details-header h5 {
+  font-weight: normal;
+  margin-top: 1%;
 }
-.see-details-container{
-    margin-top: 2%;
-    padding: 15px;
-    width: 1000px;
-    height: 500px;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+.see-details-container {
+  margin-top: 2%;
+  padding: 15px;
+  width: 1000px;
+  height: 500px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
-.details-panel-header{
-    display: flex;
-    flex-direction: row;
-    width: 150px;
-    justify-content: space-between;
+.details-panel-header {
+  display: flex;
+  flex-direction: row;
+  width: 150px;
+  justify-content: space-between;
 }
-.previous-btn{
-    font-size: 20px;
-    cursor: pointer;
+.previous-btn {
+  font-size: 20px;
+  cursor: pointer;
 }
-.loanee-pic{
-    width: 250px;
-    height: 350px;
+.loanee-pic {
+  width: 250px;
+  height: 350px;
 }
-.loanee-pic img{
-    width: 250px;
-    height: 350px;
+.loanee-pic img {
+  width: 250px;
+  height: 350px;
 }
-.details-panel-content{
-    display: flex;
-    flex-direction: row;
-    width: 900px;
-    justify-content: space-between;
-    margin-top: 3%;
-    /* background-color: red;
-    flex-wrap: wrap; */
-    /* background-color: green; */
+.details-panel-content {
+  display: flex;
+  flex-direction: row;
+  width: 900px;
+  justify-content: space-between;
+  height: 440px;
 }
-.details-text{
-    display: flex;
-    flex-direction: row;
-    width: 600px;
-    justify-content: space-between;
-    flex-wrap: wrap;
+.details-content-main {
+  margin-top: 3%;
+  height: 450px;
+  width: 900px;
 }
-.details-panel-info{
-    font-size: 16px;
-    width: 300px;
+.details-text {
+  display: flex;
+  flex-direction: row;
+  width: 600px;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-.loanee-per{
-    margin-bottom: 3%;
+.details-panel-info {
+  font-size: 16px;
+  width: 300px;
 }
-.details-book-info{
-    font-size: 16px;
-    width: 300px;
+.loanee-per {
+  margin-bottom: 3%;
 }
-.details-librarian-info{
-    font-size: 16px;
-    width: 300px;
+.details-book-info {
+  font-size: 16px;
+  width: 300px;
 }
-.details-personal-info-header{
-    margin-bottom: 5%;
-    font-size: 21px;
+.details-librarian-info {
+  font-size: 16px;
+  width: 300px;
 }
-.librarian-info-header{
-    margin-bottom: 5%;
-    font-size: 21px;
+.details-personal-info-header {
+  margin-bottom: 5%;
+  font-size: 21px;
 }
-.details-book-info-header{
-    font-size: 21px;
-    margin-bottom: 5%;
+.librarian-info-header {
+  margin-bottom: 5%;
+  font-size: 21px;
 }
-.list-of-books{
-    margin-left: 20px;
+.details-book-info-header {
+  font-size: 21px;
+  margin-bottom: 5%;
 }
-.details-btn{
-    margin-top: 11%;
-    float: right;
-    display: flex;
-    width: 200px;
-    justify-content: space-between;
-    /* margin-left: 78%; */
+.list-of-books {
+  margin-left: 20px;
 }
-.details-returned-btn{
-    margin-top: 11%;
-    float: right;
+.details-btn {
+  /* margin-top: 11%; */
+  float: right;
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
+  /* margin-left: 78%; */
 }
-.details-btn .details-approve-btn button, .details-returned-btn button{
-    padding: 10px;
-    background-color: #28b498;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    cursor: pointer;
+.details-returned-btn {
+  margin-top: 11%;
+  float: right;
 }
-.details-btn .details-decline-btn button{
-    padding: 10px;
-    background-color: red;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    cursor: pointer;
+.details-btn .details-approve-btn button,
+.details-returned-btn button {
+  padding: 10px;
+  background-color: #28b498;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: pointer;
 }
-.details-delete-btn{
-    margin-top: 11%;
-    float: right;
+.details-btn .details-decline-btn button {
+  padding: 10px;
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: pointer;
 }
-.details-delete-btn button{
-    padding: 10px;
-    background-color: red;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    cursor: pointer;
+.details-delete-btn {
+  margin-top: 11%;
+  float: right;
 }
-.per-book-status{
-    color: #ffbd2e;
+.details-delete-btn button {
+  padding: 10px;
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: pointer;
 }
-.per-book-status-green{
-    color: #28b498;
+.per-book-status {
+  color: #ffbd2e;
 }
-.loanee-det{
-    margin-bottom: 3%;
+.per-book-status-green {
+  color: #28b498;
 }
-.librarian-det{
-    margin-bottom: 3%;
+.loanee-det {
+  margin-bottom: 3%;
 }
-.decline-status, .per-book-status-red{
-    color: red;
+.librarian-det {
+  margin-bottom: 3%;
+}
+.decline-status,
+.per-book-status-red {
+  color: red;
 }

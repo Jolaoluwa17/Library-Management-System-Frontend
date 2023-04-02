@@ -1,6 +1,8 @@
 import React from "react";
 import "./transactions.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import config from "../config";
 import UserTransactionLoanedBooks from "../components/UserTransactionLoanedBooks";
 import UserTransactionReturnedBooks from "../components/UserTransactionReturnedBooks";
 import UserTransactionAppliedBooks from "../components/UserTransactionAppliedBooks";
@@ -9,6 +11,20 @@ import UserTransactionDeclinedBooks from "../components/UserTransactionDeclinedB
 export const Transactions = ({ user }) => {
   const [userBook1, setUserBook1] = useState("user-applied-books");
   const [userBook2, setUserBook2] = useState();
+
+  // to get pending data
+  const [pendingBookData, setPendingBookData] = useState([]);
+  useEffect(() => {
+    const fetchbookData = async () => {
+      const res = await axios.get(`${config.baseURL}/request`);
+      const filteredData = res.data.filter(
+        (item) => item.status === "pending" && user._id === item.user._id
+      );
+      setPendingBookData(filteredData);
+    };
+    fetchbookData();
+  }, []);
+
   return (
     <div className="transactions">
       <div className="transactions-header">
@@ -62,14 +78,14 @@ export const Transactions = ({ user }) => {
           <hr />
         </div>
         <div className="table-content">
-          {userBook1 === "user-applied-books" && (
-            <UserTransactionAppliedBooks
-              userBook1={userBook1}
-              setBook1={setUserBook1}
-              userBook2={userBook2}
-              setUserBook2={setUserBook2}
-            />
-          )}
+          {userBook1 === "user-applied-books" &&
+            pendingBookData.map((item) => (
+              <UserTransactionAppliedBooks
+                key={item._id}
+                item={item}
+                user={user}
+              />
+            ))}
           {userBook1 === "user-loaned-books" && <UserTransactionLoanedBooks />}
           {userBook1 === "user-declined-books" && (
             <UserTransactionDeclinedBooks />

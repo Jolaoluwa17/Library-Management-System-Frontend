@@ -26,13 +26,23 @@ export const AddBook = ({ admin }) => {
   const [error, setError] = useState(false);
   const [file, setFile] = useState(null);
   const [verificationError, setVerificationError] = useState(false);
+  const [preview, setPreview] = useState(null);
 
   const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
+    if (selectedFile) {
+      const fileReader = new FileReader();
+      fileReader.onloadend = () => {
+        setPreview(fileReader.result);
+      };
+      fileReader.readAsDataURL(selectedFile);
+    }
   };
 
   const handleRemoveFile = () => {
     setFile(null);
+    setPreview(null);
   };
 
   const handleButtonClick = () => {
@@ -68,7 +78,6 @@ export const AddBook = ({ admin }) => {
       }
     }
   };
-  console.log(category);
 
   return (
     <div className="AddBook">
@@ -82,7 +91,7 @@ export const AddBook = ({ admin }) => {
             <h2>Book Information</h2>
             <p>Please input the information of the specific book.</p>
           </div>
-          <div>
+          <div className="add-book-content">
             <div className="form">
               <div className="form-item">
                 <label htmlFor="bookImg" className="label-width">
@@ -198,11 +207,11 @@ export const AddBook = ({ admin }) => {
               </div>
               <div className="form-item">
                 <label htmlFor="copies" className="label-width">
-                  Copies
+                  Avaliable Copies
                 </label>
                 <br />
                 <input
-                  type="text"
+                  type="number"
                   id="copies"
                   placeholder="5"
                   onChange={(e) => setCopies(e.target.value)}
@@ -214,7 +223,7 @@ export const AddBook = ({ admin }) => {
                 </label>
                 <br />
                 <input
-                  type="text"
+                  type="number"
                   id="inventory-copies"
                   placeholder="5"
                   onChange={(e) => setInventoryCopies(e.target.value)}
@@ -243,6 +252,14 @@ export const AddBook = ({ admin }) => {
                   }}
                   onChange={(e) => setDescription(e.target.value)}
                 />
+              </div>
+            </div>
+            <div className="preview-book-image">
+              <div className="preview-header">
+                <h3>Preview Image</h3>
+              </div>
+              <div className="preview-image">
+                {preview && <img src={preview} alt="Preview" />}
               </div>
             </div>
           </div>

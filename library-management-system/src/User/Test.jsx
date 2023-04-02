@@ -13,7 +13,7 @@ export const Test = ({ user, handleClick }) => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const AU = urlParams.get("title");
-  const AN = urlParams.get("name")
+  const AN = urlParams.get("name");
 
   useEffect(() => {
     const fetchPendingData = async () => {
@@ -22,7 +22,6 @@ export const Test = ({ user, handleClick }) => {
     };
     fetchPendingData();
   }, []);
-  console.log(pendingData);
 
   const navigate = useNavigate();
   return (

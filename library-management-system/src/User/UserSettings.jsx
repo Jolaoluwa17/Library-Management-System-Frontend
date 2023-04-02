@@ -7,6 +7,14 @@ import { MdReportGmailerrorred } from "react-icons/md";
 import ProfilePicture from "../components/ProfilePicture";
 
 export const UserSettings = ({ user }) => {
+  console.log(user);
+  // const [profilepictrue, setProfilePicTrue] = useState("");
+  // if (user.profilePic === null){
+  //   setProfilePicTrue(true);
+  // }
+  // else{
+  //   setProfilePicTrue(false);
+  // }
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
@@ -19,6 +27,7 @@ export const UserSettings = ({ user }) => {
     address: "",
     dob: "",
     sex: "",
+    phoneNo: "",
   });
 
   const [file, setFile] = useState(null);
@@ -27,11 +36,15 @@ export const UserSettings = ({ user }) => {
     setFile(event.target.files[0]);
   };
 
+  const handleButtonClick = () => {
+    document.querySelector('input[type="file"]').click();
+  };
+
   const handleRemoveFile = () => {
     setFile(null);
   };
 
-  const [error1, setError1] = useState(false)
+  const [error1, setError1] = useState(false);
   const handleProfilePic = async (e) => {
     e.preventDefault();
     try {
@@ -45,10 +58,11 @@ export const UserSettings = ({ user }) => {
             "Content-Type": "multipart/form-data",
           },
         }
-      ); console.log(response);
+      );
+      console.log(response);
       alert("Profile Pic Update successfully");
       setFile(null);
-      window.location.reload()
+      window.location.reload();
     } catch (err) {
       console.log(err);
       alert("Failed to upload profile pic");
@@ -112,14 +126,12 @@ export const UserSettings = ({ user }) => {
 
   useEffect(() => {
     userData.address === null ||
-      userData.dob === null ||
-      userData.sex === null
+    userData.dob === null ||
+    userData.sex === null ||
+    userData.phoneNo === null
       ? setCompleteRegistration(true)
       : setCompleteRegistration(false);
   }, []);
-
-  // console.log(userData.dob);
-  // console.log(userData.sex);
 
   return (
     <div className="user-settings">
@@ -221,6 +233,16 @@ export const UserSettings = ({ user }) => {
               />
             </div>
             <div className="user-form-item">
+              <label htmlFor="phoneNo">Phone No</label>
+              <input
+                type="text"
+                id="phoneNo"
+                name="phoneNo"
+                value={userData.phoneNo}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="user-form-item">
               <label htmlFor="sex">Sex</label>
               <select
                 name="sex"
@@ -251,21 +273,78 @@ export const UserSettings = ({ user }) => {
             <h4>Profile Picture</h4>
             <p>Please add a profile picture for identification.</p>
           </div>
-          {!file ?
+          {!file ? (
             <>
-              <form onSubmit={handleProfilePic}>
-                <input type="file" accept=".jpg,.jpeg,.png" onChange={handleFileChange}  />
-              </form>
-              <ProfilePicture  user={user}/>
+              <div>
+                <input
+                  type="file"
+                  accept=".jpg,.jpeg,.png"
+                  onChange={handleFileChange}
+                  style={{ display: "none" }}
+                />
+                {user.profilePic === null && <button
+                  className="addFile"
+                  onClick={handleButtonClick}
+                  style={{
+                    padding: "7px",
+                    paddingLeft: "10px",
+                    paddingRight: "10px",
+                    marginTop: "1%",
+                    backgroundColor: "#28b498",
+                    color: "white",
+                    border: "none",
+                    marginLeft: "0.6%",
+                    marginBottom: "0.5%",
+                    borderRadius: "5px",
+                  }}
+                >
+                  Add Image
+                </button>}
+              </div>
+              <ProfilePicture user={user} />
             </>
-            :
+          ) : (
             <>
               <p>Selected file: {file.name}</p>
-              <button className="remove-file Create" onClick={handleRemoveFile}>Remove File</button>
-              {error1 && <p className="error">{error1}</p>}
+              <button
+                className="remove-file Create"
+                onClick={handleRemoveFile}
+                style={{
+                  padding: "7px",
+                  paddingLeft: "10px",
+                  paddingRight: "10px",
+                  marginTop: "1%",
+                  backgroundColor: "red",
+                  color: "white",
+                  border: "none",
+                  marginLeft: "0.4%",
+                  marginBottom: "0.5%",
+                  borderRadius: "5px",
+                }}
+              >
+                Remove File
+              </button>
+              {setError1 && <p className="error">{error1}</p>}
             </>
-          }
-          <button className="addFile" onClick={handleProfilePic}>Add Profile Pic</button>
+          )}
+           {user.profilePic === null && <button
+            className="addFile"
+            onClick={handleProfilePic}
+            style={{
+              padding: "7px",
+              paddingLeft: "10px",
+              paddingRight: "10px",
+              marginTop: "1%",
+              backgroundColor: "#28b498",
+              color: "white",
+              border: "none",
+              marginLeft: "-0.1%",
+              marginBottom: "0.5%",
+              borderRadius: "5px",
+            }}
+          >
+            Add Profile Pic
+          </button>}
           <div className="user-settings-line3">
             <hr />
           </div>

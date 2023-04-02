@@ -9,7 +9,7 @@
 .add-book-content{
     display: flex;
     flex-direction: row;
-    margin-top: 2%;
+    margin-top: 1%;
     width: 100%;
 }
 .qr-pic-container .qr-pic{
@@ -46,7 +46,7 @@
     width: 300px;
 }
 .book-info .book-info-title{
-    margin-bottom: 2%;
+    margin-bottom: 1%;
 }
 .qr-pic-container .generate-btn{
     text-align: center;
@@ -91,4 +91,19 @@
     width: 750px;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+.preview-image img{
+    width: 310px;
+    height: 470px;
+}
+.add-book-content{
+    display: flex;
+    width: 1150px;
+    justify-content: space-between;
+    height: 540px;
+}
+.preview-header{
+    text-align: center;
+    margin-bottom: 5%;
+    width: 310px;
 }

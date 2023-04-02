@@ -12,7 +12,6 @@ export const Cart = ({ user, cart, setCart }) => {
     const arr = cart.filter((item) => item.id !== id);
     setCart(arr);
   };
-  // console.log(cart);
   const [addNew, setAddNew] = useState(false);
 
   //For the date picker
@@ -38,7 +37,6 @@ export const Cart = ({ user, cart, setCart }) => {
     setEndDate(e.target.value);
   };
 
-  const [error, setError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,7 +53,6 @@ export const Cart = ({ user, cart, setCart }) => {
     } catch (err) {
       console.log(err);
       alert("Failed to submit");
-      setError(err.response.data.message);
     }
   };
 

@@ -17,13 +17,6 @@ export const BookCard = ({ item, handleClick, cartFull, setCartFull }) => {
     inventoryCopies,
   } = item;
   const [addNew, setAddNew] = useState(false);
-  
-
-  setTimeout(function () {
-    setCartFull(false);
-  }, 3000);
-
-  
 
   return (
     <div className="book-card">
@@ -78,7 +71,10 @@ export const BookCard = ({ item, handleClick, cartFull, setCartFull }) => {
                     <h4>Copies</h4>
                     {item.copies}
                   </div>
-                  <button onClick={() => handleClick(item)} disabled={item.status === "off-shelf"}>
+                  <button
+                    onClick={() => handleClick(item)}
+                    disabled={item.status === "off-shelf"}
+                  >
                     <span>
                       <FaCartPlus />
                     </span>

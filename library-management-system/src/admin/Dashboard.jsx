@@ -47,6 +47,20 @@ export const Dashboard = ({ admin }) => {
     fetchBookData();
   }, [bookData._id]);
 
+  // to get pending data
+  const [pendingBookData, setPendingBookData] = useState([]);
+  const [pendingBookDataCount, setPendingBookDataCount] = useState(0)
+  useEffect(() => {
+    const fetchbookData = async () => {
+      const res = await axios.get(`${config.baseURL}/request`);
+      const filteredData = res.data.filter((item) => item.status === "pending");
+      const pendingRequest = filteredData.length;
+      setPendingBookData(filteredData);
+      setPendingBookDataCount(pendingRequest)
+    };
+    fetchbookData();
+  }, []);
+
   return (
     <div className="dashboard">
       <div className="dashboard-header">
@@ -87,7 +101,7 @@ export const Dashboard = ({ admin }) => {
           </div>
           <div className="card-content">
             <div className="card-text">No of Pending Request</div>
-            <div className="card-number">5</div>
+            <div className="card-number">{pendingBookDataCount}</div>
           </div>
         </div>
       </div>

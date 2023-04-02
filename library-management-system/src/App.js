@@ -57,7 +57,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [cartFull, setCartFull] = useState(false);
 
-  const MAX_ITEMS = 5; // Maximum number of items allowed in cart
+  const MAX_ITEMS = 1; // Maximum number of items allowed in cart
 
   const handleClickCart = (item) => {
     if (cart.indexOf(item) !== -1) {

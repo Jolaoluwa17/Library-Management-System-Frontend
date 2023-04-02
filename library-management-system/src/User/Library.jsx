@@ -5,7 +5,6 @@ import LibraryContent1 from "./LibraryContent1";
 import UserHeader from "../components/UserHeader";
 
 export const Library = ({user}) => {
-  // console.log(student);
   return (
     <div className="library">
       <UserHeader user={user} />

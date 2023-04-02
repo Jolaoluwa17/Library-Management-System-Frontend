@@ -17,7 +17,6 @@ export const ProfilePicture = ({user}) => {
         };
         getUserDetails();
       }, [user._id]);
-      console.log(userData);
       const image = userData.profilePic.fileUrl;
     
   return (
