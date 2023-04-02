@@ -2,7 +2,7 @@ import React from "react";
 import "./loanedBooks.css";
 import { Link } from "react-router-dom";
 
-export const UserTransactionAppliedBooks = ({ item, user }) => {
+export const UserTransactionAppliedBooks = ({ item }) => {
   const loanDate = new Date(item.loanDate).toLocaleDateString();
   const returnDate = new Date(item.returnDate).toLocaleDateString();
   const bookQty = item.books.length;
@@ -16,11 +16,11 @@ export const UserTransactionAppliedBooks = ({ item, user }) => {
         <div className="loaned-books-details">
           <div className="loanee-name">
             <b>Name: </b>
-            {user.username}
+            {item.user.username}
           </div>
           <div className="loanee-phone-no">
             <b>Phone No: </b>
-            {user.phoneNo}
+            {item.user.phoneNo}
           </div>
           <div className="loanee-amountof-books">
             <b>Qty: </b>
@@ -31,12 +31,12 @@ export const UserTransactionAppliedBooks = ({ item, user }) => {
             {item.status}
           </div>
           <div className="loaned-date">
-            {" "}
-            <b>Loaned Date:</b> {loanDate}
+            <b>Loaned Date: </b> 
+            {loanDate}
           </div>
           <div className="loaned-date">
-            {" "}
-            <b>Return Date:</b> {returnDate}
+            <b>Return Date: </b> 
+            {returnDate}
           </div>
         </div>
       </div>

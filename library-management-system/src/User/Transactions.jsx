@@ -25,6 +25,45 @@ export const Transactions = ({ user }) => {
     fetchbookData();
   }, []);
 
+  // to get approved data
+  const [loanedBookData, setLoanedBookData] = useState([]);
+  useEffect(() => {
+    const fetchbookData = async () => {
+      const res = await axios.get(`${config.baseURL}/request`);
+      const filteredData = res.data.filter(
+        (item) => item.status === "approved" && user._id === item.user._id
+      );
+      setLoanedBookData(filteredData);
+    };
+    fetchbookData();
+  }, []);
+
+  // to get declined data
+  const [declinedBookData, setDeclinedBookData] = useState([]);
+  useEffect(() => {
+    const fetchbookData = async () => {
+      const res = await axios.get(`${config.baseURL}/request`);
+      const filteredData = res.data.filter(
+        (item) => item.status === "declined" && user._id === item.user._id
+      );
+      setDeclinedBookData(filteredData);
+    };
+    fetchbookData();
+  }, []);
+
+  // to get declined data
+  const [returnedBookData, setReturnedBookData] = useState([]);
+  useEffect(() => {
+    const fetchbookData = async () => {
+      const res = await axios.get(`${config.baseURL}/request`);
+      const filteredData = res.data.filter(
+        (item) => item.status === "returned" && user._id === item.user._id
+      );
+      setReturnedBookData(filteredData);
+    };
+    fetchbookData();
+  }, []);
+
   return (
     <div className="transactions">
       <div className="transactions-header">
@@ -86,13 +125,30 @@ export const Transactions = ({ user }) => {
                 user={user}
               />
             ))}
-          {userBook1 === "user-loaned-books" && <UserTransactionLoanedBooks />}
-          {userBook1 === "user-declined-books" && (
-            <UserTransactionDeclinedBooks />
-          )}
-          {userBook1 === "user-returned-books" && (
-            <UserTransactionReturnedBooks />
-          )}
+          {userBook1 === "user-loaned-books" &&
+            loanedBookData.map((item) => (
+              <UserTransactionLoanedBooks
+                key={item._id}
+                item={item}
+                user={user}
+              />
+            ))}
+          {userBook1 === "user-declined-books" &&
+            declinedBookData.map((item) => (
+              <UserTransactionDeclinedBooks
+                key={item._id}
+                item={item}
+                user={user}
+              />
+            ))}
+          {userBook1 === "user-returned-books" &&
+            returnedBookData.map((item) => (
+              <UserTransactionReturnedBooks
+                key={item._id}
+                item={item}
+                user={user}
+              />
+            ))}
         </div>
       </div>
     </div>

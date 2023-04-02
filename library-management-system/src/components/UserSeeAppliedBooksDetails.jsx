@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import config from "../config";
 
-export const UserSeeAppliedBooksDetails = () => {
+export const UserSeeAppliedBooksDetails = ({ user }) => {
   const navigate = useNavigate();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -27,7 +27,7 @@ export const UserSeeAppliedBooksDetails = () => {
     <div className="see-details">
       <div className="see-details-header">
         <h2>Welcome to Transactions</h2>
-        <h5>Admin/Transaction</h5>
+        <h5>{`${user.username}/Transaction`}</h5>
       </div>
       <div className="see-details-container">
         <div className="details-panel-header">
@@ -65,15 +65,15 @@ export const UserSeeAppliedBooksDetails = () => {
                         {item.status}
                       </div>
                       <div className="loanee-per">
-                        <b>Loaned Date:</b>
+                        <b>Loaned Date: </b>
                         {new Date(item.loanDate).toLocaleDateString()}
                       </div>
                       <div className="loanee-per">
-                        <b>Return Date:</b>
+                        <b>Return Date: </b>
                         {new Date(item.returnDate).toLocaleDateString()}
                       </div>
                       <div className="loanee-per">
-                        <b>User Level:</b>
+                        <b>User Level: </b>
                         {item.user.userType}
                       </div>
                     </div>
