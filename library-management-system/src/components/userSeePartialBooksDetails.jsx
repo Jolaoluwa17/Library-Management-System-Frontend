@@ -6,21 +6,21 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import config from "../config";
 
-export const UserSeeLoanedBooksDetails = ({ user }) => {
+export const UserSeePartialBooksDetails = ({ user }) => {
   const navigate = useNavigate();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const requestId = urlParams.get("requestId");
 
-  // to get pending data
-  const [loanedBookData, setLoanedBookData] = useState([]);
+  // to get returned data
+  const [partialBookData, setPartialBookData] = useState([]);
   useEffect(() => {
     const fetchbookData = async () => {
       const res = await axios.get(`${config.baseURL}/loan`);
       const filteredData = res.data.filter(
-        (item) => item.status === "approved"
+        (item) => item.status === "partially-returned"
       );
-      setLoanedBookData(filteredData);
+      setPartialBookData(filteredData);
     };
     fetchbookData();
   }, []);
@@ -39,12 +39,12 @@ export const UserSeeLoanedBooksDetails = ({ user }) => {
           <h3>Details Panel</h3>
         </div>
         <div className="details-content-main">
-          {loanedBookData
+          {partialBookData
             .filter((item) => {
               return item._id.includes(requestId);
             })
             .map((item) => (
-              <div className="details-panel-content">
+              <div className="details-panel-content" key={item._id}>
                 <div className="loanee-pic">
                   <img src={item.user.profilePic.fileUrl} alt="" />
                 </div>
@@ -62,7 +62,7 @@ export const UserSeeLoanedBooksDetails = ({ user }) => {
                         <b>Phone No: </b>
                         {item.user.phoneNo}
                       </div>
-                      <div className="loanee-per per-book-status">
+                      <div className="loanee-per per-book-status-green">
                         <b>Status: </b>
                         {item.status}
                       </div>

@@ -62,7 +62,7 @@ const NonStudentLogin = () => {
           </div>
           <p>Log into an existing account</p>
         </div>
-        <form action="#" className="login-form" onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleSubmit}>
           <div className="login-form-content">
             <div className="form-item">
               <i className="login-user-icon">

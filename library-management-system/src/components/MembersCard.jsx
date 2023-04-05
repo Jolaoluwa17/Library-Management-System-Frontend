@@ -22,16 +22,37 @@ export const MembersCard = ({ item }) => {
               <TableCell>
                 {" "}
                 <div className="new-members-name-card">
-                  <IoMdContact className="members-icon" />
-                  <p>{username}</p>
+                  <IoMdContact
+                    className="members-icon"
+                    style={{ marginLeft: "5%" }}
+                  />
+                  <p
+                    style={{
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      maxWidth: "256px",
+                    }}
+                  >
+                    {username}
+                  </p>
                 </div>
               </TableCell>
-              <TableCell align="center">{email}</TableCell>
-              <TableCell align="center">{userType}</TableCell>
-              <TableCell align="center">
-                <Link
-                  to={`/membersViewDetails?username=${item.username}&email=${item.email}&userType=${item.userType}&matricNo=${item.matricNo}`}
-                >
+              <TableCell
+                align="center"
+                style={{
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  maxWidth: "256px",
+                  paddingLeft: "5%",
+                }}
+              >
+                {email}
+              </TableCell>
+              <TableCell align="center" style={{paddingLeft: "10%"}}>{userType}</TableCell>
+              <TableCell align="center" style={{paddingLeft: "5%"}}>
+                <Link to={`/membersViewDetails?userId=${item._id}`} style={{color: "black"}}>
                   <BsThreeDots className="view-icon" />
                 </Link>
               </TableCell>

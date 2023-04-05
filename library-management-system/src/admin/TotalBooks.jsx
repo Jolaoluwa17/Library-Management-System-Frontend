@@ -5,7 +5,7 @@ import axios from "axios";
 import config from "../config";
 import TotalBooksCard from "../components/TotalBooksCard";
 
-export const TotalBooks = () => {
+export const TotalBooks = ({ admin }) => {
   const [bookData, setBookData] = useState([]);
 
   useEffect(() => {
@@ -17,21 +17,22 @@ export const TotalBooks = () => {
   }, [bookData._id]);
   const [search, setSearch] = useState("");
 
-  
-
   return (
     <div className="TotalBooks">
       <div className="totalBooks-header">
         <div className="header">
           <h2>Welcome to the Book Library</h2>
-          <h5>Admin/Book Library</h5>
+          <h5>{admin.admin.username}/Book Library</h5>
         </div>
         <div className="search-bar">
-        <div className="search-btn-main">
+          <div className="search-btn-main">
             <IoSearch className="search-btn" />
           </div>
-          <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Search by name and category" />
-          
+          <input
+            type="search"
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search by name and category"
+          />
         </div>
       </div>
       <div className="total-books-content">
@@ -39,10 +40,16 @@ export const TotalBooks = () => {
           .filter((item) => {
             return search.toLowerCase() === ""
               ? item
-              : item.title.toLowerCase().includes(search) || item.category.name.toLowerCase().includes(search);
+              : item.title.toLowerCase().includes(search) ||
+                  item.category.name.toLowerCase().includes(search);
           })
           .map((item) => (
-            <TotalBooksCard key={item._id} item={item} bookData={bookData} setBookData={setBookData} />
+            <TotalBooksCard
+              key={item._id}
+              item={item}
+              bookData={bookData}
+              setBookData={setBookData}
+            />
           ))}
       </div>
     </div>

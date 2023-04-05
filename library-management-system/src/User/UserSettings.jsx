@@ -7,19 +7,10 @@ import { MdReportGmailerrorred } from "react-icons/md";
 import ProfilePicture from "../components/ProfilePicture";
 
 export const UserSettings = ({ user }) => {
-  console.log(user);
-  // const [profilepictrue, setProfilePicTrue] = useState("");
-  // if (user.profilePic === null){
-  //   setProfilePicTrue(true);
-  // }
-  // else{
-  //   setProfilePicTrue(false);
-  // }
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [userData, setUserData] = useState({
-    _id: "",
     username: "",
     email: "",
     userType: "",
@@ -202,16 +193,18 @@ export const UserSettings = ({ user }) => {
                 disabled
               />
             </div>
-            <div className="user-form-item">
-              <label htmlFor="matricNo">Matric No</label>
-              <input
-                type="text"
-                id="matricNo"
-                name="matricNo"
-                value={userData.matricNo}
-                disabled
-              />
-            </div>
+            {userData.userType === "student" ? (
+              <div className="user-form-item">
+                <label htmlFor="matricNo">Matric No</label>
+                <input
+                  type="text"
+                  id="matricNo"
+                  name="matricNo"
+                  value={userData.matricNo}
+                  disabled
+                />
+              </div>
+            ) : null}
             <div className="user-form-item">
               <label htmlFor="address">Address</label>
               <input
@@ -282,24 +275,26 @@ export const UserSettings = ({ user }) => {
                   onChange={handleFileChange}
                   style={{ display: "none" }}
                 />
-                {user.profilePic === null && <button
-                  className="addFile"
-                  onClick={handleButtonClick}
-                  style={{
-                    padding: "7px",
-                    paddingLeft: "10px",
-                    paddingRight: "10px",
-                    marginTop: "1%",
-                    backgroundColor: "#28b498",
-                    color: "white",
-                    border: "none",
-                    marginLeft: "0.6%",
-                    marginBottom: "0.5%",
-                    borderRadius: "5px",
-                  }}
-                >
-                  Add Image
-                </button>}
+                {
+                  <button
+                    className="addFile"
+                    onClick={handleButtonClick}
+                    style={{
+                      padding: "7px",
+                      paddingLeft: "10px",
+                      paddingRight: "10px",
+                      marginTop: "1%",
+                      backgroundColor: "#28b498",
+                      color: "white",
+                      border: "none",
+                      marginLeft: "0.6%",
+                      marginBottom: "0.5%",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    Add Image
+                  </button>
+                }
               </div>
               <ProfilePicture user={user} />
             </>
@@ -327,24 +322,26 @@ export const UserSettings = ({ user }) => {
               {setError1 && <p className="error">{error1}</p>}
             </>
           )}
-           {user.profilePic === null && <button
-            className="addFile"
-            onClick={handleProfilePic}
-            style={{
-              padding: "7px",
-              paddingLeft: "10px",
-              paddingRight: "10px",
-              marginTop: "1%",
-              backgroundColor: "#28b498",
-              color: "white",
-              border: "none",
-              marginLeft: "-0.1%",
-              marginBottom: "0.5%",
-              borderRadius: "5px",
-            }}
-          >
-            Add Profile Pic
-          </button>}
+          {
+            <button
+              className="addFile"
+              onClick={handleProfilePic}
+              style={{
+                padding: "7px",
+                paddingLeft: "10px",
+                paddingRight: "10px",
+                marginTop: "1%",
+                backgroundColor: "#28b498",
+                color: "white",
+                border: "none",
+                marginLeft: "-0.1%",
+                marginBottom: "0.5%",
+                borderRadius: "5px",
+              }}
+            >
+              Add Profile Pic
+            </button>
+          }
           <div className="user-settings-line3">
             <hr />
           </div>

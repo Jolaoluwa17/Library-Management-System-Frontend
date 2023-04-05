@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import { MdReportGmailerrorred } from "react-icons/md";
 import CategoryTableCard from "../components/CategoryTableCard";
 import AddCategoryPopup from "../components/AddCategoryPopup";
+import UpdateCategoryPopup from "../components/UpdateCategoryPopup";
+import { UpdateCategory } from "../components/UpdateCategory";
 
 export const Settings = ({ admin }) => {
   const [oldPassword, setOldPassword] = useState("");
@@ -13,14 +15,15 @@ export const Settings = ({ admin }) => {
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [addNew, setAddNew] = useState(false);
   const [adminData, setAdminData] = useState({
-    _id: "",
     username: "",
     email: "",
     userType: "",
     address: "",
     dob: "",
     sex: "",
+    phoneNo: "",
   });
+
   const admin1 = admin.admin;
   useEffect(() => {
     const getUserDetails = async () => {
@@ -39,7 +42,7 @@ export const Settings = ({ admin }) => {
     event.preventDefault();
     //update user data in API using axios.put
     axios
-      .put(`${config.baseURL}/user/${admin._id}`, adminData)
+      .put(`${config.baseURL}/user/${admin1._id}`, adminData)
       .then((res) => {
         console.log(res.data);
         window.location.reload();
@@ -48,6 +51,7 @@ export const Settings = ({ admin }) => {
         console.error(error);
       });
   };
+
   const [error, setError] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -73,18 +77,8 @@ export const Settings = ({ admin }) => {
     setError(false);
   }, 3000);
 
-  const [completeRegistration, setCompleteRegistration] = useState("");
-
-  useEffect(() => {
-    adminData.address === "" ||
-    adminData.dateOfBirth === "" ||
-    adminData.sex === ""
-      ? setCompleteRegistration(true)
-      : setCompleteRegistration(false);
-  }, []);
 
   const [name, setCategory] = useState("");
-
   const handleSubmitCategory = async (e) => {
     e.preventDefault();
     setCategory(false);
@@ -116,14 +110,19 @@ export const Settings = ({ admin }) => {
         <p>
           This information will be accessed by the admin so please be notified.
         </p>
-        {completeRegistration && (
-          <div className="error-message">
-            <div className="error-notification">
-              <MdReportGmailerrorred style={{ color: "red" }} />
+        {adminData.address === null ||
+          adminData.dateOfBirth === null ||
+          (adminData.sex === null && (
+            <div className="error-message">
+              <div className="error-notification">
+                <MdReportGmailerrorred style={{ color: "red" }} />
+              </div>
+              <p style={{ color: "red" }}>
+                {" "}
+                Please complete your registration.
+              </p>
             </div>
-            <p style={{ color: "red" }}> Please complete your registration.</p>
-          </div>
-        )}
+          ))}
       </div>
 
       <div className="user-settings-content">
@@ -193,8 +192,35 @@ export const Settings = ({ admin }) => {
                 onChange={handleChange}
               />
             </div>
+            <div className="user-form-item">
+              <label htmlFor="DOB">Date of Birth</label>
+              <input
+                type="date"
+                id="DOB"
+                name="dob"
+                value={adminData.dob}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="user-form-item">
+              <label htmlFor="sex">Sex</label>
+              <select
+                name="sex"
+                id="sex"
+                value={adminData.sex}
+                onChange={handleChange}
+              >
+                <option value="selectuser">--Sex--</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
           </div>
-          <button type="submit" onClick={handleUpdate} className="update-btn">
+          <button
+            type="submit"
+            onClick={handleUpdate}
+            className="update-btn-admin"
+          >
             Update
           </button>
           <div className="user-settings-line2">
@@ -280,7 +306,7 @@ export const Settings = ({ admin }) => {
                 </div>
                 <div className="category-data">
                   {categoryData.map((item) => (
-                    <CategoryTableCard key={item.id} item={item} />
+                    <CategoryTableCard key={item._id} item={item} />
                   ))}
                 </div>
               </div>

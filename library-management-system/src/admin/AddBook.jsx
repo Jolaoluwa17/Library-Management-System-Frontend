@@ -21,8 +21,8 @@ export const AddBook = ({ admin }) => {
   const [category, setCategory] = useState("");
   const [publisher, setPublisher] = useState("");
   const [description, setDescription] = useState("");
-  const [copies, setCopies] = useState("");
-  const [inventoryCopies, setInventoryCopies] = useState("");
+  const [availableCopies, setAvailableCopies] = useState("");
+  const [totalCopies, setTotalCopies] = useState("");
   const [error, setError] = useState(false);
   const [file, setFile] = useState(null);
   const [verificationError, setVerificationError] = useState(false);
@@ -53,7 +53,7 @@ export const AddBook = ({ admin }) => {
     e.preventDefault();
     setError(false);
     setVerificationError(false);
-    if (copies !== inventoryCopies) {
+    if (availableCopies !== totalCopies) {
       setVerificationError("Copies do not match. Please Try Again");
     } else {
       try {
@@ -62,8 +62,8 @@ export const AddBook = ({ admin }) => {
         formData.append("author", author);
         formData.append("year", year);
         formData.append("category", category);
-        formData.append("copies", copies);
-        formData.append("inventoryCopies", inventoryCopies);
+        formData.append("availableCopies", availableCopies);
+        formData.append("totalCopies", totalCopies);
         formData.append("publisher", publisher);
         formData.append("description", description);
         formData.append("bookPic", file);
@@ -214,7 +214,7 @@ export const AddBook = ({ admin }) => {
                   type="number"
                   id="copies"
                   placeholder="5"
-                  onChange={(e) => setCopies(e.target.value)}
+                  onChange={(e) => setAvailableCopies(e.target.value)}
                 />
               </div>
               <div className="form-item">
@@ -226,7 +226,7 @@ export const AddBook = ({ admin }) => {
                   type="number"
                   id="inventory-copies"
                   placeholder="5"
-                  onChange={(e) => setInventoryCopies(e.target.value)}
+                  onChange={(e) => setTotalCopies(e.target.value)}
                 />
                 <div className="" style={{ color: "red" }}>
                   {verificationError}

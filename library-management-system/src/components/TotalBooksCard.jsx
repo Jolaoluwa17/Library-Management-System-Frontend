@@ -14,8 +14,8 @@ export const TotalBooksCard = ({ item, bookData, setBookData }) => {
     publisher,
     status,
     title,
-    copies,
-    inventoryCopies,
+    totalCopies,
+    avaliableCopies,
   } = item;
   const [addNew, setAddNew] = useState(false);
   const [updatedData, setUpdatedData] = useState(item);
@@ -165,75 +165,62 @@ export const TotalBooksCard = ({ item, bookData, setBookData }) => {
                       </div>
                     </div>
                     <div className="copies book-details-form">
-                      <h4>Copies</h4>
+                      <h4>Inventory Copies</h4>
                       <div className={isVisible ? "edit2" : "edit"}>
-                        {item.copies}
+                        {item.totalCopies}
                       </div>
                       <div className={isVisible ? "edit" : "edit2"}>
                         <input
                           type="text"
                           placeholder="Position Title"
-                          value={updatedData.copies} // replace with the field value you want to update
-                          onChange={(e) => {
-                            const newValue = e.target.value;
-                            setUpdatedData((prevItem) => ({
-                              ...prevItem,
-                              copies: newValue,
-                            }));
-                          }}
+                          value={updatedData.totalCopies} // replace with the field value you want to update
+                          disabled
                         />
                       </div>
                     </div>
                     <div className="inventory-copies book-details-form">
-                      <h4>Inventory Copies</h4>
+                      <h4>Avaliable Copies</h4>
                       <div className={isVisible ? "edit2" : "edit"}>
-                        {item.inventoryCopies}
+                        {item.availableCopies}
                       </div>
                       <div className={isVisible ? "edit" : "edit2"}>
                         <input
                           type="text"
                           placeholder="Position Title"
-                          value={updatedData.inventoryCopies} // replace with the field value you want to update
-                          onChange={(e) => {
-                            const newValue = e.target.value;
-                            setUpdatedData((prevItem) => ({
-                              ...prevItem,
-                              inventoryCopies: newValue,
-                            }));
-                          }}
+                          value={updatedData.availableCopies} // replace with the field value you want to update
+                          disabled
                         />
                       </div>
                     </div>
                     <div className="status book-details-form">
                       <h4>Status</h4>
                       <div className={isVisible ? "edit2" : "edit"}>
-                        {item.status}
+                        {item.availableCopies === 0 ? "off-shelf" : "on-shelf"}
                       </div>
                       <div className={isVisible ? "edit" : "edit2"}>
-                        <select
-                          name="user-select"
-                          id="user-select"
-                          className="user-select"
-                          value={updatedData.status}
-                          onChange={(e) => {
-                            const newValue = e.target.value;
-                            setUpdatedData((prevItem) => ({
-                              ...prevItem,
-                              status: newValue,
-                            }));
-                          }}
-                        >
-                          <option value="" style={{ color: "grey" }}>
-                            --select status--
-                          </option>
-                          <option value="on-shelf">On-shelf</option>
-                          <option value="off-shelf">Off-shelf</option>
-                        </select>
+                        <input
+                          type="text"
+                          placeholder="Position Title"
+                          value={
+                            item.availableCopies === 0
+                              ? "off-shelf"
+                              : "on-shelf"
+                          } // replace with the field value you want to update
+                          disabled
+                        />
                       </div>
                     </div>
                     <div className="description book-details-form">
                       <h4>Description</h4>
-                      <div className={isVisible ? "edit2" : "edit"}>
+                      <div
+                        className={isVisible ? "edit2" : "edit"}
+                        style={{
+                          width: "400px",
+                          height: "95px",
+                          overflowY: "scroll",
+                          padding: "2px",
+                        }}
+                      >
                         {item.description}
                       </div>
                       <div className={isVisible ? "edit" : "edit2"}>

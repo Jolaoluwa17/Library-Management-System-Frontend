@@ -70,7 +70,7 @@ export const NonStudentContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(nonStudentReducer, nonStudentINITIAL_STATE);
 
   useEffect(() => {
-    localStorage.setItem("lecturer", JSON.stringify(state.nonStudent));
+    localStorage.setItem("non-student", JSON.stringify(state.nonStudent));
   }, [state.nonStudent]);
   return (
     <nonStudentContext.Provider

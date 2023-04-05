@@ -15,20 +15,20 @@ export const studentLogout = () => ({
   type: "LOGOUT",
 });
 
-export const lecturerLoginStart = (lecturerCredentials) => ({
+export const nonStudentLoginStart = (nonStudentCredentials) => ({
   type: "LOGIN_START",
 });
 
-export const lecturerLoginSuccess = (lecturer) => ({
+export const nonStudentLoginSuccess = (nonStudent) => ({
   type: "LOGIN_SUCCESS",
-  payload: lecturer,
+  payload: nonStudent,
 });
 
-export const lecturerLoginFailure = () => ({
+export const nonStudentLoginFailure = () => ({
   type: "LOGIN_FAILURE",
 });
 
-export const lecturerLogout = () => ({
+export const nonStudentLogout = () => ({
   type: "LOGOUT",
 });
 

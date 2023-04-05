@@ -4,7 +4,7 @@ import { useState } from "react";
 import config from "../config";
 import axios from "axios";
 
-export const AddAdmin = () => {
+export const AddAdmin = ({ admin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -43,7 +43,7 @@ export const AddAdmin = () => {
     <div className="add-admin">
       <div className="add-admin-header">
         <h2>Welcome to Admin</h2>
-        <h5>Admin/Add Admin</h5>
+        <h5>{admin.admin.username}/Add Admin</h5>
       </div>
       <div className="add-admin-content">
         <div className="admin-info-title">

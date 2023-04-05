@@ -7,6 +7,8 @@ import UserTransactionLoanedBooks from "../components/UserTransactionLoanedBooks
 import UserTransactionReturnedBooks from "../components/UserTransactionReturnedBooks";
 import UserTransactionAppliedBooks from "../components/UserTransactionAppliedBooks";
 import UserTransactionDeclinedBooks from "../components/UserTransactionDeclinedBooks";
+import UserTransactionPartialBooks from "../components/UserTransactionPartialBooks";
+import { TailSpin, LineWave } from "react-loader-spinner";
 
 export const Transactions = ({ user }) => {
   const [userBook1, setUserBook1] = useState("user-applied-books");
@@ -14,52 +16,76 @@ export const Transactions = ({ user }) => {
 
   // to get pending data
   const [pendingBookData, setPendingBookData] = useState([]);
+  const [pendingDataLoading, setPendingDataLoading] = useState(true);
   useEffect(() => {
     const fetchbookData = async () => {
-      const res = await axios.get(`${config.baseURL}/request`);
+      const res = await axios.get(`${config.baseURL}/loan`);
       const filteredData = res.data.filter(
         (item) => item.status === "pending" && user._id === item.user._id
       );
       setPendingBookData(filteredData);
+      setPendingDataLoading(false);
     };
     fetchbookData();
   }, []);
 
   // to get approved data
   const [loanedBookData, setLoanedBookData] = useState([]);
+  const [loanedDataLoading, setLoanedDataLoading] = useState(true);
   useEffect(() => {
     const fetchbookData = async () => {
-      const res = await axios.get(`${config.baseURL}/request`);
+      const res = await axios.get(`${config.baseURL}/loan`);
       const filteredData = res.data.filter(
         (item) => item.status === "approved" && user._id === item.user._id
       );
       setLoanedBookData(filteredData);
+      setLoanedDataLoading(false);
     };
     fetchbookData();
   }, []);
 
   // to get declined data
   const [declinedBookData, setDeclinedBookData] = useState([]);
+  const [declinedDataLoading, setDeclinedDataLoading] = useState(true);
   useEffect(() => {
     const fetchbookData = async () => {
-      const res = await axios.get(`${config.baseURL}/request`);
+      const res = await axios.get(`${config.baseURL}/loan`);
       const filteredData = res.data.filter(
-        (item) => item.status === "declined" && user._id === item.user._id
+        (item) => item.status === "denied" && user._id === item.user._id
       );
       setDeclinedBookData(filteredData);
+      setDeclinedDataLoading(false);
     };
     fetchbookData();
   }, []);
 
-  // to get declined data
+  // to get returned data
   const [returnedBookData, setReturnedBookData] = useState([]);
+  const [returnedDataLoading, setReturnedDataLoading] = useState(true);
   useEffect(() => {
     const fetchbookData = async () => {
-      const res = await axios.get(`${config.baseURL}/request`);
+      const res = await axios.get(`${config.baseURL}/loan`);
       const filteredData = res.data.filter(
         (item) => item.status === "returned" && user._id === item.user._id
       );
       setReturnedBookData(filteredData);
+      setReturnedDataLoading(false);
+    };
+    fetchbookData();
+  }, []);
+
+  // to get returned data
+  const [partialBookData, setPartialBookData] = useState([]);
+  const [partialDataLoading, setPartialDataLoading] = useState(true);
+  useEffect(() => {
+    const fetchbookData = async () => {
+      const res = await axios.get(`${config.baseURL}/loan`);
+      const filteredData = res.data.filter(
+        (item) =>
+          item.status === "partially-returned" && user._id === item.user._id
+      );
+      setPartialBookData(filteredData);
+      setPartialDataLoading(false);
     };
     fetchbookData();
   }, []);
@@ -112,43 +138,144 @@ export const Transactions = ({ user }) => {
           >
             Returned Books
           </div>
+          <div
+            className={
+              userBook1 === "user-partial-books"
+                ? "user-partial-books-btn"
+                : "user-partial-books-btn1"
+            }
+            onClick={() => setUserBook1("user-partial-books")}
+          >
+            Partially Returned Books
+          </div>
         </div>
         <div className="line-across">
           <hr />
         </div>
         <div className="table-content">
-          {userBook1 === "user-applied-books" &&
-            pendingBookData.map((item) => (
-              <UserTransactionAppliedBooks
-                key={item._id}
-                item={item}
-                user={user}
-              />
-            ))}
-          {userBook1 === "user-loaned-books" &&
-            loanedBookData.map((item) => (
-              <UserTransactionLoanedBooks
-                key={item._id}
-                item={item}
-                user={user}
-              />
-            ))}
-          {userBook1 === "user-declined-books" &&
-            declinedBookData.map((item) => (
-              <UserTransactionDeclinedBooks
-                key={item._id}
-                item={item}
-                user={user}
-              />
-            ))}
-          {userBook1 === "user-returned-books" &&
-            returnedBookData.map((item) => (
-              <UserTransactionReturnedBooks
-                key={item._id}
-                item={item}
-                user={user}
-              />
-            ))}
+          <div className="table-content-main">
+            {userBook1 === "user-applied-books" ? (
+              pendingDataLoading ? (
+                <TailSpin
+                  type="TailSpin"
+                  color="#28b498"
+                  height={100}
+                  radius="3"
+                  width={1100}
+                  colors={["#28b498"]}
+                  wrapperStyle={{ marginTop: "15%" }}
+                  wrapperClass=""
+                />
+              ) : pendingBookData.length === 0 ? (
+                <p style={{ textAlign: "center" }}>No Loaned Data</p>
+              ) : (
+                pendingBookData.map((item) => (
+                  <UserTransactionAppliedBooks
+                    key={item._id}
+                    item={item}
+                    user={user}
+                  />
+                ))
+              )
+            ) : null}
+            {userBook1 === "user-loaned-books" ? (
+              loanedDataLoading ? (
+                <TailSpin
+                  type="TailSpin"
+                  color="#28b498"
+                  height={100}
+                  radius="3"
+                  width={1100}
+                  colors={["#28b498"]}
+                  wrapperStyle={{ marginTop: "15%" }}
+                  wrapperClass=""
+                />
+              ) : loanedBookData.length === 0 ? (
+                <p style={{ textAlign: "center" }}>No Approved Data</p>
+              ) : (
+                loanedBookData.map((item) => (
+                  <UserTransactionLoanedBooks
+                    key={item._id}
+                    item={item}
+                    user={user}
+                  />
+                ))
+              )
+            ) : null}
+            {userBook1 === "user-declined-books" ? (
+              declinedDataLoading ? (
+                <TailSpin
+                  type="TailSpin"
+                  color="#28b498"
+                  height={100}
+                  radius="3"
+                  width={1100}
+                  colors={["#28b498"]}
+                  wrapperStyle={{ marginTop: "15%" }}
+                  wrapperClass=""
+                />
+              ) : declinedBookData.length === 0 ? (
+                <p style={{ textAlign: "center" }}>No Denied Data</p>
+              ) : (
+                declinedBookData.map((item) => (
+                  <UserTransactionDeclinedBooks
+                    key={item._id}
+                    item={item}
+                    user={user}
+                  />
+                ))
+              )
+            ) : null}
+            {userBook1 === "user-returned-books" ? (
+              returnedDataLoading ? (
+                <TailSpin
+                  type="TailSpin"
+                  color="#28b498"
+                  height={100}
+                  radius="3"
+                  width={1100}
+                  colors={["#28b498"]}
+                  wrapperStyle={{ marginTop: "15%" }}
+                  wrapperClass=""
+                />
+              ) : returnedBookData.length === 0 ? (
+                <p style={{ textAlign: "center" }}>No Returned Data</p>
+              ) : (
+                returnedBookData.map((item) => (
+                  <UserTransactionReturnedBooks
+                    key={item._id}
+                    item={item}
+                    user={user}
+                  />
+                ))
+              )
+            ) : null}
+
+            {userBook1 === "user-partial-books" ? (
+              partialDataLoading ? (
+                <TailSpin
+                  type="TailSpin"
+                  color="#28b498"
+                  height={100}
+                  radius="3"
+                  width={1100}
+                  colors={["#28b498"]}
+                  wrapperStyle={{ marginTop: "15%" }}
+                  wrapperClass=""
+                />
+              ) : partialBookData.length === 0 ? (
+                <p style={{ textAlign: "center" }}>No Partially Returned Data</p>
+              ) : (
+                partialBookData.map((item) => (
+                  <UserTransactionPartialBooks
+                    key={item._id}
+                    item={item}
+                    user={user}
+                  />
+                ))
+              )
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

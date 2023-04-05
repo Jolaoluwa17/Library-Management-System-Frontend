@@ -6,7 +6,7 @@ import { BsThreeDots } from "react-icons/bs";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-
+import { FaUserAlt } from "react-icons/fa";
 import TableRow from "@mui/material/TableRow";
 import { Link } from "react-router-dom";
 
@@ -16,14 +16,31 @@ export const NewMembers = ({ item }) => {
     <div>
       <TableBody>
         <TableRow>
-          <TableCell>
+          <TableCell
+            style={{
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              maxWidth: "250px",
+            }}
+          >
             {" "}
             <div className="new-members-name-card">
               <IoMdContact className="members-icon" />
               <h3>{username}</h3>
             </div>
           </TableCell>
-          <TableCell align="center">{email}</TableCell>
+          <TableCell
+            align="left"
+            style={{
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              maxWidth: "250px",
+            }}
+          >
+            <FaUserAlt className="books-icon"/> {email}
+          </TableCell>
         </TableRow>
       </TableBody>
     </div>

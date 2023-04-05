@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import config from "../config";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { TailSpin, LineWave } from "react-loader-spinner";
 
 export const SeeAppliedBooksDetails = () => {
   const navigate = useNavigate();
@@ -14,11 +15,13 @@ export const SeeAppliedBooksDetails = () => {
 
   // to get pending data
   const [pendingBookData, setPendingBookData] = useState([]);
+  const [pendingDataLoading, setPendingDataLoading] = useState(true);
   useEffect(() => {
     const fetchbookData = async () => {
-      const res = await axios.get(`${config.baseURL}/request`);
+      const res = await axios.get(`${config.baseURL}/loan`);
       const filteredData = res.data.filter((item) => item.status === "pending");
       setPendingBookData(filteredData);
+      setPendingDataLoading(false);
     };
     fetchbookData();
   }, []);
@@ -26,8 +29,11 @@ export const SeeAppliedBooksDetails = () => {
   // to approve a request
   const handleApprove = async () => {
     try {
-      axios.put(`${config.baseURL}/request/${requestId}/approve`, {});
-      window.location.reload();
+      const res = await axios.patch(
+        `${config.baseURL}/loan/${requestId}/approve`
+      );
+      window.location.replace("/adminTransactions");
+      console.log(res);
     } catch (err) {
       console.err(err);
     }
@@ -36,8 +42,9 @@ export const SeeAppliedBooksDetails = () => {
   // to approve a request
   const handleDecline = async () => {
     try {
-      axios.put(`${config.baseURL}/request/${requestId}/decline`, {});
+      const res = await axios.patch(`${config.baseURL}/loan/${requestId}/deny`);
       window.location.reload();
+      console.log(res);
     } catch (err) {
       console.err(err);
     }
@@ -57,70 +64,83 @@ export const SeeAppliedBooksDetails = () => {
           <h3>Details Panel</h3>
         </div>
         <div className="details-content-main">
-          {pendingBookData
-            .filter((item) => {
-              return item._id.includes(requestId);
-            })
-            .map((item) => (
-              <div className="details-panel-content" key={item._id}>
-                <div className="loanee-pic">
-                  <img src={item.user.profilePic.fileUrl} alt="" />
-                </div>
-                <div className="details-text">
-                  <div className="details-panel-info">
-                    <div className="details-personal-info">
-                      <div className="details-personal-info-header">
-                        <h4>Personal Information</h4>
-                      </div>
-                      <div className="loanee-per">
-                        <b>Name: </b>
-                        {item.user.username}
-                      </div>
-                      <div className="loanee-per">
-                        <b>Phone No: </b>
-                        {item.user.phoneNo}
-                      </div>
-                      <div className="loanee-per per-book-status">
-                        <b>Status: </b>
-                        {item.status}
-                      </div>
-                      <div className="loanee-per">
-                        {" "}
-                        <b>Loaned Date:</b>{" "}
-                        {new Date(item.loanDate).toLocaleDateString()}
-                      </div>
-                      <div className="loanee-per">
-                        {" "}
-                        <b>Return Date:</b>{" "}
-                        {new Date(item.returnDate).toLocaleDateString()}
-                      </div>
-                      <div className="loanee-per">
-                        {" "}
-                        <b>User Level:</b> {item.user.userType}
+          {pendingDataLoading ? (
+            <TailSpin
+              type="TailSpin"
+              color="#28b498"
+              height={100}
+              radius="3"
+              width={1100}
+              colors={["#28b498"]}
+              wrapperStyle={{ marginTop: "15%" }}
+              wrapperClass=""
+            />
+          ) : (
+            pendingBookData
+              .filter((item) => {
+                return item._id.includes(requestId);
+              })
+              .map((item) => (
+                <div className="details-panel-content" key={item._id}>
+                  <div className="loanee-pic">
+                    <img src={item.user.profilePic.fileUrl} alt="" />
+                  </div>
+                  <div className="details-text">
+                    <div className="details-panel-info">
+                      <div className="details-personal-info">
+                        <div className="details-personal-info-header">
+                          <h4>Personal Information</h4>
+                        </div>
+                        <div className="loanee-per">
+                          <b>Name: </b>
+                          {item.user.username}
+                        </div>
+                        <div className="loanee-per">
+                          <b>Phone No: </b>
+                          {item.user.phoneNo}
+                        </div>
+                        <div className="loanee-per per-book-status">
+                          <b>Status: </b>
+                          {item.status}
+                        </div>
+                        <div className="loanee-per">
+                          {" "}
+                          <b>Loaned Date:</b>{" "}
+                          {new Date(item.loanDate).toLocaleDateString()}
+                        </div>
+                        <div className="loanee-per">
+                          {" "}
+                          <b>Return Date:</b>{" "}
+                          {new Date(item.returnDate).toLocaleDateString()}
+                        </div>
+                        <div className="loanee-per">
+                          {" "}
+                          <b>User Level:</b> {item.user.userType}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="details-book-info">
-                    <div className="details-book-info-header">
-                      <h4>Book Information</h4>
-                    </div>
-                    <div className="loanee-det">
-                      <b>Qty: </b>
-                      {item.books.length}
-                    </div>
-                    <b>List Of Books</b>
-                    <div className="loanee-det list-of-books">
-                      <ul>
-                        {item.books.map((book) => (
-                          <li key={book._id}>{book.title}</li>
-                        ))}
-                      </ul>
+                    <div className="details-book-info">
+                      <div className="details-book-info-header">
+                        <h4>Book Information</h4>
+                      </div>
+                      <div className="loanee-det">
+                        <b>Qty: </b>
+                        {item.books.length}
+                      </div>
+                      <b>List Of Books</b>
+                      <div className="loanee-det list-of-books">
+                        <ul>
+                          {item.books.map((book) => (
+                            <li key={book._id}>{book.title}</li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+          )}
         </div>
         <div className="details-btn">
           <div className="details-approve-btn">

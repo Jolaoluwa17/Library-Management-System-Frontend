@@ -10,6 +10,9 @@
   display: flex;
   flex-direction: row;
   width: 1200px;
+  position: fixed;
+  z-index: 999;
+  background-color: white;
 }
 .search-bar {
   height: 40px;
@@ -48,12 +51,13 @@
   font-size: 20px;
 }
 .total-books-content {
-  margin-top: 2%;
+  margin-top: 6%;
   display: flex;
   flex-direction: row;
-  justify-content: safe;
+  justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
+  overflow-y: scroll;
 }
 .total-books-content .book-cover {
   width: 300px;
@@ -146,6 +150,25 @@
 }
 .edit {
   display: block;
+}
+/* width */
+.edit::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.edit::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.edit::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.edit::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 .edit2 {
   display: none;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./cart.css";
 import UserHeader from "../components/UserHeader";
 // import CartCard from "../components/CartCard";
@@ -9,7 +9,7 @@ import config from "../config";
 
 export const Cart = ({ user, cart, setCart }) => {
   const handleRemove = (id) => {
-    const arr = cart.filter((item) => item.id !== id);
+    const arr = cart.filter((item) => item._id !== id);
     setCart(arr);
   };
   const [addNew, setAddNew] = useState(false);
@@ -37,11 +37,10 @@ export const Cart = ({ user, cart, setCart }) => {
     setEndDate(e.target.value);
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${config.baseURL}/request`, {
+      const response = await axios.post(`${config.baseURL}/loan`, {
         user: user._id,
         books: cart,
         loanDate: startDate,
@@ -52,9 +51,28 @@ export const Cart = ({ user, cart, setCart }) => {
       console.log(response);
     } catch (err) {
       console.log(err);
-      alert("Failed to submit");
+      alert("Failed to submit.");
     }
   };
+
+  // to get pending data
+  const [pendingBookData, setPendingBookData] = useState([]);
+  useEffect(() => {
+    const fetchbookData = async () => {
+      const res = await axios.get(`${config.baseURL}/loan`);
+      const filteredData = res.data.filter(
+        (item) =>
+          item.status === "pending" ||
+          item.status === "approved" ||
+          user._id === item.user._id
+      );
+      const bookCount = filteredData.length;
+      setPendingBookData(bookCount);
+    };
+    fetchbookData();
+  }, []);
+console.log(pendingBookData);
+
 
   return (
     <div className="cart">
@@ -113,7 +131,7 @@ export const Cart = ({ user, cart, setCart }) => {
                     </div>
                   </div>
                   <div className="cart-remove-btn">
-                    <button onClick={() => handleRemove(item.id)}>
+                    <button onClick={() => handleRemove(item._id)}>
                       Remove
                     </button>
                   </div>
@@ -124,7 +142,9 @@ export const Cart = ({ user, cart, setCart }) => {
         </div>
       </div>
       <div className="checkout-btn">
-        <button onClick={() => setAddNew(true)}>Check Out</button>
+        <button onClick={() => setAddNew(true)} disabled={cart.length === 0}>
+          Check Out
+        </button>
       </div>
       <RequestPopup trigger={addNew} setTrigger={setAddNew}>
         <div className="cart-form">
@@ -147,7 +167,12 @@ export const Cart = ({ user, cart, setCart }) => {
               </label>
               <div className="cart-book-list">
                 {cart.map((item) => (
-                  <input type="text" value={item.name} key={item._id} disabled />
+                  <input
+                    type="text"
+                    value={item.title}
+                    key={item._id}
+                    disabled
+                  />
                 ))}
               </div>
             </div>
@@ -181,7 +206,9 @@ export const Cart = ({ user, cart, setCart }) => {
             </div>
           </div>
           <div className="cart-details-submit-btn">
-            <button onClick={handleSubmit}>Confirm</button>
+            <button onClick={handleSubmit} disabled={pendingBookData === 0 ? true : false}>
+              Confirm
+            </button>
           </div>
         </div>
       </RequestPopup>

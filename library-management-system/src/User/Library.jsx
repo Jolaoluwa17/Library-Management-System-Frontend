@@ -4,7 +4,7 @@ import "./library.css";
 import LibraryContent1 from "./LibraryContent1";
 import UserHeader from "../components/UserHeader";
 
-export const Library = ({user}) => {
+export const Library = ({ user }) => {
   return (
     <div className="library">
       <UserHeader user={user} />

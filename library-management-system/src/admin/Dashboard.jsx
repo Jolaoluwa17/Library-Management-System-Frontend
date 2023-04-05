@@ -24,9 +24,8 @@ export const Dashboard = ({ admin }) => {
       const userCount = res.data.length;
       const reversedData = res.data.reverse();
       const limitedData = reversedData.slice(0, 5);
-      const originalData = limitedData.reverse();
       setUserCount(userCount);
-      setPendingData(originalData);
+      setPendingData(limitedData);
     };
     fetchPendingData();
   }, []);
@@ -40,23 +39,38 @@ export const Dashboard = ({ admin }) => {
       const bookCount = res.data.length;
       const reversedData = res.data.reverse();
       const limitedData = reversedData.slice(0, 5);
-      const originalData = limitedData.reverse();
       setBookCount(bookCount);
-      setBookData(originalData);
+      setBookData(limitedData);
     };
     fetchBookData();
   }, [bookData._id]);
 
   // to get pending data
   const [pendingBookData, setPendingBookData] = useState([]);
-  const [pendingBookDataCount, setPendingBookDataCount] = useState(0)
+  const [pendingBookDataCount, setPendingBookDataCount] = useState(0);
   useEffect(() => {
     const fetchbookData = async () => {
-      const res = await axios.get(`${config.baseURL}/request`);
+      const res = await axios.get(`${config.baseURL}/loan`);
       const filteredData = res.data.filter((item) => item.status === "pending");
       const pendingRequest = filteredData.length;
       setPendingBookData(filteredData);
-      setPendingBookDataCount(pendingRequest)
+      setPendingBookDataCount(pendingRequest);
+    };
+    fetchbookData();
+  }, []);
+
+  // to get approve data
+  const [approveBookData, setApproveBookData] = useState([]);
+  const [approveBookDataCount, setApproveBookDataCount] = useState(0);
+  useEffect(() => {
+    const fetchbookData = async () => {
+      const res = await axios.get(`${config.baseURL}/loan`);
+      const filteredData = res.data.filter(
+        (item) => item.status === "approved"
+      );
+      const approveRequest = filteredData.length;
+      setApproveBookData(filteredData);
+      setApproveBookDataCount(approveRequest);
     };
     fetchbookData();
   }, []);
@@ -68,7 +82,7 @@ export const Dashboard = ({ admin }) => {
         <h5>{`${admin.admin.username}/Dashboard`}</h5>
       </div>
       <div className="dashboard-cards">
-        <div className="total-card">
+        <div className="total-card" style={{ backgroundColor: "#fcf9ec" }}>
           <div className="card-icon" style={{ color: "#ffbf05" }}>
             <IoMdContact />
           </div>
@@ -77,7 +91,7 @@ export const Dashboard = ({ admin }) => {
             <div className="card-number">{userCount}</div>
           </div>
         </div>
-        <div className="total-card1">
+        <div className="total-card1" style={{ backgroundColor: "#ffeaeb" }}>
           <div className="card-icon" style={{ color: "#fe5461" }}>
             <ImBooks />
           </div>
@@ -86,16 +100,16 @@ export const Dashboard = ({ admin }) => {
             <div className="card-number">{bookCount}</div>
           </div>
         </div>
-        <div className="total-card1">
+        <div className="total-card1" style={{ backgroundColor: "#edfff3" }}>
           <div className="card-icon" style={{ color: "#33d565" }}>
             <GiBookmarklet />
           </div>
           <div className="card-content2">
-            <div className="card-text">Issued Books</div>
-            <div className="card-number">25</div>
+            <div className="card-text">No of Approved Request</div>
+            <div className="card-number">{approveBookDataCount}</div>
           </div>
         </div>
-        <div className="total-card1">
+        <div className="total-card1" style={{ backgroundColor: "#e9f8ff" }}>
           <div className="card-icon" style={{ color: "#4e8bfe" }}>
             <FaUsers />
           </div>
@@ -110,7 +124,7 @@ export const Dashboard = ({ admin }) => {
           <div className="table-container">
             <div className="cont">
               <div className="cont-header-container">
-                <h3>New Members</h3>
+                <h3>Members</h3>
                 <div className="const-header-main">
                   <p>Name</p>
                   <p>Email</p>
@@ -137,7 +151,7 @@ export const Dashboard = ({ admin }) => {
           <div className="table-container">
             <div className="cont">
               <div className="cont-header-container">
-                <h3>New Members</h3>
+                <h3>Books</h3>
                 <div className="const-header-main">
                   <p>Book Name</p>
                   <p>Author</p>

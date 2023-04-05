@@ -1,16 +1,46 @@
-import React from 'react'
+import React from "react";
 import "./library.css";
-// import { IoSearch } from "react-icons/io5";
 import Autoplay from "../components/ImageSlider";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import config from "../config";
 
 export const LibraryContent1 = () => {
+  const [bookData, setBookData] = useState([]);
+
+  useEffect(() => {
+    const fetchBookData = async () => {
+      const res = await axios.get(`${config.baseURL}/book`);
+      const reversedData = res.data.reverse();
+      const limitedData = reversedData.slice(0, 4);
+      setBookData(limitedData);
+    };
+    fetchBookData();
+  }, [bookData._id]);
+
+  const [randomBookData, setRandomBookData] = useState([]);
+
+  useEffect(() => {
+    const fetchBookData = async () => {
+      const res = await axios.get(`${config.baseURL}/book`);
+      const books = res.data;
+      const randomBooks = [];
+      while (randomBooks.length < 4 && books.length > 0) {
+        const index = Math.floor(Math.random() * books.length);
+        randomBooks.push(books.splice(index, 1)[0]);
+      }
+      setRandomBookData(randomBooks);
+    };
+    fetchBookData();
+  }, []);
+
   return (
     <div className="library-content-1">
-        <div className="library-content">
+      <div className="library-content">
         <div className="library-content-sidebar">
           <div className="book-slider">
-            <Autoplay />
+            <Autoplay randomBookData={randomBookData}/>
           </div>
           <div className="ads">
             <div className="first-part">
@@ -45,53 +75,29 @@ export const LibraryContent1 = () => {
         </div>
         <div className="top-picks">
           <div className="top-picks-title">
-            <h2>Top Picks</h2>
+            <h2>Latest Books</h2>
           </div>
           <div className="top-picks-book">
-            <div className="individual-books">
-              <div className="book-img">
-                <img
-                  src="https://res.cloudinary.com/dneawlwcp/image/upload/v1673983055/Final%20Year%20Project%20Pictures/_get_premium_download_high_resolution_imagedesigned_with_EDIT.org_3_ywju0f.jpg"
-                  alt=""
-                />
+            {bookData.map((item) => (
+              <div className="individual-books">
+                <div className="book-img">
+                  <img
+                    src={item.bookPic.fileUrl}
+                    alt={`${item.title} Book Picture`}
+                  />
+                </div>
+                <div className="book-title">{item.title}</div>
               </div>
-              <div className="book-title">The Great Gabsty</div>
-            </div>
-            <div className="individual-books">
-              <div className="book-img">
-                <img
-                  src="https://res.cloudinary.com/dneawlwcp/image/upload/v1673983055/Final%20Year%20Project%20Pictures/_get_premium_download_high_resolution_imagedesigned_with_EDIT.org_3_ywju0f.jpg"
-                  alt=""
-                />
-              </div>
-              <div className="book-title">The Great Gabsty</div>
-            </div>
-            <div className="individual-books">
-              <div className="book-img">
-                <img
-                  src="https://res.cloudinary.com/dneawlwcp/image/upload/v1673983055/Final%20Year%20Project%20Pictures/_get_premium_download_high_resolution_imagedesigned_with_EDIT.org_3_ywju0f.jpg"
-                  alt=""
-                />
-              </div>
-              <div className="book-title">The Great Gabsty</div>
-            </div>
-            <div className="individual-books">
-              <div className="book-img">
-                <img
-                  src="https://res.cloudinary.com/dneawlwcp/image/upload/v1673983055/Final%20Year%20Project%20Pictures/_get_premium_download_high_resolution_imagedesigned_with_EDIT.org_3_ywju0f.jpg"
-                  alt=""
-                />
-              </div>
-              <div className="book-title">The Great Gabsty</div>
-            </div>
+            ))}
           </div>
           <div className="all-books-icon">
-            <Link to="/browselibrary"><button >All Books</button></Link>
+            <Link to="/browselibrary">
+              <button>All Books</button>
+            </Link>
           </div>
         </div>
       </div>
-
     </div>
-  )
-}
+  );
+};
 export default LibraryContent1;

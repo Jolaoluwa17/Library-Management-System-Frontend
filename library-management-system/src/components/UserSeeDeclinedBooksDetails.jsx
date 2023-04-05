@@ -15,9 +15,9 @@ export const UserSeeDeclinedBooksDetails = ({ user }) => {
   const [declinedBookData, setDeclinedBookData] = useState([]);
   useEffect(() => {
     const fetchbookData = async () => {
-      const res = await axios.get(`${config.baseURL}/request`);
+      const res = await axios.get(`${config.baseURL}/loan`);
       const filteredData = res.data.filter(
-        (item) => item.status === "declined"
+        (item) => item.status === "denied"
       );
       setDeclinedBookData(filteredData);
     };
@@ -43,7 +43,7 @@ export const UserSeeDeclinedBooksDetails = ({ user }) => {
               return item._id.includes(requestId);
             })
             .map((item) => (
-              <div className="details-panel-content">
+              <div className="details-panel-content" key={item._id}>
                 <div className="loanee-pic">
                   <img src={item.user.profilePic.fileUrl} alt="" />
                 </div>

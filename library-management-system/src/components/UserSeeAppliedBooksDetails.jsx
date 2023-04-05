@@ -16,7 +16,7 @@ export const UserSeeAppliedBooksDetails = ({ user }) => {
   const [pendingBookData, setPendingBookData] = useState([]);
   useEffect(() => {
     const fetchbookData = async () => {
-      const res = await axios.get(`${config.baseURL}/request`);
+      const res = await axios.get(`${config.baseURL}/loan`);
       const filteredData = res.data.filter((item) => item.status === "pending");
       setPendingBookData(filteredData);
     };

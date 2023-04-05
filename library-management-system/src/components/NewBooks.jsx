@@ -10,6 +10,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Link } from "react-router-dom";
+import { FaUserAlt } from "react-icons/fa";
 
 export const NewBooks = ({ item }) => {
   const { title, author, status } = item;
@@ -21,10 +22,30 @@ export const NewBooks = ({ item }) => {
             {" "}
             <div className="new-members-name-card">
               <FaBook className="books-icon" />
-              <h3>{title}</h3>
+              {"  "}
+              <h3
+                style={{
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  maxWidth: "200px",
+                }}
+              >
+                {title}
+              </h3>
             </div>
           </TableCell>
-          <TableCell align="center">{author}</TableCell>
+          <TableCell
+            align="left"
+            style={{
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              maxWidth: "250px",
+            }}
+          >
+            <FaUserAlt className="books-icon" /> {author}
+          </TableCell>
         </TableRow>
       </TableBody>
     </div>

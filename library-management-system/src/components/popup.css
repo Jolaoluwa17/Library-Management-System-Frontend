@@ -44,11 +44,28 @@
   
   .popup2-inner {
     position: relative;
-    padding: 32px;
+    padding: 34px;
     width: 100%;
     max-width: 750px;
     background-color: white;
     border-radius: 10px;
+  }
+  .request-popup{
+    position: relative;
+    padding: 36px;
+    width: 100%;
+    max-width: 750px;
+    background-color: white;
+    border-radius: 10px;
+  }
+  .total-book-details{
+    position: relative;
+    padding: 34px;
+    width: 100%;
+    max-width: 750px;
+    background-color: white;
+    border-radius: 10px;
+    height: 430px;
   }
   .add-category-popup{
     position: relative;
@@ -65,6 +82,16 @@
   }
   
   .popup2-inner .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+  .total-book-details .close-btn{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+  .request-popup .close-btn{
     position: absolute;
     top: 16px;
     right: 16px;

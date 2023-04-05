@@ -5,31 +5,53 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import config from "../config";
+import PartialBookId from "./PartialBookId";
+import { TailSpin, LineWave } from "react-loader-spinner";
 
-export const UserSeeLoanedBooksDetails = ({ user }) => {
+export const SeePartialBooksDetails = () => {
   const navigate = useNavigate();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const requestId = urlParams.get("requestId");
 
-  // to get pending data
-  const [loanedBookData, setLoanedBookData] = useState([]);
+  // to get partially returned data
+  const [partialBookData, setPartialBookData] = useState([]);
+  const [partialDataLoading, setPartialDataLoading] = useState(true);
   useEffect(() => {
     const fetchbookData = async () => {
       const res = await axios.get(`${config.baseURL}/loan`);
       const filteredData = res.data.filter(
-        (item) => item.status === "approved"
+        (item) => item.status === "partially-returned" || item._id === requestId
       );
-      setLoanedBookData(filteredData);
+      setPartialBookData(filteredData);
+      setPartialDataLoading(false);
     };
     fetchbookData();
   }, []);
+
+  // to return a request
+  //   const [books, setBooks] = useState([]);
+  //   console.log(books);
+  //   const handleReturn = async () => {
+  //     try {
+  //       const res = await axios.patch(
+  //         `${config.baseURL}/loan/${requestId}/return`,
+  //         {
+  //           books,
+  //         }
+  //       );
+  //       window.location.replace("/adminTransactions");
+  //       console.log(res);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
 
   return (
     <div className="see-details">
       <div className="see-details-header">
         <h2>Welcome to Transactions</h2>
-        <h5>{`${user.username}/Transaction`}</h5>
+        <h5>Admin/Transaction</h5>
       </div>
       <div className="see-details-container">
         <div className="details-panel-header">
@@ -39,12 +61,20 @@ export const UserSeeLoanedBooksDetails = ({ user }) => {
           <h3>Details Panel</h3>
         </div>
         <div className="details-content-main">
-          {loanedBookData
-            .filter((item) => {
-              return item._id.includes(requestId);
-            })
-            .map((item) => (
-              <div className="details-panel-content">
+          {partialDataLoading ? (
+            <TailSpin
+              type="TailSpin"
+              color="#28b498"
+              height={100}
+              radius="3"
+              width={1100}
+              colors={["#28b498"]}
+              wrapperStyle={{ marginTop: "15%" }}
+              wrapperClass=""
+            />
+          ) : (
+            partialBookData.map((item) => (
+              <div className="details-panel-content" key={item._id}>
                 <div className="loanee-pic">
                   <img src={item.user.profilePic.fileUrl} alt="" />
                 </div>
@@ -92,15 +122,38 @@ export const UserSeeLoanedBooksDetails = ({ user }) => {
                     <b>List Of Books</b>
                     <div className="loanee-det list-of-books">
                       <ul>
-                        {item.books.map((book) => (
-                          <li key={book._id}>{book.title}</li>
-                        ))}
+                        {/* {item.books.map((book) => (
+                          <span key={book._id}>
+                            <li>{book.title}</li>
+                            <input
+                              type="checkbox"
+                              value={book._id}
+                              onChange={(e) => {
+                                if (e.target.checked) {
+                                  setBooks((books) => [
+                                    ...books,
+                                    e.target.value,
+                                  ]);
+                                } else {
+                                  setBooks((books) =>
+                                    books.filter((id) => id !== e.target.value)
+                                  );
+                                }
+                              }}
+                            />
+                          </span>
+                        ))} */}
+                        <PartialBookId item={item} />
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
+            ))
+          )}
+        </div>
+        <div className="details-returned-btn">
+          <button>Returned</button>
         </div>
       </div>
     </div>

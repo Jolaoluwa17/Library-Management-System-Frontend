@@ -25,10 +25,12 @@ import { UserSeeAppliedBooksDetails } from "./components/UserSeeAppliedBooksDeta
 import { UserSeeLoanedBooksDetails } from "./components/UserSeeLoanedBooksDetails";
 import { UserSeeReturnedBooksDetails } from "./components/UserSeeReturnedBooksDetails";
 import { UserSeeDeclinedBooksDetails } from "./components/UserSeeDeclinedBooksDetails";
+import { UserSeePartialBooksDetails } from "./components/userSeePartialBooksDetails";
 import { Members } from "./admin/Members";
 import { AddAdmin } from "./admin/AddAdmin";
 import { MembersViewDetails } from "./admin/MembersViewDetails";
 import { CategorySidebarResult } from "./components/CategorySidebarResult";
+import { SeePartialBooksDetails } from "./components/SeePartialBooksDetails";
 import {
   AdminContextProvider,
   NonStudentContextProvider,
@@ -57,7 +59,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [cartFull, setCartFull] = useState(false);
 
-  const MAX_ITEMS = 1; // Maximum number of items allowed in cart
+  const MAX_ITEMS = 5; // Maximum number of items allowed in cart
 
   const handleClickCart = (item) => {
     if (cart.indexOf(item) !== -1) {
@@ -107,6 +109,10 @@ function App() {
               <Route
                 path="/seeDeclinedBooksDetails"
                 element={<SeeDeclinedBooksDetails admin={admin} />}
+              />
+              <Route
+                path="/seePartialBooksDetails"
+                element={<SeePartialBooksDetails admin={admin} />}
               />
               <Route path="/members" element={<Members admin={admin} />} />
               <Route
@@ -171,13 +177,17 @@ function App() {
                   element={<UserSeeDeclinedBooksDetails user={user.user} />}
                 />
                 <Route
+                  path="/userSeePartialBooksDetails"
+                  element={<UserSeePartialBooksDetails user={user.user} />}
+                />
+                <Route
                   path="/categorySidebarResult"
                   element={<CategorySidebarResult user={user.user} />}
                 />
                 <Route
                   path="/test"
                   element={
-                    <Test user={user.user} handleClick={handleClickCart} />
+                    <Test user={user.user} handleClick={handleClickCart} cartFull={cartFull}/>
                   }
                 />
               </Route>

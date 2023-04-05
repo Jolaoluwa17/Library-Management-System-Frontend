@@ -92,7 +92,6 @@
   /* margin-left: 78%; */
 }
 .details-returned-btn {
-  margin-top: 11%;
   float: right;
 }
 .details-btn .details-approve-btn button,
@@ -145,4 +144,9 @@
 .decline-status,
 .per-book-status-red {
   color: red;
+}
+.list-of-books ul span{
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
 }

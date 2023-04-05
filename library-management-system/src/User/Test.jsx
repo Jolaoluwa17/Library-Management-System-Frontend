@@ -8,7 +8,7 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import config from "../config";
 
-export const Test = ({ user, handleClick }) => {
+export const Test = ({ user, handleClick, cartFull }) => {
   const [pendingData, setPendingData] = useState([]);
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -41,7 +41,7 @@ export const Test = ({ user, handleClick }) => {
             return item.title.includes(AU) || item.category.name.includes(AN);
           })
           .map((item) => (
-            <BookCard key={item.id} item={item} handleClick={handleClick} />
+            <BookCard key={item._id} item={item} handleClick={handleClick} cartFull={cartFull} user={user}/>
           ))}
       </div>
     </div>

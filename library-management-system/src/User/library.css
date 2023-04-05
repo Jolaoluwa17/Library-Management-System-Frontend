@@ -182,6 +182,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 430px;
+}
+.top-picks-book .individual-books .book-title{
+  width: 240px;
 }
 .individual-books .book-img img {
   width: 240px;

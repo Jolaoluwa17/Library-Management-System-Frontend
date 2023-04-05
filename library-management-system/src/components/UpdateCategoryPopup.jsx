@@ -2,10 +2,10 @@ import React from 'react'
 import "./popup.css"
 import {MdOutlineCancel} from "react-icons/md"
 
-function TotalBookDetailsPopup(props) {
+function UpdateCategoryPopup(props) {
   return (props.trigger) ? (
     <div className='popup2'>
-        <div className='total-book-details'>
+        <div className='add-category-popup'>
              <button className='close-btn' onClick={() => props.setTrigger(false) }><MdOutlineCancel/></button>
              {props.children}
         </div>
@@ -13,4 +13,4 @@ function TotalBookDetailsPopup(props) {
   ) : "";
 }
 
-export default TotalBookDetailsPopup;
+export default UpdateCategoryPopup;
