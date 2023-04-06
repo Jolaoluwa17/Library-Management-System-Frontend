@@ -57,22 +57,14 @@ function App() {
 
   //add to cart
   const [cart, setCart] = useState([]);
-  const [cartFull, setCartFull] = useState(false);
-
-  const MAX_ITEMS = 5; // Maximum number of items allowed in cart
-
   const handleClickCart = (item) => {
     if (cart.indexOf(item) !== -1) {
       return;
     }
-
-    if (cart.length === MAX_ITEMS) {
-      setCartFull(true);
-      return;
-    }
-
     setCart([...cart, item]);
   };
+  const MAX_ITEMS = 5; // Maximum number of items allowed in cart
+  const test = cart.length === MAX_ITEMS;
 
   return (
     <div className="App">
@@ -141,8 +133,8 @@ function App() {
                     <BrowseLibrary
                       user={user.user}
                       handleClick={handleClickCart}
-                      cartFull={cartFull}
-                      setCartFull={setCartFull}
+                      cart={cart}
+                      test={test}
                     />
                   }
                 />
@@ -187,7 +179,7 @@ function App() {
                 <Route
                   path="/test"
                   element={
-                    <Test user={user.user} handleClick={handleClickCart} cartFull={cartFull}/>
+                    <Test user={user.user} handleClick={handleClickCart} />
                   }
                 />
               </Route>

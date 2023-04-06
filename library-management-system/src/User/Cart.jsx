@@ -122,11 +122,11 @@ console.log(pendingBookData);
                       </div>
                       <div className="cart-details-main1">
                         <b>Status: </b>
-                        {item.status}
+                        {item.availableCopies === 0 ? "off-shelf" : "on-shelf"}
                       </div>
                       <div className="cart-details-main1">
-                        <b>No. of Book: </b>
-                        {item.copies}
+                        <b>Inventory Copies: </b>
+                        {item.totalCopies}
                       </div>
                     </div>
                   </div>
@@ -155,13 +155,6 @@ console.log(pendingBookData);
           <div className="cart-form-details">
             <div className="form-item">
               <label htmlFor="">
-                <b>Id</b>
-              </label>
-              <br />
-              <input type="text" value={user._id} disabled />
-            </div>
-            <div className="form-item">
-              <label htmlFor="">
                 {" "}
                 <b> Book's Wanted</b>
               </label>
@@ -172,6 +165,12 @@ console.log(pendingBookData);
                     value={item.title}
                     key={item._id}
                     disabled
+                    style={{
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      maxWidth: "135px",
+                    }}
                   />
                 ))}
               </div>

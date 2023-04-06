@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import config from "../config";
+import SkeletonLoader from "../components/SkeletonLoader";
 
 export const LibraryContent1 = () => {
   const [bookData, setBookData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchBookData = async () => {
@@ -15,6 +17,7 @@ export const LibraryContent1 = () => {
       const reversedData = res.data.reverse();
       const limitedData = reversedData.slice(0, 4);
       setBookData(limitedData);
+      setIsLoading(false);
     };
     fetchBookData();
   }, [bookData._id]);
@@ -40,7 +43,7 @@ export const LibraryContent1 = () => {
       <div className="library-content">
         <div className="library-content-sidebar">
           <div className="book-slider">
-            <Autoplay randomBookData={randomBookData}/>
+            <Autoplay randomBookData={randomBookData} />
           </div>
           <div className="ads">
             <div className="first-part">
@@ -78,17 +81,26 @@ export const LibraryContent1 = () => {
             <h2>Latest Books</h2>
           </div>
           <div className="top-picks-book">
-            {bookData.map((item) => (
-              <div className="individual-books">
-                <div className="book-img">
-                  <img
-                    src={item.bookPic.fileUrl}
-                    alt={`${item.title} Book Picture`}
-                  />
-                </div>
-                <div className="book-title">{item.title}</div>
+            {isLoading ? (
+              <div className="top-picks-book1">
+                <SkeletonLoader />
+                <SkeletonLoader />
+                <SkeletonLoader />
+                <SkeletonLoader />
               </div>
-            ))}
+            ) : (
+              bookData.map((item) => (
+                <div className="individual-books">
+                  <div className="book-img">
+                    <img
+                      src={item.bookPic.fileUrl}
+                      alt={`${item.title} Book Picture`}
+                    />
+                  </div>
+                  <div className="book-title">{item.title}</div>
+                </div>
+              ))
+            )}
           </div>
           <div className="all-books-icon">
             <Link to="/browselibrary">

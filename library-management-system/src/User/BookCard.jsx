@@ -6,24 +6,9 @@ import { FaCartPlus } from "react-icons/fa";
 import { useEffect } from "react";
 import axios from "axios";
 import config from "../config";
+import { BiErrorAlt } from "react-icons/bi";
 
-export const BookCard = ({
-  item,
-  handleClick,
-  cartFull,
-  setCartFull,
-  user,
-}) => {
-  const {
-    author,
-    bookPic,
-    category,
-    description,
-    publisher,
-    title,
-    copies,
-    inventoryCopies,
-  } = item;
+export const BookCard = ({ item, handleClick, user, cart, test }) => {
   const [addNew, setAddNew] = useState(false);
 
   // to get pending data
@@ -33,9 +18,8 @@ export const BookCard = ({
       const res = await axios.get(`${config.baseURL}/loan`);
       const filteredData = res.data.filter(
         (item) =>
-          item.status === "pending" ||
-          item.status === "approved" ||
-          user._id === item.user._id
+          (item.status === "pending" && user._id === item.user._id) ||
+          (item.status === "approved" && user._id === item.user._id)
       );
       const bookCount = filteredData.length;
       setPendingBookData(bookCount);
@@ -52,7 +36,6 @@ export const BookCard = ({
     };
     getUserDetails();
   }, [user._id]);
-  console.log(userData);
 
   const disabled =
     userData.profilePic &&
@@ -62,6 +45,7 @@ export const BookCard = ({
     userData.phoneNo
       ? false
       : true;
+  console.log(cart);
 
   return (
     <div className="book-card">
@@ -69,18 +53,29 @@ export const BookCard = ({
         <div className="book-img">
           <img src={item.bookPic.fileUrl} alt="" />
           <span>
-            {/* <Link
-              to={`/userViewDetails?authour=${item.name}&category=${item.username}&status=${item.email}&quantity=${item.company}`}
-            > */}
             <button onClick={() => setAddNew(true)} disabled={disabled}>
               View Details
             </button>
-            {/* </Link> */}
           </span>
         </div>
         <div className="book-text">{item.title}</div>
-        <Popup1 trigger={addNew} setTrigger={setAddNew}>
-          <div className="user-view-first-section">
+        <Popup1 trigger={addNew} setTrigger={setAddNew} user={user}>
+          {test ? (
+            <span style={{ color: "red" }}>
+              <BiErrorAlt style={{ fontSize: "30px" }} /> <br />
+              The cart is currently full, remove an item to <br /> add new book.
+            </span>
+          ) : null}
+          {pendingBookData != 0 ? (
+            <span style={{ color: "red" }}>
+              <BiErrorAlt style={{ fontSize: "30px" }} /> <br /> You cannot make
+              a new request without returning all the books
+              <br /> in the previous request.
+            </span>
+          ) : (
+            false
+          )}
+          <div className="user-view-first-section" style={{ marginTop: "5px" }}>
             <div className="view-details-container">
               <div className="view-details-container1">
                 <div className="book-img-holder">
@@ -88,7 +83,16 @@ export const BookCard = ({
                 </div>
                 <div className="book-details">
                   <div className="book-title">
-                    <h2>{item.title}</h2>
+                    <h2
+                      style={{
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        maxWidth: "400px",
+                      }}
+                    >
+                      {item.title}
+                    </h2>
                   </div>
                   <div className="book-details-main">
                     <div className="author details-item">
@@ -131,26 +135,19 @@ export const BookCard = ({
                   </div>
                   <button
                     onClick={() => handleClick(item)}
-                    disabled={item === 0 ? true : false}
+                    disabled={
+                      pendingBookData != 0 ||
+                      test === true ||
+                      cart.some((cartItem) => cartItem._id === item._id)
+                        ? true
+                        : false
+                    }
                   >
                     <span>
                       <FaCartPlus />
                     </span>
                     Add To Cart
                   </button>
-                  {cartFull && (
-                    <span style={{ color: "red", marginTop: "10px" }}>
-                      The cart is currently full, remove an item to add new book
-                    </span>
-                  )}
-                  {item === 0
-                    ? true
-                    : false && (
-                        <span style={{ color: "red", marginTop: "10px" }}>
-                          You cannot make a new request without returning all
-                          the books <br /> in the previous request.
-                        </span>
-                      )}
                 </div>
               </div>
             </div>

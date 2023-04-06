@@ -9,7 +9,7 @@ import UserHeader from "../components/UserHeader";
 import config from "../config";
 import { TailSpin, LineWave } from "react-loader-spinner";
 
-export const BrowseLibrary = ({ user, handleClick, cartFull, setCartFull }) => {
+export const BrowseLibrary = ({ user, handleClick, test, cart }) => {
   const [pendingData, setPendingData] = useState([]);
   const [pendingDataLoading, setPendingDataLoading] = useState(true);
 
@@ -44,9 +44,9 @@ export const BrowseLibrary = ({ user, handleClick, cartFull, setCartFull }) => {
               key={item._id}
               item={item}
               handleClick={handleClick}
-              cartFull={cartFull}
-              setCartFull={setCartFull}
               user={user}
+              test={test}
+              cart={cart}
             />
           ))
         )}
