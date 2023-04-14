@@ -8,6 +8,7 @@ import CategoryTableCard from "../components/CategoryTableCard";
 import AddCategoryPopup from "../components/AddCategoryPopup";
 import UpdateCategoryPopup from "../components/UpdateCategoryPopup";
 import { UpdateCategory } from "../components/UpdateCategory";
+import { RotatingSquare } from "react-loader-spinner";
 
 export const Settings = ({ admin }) => {
   const [oldPassword, setOldPassword] = useState("");
@@ -38,8 +39,10 @@ export const Settings = ({ admin }) => {
     setAdminData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  const [userUpdateLoading, setUserUpdateLoading] = useState(false);
   const handleUpdate = (event) => {
     event.preventDefault();
+    setUserUpdateLoading(true);
     //update user data in API using axios.put
     axios
       .put(`${config.baseURL}/user/${admin1._id}`, adminData)
@@ -49,12 +52,17 @@ export const Settings = ({ admin }) => {
       })
       .catch((error) => {
         console.error(error);
+      })
+      .finally(() => {
+        setUserUpdateLoading(false); // Hide the loader
       });
   };
 
   const [error, setError] = useState("");
+  const [changePasswordLoading, setChangePasswordLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setChangePasswordLoading(true);
     setError(false);
     if (newPassword !== confirmNewPassword) {
       setError("Passwords do not match. Please Try Again");
@@ -65,7 +73,9 @@ export const Settings = ({ admin }) => {
           oldPassword,
           newPassword,
         });
-        res.data && window.location.reload();
+        res.data && alert("Change Password Successfully");
+        window.location.reload();
+        setChangePasswordLoading(false);
       } catch (err) {
         setError(err);
         console.log(err);
@@ -77,18 +87,23 @@ export const Settings = ({ admin }) => {
     setError(false);
   }, 3000);
 
-
   const [name, setCategory] = useState("");
+  const [categoryLoading, setCategoryLoading] = useState(false);
   const handleSubmitCategory = async (e) => {
     e.preventDefault();
+    setCategoryLoading(true);
     setCategory(false);
     try {
       const res = await axios.post(`${config.baseURL}/category`, {
         name,
       });
-      res.data && window.location.reload();
+      res.data && alert("New Category Uploaded");
+      window.location.reload();
+      setCategoryLoading(false);
     } catch (err) {
       setError(true);
+      alert("An error occurred");
+      setCategoryLoading(false);
     }
   };
 
@@ -216,13 +231,23 @@ export const Settings = ({ admin }) => {
               </select>
             </div>
           </div>
-          <button
-            type="submit"
-            onClick={handleUpdate}
-            className="update-btn-admin"
-          >
-            Update
-          </button>
+          {userUpdateLoading === true ? (
+            <RotatingSquare
+              type="TailSpin"
+              color="#28b498"
+              height={30}
+              width={80}
+              wrapperStyle={{ marginTop: "20%" }}
+            />
+          ) : (
+            <button
+              type="submit"
+              onClick={handleUpdate}
+              className="update-btn-admin"
+            >
+              Update
+            </button>
+          )}
           <div className="user-settings-line2">
             <hr />
           </div>
@@ -268,7 +293,28 @@ export const Settings = ({ admin }) => {
             <div className="password-do-not-match" style={{ color: "red" }}>
               {error}
             </div>
-            <button onClick={handleSubmit}>Confirm Password</button>
+            {changePasswordLoading ? (
+              <RotatingSquare
+                type="TailSpin"
+                color="#28b498"
+                height={30}
+                width={100}
+                wrapperStyle={{ marginTop: "5%" }}
+              />
+            ) : (
+              <button
+                onClick={handleSubmit}
+                disabled={
+                  oldPassword === "" ||
+                  newPassword === "" ||
+                  confirmNewPassword === ""
+                    ? true
+                    : false
+                }
+              >
+                Confirm Password
+              </button>
+            )}
           </form>
           <div className="user-settings-line3">
             <hr />
@@ -291,7 +337,22 @@ export const Settings = ({ admin }) => {
                   />
                 </div>
                 <div className="submit-catgory">
-                  <button onClick={handleSubmitCategory}>Add Category</button>
+                  {categoryLoading ? (
+                    <RotatingSquare
+                      type="TailSpin"
+                      color="#28b498"
+                      height={30}
+                      width={100}
+                      wrapperStyle={{ marginTop: "5%" }}
+                    />
+                  ) : (
+                    <button
+                      onClick={handleSubmitCategory}
+                      disabled={name === "" ? true : false}
+                    >
+                      Add Category
+                    </button>
+                  )}
                 </div>
               </form>
             </AddCategoryPopup>

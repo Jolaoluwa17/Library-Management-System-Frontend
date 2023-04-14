@@ -9,7 +9,7 @@ import UserTransactionAppliedBooks from "../components/UserTransactionAppliedBoo
 import UserTransactionDeclinedBooks from "../components/UserTransactionDeclinedBooks";
 import UserTransactionPartialBooks from "../components/UserTransactionPartialBooks";
 import SkeletonTransactionLoader from "../components/SkeletonTransactionLoader";
-
+import { VscFilter } from "react-icons/vsc";
 
 export const Transactions = ({ user }) => {
   const [userBook1, setUserBook1] = useState("user-applied-books");
@@ -91,6 +91,14 @@ export const Transactions = ({ user }) => {
     fetchbookData();
   }, []);
 
+  // filter by search and date
+  const [search, setSearch] = useState("");
+  const [dateFilter, setDateFilter] = useState("");
+
+  const handleDateFilterChange = (event) => {
+    setDateFilter(event.target.value);
+  };
+
   return (
     <div className="transactions">
       <div className="transactions-header">
@@ -149,6 +157,23 @@ export const Transactions = ({ user }) => {
           >
             Partially Returned Books
           </div>
+          <span className="members-dropdown-filter">
+            <VscFilter style={{ paddingTop: "0px", fontSize: "30px" }} />
+            <select
+              name="user-type"
+              id="user-type"
+              className="user-type"
+              value={dateFilter}
+              onChange={handleDateFilterChange}
+            >
+              <option value="" style={{ color: "grey" }}>
+                Filter
+              </option>
+              <option value="this week">This Week</option>
+              <option value="last week">Last Week</option>
+              <option value="two weeks ago">Two Weeks Ago</option>
+            </select>
+          </span>
         </div>
         <div className="line-across">
           <hr />
@@ -166,13 +191,55 @@ export const Transactions = ({ user }) => {
               ) : pendingBookData.length === 0 ? (
                 <p style={{ textAlign: "center" }}>No Loaned Data</p>
               ) : (
-                pendingBookData.map((item) => (
-                  <UserTransactionAppliedBooks
-                    key={item._id}
-                    item={item}
-                    user={user}
-                  />
-                ))
+                pendingBookData
+                  .filter((item) => {
+                    const lowerFilter = dateFilter.toLowerCase();
+                    const loanDate = new Date(item.loanDate); // assuming 'loanDate' is a string representing a date
+                    const startOfWeek = new Date(
+                      new Date().getFullYear(),
+                      new Date().getMonth(),
+                      new Date().getDate() - new Date().getDay()
+                    );
+                    const endOfWeek = new Date(
+                      new Date().getFullYear(),
+                      new Date().getMonth(),
+                      new Date().getDate() + (6 - new Date().getDay())
+                    );
+                    return (
+                      lowerFilter === "" ||
+                      (dateFilter === "this week" &&
+                        loanDate >= startOfWeek &&
+                        loanDate <= endOfWeek) ||
+                      (dateFilter === "last week" &&
+                        loanDate >=
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 7
+                          ) &&
+                        loanDate < startOfWeek) ||
+                      (dateFilter === "two weeks ago" &&
+                        loanDate >=
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 14
+                          ) &&
+                        loanDate <
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 7
+                          ))
+                    );
+                  })
+                  .map((item) => (
+                    <UserTransactionAppliedBooks
+                      key={item._id}
+                      item={item}
+                      user={user}
+                    />
+                  ))
               )
             ) : null}
             {userBook1 === "user-loaned-books" ? (
@@ -186,13 +253,55 @@ export const Transactions = ({ user }) => {
               ) : loanedBookData.length === 0 ? (
                 <p style={{ textAlign: "center" }}>No Approved Data</p>
               ) : (
-                loanedBookData.map((item) => (
-                  <UserTransactionLoanedBooks
-                    key={item._id}
-                    item={item}
-                    user={user}
-                  />
-                ))
+                loanedBookData
+                  .filter((item) => {
+                    const lowerFilter = dateFilter.toLowerCase();
+                    const loanDate = new Date(item.loanDate); // assuming 'loanDate' is a string representing a date
+                    const startOfWeek = new Date(
+                      new Date().getFullYear(),
+                      new Date().getMonth(),
+                      new Date().getDate() - new Date().getDay()
+                    );
+                    const endOfWeek = new Date(
+                      new Date().getFullYear(),
+                      new Date().getMonth(),
+                      new Date().getDate() + (6 - new Date().getDay())
+                    );
+                    return (
+                      lowerFilter === "" ||
+                      (dateFilter === "this week" &&
+                        loanDate >= startOfWeek &&
+                        loanDate <= endOfWeek) ||
+                      (dateFilter === "last week" &&
+                        loanDate >=
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 7
+                          ) &&
+                        loanDate < startOfWeek) ||
+                      (dateFilter === "two weeks ago" &&
+                        loanDate >=
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 14
+                          ) &&
+                        loanDate <
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 7
+                          ))
+                    );
+                  })
+                  .map((item) => (
+                    <UserTransactionLoanedBooks
+                      key={item._id}
+                      item={item}
+                      user={user}
+                    />
+                  ))
               )
             ) : null}
             {userBook1 === "user-declined-books" ? (
@@ -206,13 +315,55 @@ export const Transactions = ({ user }) => {
               ) : declinedBookData.length === 0 ? (
                 <p style={{ textAlign: "center" }}>No Denied Data</p>
               ) : (
-                declinedBookData.map((item) => (
-                  <UserTransactionDeclinedBooks
-                    key={item._id}
-                    item={item}
-                    user={user}
-                  />
-                ))
+                declinedBookData
+                  .filter((item) => {
+                    const lowerFilter = dateFilter.toLowerCase();
+                    const loanDate = new Date(item.loanDate); // assuming 'loanDate' is a string representing a date
+                    const startOfWeek = new Date(
+                      new Date().getFullYear(),
+                      new Date().getMonth(),
+                      new Date().getDate() - new Date().getDay()
+                    );
+                    const endOfWeek = new Date(
+                      new Date().getFullYear(),
+                      new Date().getMonth(),
+                      new Date().getDate() + (6 - new Date().getDay())
+                    );
+                    return (
+                      lowerFilter === "" ||
+                      (dateFilter === "this week" &&
+                        loanDate >= startOfWeek &&
+                        loanDate <= endOfWeek) ||
+                      (dateFilter === "last week" &&
+                        loanDate >=
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 7
+                          ) &&
+                        loanDate < startOfWeek) ||
+                      (dateFilter === "two weeks ago" &&
+                        loanDate >=
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 14
+                          ) &&
+                        loanDate <
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 7
+                          ))
+                    );
+                  })
+                  .map((item) => (
+                    <UserTransactionDeclinedBooks
+                      key={item._id}
+                      item={item}
+                      user={user}
+                    />
+                  ))
               )
             ) : null}
             {userBook1 === "user-returned-books" ? (
@@ -226,13 +377,55 @@ export const Transactions = ({ user }) => {
               ) : returnedBookData.length === 0 ? (
                 <p style={{ textAlign: "center" }}>No Returned Data</p>
               ) : (
-                returnedBookData.map((item) => (
-                  <UserTransactionReturnedBooks
-                    key={item._id}
-                    item={item}
-                    user={user}
-                  />
-                ))
+                returnedBookData
+                  .filter((item) => {
+                    const lowerFilter = dateFilter.toLowerCase();
+                    const loanDate = new Date(item.loanDate); // assuming 'loanDate' is a string representing a date
+                    const startOfWeek = new Date(
+                      new Date().getFullYear(),
+                      new Date().getMonth(),
+                      new Date().getDate() - new Date().getDay()
+                    );
+                    const endOfWeek = new Date(
+                      new Date().getFullYear(),
+                      new Date().getMonth(),
+                      new Date().getDate() + (6 - new Date().getDay())
+                    );
+                    return (
+                      lowerFilter === "" ||
+                      (dateFilter === "this week" &&
+                        loanDate >= startOfWeek &&
+                        loanDate <= endOfWeek) ||
+                      (dateFilter === "last week" &&
+                        loanDate >=
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 7
+                          ) &&
+                        loanDate < startOfWeek) ||
+                      (dateFilter === "two weeks ago" &&
+                        loanDate >=
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 14
+                          ) &&
+                        loanDate <
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 7
+                          ))
+                    );
+                  })
+                  .map((item) => (
+                    <UserTransactionReturnedBooks
+                      key={item._id}
+                      item={item}
+                      user={user}
+                    />
+                  ))
               )
             ) : null}
 
@@ -249,13 +442,55 @@ export const Transactions = ({ user }) => {
                   No Partially Returned Data
                 </p>
               ) : (
-                partialBookData.map((item) => (
-                  <UserTransactionPartialBooks
-                    key={item._id}
-                    item={item}
-                    user={user}
-                  />
-                ))
+                partialBookData
+                  .filter((item) => {
+                    const lowerFilter = dateFilter.toLowerCase();
+                    const loanDate = new Date(item.loanDate); // assuming 'loanDate' is a string representing a date
+                    const startOfWeek = new Date(
+                      new Date().getFullYear(),
+                      new Date().getMonth(),
+                      new Date().getDate() - new Date().getDay()
+                    );
+                    const endOfWeek = new Date(
+                      new Date().getFullYear(),
+                      new Date().getMonth(),
+                      new Date().getDate() + (6 - new Date().getDay())
+                    );
+                    return (
+                      lowerFilter === "" ||
+                      (dateFilter === "this week" &&
+                        loanDate >= startOfWeek &&
+                        loanDate <= endOfWeek) ||
+                      (dateFilter === "last week" &&
+                        loanDate >=
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 7
+                          ) &&
+                        loanDate < startOfWeek) ||
+                      (dateFilter === "two weeks ago" &&
+                        loanDate >=
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 14
+                          ) &&
+                        loanDate <
+                          new Date(
+                            startOfWeek.getFullYear(),
+                            startOfWeek.getMonth(),
+                            startOfWeek.getDate() - 7
+                          ))
+                    );
+                  })
+                  .map((item) => (
+                    <UserTransactionPartialBooks
+                      key={item._id}
+                      item={item}
+                      user={user}
+                    />
+                  ))
               )
             ) : null}
           </div>

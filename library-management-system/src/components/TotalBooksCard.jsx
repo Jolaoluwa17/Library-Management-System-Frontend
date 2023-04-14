@@ -69,7 +69,16 @@ export const TotalBooksCard = ({ item, bookData, setBookData }) => {
                 </div>
                 <div className="book-details">
                   <div className="book-title">
-                    <h2>{item.title}</h2>
+                    <h2
+                      style={{
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        maxWidth: "400px",
+                      }}
+                    >
+                      {item.title}
+                    </h2>
                   </div>
                   <div className="complete-details">
                     <div

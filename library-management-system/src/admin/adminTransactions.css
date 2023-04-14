@@ -6,6 +6,10 @@
   font-weight: normal;
   margin-top: 1%;
 }
+.admin-transaction-header{
+  display: flex;
+  justify-content: space-between;
+}
 .admin-transaction-content {
   margin-top: 2%;
   padding: 15px;
@@ -19,7 +23,7 @@
 .transaction-btn-container {
   display: flex;
   flex-direction: row;
-  width: 800px;
+  width: 1080px;
   justify-content: space-between;
   padding: 10px;
   padding-left: 0px;
