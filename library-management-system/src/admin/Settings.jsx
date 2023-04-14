@@ -195,6 +195,7 @@ export const Settings = ({ admin }) => {
                 id="phoneNo"
                 name="phoneNo"
                 value={adminData.phoneNo}
+                onChange={handleChange}
               />
             </div>
             <div className="user-form-item">
