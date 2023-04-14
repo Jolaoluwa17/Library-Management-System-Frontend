@@ -3,21 +3,21 @@ import "./addAdmin.css";
 import { useState } from "react";
 import config from "../config";
 import axios from "axios";
+import { RotatingSquare } from "react-loader-spinner";
 
 export const AddAdmin = ({ admin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
-  // const [phoneNo, setPhoneNo] = useState("");
-  // const [dob, setDob] = useState("");
-  // const [sex, setSex] = useState("");
-  // const [address, setAddress] = useState("");
   const [error, setError] = useState(false);
   const [wrongPassword, setWrongPassword] = useState("");
+
+  const [submitAdminLoading, setSubmitAdminLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setWrongPassword(false);
+    setSubmitAdminLoading(true);
     if (password !== confirmPassword) {
       setWrongPassword("Passwords do not match. Please Try Again");
     } else {
@@ -30,10 +30,13 @@ export const AddAdmin = ({ admin }) => {
         });
         alert("Admin created successfully");
         window.location.reload();
+        setSubmitAdminLoading(false);
         console.log(response);
       } catch (err) {
         console.log(err);
         alert("Failed to add Admin");
+        window.location.reload();
+        setSubmitAdminLoading(false);
         setError(err.response.data.message);
       }
     }
@@ -92,7 +95,17 @@ export const AddAdmin = ({ admin }) => {
             {wrongPassword}
           </div>
           <div className="admin-submit-btn">
-            <button type="submit">Submit</button>
+            {submitAdminLoading ? (
+              <RotatingSquare
+                type="TailSpin"
+                color="#28b498"
+                height={30}
+                width={80}
+                wrapperStyle={{}}
+              />
+            ) : (
+              <button type="submit" disabled={username === "" || password === "" || confirmPassword === "" || email === ""}>Submit</button>
+            )}
           </div>
         </form>
       </div>

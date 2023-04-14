@@ -25,6 +25,9 @@
     color: white;
     border-radius: 5px;
 }
+.admin-submit-btn button:disabled{
+    background-color: grey;
+}
 .add-admin-content .form .form-item-hidden{
     visibility: hidden;
 }

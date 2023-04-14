@@ -7,12 +7,18 @@
 }
 .browse-library-content {
   padding-top: 8%;
-  
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 100%;
+  width:100%;
+}
+.browse-library-content .new{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width:100%;
 }
 .browse-book-container {
   margin-bottom: 2%;
@@ -21,6 +27,7 @@
   height: 350px;
 }
 .book-text{
+  margin-top: 3%;
   width: 200px;
 }
 .browse-book-container .book-img {
@@ -193,5 +200,4 @@
 }
 .search-result-library .browse-library-content {
   margin-top: -5%;
-  margin-left: 4.5%;
 }

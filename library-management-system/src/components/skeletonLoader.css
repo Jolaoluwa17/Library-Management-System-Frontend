@@ -13,32 +13,26 @@
   height: 20px;
   background-color: #f0f0f0;
   margin-top: 10px;
+  animation: loader-animation 1s infinite ease-in-out;
 }
 
 @keyframes loading {
-  /* 0% {
-    background-position: -40px 0;
-  }
-  20% {
-    background-position: -80px 0;
-  }
-  40% {
-    background-position: -120px 0;
-  }
-  60% {
-    background-position: -160px 0;
-  }
-  80% {
-    background-position: -200px 0;
-  }
-  100% {
-    background-position: calc(240px + 100%) 0;
-  } */
   from {
     background-position: -200px 0;
   }
   to {
     background-position: 200px 0;
+  }
+}
+@keyframes loader-animation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
   }
 }
 

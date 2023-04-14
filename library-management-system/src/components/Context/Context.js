@@ -1,7 +1,6 @@
 import { createContext, useReducer } from "react";
 import { studentReducer } from "./Reducer";
 import { nonStudentReducer } from "./Reducer";
-// import { lecturerReducer } from "./Reducer";
 import { adminReducer } from "./Reducer";
 import { useEffect } from "react";
 
@@ -18,7 +17,7 @@ const adminINITIAL_STATE = {
 };
 
 const nonStudentINITIAL_STATE = {
-  nonStudent: JSON.parse(localStorage.getItem("non-student")) || null,
+  nonStudent: JSON.parse(localStorage.getItem("nonStudent")) || null,
   isFetching: false,
   error: false,
 };
@@ -70,7 +69,7 @@ export const NonStudentContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(nonStudentReducer, nonStudentINITIAL_STATE);
 
   useEffect(() => {
-    localStorage.setItem("non-student", JSON.stringify(state.nonStudent));
+    localStorage.setItem("nonStudent", JSON.stringify(state.nonStudent));
   }, [state.nonStudent]);
   return (
     <nonStudentContext.Provider

@@ -8,7 +8,8 @@ import UserTransactionReturnedBooks from "../components/UserTransactionReturnedB
 import UserTransactionAppliedBooks from "../components/UserTransactionAppliedBooks";
 import UserTransactionDeclinedBooks from "../components/UserTransactionDeclinedBooks";
 import UserTransactionPartialBooks from "../components/UserTransactionPartialBooks";
-import { TailSpin, LineWave } from "react-loader-spinner";
+import SkeletonTransactionLoader from "../components/SkeletonTransactionLoader";
+
 
 export const Transactions = ({ user }) => {
   const [userBook1, setUserBook1] = useState("user-applied-books");
@@ -156,16 +157,12 @@ export const Transactions = ({ user }) => {
           <div className="table-content-main">
             {userBook1 === "user-applied-books" ? (
               pendingDataLoading ? (
-                <TailSpin
-                  type="TailSpin"
-                  color="#28b498"
-                  height={100}
-                  radius="3"
-                  width={1100}
-                  colors={["#28b498"]}
-                  wrapperStyle={{ marginTop: "15%" }}
-                  wrapperClass=""
-                />
+                <div>
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                </div>
               ) : pendingBookData.length === 0 ? (
                 <p style={{ textAlign: "center" }}>No Loaned Data</p>
               ) : (
@@ -180,16 +177,12 @@ export const Transactions = ({ user }) => {
             ) : null}
             {userBook1 === "user-loaned-books" ? (
               loanedDataLoading ? (
-                <TailSpin
-                  type="TailSpin"
-                  color="#28b498"
-                  height={100}
-                  radius="3"
-                  width={1100}
-                  colors={["#28b498"]}
-                  wrapperStyle={{ marginTop: "15%" }}
-                  wrapperClass=""
-                />
+                <div>
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                </div>
               ) : loanedBookData.length === 0 ? (
                 <p style={{ textAlign: "center" }}>No Approved Data</p>
               ) : (
@@ -204,16 +197,12 @@ export const Transactions = ({ user }) => {
             ) : null}
             {userBook1 === "user-declined-books" ? (
               declinedDataLoading ? (
-                <TailSpin
-                  type="TailSpin"
-                  color="#28b498"
-                  height={100}
-                  radius="3"
-                  width={1100}
-                  colors={["#28b498"]}
-                  wrapperStyle={{ marginTop: "15%" }}
-                  wrapperClass=""
-                />
+                <div>
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                </div>
               ) : declinedBookData.length === 0 ? (
                 <p style={{ textAlign: "center" }}>No Denied Data</p>
               ) : (
@@ -228,16 +217,12 @@ export const Transactions = ({ user }) => {
             ) : null}
             {userBook1 === "user-returned-books" ? (
               returnedDataLoading ? (
-                <TailSpin
-                  type="TailSpin"
-                  color="#28b498"
-                  height={100}
-                  radius="3"
-                  width={1100}
-                  colors={["#28b498"]}
-                  wrapperStyle={{ marginTop: "15%" }}
-                  wrapperClass=""
-                />
+                <div>
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                </div>
               ) : returnedBookData.length === 0 ? (
                 <p style={{ textAlign: "center" }}>No Returned Data</p>
               ) : (
@@ -253,18 +238,16 @@ export const Transactions = ({ user }) => {
 
             {userBook1 === "user-partial-books" ? (
               partialDataLoading ? (
-                <TailSpin
-                  type="TailSpin"
-                  color="#28b498"
-                  height={100}
-                  radius="3"
-                  width={1100}
-                  colors={["#28b498"]}
-                  wrapperStyle={{ marginTop: "15%" }}
-                  wrapperClass=""
-                />
+                <div>
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                </div>
               ) : partialBookData.length === 0 ? (
-                <p style={{ textAlign: "center" }}>No Partially Returned Data</p>
+                <p style={{ textAlign: "center" }}>
+                  No Partially Returned Data
+                </p>
               ) : (
                 partialBookData.map((item) => (
                   <UserTransactionPartialBooks

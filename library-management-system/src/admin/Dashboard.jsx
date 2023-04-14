@@ -13,9 +13,11 @@ import Table from "@mui/material/Table";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import { Link } from "react-router-dom";
+import { ThreeDots } from "react-loader-spinner";
 
 export const Dashboard = ({ admin }) => {
   const [pendingData, setPendingData] = useState([]);
+  const [pendingDataLoading, setPendingDataLoading] = useState(true);
   const [userCount, setUserCount] = useState(0);
 
   useEffect(() => {
@@ -26,11 +28,13 @@ export const Dashboard = ({ admin }) => {
       const limitedData = reversedData.slice(0, 5);
       setUserCount(userCount);
       setPendingData(limitedData);
+      setPendingDataLoading(false);
     };
     fetchPendingData();
   }, []);
 
   const [bookData, setBookData] = useState([]);
+  const [bookCountLoading, setBookCountLoading] = useState(true);
   const [bookCount, setBookCount] = useState(0);
 
   useEffect(() => {
@@ -41,6 +45,7 @@ export const Dashboard = ({ admin }) => {
       const limitedData = reversedData.slice(0, 5);
       setBookCount(bookCount);
       setBookData(limitedData);
+      setBookCountLoading(false);
     };
     fetchBookData();
   }, [bookData._id]);
@@ -135,9 +140,33 @@ export const Dashboard = ({ admin }) => {
                 <TableContainer>
                   <Table aria-label="simple table">
                     <TableHead></TableHead>
-                    {pendingData.map((item) => (
-                      <NewMembers key={item._id} item={item} />
-                    ))}
+                    {pendingDataLoading ? (
+                      <div
+                        style={{
+                          display: "flex",
+                          marginLeft: "25%",
+                          width: "250px",
+                          justifyContent: "space-between",
+                          marginTop: "20%",
+                        }}
+                      >
+                        <b style={{ color: "" }}>Loading Members Data </b>{" "}
+                        <ThreeDots
+                          height="25"
+                          width="60"
+                          radius="9"
+                          color="#28b498"
+                          ariaLabel="three-dots-loading"
+                          wrapperStyle={{}}
+                          wrapperClassName=""
+                          visible={true}
+                        />
+                      </div>
+                    ) : (
+                      pendingData.map((item) => (
+                        <NewMembers key={item._id} item={item} />
+                      ))
+                    )}
                   </Table>
                 </TableContainer>
               </div>
@@ -162,9 +191,33 @@ export const Dashboard = ({ admin }) => {
                 <TableContainer>
                   <Table aria-label="simple table">
                     <TableHead></TableHead>
-                    {bookData.map((item) => (
-                      <NewBooks key={item._id} item={item} />
-                    ))}
+                    {bookCountLoading ? (
+                      <div
+                        style={{
+                          display: "flex",
+                          marginLeft: "25%",
+                          width: "250px",
+                          justifyContent: "space-between",
+                          marginTop: "20%",
+                        }}
+                      >
+                        <b style={{ color: "" }}>Loading Books Data </b>{" "}
+                        <ThreeDots
+                          height="25"
+                          width="60"
+                          radius="9"
+                          color="#28b498"
+                          ariaLabel="three-dots-loading"
+                          wrapperStyle={{}}
+                          wrapperClassName=""
+                          visible={true}
+                        />
+                      </div>
+                    ) : (
+                      bookData.map((item) => (
+                        <NewBooks key={item._id} item={item} />
+                      ))
+                    )}
                   </Table>
                 </TableContainer>
               </div>

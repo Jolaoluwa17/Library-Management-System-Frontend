@@ -59,36 +59,7 @@ export const nonStudentReducer = (state, action) => {
       return state;
   }
 };
-// export const lecturerReducer = (state, action) => {
-//   switch (action.type) {
-//     case "LOGIN_START":
-//       return {
-//         lecture: null,
-//         isFetching: true,
-//         error: false,
-//       };
-//     case "LOGIN_SUCCESS":
-//       return {
-//         lecturer: action.payload,
-//         isFetching: false,
-//         error: false,
-//       };
-//     case "LOGIN_FAILURE":
-//       return {
-//         lecturer: null,
-//         isFetching: false,
-//         error: true,
-//       };
-//     case "LOGOUT":
-//       return {
-//         lecturer: null,
-//         isFetching: false,
-//         error: false,
-//       };
-//     default:
-//       return state;
-//   }
-// };
+
 
 export const adminReducer = (state, action) => {
   switch (action.type) {

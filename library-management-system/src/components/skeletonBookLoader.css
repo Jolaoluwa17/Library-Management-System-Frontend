@@ -1,0 +1,40 @@
+.skeleton-book {
+  border-radius: 4px;
+  background: linear-gradient(to right, #f0f0f0 8%, #e0e0e0 18%, #f0f0f0 33%);
+  background-size: 760px 120px;
+  animation: loading 1.5s ease-in-out infinite;
+  width: 200px;
+  height: 300px;
+}
+.skeleton-book-loader {
+  width: 300px;
+  height: 350px;
+}
+.skeleton-book-text {
+  height: 20px;
+  width: 200px;
+  background: linear-gradient(to right, #f0f0f0 8%, #e0e0e0 18%, #f0f0f0 33%);
+  background-size: 760px 120px;
+ animation: loader-animation 1s infinite ease-in-out;
+  margin-top: 3%;
+}
+@keyframes loading {
+    from {
+      background-position: -200px 0;
+    }
+    to {
+      background-position: 200px 0;
+    }
+  }
+  
+  @keyframes loader-animation {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }

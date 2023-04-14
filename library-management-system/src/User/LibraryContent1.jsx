@@ -23,6 +23,7 @@ export const LibraryContent1 = () => {
   }, [bookData._id]);
 
   const [randomBookData, setRandomBookData] = useState([]);
+  const [randomLoading, setRandomLoading] = useState(true)
 
   useEffect(() => {
     const fetchBookData = async () => {
@@ -34,6 +35,7 @@ export const LibraryContent1 = () => {
         randomBooks.push(books.splice(index, 1)[0]);
       }
       setRandomBookData(randomBooks);
+      setRandomLoading(false);
     };
     fetchBookData();
   }, []);
@@ -43,7 +45,7 @@ export const LibraryContent1 = () => {
       <div className="library-content">
         <div className="library-content-sidebar">
           <div className="book-slider">
-            <Autoplay randomBookData={randomBookData} />
+            <Autoplay randomBookData={randomBookData} randomLoading={randomLoading} />
           </div>
           <div className="ads">
             <div className="first-part">
@@ -90,7 +92,7 @@ export const LibraryContent1 = () => {
               </div>
             ) : (
               bookData.map((item) => (
-                <div className="individual-books">
+                <div className="individual-books" key={item._id}>
                   <div className="book-img">
                     <img
                       src={item.bookPic.fileUrl}

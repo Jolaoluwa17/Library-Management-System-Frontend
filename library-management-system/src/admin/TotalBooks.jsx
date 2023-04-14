@@ -4,14 +4,17 @@ import { IoSearch } from "react-icons/io5";
 import axios from "axios";
 import config from "../config";
 import TotalBooksCard from "../components/TotalBooksCard";
+import SkeletonBookLoader from "../components/SkeletonBookLoader";
 
 export const TotalBooks = ({ admin }) => {
   const [bookData, setBookData] = useState([]);
+  const [bookDataLoading, setBookDataLoading] = useState(true);
 
   useEffect(() => {
     const fetchBookData = async () => {
       const res = await axios.get(`${config.baseURL}/book`);
       setBookData(res.data);
+      setBookDataLoading(false);
     };
     fetchBookData();
   }, [bookData._id]);
@@ -36,21 +39,34 @@ export const TotalBooks = ({ admin }) => {
         </div>
       </div>
       <div className="total-books-content">
-        {bookData
-          .filter((item) => {
-            return search.toLowerCase() === ""
-              ? item
-              : item.title.toLowerCase().includes(search) ||
-                  item.category.name.toLowerCase().includes(search);
-          })
-          .map((item) => (
-            <TotalBooksCard
-              key={item._id}
-              item={item}
-              bookData={bookData}
-              setBookData={setBookData}
-            />
-          ))}
+        {bookDataLoading ? (
+          <div className="new">
+          <SkeletonBookLoader />
+          <SkeletonBookLoader />
+          <SkeletonBookLoader />
+          <SkeletonBookLoader />
+          <SkeletonBookLoader />
+          <SkeletonBookLoader />
+          <SkeletonBookLoader />
+          <SkeletonBookLoader />
+        </div>
+        ) : (
+          bookData
+            .filter((item) => {
+              return search.toLowerCase() === ""
+                ? item
+                : item.title.toLowerCase().includes(search) ||
+                    item.category.name.toLowerCase().includes(search);
+            })
+            .map((item) => (
+              <TotalBooksCard
+                key={item._id}
+                item={item}
+                bookData={bookData}
+                setBookData={setBookData}
+              />
+            ))
+        )}
       </div>
     </div>
   );

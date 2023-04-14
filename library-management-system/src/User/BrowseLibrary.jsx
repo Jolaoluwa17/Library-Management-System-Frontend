@@ -7,7 +7,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import UserHeader from "../components/UserHeader";
 import config from "../config";
-import { TailSpin, LineWave } from "react-loader-spinner";
+import SkeletonBookLoader from "../components/SkeletonBookLoader";
 
 export const BrowseLibrary = ({ user, handleClick, test, cart }) => {
   const [pendingData, setPendingData] = useState([]);
@@ -28,16 +28,16 @@ export const BrowseLibrary = ({ user, handleClick, test, cart }) => {
       <UserHeader user={user} />
       <div className="browse-library-content">
         {pendingDataLoading ? (
-          <TailSpin
-            type="TailSpin"
-            color="#28b498"
-            height={100}
-            radius="3"
-            width={1100}
-            colors={["#28b498"]}
-            wrapperStyle={{ marginTop: "15%" }}
-            wrapperClass=""
-          />
+          <div className="new">
+            <SkeletonBookLoader />
+            <SkeletonBookLoader />
+            <SkeletonBookLoader />
+            <SkeletonBookLoader />
+            <SkeletonBookLoader />
+            <SkeletonBookLoader />
+            <SkeletonBookLoader />
+            <SkeletonBookLoader />
+          </div>
         ) : (
           pendingData.map((item) => (
             <BookCard

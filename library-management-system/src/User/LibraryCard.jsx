@@ -113,14 +113,14 @@ export const LibraryCard = ({ user }) => {
                 }
               >
                 <div className="virtual-card-back-content">
-                  <div className="card-qr-code-container">
+                  {/* <div className="card-qr-code-container">
                     <div className="card-holder-qr-code">
                       <img
                         src="https://res.cloudinary.com/dneawlwcp/image/upload/v1677520723/Final%20Year%20Project%20Pictures/istockphoto-828088276-612x612_zxecyd.jpg"
                         alt=""
                       />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="conditions">
                     <div className="conditions-header">
                       <h3>Conditions</h3>

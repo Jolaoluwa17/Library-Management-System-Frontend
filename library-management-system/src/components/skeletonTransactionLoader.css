@@ -1,0 +1,45 @@
+.skeleton-transaction-container {
+  margin-bottom: 2%;
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  background: #f0f0f0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.skeleton-trans-profile {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-color: #ddd;
+  animation: loader-animation 1s infinite ease-in-out;
+}
+.skeleton-trans-details{
+    margin-top: 1.8%;
+    margin-left: -5%;
+}
+.skeleton-trans-details .trans-details{
+    background-color: #ddd;
+    height: 15px;
+    width: 400px;
+    margin-bottom: 10px;
+    animation: loader-animation 1s infinite ease-in-out;
+}
+.skeleton-see-details{
+    background-color: #ddd;
+    width: 100px;
+    height: 20px;
+    animation: loader-animation 1s infinite ease-in-out;
+}
+@keyframes loader-animation {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

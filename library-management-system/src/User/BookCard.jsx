@@ -45,7 +45,6 @@ export const BookCard = ({ item, handleClick, user, cart, test }) => {
     userData.phoneNo
       ? false
       : true;
-  console.log(cart);
 
   return (
     <div className="book-card">
@@ -66,7 +65,7 @@ export const BookCard = ({ item, handleClick, user, cart, test }) => {
               The cart is currently full, remove an item to <br /> add new book.
             </span>
           ) : null}
-          {pendingBookData != 0 ? (
+          {pendingBookData !== 0 ? (
             <span style={{ color: "red" }}>
               <BiErrorAlt style={{ fontSize: "30px" }} /> <br /> You cannot make
               a new request without returning all the books
@@ -136,9 +135,10 @@ export const BookCard = ({ item, handleClick, user, cart, test }) => {
                   <button
                     onClick={() => handleClick(item)}
                     disabled={
-                      pendingBookData != 0 ||
+                      pendingBookData !== 0 ||
                       test === true ||
-                      cart.some((cartItem) => cartItem._id === item._id)
+                      (Array.isArray(cart) &&
+                        cart.some((cartItem) => cartItem._id === item._id))
                         ? true
                         : false
                     }

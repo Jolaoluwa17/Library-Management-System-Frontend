@@ -23,9 +23,13 @@
   width: 300px;
   text-align: center;
 }
+.preview .image-title{
+  height: 30px;
+}
 .preview-text {
-  margin-top: 6%;
+  margin-top: 4%;
   padding: 5px;
+  text-align: left;
 }
 /* width */
 .preview-text::-webkit-scrollbar {

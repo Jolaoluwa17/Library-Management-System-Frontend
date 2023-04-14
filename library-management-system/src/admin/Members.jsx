@@ -5,20 +5,27 @@ import axios from "axios";
 import MembersCard from "../components/MembersCard";
 import config from "../config";
 import { VscFilter } from "react-icons/vsc";
+import { ThreeDots } from "react-loader-spinner";
 
 export const Members = ({ admin }) => {
   const [pendingData, setPendingData] = useState([]);
+  const [pendingDataLoading, setPendingDataLoading] = useState(true);
 
   useEffect(() => {
     const fetchPendingData = async () => {
       const res = await axios.get(`${config.baseURL}/user`);
       const reversedData = res.data.reverse();
       setPendingData(reversedData);
+      setPendingDataLoading(false);
     };
     fetchPendingData();
   }, []);
 
   const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("");
+
+  console.log(search, filter);
+  console.log(pendingData);
 
   return (
     <div className="members">
@@ -47,7 +54,7 @@ export const Members = ({ admin }) => {
               name="user-type"
               id="user-type"
               className="user-type"
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => setFilter(e.target.value)}
             >
               <option value="" style={{ color: "grey" }}>
                 Filter
@@ -60,16 +67,42 @@ export const Members = ({ admin }) => {
         </div>
         <div className="members-table-header"></div>
         <div className="table-container-alpha">
-          {pendingData
-            .filter((item) => {
-              return search.toLowerCase() === ""
-                ? item
-                : item.username.toLowerCase().includes(search) ||
-                    item.userType.toLowerCase().includes(search);
-            })
-            .map((item) => (
-              <MembersCard key={item.id} item={item} />
-            ))}
+          {pendingDataLoading ? (
+            <div
+              style={{
+                display: "flex",
+                marginLeft: "38%",
+                width: "250px",
+                justifyContent: "space-between",
+                marginTop: "15%",
+              }}
+            >
+              <b style={{ color: "" }}>Loading Members Data </b>{" "}
+              <ThreeDots
+                height="25"
+                width="60"
+                radius="9"
+                color="#28b498"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClassName=""
+                visible={true}
+              />
+            </div>
+          ) : (
+            pendingData
+              .filter((item) => {
+                const lowerSearch = search.toLowerCase();
+                const lowerFilter = filter.toLowerCase();
+                return (
+                  (lowerSearch === "" ||
+                    item.username.toLowerCase().includes(lowerSearch)) &&
+                  (lowerFilter === "" ||
+                    item.userType.toLowerCase().includes(lowerFilter))
+                );
+              })
+              .map((item) => <MembersCard key={item.id} item={item} />)
+          )}
         </div>
       </div>
     </div>

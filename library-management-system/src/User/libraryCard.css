@@ -132,16 +132,11 @@
 }
 .conditions {
   color: white;
-  width: 350px;
+  width: 100%;
   padding: 10px;
 }
 .conditions-header {
   text-align: center;
-}
-.virtual-card-back-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }
 .conditions-content {
   font-size: 14px;
@@ -155,7 +150,7 @@
   width: 200px;
   text-align: center;
   margin-top: 3%;
-  margin-left: 65px;
+  margin-left: 150px;
 }
 
 /*For Double view*/

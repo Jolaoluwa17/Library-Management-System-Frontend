@@ -107,3 +107,6 @@
     margin-bottom: 5%;
     width: 310px;
 }
+.add-book-submit button:disabled{
+    background-color: grey;
+}

@@ -139,7 +139,7 @@
   width: 70%;
   justify-content: space-between;
   flex-wrap: wrap;
-  height: 200px;
+  height: 120px;
 }
 .change-password .user-form-item {
   display: flex;
@@ -154,6 +154,9 @@
   padding: 10px;
   border: none;
   cursor: pointer;
+}
+.user-change-password form button:disabled{
+  background-color: grey;
 }
 .change-password .user-form-item label {
   font-weight: 600;
@@ -275,4 +278,7 @@
   width: 40%;
   justify-content: space-between;
   display: flex;
+}
+.upload-profile-pic .addFile-btn button:disabled{
+  background-color: grey !important;
 }

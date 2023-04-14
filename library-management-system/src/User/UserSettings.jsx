@@ -5,6 +5,7 @@ import "./userSettings.css";
 import config from "../config";
 import { MdReportGmailerrorred } from "react-icons/md";
 import ProfilePicture from "../components/ProfilePicture";
+import { RotatingSquare } from "react-loader-spinner";
 
 export const UserSettings = ({ user }) => {
   const [oldPassword, setOldPassword] = useState("");
@@ -21,6 +22,7 @@ export const UserSettings = ({ user }) => {
     phoneNo: "",
   });
 
+  // to update user profile picture
   const [file, setFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -35,12 +37,15 @@ export const UserSettings = ({ user }) => {
     setFile(null);
   };
 
+  const [userUpdateProfileLoading, setUserUpdateProfileLoading] =
+    useState(false);
   const [error1, setError1] = useState(false);
   const handleProfilePic = async (e) => {
     e.preventDefault();
     try {
       const formData = new FormData();
       formData.append("profilePic", file);
+      setUserUpdateProfileLoading(true);
       const response = await axios.post(
         `${config.baseURL}/user/${user._id}/profilePic`,
         formData,
@@ -52,15 +57,19 @@ export const UserSettings = ({ user }) => {
       );
       console.log(response);
       alert("Profile Pic Update successfully");
+      setUserUpdateProfileLoading(false);
       setFile(null);
       window.location.reload();
     } catch (err) {
       console.log(err);
+      setUserUpdateProfileLoading(false);
       alert("Failed to upload profile pic");
       setError(err.response.data.message);
     }
   };
 
+
+  // to get the user
   useEffect(() => {
     const getUserDetails = async () => {
       const res = await axios.get(`${config.baseURL}/user/${user._id}`);
@@ -74,8 +83,11 @@ export const UserSettings = ({ user }) => {
     setUserData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  // update user information or details
+  const [userUpdateLoading, setUserUpdateLoading] = useState(false);
   const handleUpdate = (event) => {
     event.preventDefault();
+    setUserUpdateLoading(true);
     //update user data in API using axios.put
     axios
       .put(`${config.baseURL}/user/${user._id}`, userData)
@@ -85,11 +97,18 @@ export const UserSettings = ({ user }) => {
       })
       .catch((error) => {
         console.error(error);
+      })
+      .finally(() => {
+        setUserUpdateLoading(false); // Hide the loader
       });
   };
+
+  // change password
   const [error, setError] = useState("");
+  const [changePasswordLoading, setChangePasswordLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setChangePasswordLoading(true);
     setError(false);
     if (newPassword !== confirmNewPassword) {
       setError("Passwords do not match. Please Try Again");
@@ -101,7 +120,9 @@ export const UserSettings = ({ user }) => {
           oldPassword,
           newPassword,
         });
-        res.data && window.location.reload();
+        res.data && alert("Profile Pic Update successfully");
+        setChangePasswordLoading(false);
+        window.location.reload();
       } catch (err) {
         setError(err);
         console.log(err, error);
@@ -249,13 +270,23 @@ export const UserSettings = ({ user }) => {
               </select>
             </div>
           </div>
-          <button
-            type="submit"
-            onClick={handleUpdate}
-            className="update-btn-user"
-          >
-            Update
-          </button>
+          {userUpdateLoading === true ? (
+            <RotatingSquare
+              type="TailSpin"
+              color="#28b498"
+              height={30}
+              width={80}
+              wrapperStyle={{ marginTop: "20%" }}
+            />
+          ) : (
+            <button
+              type="submit"
+              onClick={handleUpdate}
+              className="update-btn-user"
+            >
+              Update
+            </button>
+          )}
           <div className="user-settings-line2">
             <hr />
           </div>
@@ -287,7 +318,7 @@ export const UserSettings = ({ user }) => {
                       backgroundColor: "#28b498",
                       color: "white",
                       border: "none",
-                      marginLeft: "0.6%",
+                      marginLeft: "1.4%",
                       marginBottom: "0.5%",
                       borderRadius: "5px",
                     }}
@@ -322,26 +353,35 @@ export const UserSettings = ({ user }) => {
               {setError1 && <p className="error">{error1}</p>}
             </>
           )}
-          {
-            <button
-              className="addFile"
-              onClick={handleProfilePic}
-              style={{
-                padding: "7px",
-                paddingLeft: "10px",
-                paddingRight: "10px",
-                marginTop: "1%",
-                backgroundColor: "#28b498",
-                color: "white",
-                border: "none",
-                marginLeft: "-0.1%",
-                marginBottom: "0.5%",
-                borderRadius: "5px",
-              }}
-            >
-              Add Profile Pic
-            </button>
-          }
+          {userUpdateProfileLoading ? (
+            <RotatingSquare
+              type="TailSpin"
+              color="#28b498"
+              height={30}
+              width={100}
+            />
+          ) : (
+            <div className="addFile-btn">
+              <button
+                onClick={handleProfilePic}
+                style={{
+                  padding: "7px",
+                  paddingLeft: "10px",
+                  paddingRight: "10px",
+                  marginTop: "1%",
+                  backgroundColor: "#28b498",
+                  color: "white",
+                  border: "none",
+                  marginLeft: "-0.1%",
+                  marginBottom: "0.5%",
+                  borderRadius: "5px",
+                }}
+                disabled={file !== null ? false : true}
+              >
+                Upload Profile Pic
+              </button>
+            </div>
+          )}
           <div className="user-settings-line3">
             <hr />
           </div>
@@ -387,7 +427,17 @@ export const UserSettings = ({ user }) => {
             <div className="password-do-not-match" style={{ color: "red" }}>
               {error}
             </div>
-            <button onClick={handleSubmit}>Confirm Password</button>
+            {changePasswordLoading ? (
+              <RotatingSquare
+                type="TailSpin"
+                color="#28b498"
+                height={30}
+                width={100}
+                wrapperStyle={{ marginTop: "5%" }}
+              />
+            ) : (
+              <button onClick={handleSubmit} disabled={oldPassword === "" || newPassword === "" || confirmNewPassword === "" ? true : false}>Confirm Password</button>
+            )}
           </form>
           <div className="user-settings-line3">
             <hr />

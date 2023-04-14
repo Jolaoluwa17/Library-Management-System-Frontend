@@ -7,6 +7,7 @@ import AppliedBooks from "../components/AppliedBooks";
 import DeclinedBooks from "../components/DeclinedBooks";
 import PartialBooks from "../components/PartialBooks";
 import { TailSpin, LineWave } from "react-loader-spinner";
+import SkeletonTransactionLoader from "../components/SkeletonTransactionLoader";
 import axios from "axios";
 import config from "../config";
 
@@ -155,16 +156,12 @@ export const AdminTransactions = ({ admin }) => {
           <div className="table-content-main">
             {book1 === "applied-books" ? (
               pendingDataLoading ? (
-                <TailSpin
-                  type="TailSpin"
-                  color="#28b498"
-                  height={100}
-                  radius="3"
-                  width={1100}
-                  colors={["#28b498"]}
-                  wrapperStyle={{ marginTop: "15%" }}
-                  wrapperClass=""
-                />
+                <div>
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                </div>
               ) : pendingBookData.length === 0 ? (
                 <p style={{ textAlign: "center" }}>No Loaned Data</p>
               ) : (
@@ -175,16 +172,12 @@ export const AdminTransactions = ({ admin }) => {
             ) : null}
             {book1 === "loaned-books" ? (
               loanedDataLoading ? (
-                <TailSpin
-                  type="TailSpin"
-                  color="#28b498"
-                  height={100}
-                  radius="3"
-                  width={1100}
-                  colors={["#28b498"]}
-                  wrapperStyle={{ marginTop: "15%" }}
-                  wrapperClass=""
-                />
+                <div>
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                </div>
               ) : approveBookData.length === 0 ? (
                 <p style={{ textAlign: "center" }}>No Approved Data</p>
               ) : (
@@ -195,16 +188,12 @@ export const AdminTransactions = ({ admin }) => {
             ) : null}
             {book1 === "Declined-books" ? (
               declinedDataLoading ? (
-                <TailSpin
-                  type="TailSpin"
-                  color="#28b498"
-                  height={100}
-                  radius="3"
-                  width={1100}
-                  colors={["#28b498"]}
-                  wrapperStyle={{ marginTop: "15%" }}
-                  wrapperClass=""
-                />
+                <div>
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                </div>
               ) : declineBookData.length === 0 ? (
                 <p style={{ textAlign: "center" }}>No Denied Data</p>
               ) : (
@@ -215,16 +204,12 @@ export const AdminTransactions = ({ admin }) => {
             ) : null}
             {book1 === "returned-books" ? (
               returnedDataLoading ? (
-                <TailSpin
-                  type="TailSpin"
-                  color="#28b498"
-                  height={100}
-                  radius="3"
-                  width={1100}
-                  colors={["#28b498"]}
-                  wrapperStyle={{ marginTop: "15%" }}
-                  wrapperClass=""
-                />
+                <div>
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                </div>
               ) : returnBookData.length === 0 ? (
                 <p style={{ textAlign: "center" }}>No Returned Data</p>
               ) : (
@@ -235,16 +220,12 @@ export const AdminTransactions = ({ admin }) => {
             ) : null}
             {book1 === "partial-books" ? (
               partialDataLoading ? (
-                <TailSpin
-                  type="TailSpin"
-                  color="#28b498"
-                  height={100}
-                  radius="3"
-                  width={1100}
-                  colors={["#28b498"]}
-                  wrapperStyle={{ marginTop: "15%" }}
-                  wrapperClass=""
-                />
+                <div>
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                  <SkeletonTransactionLoader />
+                </div>
               ) : partialBookData.length === 0 ? (
                 <p style={{ textAlign: "center" }}>
                   No Partially Returned Data

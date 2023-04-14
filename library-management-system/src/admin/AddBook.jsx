@@ -3,6 +3,7 @@ import "./addBook.css";
 import { useState, useEffect } from "react";
 import config from "../config";
 import axios from "axios";
+import { RotatingSquare } from "react-loader-spinner";
 
 export const AddBook = ({ admin }) => {
   const [categoryData, setCatetegoryData] = useState([]);
@@ -49,9 +50,12 @@ export const AddBook = ({ admin }) => {
     document.querySelector('input[type="file"]').click();
   };
 
+  
+  const [submitBookLoading, setSubmitBookLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(false);
+    setSubmitBookLoading(true);
     setVerificationError(false);
     if (availableCopies !== totalCopies) {
       setVerificationError("Copies do not match. Please Try Again");
@@ -72,9 +76,12 @@ export const AddBook = ({ admin }) => {
             "Content-Type": "multipart/form-data",
           },
         });
+        setSubmitBookLoading(false);
+        alert("Book Successfully Submitted");
         res.data && window.location.reload();
       } catch (err) {
         setError(true);
+        setSubmitBookLoading(false);
       }
     }
   };
@@ -212,6 +219,7 @@ export const AddBook = ({ admin }) => {
                 <br />
                 <input
                   type="number"
+                  min="1"
                   id="copies"
                   placeholder="5"
                   onChange={(e) => setAvailableCopies(e.target.value)}
@@ -224,6 +232,7 @@ export const AddBook = ({ admin }) => {
                 <br />
                 <input
                   type="number"
+                  min="1"
                   id="inventory-copies"
                   placeholder="5"
                   onChange={(e) => setTotalCopies(e.target.value)}
@@ -264,7 +273,32 @@ export const AddBook = ({ admin }) => {
             </div>
           </div>
           <div className="add-book-submit">
-            <button onClick={handleSubmit}>Submit</button>
+            {submitBookLoading ? (
+              <RotatingSquare
+                type="TailSpin"
+                color="#28b498"
+                height={30}
+                width={80}
+                wrapperStyle={{}}
+              />
+            ) : (
+              <button
+                onClick={handleSubmit}
+                disabled={
+                  title === "" ||
+                  author === "" ||
+                  year === "" ||
+                  category === "" ||
+                  publisher === "" ||
+                  description === "" ||
+                  availableCopies === "" ||
+                  totalCopies === "" ||
+                  file === null
+                }
+              >
+                Submit
+              </button>
+            )}
           </div>
         </div>
       </div>
