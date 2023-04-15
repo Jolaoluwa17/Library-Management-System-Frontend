@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import config from "../config";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { TailSpin, LineWave } from "react-loader-spinner";
+import SkeletonTransactionDetailsLoader from "./SkeletonTransactionDetailsLoader";
 
 export const SeeAppliedBooksDetails = () => {
   const navigate = useNavigate();
@@ -65,16 +65,7 @@ export const SeeAppliedBooksDetails = () => {
         </div>
         <div className="details-content-main">
           {pendingDataLoading ? (
-            <TailSpin
-              type="TailSpin"
-              color="#28b498"
-              height={100}
-              radius="3"
-              width={1100}
-              colors={["#28b498"]}
-              wrapperStyle={{ marginTop: "15%" }}
-              wrapperClass=""
-            />
+            <SkeletonTransactionDetailsLoader />
           ) : (
             pendingBookData
               .filter((item) => {

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import config from "../config";
-import { TailSpin, LineWave } from "react-loader-spinner";
+import SkeletonTransactionDetailsLoader from "./SkeletonTransactionDetailsLoader";
 
 export const SeeReturnedBooksDetails = () => {
   const navigate = useNavigate();
@@ -43,16 +43,7 @@ export const SeeReturnedBooksDetails = () => {
         </div>
         <div className="details-content-main">
           {returnedDataLoading ? (
-            <TailSpin
-              type="TailSpin"
-              color="#28b498"
-              height={100}
-              radius="3"
-              width={1100}
-              colors={["#28b498"]}
-              wrapperStyle={{ marginTop: "15%" }}
-              wrapperClass=""
-            />
+            <SkeletonTransactionDetailsLoader />
           ) : (
             returnBookData
               .filter((item) => {

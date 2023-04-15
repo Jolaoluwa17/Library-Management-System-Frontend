@@ -5,7 +5,6 @@ import axios from "axios";
 
 export const BookId = ({ item }) => {
   const [books, setBooks] = useState([]);
-  console.log(books);
   const requestId = item._id;
   const handleReturn = async () => {
     try {
@@ -21,8 +20,6 @@ export const BookId = ({ item }) => {
       console.log(err);
     }
   };
-  console.log(books);
-  console.log(item);
 
   const [isChecked, setIsChecked] = useState(false);
   const handleCentralCheckboxChange = () => {
@@ -36,33 +33,41 @@ export const BookId = ({ item }) => {
   };
   return (
     <div className="book-id">
-      <input
-        type="checkbox"
-        checked={isChecked}
-        onChange={handleCentralCheckboxChange}
-      />
-      {item.books &&
-        item.books.map((book) => (
-          <span key={book._id}>
-            <li>{book.title}</li>
+      <div className="book-id-main">
+        <div className="book-id-content">
+          <div className="select-all">
+            select all{" "}
             <input
               type="checkbox"
-              checked={isChecked || books.includes(book._id)}
-              value={book._id}
-              onChange={(e) => {
-                const bookId = e.target.value;
-                if (e.target.checked) {
-                  setBooks((books) => [...books, bookId]);
-                } else {
-                  setBooks((books) => books.filter((id) => id !== bookId));
-                }
-              }}
+              checked={isChecked}
+              onChange={handleCentralCheckboxChange}
             />
-          </span>
-        ))}
-      <div className="details-returned-btn">
-        <button onClick={handleReturn}>Returned</button>
+          </div>
+          {item.books &&
+            item.books.map((book) => (
+              <span key={book._id}>
+                <li>{book.title}</li>
+                <input
+                  type="checkbox"
+                  checked={isChecked || books.includes(book._id)}
+                  value={book._id}
+                  onChange={(e) => {
+                    const bookId = e.target.value;
+                    if (e.target.checked) {
+                      setBooks((books) => [...books, bookId]);
+                    } else {
+                      setBooks((books) => books.filter((id) => id !== bookId));
+                    }
+                  }}
+                />
+              </span>
+            ))}
+        </div>
+        <div className="details-returned-btn">
+        <button onClick={handleReturn}>Return</button>
       </div>
+      </div>
+      
     </div>
   );
 };

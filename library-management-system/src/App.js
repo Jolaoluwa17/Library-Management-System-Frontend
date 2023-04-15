@@ -179,7 +179,12 @@ function App() {
                 <Route
                   path="/test"
                   element={
-                    <Test user={user.user} handleClick={handleClickCart} />
+                    <Test
+                      user={user.user}
+                      handleClick={handleClickCart}
+                      cart={cart}
+                      test={test}
+                    />
                   }
                 />
               </Route>

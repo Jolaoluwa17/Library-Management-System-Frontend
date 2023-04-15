@@ -3,6 +3,7 @@ import { IoSearch } from "react-icons/io5";
 import { BiHelpCircle } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import CategorySidebar from "../components/CategorySidebar";
+import Notification from "./Notification";
 import { MdOutlineCancel } from "react-icons/md";
 import { useState } from "react";
 import MobileSidebar from "../components/MobileSideBar";
@@ -11,9 +12,11 @@ import axios from "axios";
 import { useEffect } from "react";
 import "../User/library.css";
 import config from "../config";
+import { IoMdNotifications, IoMdNotificationsOff } from "react-icons/io";
 
 export const UserHeader = ({ user }) => {
   const [isCategorySidebar, setIsCategorySidebar] = useState("false");
+  const [isNotification, setIsNotification] = useState(true);
   const [pendingData, setPendingData] = useState([]);
 
   useEffect(() => {
@@ -40,7 +43,6 @@ export const UserHeader = ({ user }) => {
       setFilteredData(newFilter);
     }
   };
-
 
 
   return (
@@ -71,10 +73,7 @@ export const UserHeader = ({ user }) => {
             <div className="dataResult">
               {filteredData.slice(0, 15).map((value, key) => {
                 return (
-                  <Link
-                    style={{ color: "black" }}
-                    to={`/test?title=${value.title}`}
-                  >
+                  <Link to={`/test?title=${value.title}`}>
                     <p>{value.title} </p>
                   </Link>
                 );
@@ -87,6 +86,24 @@ export const UserHeader = ({ user }) => {
             <BiHelpCircle />
           </div>
           <h4>Help</h4>
+        </div>
+        <div className="help">
+          <div className="help-icon">
+            <IoMdNotifications
+              onClick={() => setIsNotification(false)}
+              className={
+                isNotification  ? "notification-btn" : "notification-btn1"
+              }
+            />
+            <IoMdNotificationsOff
+              onClick={() => setIsNotification(true)}
+              className={
+                isNotification
+                  ? "notification-cancel-btn"
+                  : "notification-cancel-btn1"
+              }
+            />
+          </div>
         </div>
         <div className="help">
           <div className="help-icon">
@@ -110,6 +127,11 @@ export const UserHeader = ({ user }) => {
           }
         >
           <CategorySidebar />
+        </div>
+        <div
+          className={isNotification ? "notification-bar" : "notification-bar1"}
+        >
+          <Notification user={user} />
         </div>
       </div>
     </div>

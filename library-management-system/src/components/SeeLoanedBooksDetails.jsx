@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import config from "../config";
 import BookId from "./BookId";
-import { TailSpin, LineWave } from "react-loader-spinner";
+import SkeletonTransactionDetailsLoader from "./SkeletonTransactionDetailsLoader";
 
 export const SeeLoanedBooksDetails = ({ item }) => {
   const navigate = useNavigate();
@@ -29,26 +29,6 @@ export const SeeLoanedBooksDetails = ({ item }) => {
     fetchbookData();
   }, []);
 
-  console.log(approveBookData.books);
-
-  // to return a request
-  const [books, setBooks] = useState([]);
-  console.log(books);
-  const handleReturn = async () => {
-    try {
-      const res = await axios.patch(
-        `${config.baseURL}/loan/${requestId}/return`,
-        {
-          books,
-        }
-      );
-      window.location.replace("/adminTransactions");
-      console.log(res);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  console.log(books);
 
   return (
     <div className="see-details">
@@ -66,21 +46,9 @@ export const SeeLoanedBooksDetails = ({ item }) => {
         <div className="details-content-main">
           {" "}
           {loanedDataLoading ? (
-            <TailSpin
-              type="TailSpin"
-              color="#28b498"
-              height={100}
-              radius="3"
-              width={1100}
-              colors={["#28b498"]}
-              wrapperStyle={{ paddingTop: "12%" }}
-              wrapperClass=""
-            />
+            <SkeletonTransactionDetailsLoader />
           ) : (
             approveBookData
-              // .filter((item) => {
-              //   return item._id.includes(requestId);
-              // })
               .map((item) => (
                 <div className="details-panel-content" key={item._id}>
                   <div className="loanee-pic">
@@ -130,27 +98,6 @@ export const SeeLoanedBooksDetails = ({ item }) => {
                       <b>List Of Books</b>
                       <div className="loanee-det list-of-books">
                         <ul>
-                          {/* {item.books &&
-                          item.books.map((book) => (
-                            <span key={book._id}>
-                              <li>{book.title}</li>
-                              <input
-                                type="checkbox"
-                                checked={isChecked || books.includes(book._id)}
-                                value={book._id}
-                                onChange={(e) => {
-                                  const bookId = e.target.value;
-                                  if (e.target.checked) {
-                                    setBooks((books) => [...books, bookId]);
-                                  } else {
-                                    setBooks((books) =>
-                                      books.filter((id) => id !== bookId)
-                                    );
-                                  }
-                                }}
-                              />
-                            </span>
-                          ))} */}
                           <BookId item={item} />
                         </ul>
                       </div>
@@ -159,9 +106,6 @@ export const SeeLoanedBooksDetails = ({ item }) => {
                 </div>
               ))
           )}
-        </div>
-        <div className="details-returned-btn">
-          <button onClick={handleReturn}>Returned</button>
         </div>
       </div>
     </div>

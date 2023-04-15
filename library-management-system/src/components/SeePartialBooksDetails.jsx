@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import config from "../config";
 import PartialBookId from "./PartialBookId";
-import { TailSpin, LineWave } from "react-loader-spinner";
+import SkeletonTransactionDetailsLoader from "./SkeletonTransactionDetailsLoader";
 
 export const SeePartialBooksDetails = () => {
   const navigate = useNavigate();
@@ -29,24 +29,6 @@ export const SeePartialBooksDetails = () => {
     fetchbookData();
   }, []);
 
-  // to return a request
-  //   const [books, setBooks] = useState([]);
-  //   console.log(books);
-  //   const handleReturn = async () => {
-  //     try {
-  //       const res = await axios.patch(
-  //         `${config.baseURL}/loan/${requestId}/return`,
-  //         {
-  //           books,
-  //         }
-  //       );
-  //       window.location.replace("/adminTransactions");
-  //       console.log(res);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-
   return (
     <div className="see-details">
       <div className="see-details-header">
@@ -62,16 +44,7 @@ export const SeePartialBooksDetails = () => {
         </div>
         <div className="details-content-main">
           {partialDataLoading ? (
-            <TailSpin
-              type="TailSpin"
-              color="#28b498"
-              height={100}
-              radius="3"
-              width={1100}
-              colors={["#28b498"]}
-              wrapperStyle={{ marginTop: "15%" }}
-              wrapperClass=""
-            />
+            <SkeletonTransactionDetailsLoader />
           ) : (
             partialBookData.map((item) => (
               <div className="details-panel-content" key={item._id}>
@@ -122,27 +95,6 @@ export const SeePartialBooksDetails = () => {
                     <b>List Of Books</b>
                     <div className="loanee-det list-of-books">
                       <ul>
-                        {/* {item.books.map((book) => (
-                          <span key={book._id}>
-                            <li>{book.title}</li>
-                            <input
-                              type="checkbox"
-                              value={book._id}
-                              onChange={(e) => {
-                                if (e.target.checked) {
-                                  setBooks((books) => [
-                                    ...books,
-                                    e.target.value,
-                                  ]);
-                                } else {
-                                  setBooks((books) =>
-                                    books.filter((id) => id !== e.target.value)
-                                  );
-                                }
-                              }}
-                            />
-                          </span>
-                        ))} */}
                         <PartialBookId item={item} />
                       </ul>
                     </div>
@@ -151,9 +103,6 @@ export const SeePartialBooksDetails = () => {
               </div>
             ))
           )}
-        </div>
-        <div className="details-returned-btn">
-          <button>Returned</button>
         </div>
       </div>
     </div>

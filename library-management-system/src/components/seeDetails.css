@@ -94,8 +94,7 @@
 .details-returned-btn {
   float: right;
 }
-.details-btn .details-approve-btn button,
-.details-returned-btn button {
+.details-btn .details-approve-btn button {
   padding: 10px;
   background-color: #28b498;
   border: none;
@@ -105,6 +104,18 @@
   padding-right: 15px;
   cursor: pointer;
 }
+.details-returned-btn button{
+  padding: 10px;
+  background-color: #28b498;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: pointer;
+  float: right;
+}
+
 .details-btn .details-decline-btn button {
   padding: 10px;
   background-color: red;
@@ -145,8 +156,20 @@
 .per-book-status-red {
   color: red;
 }
-.list-of-books ul span{
+.list-of-books ul span {
   display: flex;
   width: 250px;
   justify-content: space-between;
+}
+.select-all {
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
+.book-id-content {
+  height: 350px;
+}
+.book-id-main{
+  width: 360px;
 }

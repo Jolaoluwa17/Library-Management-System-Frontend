@@ -75,7 +75,7 @@ export const Transactions = ({ user }) => {
     fetchbookData();
   }, []);
 
-  // to get returned data
+  // to get partial returned data
   const [partialBookData, setPartialBookData] = useState([]);
   const [partialDataLoading, setPartialDataLoading] = useState(true);
   useEffect(() => {
@@ -92,7 +92,6 @@ export const Transactions = ({ user }) => {
   }, []);
 
   // filter by search and date
-  const [search, setSearch] = useState("");
   const [dateFilter, setDateFilter] = useState("");
 
   const handleDateFilterChange = (event) => {

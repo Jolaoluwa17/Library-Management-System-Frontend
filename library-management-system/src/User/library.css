@@ -1,3 +1,5 @@
+/* User Header CSS */
+
 .library {
   margin-left: 18%;
   /* padding-top: 2%; */
@@ -108,12 +110,52 @@
 .hamburger-icon1 {
   display: none;
 }
+.nofication-btn{
+  display: block;
+  color: yellow;
+}
+.notification-btn1{
+  display: none;
+}
+.notification-cancel-btn{
+  display: none;
+}
+.notification-cancel-btn1{
+  display: block;
+}
+.notification-bar{
+  display: none;
+}
+.notification-bar1{
+  display: block;
+}
+/* .yellow{
+  color: yellow;
+}
+.black{
+  color: black;
+}
+.dot{
+  position: absolute;
+  left: 60.5%;
+  color: yellow;
+  background-color: red;
+  padding: 0;
+  height: 0;
+  top: 40%;
+}
+.dot1{
+  position: absolute;
+  left: 60%;
+  color: black;
+} */
+
+/* Category Sidebar css */
 .category-sidebar .first-section-library {
   background-color: #28b498;
   position: absolute;
   left: 59%;
   top: 90%;
-  /* background-color: #d5d5d5; */
   display: flex;
   flex-direction: column;
   width: 250px;
@@ -134,6 +176,9 @@
 .library-content-sidebar .first-section-library .sidebar-content {
   margin-bottom: 5%;
 }
+/* end */
+
+
 .book-slider {
   border-radius: 10px;
   /* margin-left: 2%; */
