@@ -6,7 +6,7 @@ import axios from "axios";
 import config from "../config";
 import SkeletonTransactionDetailsLoader from "./SkeletonTransactionDetailsLoader";
 
-export const SeeDeclinedBooksDetails = () => {
+export const SeeDeclinedBooksDetails = ({ admin }) => {
   const navigate = useNavigate();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -29,7 +29,7 @@ export const SeeDeclinedBooksDetails = () => {
     <div className="see-details">
       <div className="see-details-header">
         <h2>Welcome to Transactions</h2>
-        <h5>Admin/Transaction</h5>
+        <h5>{admin.admin.username}/Transaction</h5>
       </div>
       <div className="see-details-container">
         <div className="details-panel-header">

@@ -7,7 +7,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import SkeletonTransactionDetailsLoader from "./SkeletonTransactionDetailsLoader";
 
-export const SeeAppliedBooksDetails = () => {
+export const SeeAppliedBooksDetails = ({ admin }) => {
   const navigate = useNavigate();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -54,7 +54,7 @@ export const SeeAppliedBooksDetails = () => {
     <div className="see-details">
       <div className="see-details-header">
         <h2>Welcome to Transactions</h2>
-        <h5>Admin/Transaction</h5>
+        <h5>{admin.admin.username}/Transaction</h5>
       </div>
       <div className="see-details-container">
         <div className="details-panel-header">

@@ -28,7 +28,11 @@ export const AdminLogin = () => {
       res.data && window.location.replace("/dashboard");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
-      setErrorMessage("Incorrect username or password");
+      if (err.response.status === 500) {
+        setErrorMessage("Network Error");
+      } else {
+        setErrorMessage("Incorrect Email or Password");
+      }
     }
   };
 
@@ -110,9 +114,7 @@ export const AdminLogin = () => {
                     width={600}
                   />
                 ) : (
-                  <button disabled={isFetching}>
-                    Sign in
-                  </button>
+                  <button disabled={isFetching}>Sign in</button>
                 )}
               </div>
             </div>

@@ -8,7 +8,7 @@ import config from "../config";
 import BookId from "./BookId";
 import SkeletonTransactionDetailsLoader from "./SkeletonTransactionDetailsLoader";
 
-export const SeeLoanedBooksDetails = ({ item }) => {
+export const SeeLoanedBooksDetails = ({ item, admin }) => {
   const navigate = useNavigate();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -34,7 +34,7 @@ export const SeeLoanedBooksDetails = ({ item }) => {
     <div className="see-details">
       <div className="see-details-header">
         <h2>Welcome to Transactions</h2>
-        <h5>Admin/Transaction</h5>
+        <h5>{admin.admin.username}/Transaction</h5>
       </div>
       <div className="see-details-container">
         <div className="details-panel-header">

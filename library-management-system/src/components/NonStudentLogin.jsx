@@ -30,7 +30,11 @@ const NonStudentLogin = () => {
       res.data && window.location.replace("/library");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
-      setErrorMessage("Incorrect username or password");
+      if (err.response.status === 500) {
+        setErrorMessage("Network Error");
+      } else {
+        setErrorMessage("Incorrect Email or Password");
+      }
     }
   };
 
