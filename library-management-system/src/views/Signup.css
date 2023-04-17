@@ -107,6 +107,24 @@ body {
   justify-content: center;
   border-radius: 0px 30px 30px 0px;
 }
+.signup-btn button:disabled{
+  background-color: grey;
+}
+.terms-of-service p{
+ font-size: 14px;
+}
+.terms-of-service h3{
+  margin-top: 2%;
+}
+.PP p{
+  font-size: 14px;
+}
+.PP p{
+  margin-top: 2%;
+}
+.signup-form-checkbox .link{
+ cursor: pointer;
+}
 ::-webkit-input-placeholder {
   color: grey;
   font-weight: bold;

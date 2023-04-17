@@ -14,7 +14,7 @@
   justify-content: space-between;
   font-size: 16px;
 }
-.toggle-btn{
+.toggle-btn {
   display: flex;
   font-size: 16px;
 }
@@ -89,7 +89,7 @@
   height: 60px;
   /* background-color: red; */
 }
-.school-logo img{
+.school-logo img {
   height: 50px;
   width: 45px;
 }
@@ -102,20 +102,63 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 78%;
-}
-.card-holder-image {
-  width: 130px;
-  height: 180px;
+  width: 85%;
 }
 .card-holder-info {
   width: 290px;
   height: 200px;
 }
+.card-holder-image {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: white solid 1px;
+  padding: 4.5px;
+}
 .card-holder-image img {
-  width: 130px;
-  height: 190px;
-  border-radius: 2px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.design::before {
+  height: 180px !important;
+  width: 370px !important;
+  border-radius: 50%;
+  border: 8px solid #24242420;
+  top: 20%;
+  content: "";
+  transform: rotateZ(35deg);
+  position: absolute;
+}
+.designs::before{
+  height: 180px !important;
+  width: 370px !important;
+  border-radius: 50%;
+  border: 8px solid #24242420;
+  top: 40%;
+  content: "";
+  transform: rotateZ(35deg);
+  position: absolute;
+}
+.design2::before {
+  height: 180px !important;
+  width: 360px !important;
+  border-radius: 50%;
+  border: 8px solid #24242420;
+  top: 20%;
+  content: "";
+  transform: rotateX(35deg);
+  position: absolute;
+}
+.designs2::before{
+  height: 180px !important;
+  width: 370px !important;
+  border-radius: 50%;
+  border: 8px solid #24242420;
+  top: 40%;
+  content: "";
+  transform: rotateX(35deg);
+  position: absolute;
 }
 .card-holder {
   margin-bottom: 3%;
@@ -173,7 +216,6 @@
   );
 }
 
-
 .virtual-card-front2:hover {
   margin-top: -3%;
   transition: all 0.5s ease-in-out;
@@ -200,8 +242,7 @@
   padding-top: 5%;
 }
 
-
-  /* .virtual-card-front3:hover{
+/* .virtual-card-front3:hover{
     animation: changebg 10s linear infinite;
   }
   @keyframes changebg {

@@ -73,10 +73,6 @@ export const LibraryCard = ({ user }) => {
                     <img src={userData.profilePic.fileUrl} alt="profile" />
                   </div>
                   <div className="card-holder-info">
-                    <div className="card-holder card-holder-name">
-                      <b>Id: </b>
-                      {userData._id}
-                    </div>
                     <div className="card-holder library-id">
                       <b>Name: </b>
                       {userData.username}
@@ -87,11 +83,11 @@ export const LibraryCard = ({ user }) => {
                     </div>
                     <div className="card-holder sex-card-holder">
                       <b>Sex: </b>
-                      {userData.sex}
+                      {userData.sex.charAt(0).toUpperCase() + userData.sex.slice(1)}
                     </div>
                     <div className="card-holder user-type-card-holder">
                       <b>User Type: </b>
-                      {userData.userType}
+                      {userData.userType.charAt(0).toUpperCase() + userData.userType.slice(1)}
                     </div>
                     {userData.userType === "student" ? (
                       <div className="card-holder user-type-card-holder">
@@ -104,6 +100,8 @@ export const LibraryCard = ({ user }) => {
                         null
                       </div>
                     )}
+                    <div className={isSingle ? "design" : "designs"}></div>
+                    <div className={isSingle ? "design2" : "designs2"}></div>
                   </div>
                 </div>
               </div>
@@ -113,14 +111,6 @@ export const LibraryCard = ({ user }) => {
                 }
               >
                 <div className="virtual-card-back-content">
-                  {/* <div className="card-qr-code-container">
-                    <div className="card-holder-qr-code">
-                      <img
-                        src="https://res.cloudinary.com/dneawlwcp/image/upload/v1677520723/Final%20Year%20Project%20Pictures/istockphoto-828088276-612x612_zxecyd.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div> */}
                   <div className="conditions">
                     <div className="conditions-header">
                       <h3>Conditions</h3>

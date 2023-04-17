@@ -23,7 +23,7 @@ export const LibraryContent1 = () => {
   }, [bookData._id]);
 
   const [randomBookData, setRandomBookData] = useState([]);
-  const [randomLoading, setRandomLoading] = useState(true)
+  const [randomLoading, setRandomLoading] = useState(true);
 
   useEffect(() => {
     const fetchBookData = async () => {
@@ -45,7 +45,10 @@ export const LibraryContent1 = () => {
       <div className="library-content">
         <div className="library-content-sidebar">
           <div className="book-slider">
-            <Autoplay randomBookData={randomBookData} randomLoading={randomLoading} />
+            <Autoplay
+              randomBookData={randomBookData}
+              randomLoading={randomLoading}
+            />
           </div>
           <div className="ads">
             <div className="first-part">
@@ -57,23 +60,20 @@ export const LibraryContent1 = () => {
             </div>
             <div className="first-part">
               <b>
-                "To be yourself in a world that is constantly trying to make you
-                something else is the greatest accomplishment." <br />~ Ralph
-                Waldo Emerson
+                "The most valuable of all talents is that of never using two
+                words when one will do." <br />~ Thomas Jefferson
               </b>
             </div>
             <div className="first-part">
               <b>
-                "To be yourself in a world that is constantly trying to make you
-                something else is the greatest accomplishment." <br />~ Ralph
-                Waldo Emerson
+                "You don't write because you want to say something, you write
+                because you have something to say." <br />~ F. Scott Fitzgerald
               </b>
             </div>
             <div className="first-part">
               <b>
-                "To be yourself in a world that is constantly trying to make you
-                something else is the greatest accomplishment." <br />~ Ralph
-                Waldo Emerson
+                "If you don't have time to read, you don't have the time (or the
+                tools) to write. Simple as that" <br />~ Stephen King
               </b>
             </div>
           </div>

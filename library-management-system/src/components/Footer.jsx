@@ -5,9 +5,14 @@ import { FaTwitter } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { GrFacebookOption } from "react-icons/gr";
 import { IoLogoWhatsapp } from "react-icons/io";
-import { CgComedyCentral } from "react-icons/cg"
+import { CgComedyCentral } from "react-icons/cg";
+import { IoIosSend } from "react-icons/io";
 
 export const Footer = ({ contactRef }) => {
+  const phoneNumber = "8155668282";
+  const countryCode = "234";
+  const url = `https://wa.me/${countryCode}${phoneNumber}`;
+  const username = "jolaoluwa_42";
   return (
     <div className="footer" ref={contactRef}>
       <div className="footer-header">
@@ -16,28 +21,50 @@ export const Footer = ({ contactRef }) => {
       <div className="footer-content">
         <div className="about-part">
           <div className="about-title">
-            <h3>About</h3>
+            <h3>Library</h3>
+          </div>
+          <div className="about-part-content">
+            <p>
+              Become a leading library in the region known for exceptional
+              service and extensive resources, <br /> while fostering growth and
+              development for staff members and patrons alike
+            </p>
+          </div>
+        </div>
+        <div className="about-part">
+          <div className="about-title">
+            <h3>Our Services</h3>
           </div>
           <div className="about-part-content">
             <ul>
               <li>
                 <Link to="/" style={{ color: "white" }}>
-                  About
+                  Research
                 </Link>
               </li>
               <li>
                 <Link to="/" style={{ color: "white" }}>
-                  Submit Issues
+                  Education
                 </Link>
               </li>
               <li>
                 <Link to="/" style={{ color: "white" }}>
-                  Slack
+                  Enrichment
                 </Link>
               </li>
               <li>
                 <Link to="/" style={{ color: "white" }}>
-                  Github Repo
+                  Empowerment
+                </Link>
+              </li>
+              <li>
+                <Link to="/" style={{ color: "white" }}>
+                  community
+                </Link>
+              </li>
+              <li>
+                <Link to="/" style={{ color: "white" }}>
+                  Technology
                 </Link>
               </li>
             </ul>
@@ -45,82 +72,33 @@ export const Footer = ({ contactRef }) => {
         </div>
         <div className="about-part">
           <div className="about-title">
-            <h3>Getting Started</h3>
+            <h3>Links</h3>
           </div>
           <div className="about-part-content">
             <ul>
               <li>
                 <Link to="/" style={{ color: "white" }}>
-                  Introduction
+                  Home
                 </Link>
               </li>
               <li>
                 <Link to="/" style={{ color: "white" }}>
-                  Documentation
+                  About Us
                 </Link>
               </li>
               <li>
                 <Link to="/" style={{ color: "white" }}>
-                  Usage
+                  Contact Us
                 </Link>
               </li>
               <li>
-                <Link to="/" style={{ color: "white" }}>
-                  Global
+                <Link to="/admin-login" style={{ color: "white" }}>
+                  Admin
                 </Link>
               </li>
               <li>
-                <Link to="/" style={{ color: "white" }}>
-                  Element
-                </Link>
-              </li>
-              <li>
-                <Link to="/" style={{ color: "white" }}>
-                  Collections
-                </Link>
-              </li>
-              <li>
-                <Link to="/" style={{ color: "white" }}>
-                  Themes
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="about-part">
-          <div className="about-title">
-            <h3>Resources</h3>
-          </div>
-          <div className="about-part-content">
-            <ul>
-              <li>
-                <Link to="/" style={{ color: "white" }}>
-                  Form Validation
-                </Link>
-              </li>
-              <li>
-                <Link to="/" style={{ color: "white" }}>
-                  API
-                </Link>
-              </li>
-              <li>
-                <Link to="/" style={{ color: "white" }}>
-                  Visibility
-                </Link>
-              </li>
-              <li>
-                <Link to="/" style={{ color: "white" }}>
-                  Accessibility
-                </Link>
-              </li>
-              <li>
-                <Link to="/" style={{ color: "white" }}>
-                  Community
-                </Link>
-              </li>
-              <li>
-                <Link to="/" style={{ color: "white" }}>
-                  Market Place
+                <Link to="/login" style={{ color: "white" }}>
+                  Login
                 </Link>
               </li>
             </ul>
@@ -142,7 +120,12 @@ export const Footer = ({ contactRef }) => {
                 </Link>
               </li>
               <li>
-                <Link to="/" style={{ color: "white" }}>
+                <Link
+                  to={`https://www.instagram.com/${username}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "white" }}
+                >
                   <AiFillInstagram />
                 </Link>
               </li>
@@ -152,11 +135,20 @@ export const Footer = ({ contactRef }) => {
                 </Link>
               </li>
               <li>
-                <Link to="/" style={{ color: "white" }}>
+                <Link
+                  to={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "white" }}
+                >
                   <IoLogoWhatsapp />
                 </Link>
               </li>
             </ul>
+            <div className="send-us-msg">
+              <input type="text" placeholder="Send us a message" />
+              <IoIosSend className="send-icon" />
+            </div>
           </div>
         </div>
       </div>

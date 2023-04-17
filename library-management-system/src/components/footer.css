@@ -23,8 +23,8 @@
 .about-part-content ul{
     list-style: none;
 }
-.about-part-content ul li{
-    margin-top: 2%;
+.about-part-content p{
+    width: 250px;
 }
 .social-media-content ul{
     display: flex;
@@ -47,6 +47,31 @@
 .footer-footer-content{
     margin-left: 3%;
     margin-top: 2%;
+}
+.send-us-msg{
+    display: flex;
+    /* padding: 5px; */
+    background-color: white;
+    width:280px;
+    border-radius: 20px;
+    padding-bottom: 2px;
+    margin-top: 2%;
+}
+.send-icon{
+    position: absolute;
+    font-size: 25px;
+    left: 83%;
+    margin-top: 0.6%;
+    color: black !important;
+    cursor: pointer;
+}
+.send-us-msg input{
+    padding: 10px;
+    border-radius: 20px;
+    width: 250px;
+    margin-top: 2%;
+    border: none;
+    outline: none;
 }
 
 /*Redsponsive*/
