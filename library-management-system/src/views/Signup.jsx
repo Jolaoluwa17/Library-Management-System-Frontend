@@ -19,17 +19,21 @@ export const Signup = () => {
     e.preventDefault();
     setError(false);
     try {
-      const res = await axios.post(`${config.baseURL}/auth/register`, {
+      let postData = {
         username,
         email,
         password,
         userType,
-        matricNo,
         phoneNo,
-      });
+      };
+      if (userType === "student") {
+        postData.matricNo = matricNo;
+      }
+      const res = await axios.post(`${config.baseURL}/auth/register`, postData);
       res.data && window.location.replace("/");
     } catch (err) {
       setError(true);
+      console.log(err);
     }
   };
 
